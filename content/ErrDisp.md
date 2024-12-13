@@ -1,5 +1,6 @@
 +++
 title = 'ErrDisp'
+categories = ["Services"]
 +++
 
 This system process handles displaying the error screens, such as "an
@@ -34,3 +35,5 @@ hardware system reboot.
 |----------------|-----------------------------------------------|
 | 0x00010800     | [Throw](ERR:Throw "wikilink")                 |
 | 0x00020042     | [SetUserString](ERR:SetUserString "wikilink") |
+
+[Category:Services](Category:Services "wikilink")
