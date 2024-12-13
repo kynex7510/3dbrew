@@ -107,21 +107,41 @@ contains
 |----------------|---------------------------------------------------------------|
 | 0x0401....     | ?                                                             |
 | 0x04020002     | GetCecInfoEventHandleSys                                      |
-| 0x040A....     | ?                                                             |
-| 0x040B....     | ?                                                             |
-| 0x040C0042     | GetSendSlotsMetadata?                                         |
-| 0x040D0082     | GetSlot? title_id, write_buffer, buffer_size                  |
+| 0x040A....     | SprCreate                                                     |
+| 0x040B....     | SprInitialise                                                 |
+| 0x040C0042     | SprGetSendSlotsMetadata                                       |
+| 0x040D0082     | SprGetSlot title_id, write_buffer, buffer_size                |
 | 0x040E....     | ?                                                             |
-| 0x040F....     | ?                                                             |
-| 0x0410....     | ?                                                             |
-| 0x04110042     | ?                                                             |
-| 0x041200C2     | AddSlot?                                                      |
-| 0x0413....     | ?                                                             |
-| 0x0414....     | CloseSpr? bool success                                        |
+| 0x040F....     | SprFinaliseSend                                               |
+| 0x0410....     | SprStartRecv                                                  |
+| 0x04110042     | SprAddSlotsMetadata                                           |
+| 0x041200C2     | SprbAddSlot                                                   |
+| 0x0413....     | SprFinaliseRecv                                               |
+| 0x0414....     | SprDone bool success                                          |
 | 0x04150000     | [GenHashConsoleUnique](CECDS:GenHashConsoleUnique "wikilink") |
 | 0x04160002     | ?                                                             |
 | 0x0417....     | ?                                                             |
 |                |                                                               |
+
+### CecSprStatus
+
+This enum is used internally of the cecd service to keep track of which
+state of an SPR exchange it is in currently.
+
+| Name                            | Value | Notes                                                                                |
+|---------------------------------|-------|--------------------------------------------------------------------------------------|
+| CEC_SPR_SEND_RECV_START         | 0     | The internal objects were just created                                               |
+| CEC_SPR_SEND_RECV_INIT          | 1     | The internal objects for sending and receiving have been initialised                 |
+| CEC_SPR_SEND_READY              | 2     | The sysmodule is ready for SPR Send, now it is possible to fetch the SPR data needed |
+| CEC_SPR_SEND                    | 3     | The other program should be sending the SPR request now                              |
+| CEC_SPR_RECEIVE_READY           | 4     | The sysmodule is ready to receive SPR data now                                       |
+| CEC_SPR_RECEIVE                 | 5     | The sysmodule is done receiving SPR data                                             |
+| CEC_SPR_CONNECTION_FINISHED_TCP | 6     |                                                                                      |
+| CEC_SPR_CONNECTION_FINISHED     | 7     | ??? Enum usage not found in source                                                   |
+| CEC_SPR_SEND_POST               | 8     | ??? Enum usage not found in source                                                   |
+| CEC_SPR_RECEIVE_POST            | 9     | ??? Enum usage not found in source                                                   |
+| CEC_SPR_FINISHING               | 0x0F  | ??? Enum usage not found in source                                                   |
+| CEC_SPR_FINISHED                | 0x10  | ??? Enum usage not found in source                                                   |
 
 # CECD Service "cecd:ndm"
 
