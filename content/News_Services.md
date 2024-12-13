@@ -1,5 +1,6 @@
 +++
 title = 'News Services'
+categories = ["Services"]
 +++
 
 This system module handles the system notifications.
@@ -131,3 +132,5 @@ called during news module startup(crt0?).</li>
 </tr>
 </tbody>
 </table>
+
+[Category:Services](Category:Services "wikilink")
