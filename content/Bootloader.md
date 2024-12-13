@@ -266,12 +266,14 @@ by the boot11 function initializing those words.
 - u32 0x1FFFE000+0: ARM11 MPCore "Cycle Counter Register (CCNT)".
 - u32 0x1FFFE000+4: ARM11 MPCore "Count Register 0 (PMN0)".
 - u32 0x1FFFE000+8: ARM11 MPCore "Count Register 1 (PMN0)".
-- 8bit-entry-array 0x1FFFE000+0xC: 8bit status-codes initialized by
-  boot9 main(), for the FIRM-boot devices. +0 is NAND, +1 is NTRCARD and
-  +2 is wifi-spiflash.
-- ...
-- 8bit-entry-array 0x1FFFE000+0x10: Status-codes originally from
+- s8\[4\] 0x1FFFE000+0xC: 8bit status-codes initialized by boot9 main(),
+  for the FIRM-boot devices. +0 is NAND, +1 is NTRCARD and +2 is WiFi
+  Flash, +3 is sleep sensor state.
+- s8\[8\] 0x1FFFE000+0x10: Status-codes originally from
   nand_findfirmpartition_loadfirm(), for each of the 8 NCSD partitions.
+- u32 0x1FFFE000+0x18: SD driver internal error bitfield
+- u32 0x1FFFE000+0x1C: SD driver SD hardware status bits from the
+  controller, AND-ed with 0xFDFF0080 if eMMC, and 0xFDF90008 if SD.
 
 ## BootROM Status Codes
 
