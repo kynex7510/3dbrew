@@ -236,6 +236,26 @@ For an issue with console-unique key-init, see
 
 ## BootROM Errors
 
+Here is the format of the numbers displayed on the error screen:
+
+```
+BOOTROM 8046
+ERRCODE: ffWWGGNN
+p3p2p1p0 p7p6p5p4
+sd_softE sd_hardE
+```
+
+- `ff`: sleep switch state (2==MCU sleep switch closed, 1==GPIO sleep
+  switch closed (very bad if this happens), 0==sleep switch open)
+- `WW`: NVRAM (WiFi Flash) FIRM load error code
+- `GG`: ntrboot FIRM load error code
+- `NN`: NAND header (NCSD) load error code
+- `p`<N>: NAND FIRM partition load error code. Note the order of the
+  partitions in the error code!
+- `sd_softE`: software error (driver status bits, see one section lower)
+- `sd_hardE`: hardware error (SD controller status bits ? see one
+  section lower)
+
 Sample error-screen(where firm0+firm1 RSA signatures were corrupted):
 
 ```
