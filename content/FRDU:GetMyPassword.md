@@ -4,10 +4,10 @@ title = 'FRDU:GetMyPassword'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00100040\] |
-| 1          | Buffer length              |
+| Index Word | Description                   |
+|------------|-------------------------------|
+| 0          | Header code \[0x00100040\]    |
+| 1          | Buffer length (maximum 0x800) |
 
 The following is located 0x100-bytes after the beginning of the above
 command buffer:
@@ -23,3 +23,7 @@ command buffer:
 |------------|-------------|
 | 0          | Header code |
 | 1          | Result code |
+
+# Description
+
+Returns the NEX password from the friends sysmodule's save data.
