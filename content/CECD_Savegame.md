@@ -63,7 +63,7 @@ Unused box names are filled with null characters.
 | 0x10   | 32     | HMAC Key                                  |
 | 0x30   | 4      | Zero?                                     |
 | 0x34   | 12     | Timestamp when last accessed              |
-| 0x40   | 1      | Flag?                                     |
+| 0x40   | 1      | Display New Notification Dot              |
 | 0x41   | 1      | Flag?                                     |
 | 0x42   | 1      | Flag?                                     |
 | 0x43   | 1      | Flag?                                     |
