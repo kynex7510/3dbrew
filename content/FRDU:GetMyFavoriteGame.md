@@ -10,12 +10,12 @@ title = 'FRDU:GetMyFavoriteGame'
 
 # Response
 
-| Index Word | Description               |
-|------------|---------------------------|
-| 0          | Header code               |
-| 1          | Result code               |
-| 2-3        | u64, Application Title ID |
+| Index Word | Description                                                        |
+|------------|--------------------------------------------------------------------|
+| 0          | Header code                                                        |
+| 1          | Result code                                                        |
+| 2-5        | [GameKey](Friend_Services#gamekey "wikilink") of the favorite game |
 
 # Description
 
-Obtains the favorite game set by the console.
+Returns the game key for the favorite game set in the friends list.
