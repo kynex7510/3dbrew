@@ -27,3 +27,13 @@ Size : 0x20 bytes
 | 0x4             | u32                   | Result Code                                                                                         |
 | 0x8             | Request/Response data | A 24-byte chunk of data containing information about the request/response. See below for more info. |
 |                 |                       |                                                                                                     |
+
+**enum DecoderCommand : u16**
+
+| Enum                                          | Value |
+|-----------------------------------------------|-------|
+| Initialize (Initialize AAC decoder)           | 0     |
+| DecodeEncode (Decode or encode an AAC stream) | 1     |
+| Shutdown                                      | 2     |
+| LoadState                                     | 3     |
+| SaveState                                     | 3     |
