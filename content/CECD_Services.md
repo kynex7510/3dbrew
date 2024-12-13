@@ -27,9 +27,9 @@ Streetpass stuff.
 | 0x00100000     | GetChangeStateEventHandle (returns event handle in cmdbuf\[3\])                                                 |
 | 0x00110104     | [OpenAndWrite](CECDU:OpenAndWrite "wikilink")                                                                   |
 | 0x00120104     | [OpenAndRead](CECDU:OpenAndRead "wikilink")                                                                     |
-| 0x001E0082     | GetEventLog                                                                                                     |
-| 0x001F0000     | GetEventLogStart                                                                                                |
-| 0x0020....     | ?                                                                                                               |
+| 0x001E0082     | [GetEventLog](CECDU:GetEventLog "wikilink")                                                                     |
+| 0x001F0000     | [GetEventLogStart](CECDU:GetEventLogStart "wikilink")                                                           |
+| 0x00200000     | [GetEventLogEntryCount](CECDU:GetEventLogEntryCount "wikilink")                                                 |
 | 0x0021....     | ?                                                                                                               |
 |                |                                                                                                                 |
 
