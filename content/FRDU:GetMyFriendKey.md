@@ -10,16 +10,12 @@ title = 'FRDU:GetMyFriendKey'
 
 # Response
 
-| Index Word | Description         |
-|------------|---------------------|
-| 0          | Header code         |
-| 1          | Result code         |
-| 2-5        | FriendKey structure |
+| Index Word | Description                                                     |
+|------------|-----------------------------------------------------------------|
+| 0          | Header code                                                     |
+| 1          | Result code                                                     |
+| 2-5        | The console's [FriendKey](Friend_Services#friendkey "wikilink") |
 
-FriendKey Structure:
+# Description
 
-|     |                 |
-|-----|-----------------|
-| u32 | principalId     |
-| u32 | padding?        |
-| u64 | localFriendCode |
+Returns the console's friend key.
