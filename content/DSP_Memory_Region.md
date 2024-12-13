@@ -220,7 +220,7 @@ This structure has separate arrays for the left and right channels.
 Read/Write.
 
 PCM32. Also serves an aux function, allowing the ARM11 to apply custom
-effects to audio. Internal format of the DSP firmware is quadaphonic
+effects to audio. Internal format of the DSP firmware is quadraphonic
 audio.
 
 This structure is 5120 bytes long.
