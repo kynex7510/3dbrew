@@ -113,6 +113,14 @@ following certIDs: 0x1, 0x2, and 0x3.
 | 0x4    | 0x4  | padding      |
 | 0x8    | 0x8  | Friend Code  |
 
+## GameKey
+
+| Offset | Size | Description        |
+|--------|------|--------------------|
+| 0x0    | 0x8  | u64, Title ID      |
+| 0x8    | 0x2  | u16, Title Version |
+| 0xA    | 0x6  | Unused padding.    |
+
 # Server Types
 
 The server type is stored internally as a combination of two values, the
