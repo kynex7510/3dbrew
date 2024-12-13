@@ -1,5 +1,6 @@
 +++
 title = 'Services'
+categories = ["Services"]
 +++
 
 Services are an abstraction of ports and are the commonly used way of
@@ -115,3 +116,5 @@ Manager](Process_Manager_Services "wikilink").
 | 0x302       | NWM          | NDM, SOCKET, FRIENDS, AC                                                                    | WiFi is turning off, triggered by using the WiFi switch on O3DS models and the toggle in the N3DS HOME menu (maybe disconnecting from any connected networks?) |
 | 0x303       | NWM          | CECD, NDM                                                                                   | WiFi has turned off. (fires shortly after 0x302)                                                                                                               |
 | 0x304       | NWM          | CECD, NDM, SOCKET                                                                           | WiFi was turned on.                                                                                                                                            |
+
+[Category:Services](Category:Services "wikilink")
