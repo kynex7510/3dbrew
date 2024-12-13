@@ -275,7 +275,7 @@ Sample error-screen(where firm0+firm1 RSA signatures were corrupted):
 - 4th line is:
   `` print_string(..., "%08X %08X",*((unsigned int*)(0x1FFFE000+0x18))`, `*((unsigned int*)(0x1fffe000+0x1C)));//See below memory notes. ``
 
-## 0x1FFFE000 memory
+### 0x1FFFE000 memory
 
 This memory is used by boot9 mainly for sending info to the arm11 for
 the error-screen. The data in this region is still stored in memory by
@@ -296,7 +296,7 @@ by the boot11 function initializing those words.
 - u32 0x1FFFE000+0x1C: SD driver SD hardware status bits from the
   controller, AND-ed with 0xFDFF0080 if eMMC, and 0xFDF90008 if SD.
 
-## BootROM Status Codes
+### BootROM Status Codes
 
 | Value     | Description                                                                                                                                                                                                             |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
