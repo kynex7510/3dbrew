@@ -277,14 +277,16 @@ by the boot11 function initializing those words.
 
 | Value     | Description                                                                                                                                                                                                             |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0x00      | Success                                                                                                                                                                                                                 |
-| 0xEE(~17) | NCSD header validation function failed: NCSD magicnum is invalid or RSA verification failed.                                                                                                                            |
-| 0xDE(~33) | FIRM header validation function failed: FIRM magicnum is invalid or RSA verification failed.                                                                                                                            |
-| 0xDF(~32) | Failed to read sector data from the device.                                                                                                                                                                             |
-| 0xCF(~48) | FIRM section validation function failed: FIRM section is invalid.                                                                                                                                                       |
-| 0xF7(~8)  | A NAND FIRM from another partition was already found with a priority(firmhdr+4) \>= to the value for the current partition's FIRM priority.                                                                             |
-| 0xF8(~7)  | The FIRM magicnum(firmhdr+0) is invalid.                                                                                                                                                                                |
-| 0xFF(~0)  | Initial value for each entry in the 8-entry array of status-codes for the NAND NCSD partitions. Indicates that the partition is not a FIRM partition(partition fs type isn't 0x3 or partition fs crypt-type isn't 0x2). |
+| 0x00      | Device was not considered to be loaded.                                                                                                                                                                                 |
+| 0xFF(-1)  | Partition skipped due to it not being a FIRM partition (partition fs type isn't 0x3 and partition fs crypt-type isn't 0x2).                                                                                             |
+| 0xFE(-2)  | Device initialization failed due to it missing or malfunctioning                                                                                                                                                        |
+| 0xF8(-8)  | The FIRM header magic is not matching "FIRM".                                                                                                                                                                           |
+| 0xF7(-9)  | FIRM image loading got skipped due to already having found an equal or higher priority (firmhdr+4) FIRM to load.                                                                                                        |
+| 0xEF(-17) | Failed to load NCSD header from NAND                                                                                                                                                                                    |
+| 0xEE(-18) | NCSD header magic is not "NCSD", or NCSD header RSA verification failed.                                                                                                                                                |
+| 0xDF(-33) | Failed to read FIRM header from device.                                                                                                                                                                                 |
+| 0xDE(-34) | FIRM header magic is not "FIRM", or FIRM header RSA verification failed.                                                                                                                                                |
+| 0xCF(-49) | FIRM section loading failed for any of these reasons:<ul><li>FIRM section load address blacklist got tripped</li><li>Failed to read FIRM section data into memory</li><li>FIRM section hash verification failed</li></ul> |
 
 ## Boot9 startup
 
