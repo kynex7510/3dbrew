@@ -1584,8 +1584,9 @@ Source values:
 | 14    | Constant (from GPUREG_TEXENV*i*_COLOR) |
 | 15    | Previous                                |
 
-Using previous source in the first TEV stage returns the primary color,
-while previous buffer returns zero.
+Using Previous (15) as a source in the first TEV stage returns the value
+of source 3. If source 3 has Previous it returns zero. Previous buffer
+(13) always returns zero.
 
 ### GPUREG_TEXENV*i*_OPERAND
 
