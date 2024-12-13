@@ -111,7 +111,7 @@ contains
 | 0x040B....     | SprInitialise                                                 |
 | 0x040C0042     | SprGetSendSlotsMetadata                                       |
 | 0x040D0082     | SprGetSlot title_id, write_buffer, buffer_size                |
-| 0x040E....     | ?                                                             |
+| 0x040E....     | SprSetTitleSent title_id, bool success                        |
 | 0x040F....     | SprFinaliseSend                                               |
 | 0x0410....     | SprStartRecv                                                  |
 | 0x04110042     | SprAddSlotsMetadata                                           |
