@@ -13,7 +13,7 @@ command buffer:
 
 | Index Word | Description                                                                         |
 |------------|-------------------------------------------------------------------------------------|
-| 0          | (0x300 \<\< 14) \| 2                                                                |
+| 0          | (300 \<\< 14) \| 2                                                                  |
 | 1          | Pointer to [FriendPresence](FRDU:GetMyPresence#friendpresence "wikilink") structure |
 
 # Response
