@@ -400,4 +400,175 @@ The body is expected to contain binary data with the same structure as
 the spr-slotXX files in the request. The order of these must be the same
 as the reponse header order.
 
+## Structs, Data Types
+
+Streetpass uses multiple different structs and data types for storing
+and transporting data.
+
+### MessageId
+
+This datatype holds a per-console-per-title unique message id.
+
+| Type    | Description    |
+|---------|----------------|
+| u8\[8\] | The message id |
+
+### Timestamp12
+
+This holds a timestamp in 12 bytes
+
+| Offset | Size | Type | Name        |
+|--------|------|------|-------------|
+| 0x0    | 0x4  | u32  | Year        |
+| 0x4    | 0x1  | u8   | Month       |
+| 0x5    | 0x1  | u8   | Day         |
+| 0x6    | 0x1  | u8   | Weekday     |
+| 0x7    | 0x1  | u8   | Hour        |
+| 0x8    | 0x1  | u8   | Minute      |
+| 0x9    | 0x1  | u8   | Second      |
+| 0xA    | 0x2  | u16  | Millisecond |
+
+### Message (0x6060)
+
+MessageHeader:
+
+| Offset | Size | Type        | Name              | Description                                                                                             |
+|--------|------|-------------|-------------------|---------------------------------------------------------------------------------------------------------|
+| 0x00   | 0x2  | u16         | magic             | Equals 0x6060 (``` `` ```)                                                                              |
+| 0x02   | 0x2  | u16         | Padding           |                                                                                                         |
+| 0x04   | 0x04 | u32         | message_size      | The size in bytes of the entire message, including all headers and hmac                                 |
+| 0x08   | 0x04 | u32         | total_header_size | The size in bytes of all headers, including the extra headers                                           |
+| 0x0C   | 0x04 | u32         | body_size         | The size in bytes of the body of the message                                                            |
+| 0x10   | 0x04 | u32         | title_id          | The title id of the message                                                                             |
+| 0x14   | 0x04 | u32         | title_id2         | ???                                                                                                     |
+| 0x18   | 0x04 | u32         | batch_id          | The sending client sets an ID here if multiple messages should be batched together into one transaction |
+| 0x1C   | 0x04 | u32         | transfer_id       | ???                                                                                                     |
+| 0x20   | 0x08 | MessageId   | message_id        | The ID of the sending message                                                                           |
+| 0x28   | 0x04 | u32         | message_version   | ???                                                                                                     |
+| 0x2C   | 0x08 | MessageId   | message_id_2      | The message ID that this message is referring to, e.g. the individual responses in Streetpass Mii Plaza |
+| 0x34   | 0x01 | u8          | flags             | ???                                                                                                     |
+| 0x35   | 0x01 | SendMethod  | send_method       |                                                                                                         |
+| 0x36   | 0x01 | bool        | unopened          | Set if the message hasn't been opened yet                                                               |
+| 0x37   | 0x01 | bool        | is_new            | Set if the message is new                                                                               |
+| 0x38   | 0x08 | u64         | sender_id         |                                                                                                         |
+| 0x40   | 0x08 | u64         | sender_id_2       |                                                                                                         |
+| 0x48   | 0x0C | Timestamp12 | sent              |                                                                                                         |
+| 0x54   | 0x0C | Timestamp12 | received          |                                                                                                         |
+| 0x60   | 0x0C | Timestamp12 | created           |                                                                                                         |
+| 0x6C   | 0x01 | u8          | send_count        | How often this message can be sent                                                                      |
+| 0x6D   | 0x01 | u8          | forward_count     | How often this message can be forwarded                                                                 |
+| 0x6E   | 0x02 | u16         | user_data         | ???                                                                                                     |
+
+ExtMessageHeader:
+
+| Offset | Size | Type | Name | Description                         |
+|--------|------|------|------|-------------------------------------|
+| 0x00   | 0x04 | u32  | type | The type of the extra header        |
+| 0x04   | 0x04 | u32  | size | Size, in bytes, of the extra header |
+| 0x08   |      |      | body | The body of the extra header        |
+
+Message:
+
+| Offset | Size | Type                 | Name        | Description                                                                                                                      |
+|--------|------|----------------------|-------------|----------------------------------------------------------------------------------------------------------------------------------|
+| 0x00   | 0x70 | MessageHeader        | header      | The header of the message                                                                                                        |
+| 0x70   |      | ExtMessageHeader\[\] | ext_headers | An array of the extra headers for the message. The array keeps filling until the length no more until `header.total_header_size` |
+|        |      |                      | body        | The actual body/payload of the message                                                                                           |
+|        | 0x20 | u8\[0x20\]           | hmac        | The hmac over the body with the hmac_key                                                                                         |
+
+### Slot (0x6161)
+
+The slot groups multiple messages of one title id together into a single
+struct
+
+| Offset | Size | Type        | Name          | Description                                                                                  |
+|--------|------|-------------|---------------|----------------------------------------------------------------------------------------------|
+| 0x00   | 0x02 | u16         | magic         | Equals 0x6161 (`aa`)                                                                         |
+| 0x02   | 0x02 | u16         | padding       |                                                                                              |
+| 0x04   | 0x04 | u32         | size          | The size of bytes of the entire slot, including the header and all messages it contains      |
+| 0x08   | 0x04 | u32         | title_id      | The title id of the slot                                                                     |
+| 0x0C   | 0x04 | u32         | batch_id      | If the slot contains batched messages, the batch id is set to the same one as those messages |
+| 0x10   | 0x04 | u32         | message_count | The total number of messages in this slot                                                    |
+| 0x14   |      | Message\[\] | messages      | An array of length `message_count` all the messages of this slot                             |
+
+### BoxInfo (0x6262)
+
+| Offset | Size | Type              | Name             | Description                                                          |
+|--------|------|-------------------|------------------|----------------------------------------------------------------------|
+| 0x00   | 0x02 | u16               | magic            | Equals 0x6262 (`bb`)                                                 |
+| 0x02   | 0x02 | u16               | padding          |                                                                      |
+| 0x04   | 0x04 | u32               | file_size        | The size of the box info in bytes                                    |
+| 0x08   | 0x04 | u32               | max_box_size     | The maximum allowed size of the box in bytes                         |
+| 0x0C   | 0x04 | u32               | box_size         | The current size of the box in bytes                                 |
+| 0x10   | 0x04 | u32               | max_num_messages | The maximum number of messages that the box can hold                 |
+| 0x14   | 0x04 | u32               | num_messages     | The current number of messages in the box                            |
+| 0x18   | 0x04 | u32               | max_batch_size   | The maximum size of a bach, in number of messages                    |
+| 0x1C   | 0x04 | u32               | max_message_size | The maximum size of a message, in bytes                              |
+| 0x20   |      | MessageHeader\[\] | message_headers  | An array of all message headers in this box of length `num_messages` |
+
+### MBoxInfo (0x6363)
+
+This holds information on the message box, including both inbox and
+outbox
+
+| Offset | Size | Type        | Name              | Description                                                                                                      |
+|--------|------|-------------|-------------------|------------------------------------------------------------------------------------------------------------------|
+| 0x00   | 0x02 | u16         | magic             | Equals 0x6363 (`cc`)                                                                                             |
+| 0x02   | 0x02 | u16         | padding           |                                                                                                                  |
+| 0x04   | 0x04 | u32         | title_id          | The title id for this mbox                                                                                       |
+| 0x08   | 0x04 | u32         | private_id        | ???                                                                                                              |
+| 0x0C   | 0x01 | u8          | mbox_type_flags   | 0x01: normal programs, 0x06: system programs, 0x80: silent notif                                                 |
+| 0x0D   | 0x01 | bool        | enabled           | Weather this message box is enabled                                                                              |
+| 0x0E   | 0x02 | u16         | padding           |                                                                                                                  |
+| 0x10   | 0x20 | u8\[0x20\]  | hmac_key          | The hmac key to make hmacs for messages. These are unique per title, however they are the same for all consoles. |
+| 0x30   | 0x04 | u32         | padding           |                                                                                                                  |
+| 0x34   | 0x0C | Timestamp12 | last_accessed     |                                                                                                                  |
+| 0x40   | 0x01 | bool        | flag_unread       | Does this message box contain unread messages?                                                                   |
+| 0x41   | 0x01 | bool        | flag_new          | Does this message box contain new messages?                                                                      |
+| 0x42   | 0x01 | bool        | flag_unknown      | ???                                                                                                              |
+| 0x43   | 0x01 | bool        | flag_unknown      | ???                                                                                                              |
+| 0x44   | 0x0C | Timestamp12 | last_received     |                                                                                                                  |
+| 0x50   | 0x04 | u32         | padding           |                                                                                                                  |
+| 0x54   | 0x0C | Timestamp12 | unknown_timestamp | ???                                                                                                              |
+
+### 0x6565
+
+SlotMetadata:
+
+| Offset | Size | Type        | Name        | Description                        |
+|--------|------|-------------|-------------|------------------------------------|
+| 0x00   | 0x04 | u32         | title_id    | The title id of the slot           |
+| 0x04   | 0x04 | SendMethod  | send_method | The send method for the slot       |
+| 0x08   | 0x04 | u32         | body_size   | The size of the slot body in bytes |
+| 0x0C   | 0x04 | u32         | count       | Number of messages                 |
+| 0x10   | 0x14 | **unknown** | **unknown** |                                    |
+
+Struct:
+
+| Offset | Length | Type                 | Name        | Description           |
+|--------|--------|----------------------|-------------|-----------------------|
+| 0x00   | 0x02   | u16                  | magic       | Equals 0x6565 (`ee`)  |
+| 0x02   | 0x02   | u16                  | padding     |                       |
+| 0x04   | 0x28   | **unknown**          | **unknown** |                       |
+| 0x2C   | 0x360  | SlotMetadata\[0x18\] | slots       | Metadata of all slots |
+
+### OBIndex (0x6767)
+
+| Offset | Size | Type          | Name         | Description                                                         |
+|--------|------|---------------|--------------|---------------------------------------------------------------------|
+| 0x00   | 0x02 | u16           | magic        | Equals 0x6767 (`gg`)                                                |
+| 0x02   | 0x02 | u16           | padding      |                                                                     |
+| 0x04   | 0x04 | u32           | num_messages | The number of messages in the outbox                                |
+| 0x08   |      | MessageId\[\] | message_ids  | An array of the message IDs in the outbox, of length `num_messages` |
+
+### MBoxList (0x6868)
+
+| Offset | Size  | Type                 | Name      | Description                                                                                       |
+|--------|-------|----------------------|-----------|---------------------------------------------------------------------------------------------------|
+| 0x00   | 0x02  | u16                  | magic     | Equals 0x6868 (`hh`)                                                                              |
+| 0x02   | 0x02  | u16                  | padding   |                                                                                                   |
+| 0x04   | 0x04  | u32                  | version   |                                                                                                   |
+| 0x08   | 0x04  | u32                  | num_boxes | The number of boxes (= games with streetpass enabled)                                             |
+| 0x0C   | 0x180 | char\[0x18\]\[0x10\] | box_names | A 0x18-long array of all the box names (= hex encoded title ids) of games with streetpass enabled |
+
 [Category:Nintendo Software](Category:Nintendo_Software "wikilink")
