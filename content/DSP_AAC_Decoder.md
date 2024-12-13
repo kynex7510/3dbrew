@@ -3,7 +3,9 @@ title = 'DSP AAC Decoder'
 +++
 
 *Note that everything below may vary depending on the exact DSP firmware
-used and different variants have slightly different behaviours.*
+used and different variants have slightly different behaviours.* *Also
+note that some things about the AAC firmware still need to be properly
+tested and/or reverse engineered.*
 
 # Summary
 
@@ -36,4 +38,40 @@ Size : 0x20 bytes
 | DecodeEncode (Decode or encode an AAC stream) | 1     |
 | Shutdown                                      | 2     |
 | LoadState                                     | 3     |
-| SaveState                                     | 3     |
+| SaveState                                     | 4     |
+
+# Request/Response Data
+
+The 24-byte "request/response data" chunk can take on one of the formats
+listed below, depending on what sort of message it's found in.
+
+**AAC Decode command response**
+
+Size : 24 bytes
+
+| Offset in bytes | Type            | Description                                                                                              |
+|-----------------|-----------------|----------------------------------------------------------------------------------------------------------|
+| 0x0             | enum SampleRate | Sample rate of the decoded AAC stream (Note: This is an enum, NOT a numerical value for the sample rate) |
+| 0x4             | u32             | Channel count (?)                                                                                        |
+| 0x8             | u32             | Size                                                                                                     |
+| 0xC             | u32             | Unknown?                                                                                                 |
+| 0x10            | u32             | Unknown?                                                                                                 |
+| 0x14            | u32             | Number of decoded samples (?)                                                                            |
+|                 |                 |                                                                                                          |
+
+# Sample rate enum
+
+**enum SampleRate : u32**
+
+| Enum                | Value |
+|---------------------|-------|
+| 48000Hz (48KHz)     | 0     |
+| 44100Hz (44.1KHz)   | 1     |
+| 32000Hz (32KHz)     | 2     |
+| 24000Hz (24KHz)     | 3     |
+| 22050Hz (22.05KHz)  | 4     |
+| 16000Hz (16KHz)     | 5     |
+| 12000Hz (12KHz)     | 6     |
+| 11025Hz (11.025KHz) | 7     |
+| 8000Hz (8KHz)       | 8     |
+|                     |       |
