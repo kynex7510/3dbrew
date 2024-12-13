@@ -293,8 +293,36 @@ by the boot11 function initializing those words.
 - s8\[8\] 0x1FFFE000+0x10: Status-codes originally from
   nand_findfirmpartition_loadfirm(), for each of the 8 NCSD partitions.
 - u32 0x1FFFE000+0x18: SD driver internal error bitfield
-- u32 0x1FFFE000+0x1C: SD driver SD hardware status bits from the
-  controller, AND-ed with 0xFDFF0080 if eMMC, and 0xFDF90008 if SD.
+- u32 0x1FFFE000+0x1C: R1 status bits received from the SD device,
+  AND-ed with 0xFDFF0080 if eMMC (NAND), otherwise 0xFDF90008 if SD.
+
+### BootROM SD driver error bits
+
+| Value   | Description                                                                                                    |
+|---------|----------------------------------------------------------------------------------------------------------------|
+| 0x1     | STATUS2: received cmd field does not match what was sent                                                       |
+| 0x2     | STATUS2: received CRC does not match what was calculated                                                       |
+| 0x4     | STATUS2: framing error, stop bit was not encountered                                                           |
+| 0x8     | STATUS2: data was not received within the timeout period                                                       |
+| 0x10    | STATUS2: RX FIFO overflow                                                                                      |
+| 0x20    | STATUS2: TX FIFO overflow                                                                                      |
+| 0x40    | STATUS2 (bit31): illegal access error (???)                                                                    |
+| 0x80    | At least one error bit was set in the command reply from the SD device, or other unexpected state is reported. |
+| 0x100   | An illegal command was received by the SD device (ILLEGAL_COMMAND bit set).                                    |
+| 0x200   | Timer-based timeout while waiting for SD device operations to finish.                                          |
+| 0x400   | Got a timer-based timeout during MMC initialization sequence.                                                  |
+| 0x800   | ??? some sort of timeout                                                                                       |
+| 0x8000  | Timeout while trying to perform AES operation on sector data                                                   |
+| 0x80000 | Tried to perform AES operation while another AES operation is taking place                                     |
+
+### BootROM SD device error bits
+
+These error codes are received directly from the device, and are in the
+same format as received in an R1 type reply.
+
+See [SD Specifications Part 1 Physical Layer Simplified
+Specification](https://www.sdcard.org/downloads/pls/) for the error bit
+list.
 
 ### BootROM Status Codes
 
