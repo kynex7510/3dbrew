@@ -103,7 +103,7 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses
 [HTTPC:AddDefaultCert](HTTPC:AddDefaultCert "wikilink") with the
 following certIDs: 0x1, 0x2, and 0x3.
 
-# NEX Structures
+# Types
 
 ## FriendKey
 
