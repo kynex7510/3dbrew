@@ -103,6 +103,16 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses
 [HTTPC:AddDefaultCert](HTTPC:AddDefaultCert "wikilink") with the
 following certIDs: 0x1, 0x2, and 0x3.
 
+# NEX Structures
+
+## FriendKey
+
+| Offset | Size | Description  |
+|--------|------|--------------|
+| 0x0    | 0x4  | Principal ID |
+| 0x4    | 0x4  | padding      |
+| 0x8    | 0x8  | Friend Code  |
+
 # Server Types
 
 The server type is stored internally as a combination of two values, the
