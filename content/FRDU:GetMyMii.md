@@ -21,7 +21,7 @@ title = 'FRDU:GetMyMii'
 | Offset | Size | Description                                    |
 |--------|------|------------------------------------------------|
 | 0x0    | 0x1  | bool, ProfanityFlag                            |
-| 0x1    | 0x2  | [Mii character set](Mii#mii_format "wikilink") |
+| 0x1    | 0x1  | [Mii character set](Mii#mii_format "wikilink") |
 | 0x2    | 0x1  | bool, DirtyFlag                                |
 | 0x3    | 0x1  | padding                                        |
 | 0x4    | 0x5C | [Mii data](Mii#mii_format "wikilink")          |
