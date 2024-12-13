@@ -381,19 +381,30 @@ format</a></td>
 </tr>
 <tr class="even">
 <td>5-4</td>
-<td>Framebuffer scanline output mode (framebuffer interleave
-config)</p>
-<p><code>0 - A  (output image as normal)</code><br />
-<code>1 - AA (output a single line twice, so framebuffer A is interleaved with itself)</code><br />
-<code>2 - AB (interleave framebuffer A and framebuffer B)</code><br />
-<code>3 - BA (same as above, but the line from framebuffer B is outputted first)</code></p>
-<p>0 is used by bottom screen at all times. 1 is used by the top screen
-in 2D mode. 2 is used by top screen in 3D mode. 3 goes unused in
-userland.</td>
+<td>Framebuffer interlacing mode</p>
+<p><code>0 - A  (no interlacing)</code><br />
+<code>1 - AA (scanline doubling)</code><br />
+<code>2 - AB (interlace enable)</code><br />
+<code>3 - BA (same as above, but the fields are inverted)</code></p>
+<p>In AB and BA interlace modes, a scanline from each framebuffer is
+output in an alternating manner. In AB mode, Framebuffer A is output on
+the frist display scanline. Similarly, in BA mode, Framebuffer B gets
+output to the first display scanline.</p>
+<p>The way AB and BA modes work, is that a scanline is output, the
+framebuffer stride value is added to the internal scanline pointer
+value, and the other framebuffer is selected. And this alternates until
+the end of the draw region.</p>
+<p>AA interlacing works like AB interlacing, except both internal
+framebuffer pointers are set to the Framebuffer A pointer value.</p>
+<p>In A mode (no interlacing), it doesn't switch to the other
+framebuffer at the end of outpuitting a scanline to the display.</p>
+<p>Bottom screen has this set to 0 (A mode, no interlacing) at all
+times. Top screen uses AB interlacing in 3D mode (with 3D slider
+enabled), and A mode (no interlacing) in 2D mode.</td>
 </tr>
 <tr class="odd">
 <td>6</td>
-<td>Scan doubling enable?* (used by top screen)</td>
+<td>Alternative pixel output mode*</td>
 </tr>
 <tr class="even">
 <td>7</td>
@@ -402,9 +413,9 @@ userland.</td>
 <tr class="odd">
 <td>9-8</td>
 <td>DMA size</p>
-<p><code>0 -  4 words (32 bytes)</code><br />
-<code>1 -  8 words (64 bytes)</code><br />
-<code>2 - 16 words (128 bytes)</code><br />
+<p><code>0 -  4 FCRAM words (32 bytes)</code><br />
+<code>1 -  8 FCRAM words (64 bytes)</code><br />
+<code>2 - 16 FCRAM words (128 bytes)</code><br />
 <code>3 - ???</code></p>
 <p>FCRAM doesn't support DMA size 3, as it can only burst up to 16 words
 (128 bytes), and will show a black screen instead.</td>
@@ -416,40 +427,39 @@ userland.</td>
 </tbody>
 </table>
 
-- The weird thing about scan doubling, is that it works different
-  between the bottom and top LCD. On the bottom LCD, it doubles the
-  number of outputted pixels (so the same pixel is outputted twice,
-  effectively doing column doubling). However on the top screen, it does
-  scanline doubling instead. Considering that the bottom screen's table
-  doesn't work on the top screen, this could give a hint as to how the
-  top screen receives the pixel data from the PDC.
+\* The weird thing about bit6, is that it works different between the
+bottom and top LCD. On the bottom LCD, it doubles the number of
+outputted pixels (so the same pixel is outputted twice, effectively
+doing pixel/column doubling). However on the top screen, it does
+scanline doubling instead. Most likely the top screen receives two
+pixels at once per clock unit, outputting two scanlines simultaneously.
 
 On a 2DS, it seems to have no effect on the top part of the display, and
 on the bottom screen it just shifts the framebuffer to the right two
 pixels.
 
-GSP module only allows the LCD stereoscopy to be enabled when bit5=1 and
-bit6=0 here. When GSP module updates this register, GSP module will
-automatically disable the stereoscopy if those bits are not set for
-enabling stereoscopy.
+GSP module only allows the LCD stereoscopy (3D) to be enabled when
+bit5=1 and bit6=0 here. When GSP module updates this register, GSP
+module will automatically disable the stereoscopy if those bits are not
+set for enabling stereoscopy.
 
-When both interlacing and scan doubling are disabled, the full
-resolution of the top screen (240x800) can be utilized if the PDC
+When both interlacing and alternative mode is disabled (bit6=0), the
+full resolution of the top screen (240x800) can be utilized if the PDC
 registers are updated to accomodate this higher resolution. GSP contains
 tables for this mode (gsp mode == 1). GSP automatically applies this
 mode if both bit5 and bit6 are cleared. This is also the default, and
 the only valid mode for the bottom screen in userland.
 
-If only AB interlacing is enabled, gsp detects this as a request to
-switch to 3D mode (gsp mode == 2), and enables the parallax barrier.
-It's unknown how to control this, but some other PDC registers control
-if interlacing should be done by true interleaving (both framebuffers
-are treated as 240x400), or skipping lines (both framebuffers are
-treated as 240x800)
+If only AB interlacing is enabled (bit5=1, bit6=0), gsp detects this as
+a request to switch to 3D mode (gsp mode == 2), and enables the parallax
+barrier. It's unknown how to control this, but some other PDC registers
+control if interlacing should be done by true interleaving (both
+framebuffers are treated as 240x400), or by skipping lines (both
+framebuffers are treated as 240x800).
 
-If only scan doubling is enabled, gsp detects it as a request to switch
-back to 2D mode for the top screen (gsp mode == 0). This is also the
-default mode for the top screen.
+If only alternative mode is enabled (bit5=0, bit6=1), gsp detects it as
+a request to switch back to 2D mode for the top screen (gsp mode == 0).
+This is also the default mode for the top screen.
 
 Both interlacing and scan doubling can't be enabled in usermode, but it
 works as expected in baremetal.
