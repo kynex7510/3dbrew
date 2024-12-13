@@ -1,5 +1,6 @@
 +++
 title = 'PTM Services'
+categories = ["Services"]
 +++
 
 A total of 24 sessions can be open for each of these services combined.
@@ -110,3 +111,5 @@ Savedata contents:
 
 - "/Pedometer.dat"
 - "/PlayHistory.dat" Filesize is 0xD5DE8.
+
+[Category:Services](Category:Services "wikilink")
