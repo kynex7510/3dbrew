@@ -32,7 +32,13 @@ function replace_anchor () {
     sed -i "s/#$match$delim/#$MATCHSUB$delim/g" "$i"
 }
 
-for i in content/**/*.md
+CONTENTS=$@
+if [ -z "$CONTENTS" ]
+then
+  CONTENTS=`find content/**/*.md`
+fi
+
+for i in $CONTENTS
 do
   echo "Processing $i"
   # Find all markdown anchor links, select only the actual anchor text, filter out duplicates, then run the body with the anchor id stored in $match

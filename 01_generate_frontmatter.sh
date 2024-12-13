@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 set -e
 shopt -s globstar
-for i in content/**/*.md
+
+CONTENTS=$@
+if [ -z "$CONTENTS" ]
+then
+  CONTENTS=`find content/**/*.md`
+fi
+
+for i in $CONTENTS
 do
   # Find category markers in content
   # TODO: Remove old tag

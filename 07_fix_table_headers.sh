@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 shopt -s globstar
-for i in content/**/*.md
+
+CONTENTS=$@
+if [ -z "$CONTENTS" ]
+then
+  CONTENTS=`find content/**/*.md`
+fi
+
+for i in $CONTENTS
 do
   echo $i
 

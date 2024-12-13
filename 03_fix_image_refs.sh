@@ -3,7 +3,14 @@
 shopt -s globstar
 CONTENTROOT=`realpath .`/content
 echo $CONTENTROOT
-for i in content/**/*.md
+
+CONTENTS=$@
+if [ -z "$CONTENTS" ]
+then
+  CONTENTS=`find content/**/*.md`
+fi
+
+for i in $CONTENTS
 do
   echo $i
 
