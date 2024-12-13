@@ -45,9 +45,9 @@ directory.
 ## Restrictions
 
 Some titles are restricted in how their saves are backed up. These
-restricted saves can can only be backed up when the title is deleted and
-can only be restored once. GBA titles however are not allowed to be
-backed up at all, the reasons for this are unknown. This restriction is
+restricted saves can only be backed up when the title is deleted and can
+only be restored once. GBA titles however are not allowed to be backed
+up at all, the reasons for this are unknown. This restriction is
 triggered if a [certain flag](SMDH#byte5b15d "wikilink") in the
 title's icon is set. Or if the SaveID of the title is located in the
 [ctr_backup_black_list](NS_CFA "wikilink") file in the NS CFA, which is
