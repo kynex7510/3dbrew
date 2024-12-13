@@ -103,25 +103,25 @@ This contains a similar (probably the same) command handler from
 0x0001.... to 0x0021.... as them in cecd:u. In addition, it also
 contains
 
-| Command Header | Description              |
-|----------------|--------------------------|
-| 0x0401....     | ?                        |
-| 0x04020002     | GetCecInfoEventHandleSys |
-| 0x040A....     | ?                        |
-| 0x040B....     | ?                        |
-| 0x040C0042     | ?                        |
-| 0x040D0082     | ?                        |
-| 0x040E....     | ?                        |
-| 0x040F....     | ?                        |
-| 0x0410....     | ?                        |
-| 0x04110042     | ?                        |
-| 0x041200C2     | ?                        |
-| 0x0413....     | ?                        |
-| 0x0414....     | ?                        |
-| 0x0415....     | ?                        |
-| 0x04160002     | ?                        |
-| 0x0417....     | ?                        |
-|                |                          |
+| Command Header | Description                                                   |
+|----------------|---------------------------------------------------------------|
+| 0x0401....     | ?                                                             |
+| 0x04020002     | GetCecInfoEventHandleSys                                      |
+| 0x040A....     | ?                                                             |
+| 0x040B....     | ?                                                             |
+| 0x040C0042     | GetSendSlotsMetadata?                                         |
+| 0x040D0082     | GetSlot? title_id, write_buffer, buffer_size                  |
+| 0x040E....     | ?                                                             |
+| 0x040F....     | ?                                                             |
+| 0x0410....     | ?                                                             |
+| 0x04110042     | ?                                                             |
+| 0x041200C2     | AddSlot?                                                      |
+| 0x0413....     | ?                                                             |
+| 0x0414....     | CloseSpr? bool success                                        |
+| 0x04150000     | [GenHashConsoleUnique](CECDS:GenHashConsoleUnique "wikilink") |
+| 0x04160002     | ?                                                             |
+| 0x0417....     | ?                                                             |
+|                |                                                               |
 
 # CECD Service "cecd:ndm"
 
