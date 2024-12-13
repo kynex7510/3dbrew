@@ -117,7 +117,7 @@ specified in big endian if the OTP version is &lt;5.</td>
 </tr>
 <tr class="odd">
 <td>0x90</td>
-<td>0x70</td>
+<td>0x50</td>
 <td>Used by Boot9 for generating the console-unique AES <a
 {{% href "../AES_Registers" %}} title="wikilink">keyXs</a>. However, due to a
 bug(?) in Boot9, only the first 0x1C-bytes here actually affect
