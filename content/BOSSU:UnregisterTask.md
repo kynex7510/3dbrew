@@ -8,7 +8,7 @@ title = 'BOSSU:UnregisterTask'
 |------------|----------------------------|
 | 0          | Header code \[0x000C0082\] |
 | 1          | TaskID buffer size         |
-| 2          | ?                          |
+| 2          | ? (Probably step_id?)      |
 | 3          | (Size \<\< 4) \| 0xA       |
 | 4          | TaskID data pointer        |
 
