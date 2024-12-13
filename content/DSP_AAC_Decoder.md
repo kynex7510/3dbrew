@@ -45,6 +45,20 @@ Size : 0x20 bytes
 The 24-byte "request/response data" chunk can take on one of the formats
 listed below, depending on what sort of message it's found in.
 
+**AAC Decode request**
+
+Size : 24 bytes
+
+| Offset in bytes | Type | Description                                                                                                             |
+|-----------------|------|-------------------------------------------------------------------------------------------------------------------------|
+| 0x0             | u32  | Physical address of input AAC stream                                                                                    |
+| 0x4             | u32  | Byte size of input AAC stream                                                                                           |
+| 0x8             | u32  | Physical address to output decoded PCM16 samples to (In the case of stereo audio, this corresponds to the left channel) |
+| 0xC             | u32  | Physical address to output decoded PCM16 samples for the right channel                                                  |
+| 0x10            | u32  | Unknown?                                                                                                                |
+| 0x14            | u32  | Unknown?                                                                                                                |
+|                 |      |                                                                                                                         |
+
 **AAC Decode command response**
 
 Size : 24 bytes
