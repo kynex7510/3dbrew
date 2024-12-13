@@ -127,32 +127,32 @@ several extra header, a message body, and a 0x20-byte HMAC(?).
 
 The header format is
 
-| Offset | Length | Description                 |
-|--------|--------|-----------------------------|
-| 0x00   | 2      | Magic 0x6060                |
-| 0x02   | 2      | Padding                     |
-| 0x04   | 4      | Message size                |
-| 0x08   | 4      | Header + extra headers size |
-| 0x0C   | 4      | Body size                   |
-| 0x10   | 4      | Title ID                    |
-| 0x14   | 4      | Title ID 2?                 |
-| 0x18   | 4      | Batch ID                    |
-| 0x1C   | 4      | ? ID                        |
-| 0x20   | 8      | Message ID                  |
-| 0x28   | 4      | Message version?            |
-| 0x2C   | 8      | Message ID 2?               |
-| 0x34   | 1      | Flags                       |
-| 0x35   | 1      | Send method                 |
-| 0x36   | 1      | Is unopen                   |
-| 0x37   | 1      | Is new                      |
-| 0x38   | 8      | Sender ID                   |
-| 0x40   | 8      | Sender ID 2?                |
-| 0x48   | 12     | Timestamp when sent         |
-| 0x54   | 12     | Timestamp when received     |
-| 0x60   | 12     | Timestamp when created      |
-| 0x6C   | 1      | Send count                  |
-| 0x6D   | 1      | Forward count               |
-| 0x6E   | 2      | User data                   |
+| Offset | Length | Description                                       |
+|--------|--------|---------------------------------------------------|
+| 0x00   | 2      | Magic 0x6060                                      |
+| 0x02   | 2      | Padding                                           |
+| 0x04   | 4      | Message size                                      |
+| 0x08   | 4      | Header + extra headers size                       |
+| 0x0C   | 4      | Body size                                         |
+| 0x10   | 4      | Title ID                                          |
+| 0x14   | 4      | Title ID 2?                                       |
+| 0x18   | 4      | Batch ID                                          |
+| 0x1C   | 4      | ? ID                                              |
+| 0x20   | 8      | Message ID                                        |
+| 0x28   | 4      | Message version?                                  |
+| 0x2C   | 8      | Message ID 2 (reply-to message id in an exchange) |
+| 0x34   | 1      | Flags                                             |
+| 0x35   | 1      | Send method                                       |
+| 0x36   | 1      | Is unopen                                         |
+| 0x37   | 1      | Is new                                            |
+| 0x38   | 8      | Sender ID                                         |
+| 0x40   | 8      | Sender ID 2?                                      |
+| 0x48   | 12     | Timestamp when sent                               |
+| 0x54   | 12     | Timestamp when received                           |
+| 0x60   | 12     | Timestamp when created                            |
+| 0x6C   | 1      | Send count                                        |
+| 0x6D   | 1      | Forward count                                     |
+| 0x6E   | 2      | User data                                         |
 
 Each extra header has a format of
 
