@@ -252,9 +252,10 @@ sd_softE sd_hardE
 - `NN`: NAND header (NCSD) load error code
 - `p`<N>: NAND FIRM partition load error code. Note the order of the
   partitions in the error code!
-- `sd_softE`: software error (driver status bits, see one section lower)
-- `sd_hardE`: hardware error (SD controller status bits ? see one
-  section lower)
+- `sd_softE`: software error (SD driver status bits, see one section
+  lower)
+- `sd_hardE`: hardware error (SD device status bits, see one section
+  lower)
 
 Sample error-screen(where firm0+firm1 RSA signatures were corrupted):
 
