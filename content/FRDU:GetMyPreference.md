@@ -17,3 +17,8 @@ title = 'FRDU:GetMyPreference'
 | 2          | Public mode (byte, 0 = private, non-zero = public)        |
 | 3          | Show current game (byte, 0 = don't show, non-zero = show) |
 | 4          | Show game history (byte, 0 = don't show, non-zero = show) |
+
+# Description
+
+Returns the current friend notification settings, as configurable in the
+friends list.
