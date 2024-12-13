@@ -115,7 +115,7 @@ contains
 | 0x040F....     | SprFinaliseSend                                               |
 | 0x0410....     | SprStartRecv                                                  |
 | 0x04110042     | SprAddSlotsMetadata                                           |
-| 0x041200C2     | SprbAddSlot                                                   |
+| 0x041200C2     | SprAddSlot                                                    |
 | 0x0413....     | SprFinaliseRecv                                               |
 | 0x0414....     | SprDone bool success                                          |
 | 0x04150000     | [GenHashConsoleUnique](CECDS:GenHashConsoleUnique "wikilink") |
