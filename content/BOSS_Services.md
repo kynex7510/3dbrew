@@ -1,5 +1,6 @@
 +++
 title = 'BOSS Services'
+categories = ["Services"]
 +++
 
 ## BOSS Service "boss:U"
@@ -326,3 +327,5 @@ This u8 is returned by
 | 0xC8A0F836 | taskID already exists, for task creation.      |
 | 0xC8A0F842 | The specified programID is not setup for BOSS. |
 | 0xC8A0F843 | The specified NsDataId was not found.          |
+
+[Category:Services](Category:Services "wikilink")
