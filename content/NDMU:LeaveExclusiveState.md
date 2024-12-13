@@ -7,7 +7,7 @@ title = 'NDMU:LeaveExclusiveState'
 | Index Word | Description                |
 |------------|----------------------------|
 | 0          | Header code \[0x00020002\] |
-| 1          | 0x20                       |
+| 1          | 0x20 (process id)          |
 
 # Response
 
