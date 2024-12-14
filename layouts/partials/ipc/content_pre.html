@@ -1,0 +1,27 @@
+{{ $header := 0 }}
+{{ $cmd := 0 }}
+{{ $params := 0 }}
+{{ $xlat := 0 }}
+{{ if (.Get "header") }}
+  {{ $header = int (.Get "header") }}
+  {{ $cmd = div $header 65536 }}
+  {{ $params = mod (div $header 64) 64 }}
+  {{ $xlat = mod $header 64 }}
+{{ end }}
+{{ .Page.Scratch.Set "ipcindex" 1 }}
+<table class="ipc {{ .Scratch.Get "type" }}">
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="header">
+      <td>{{ sub (.Page.Scratch.Get "ipcindex") 1 }}</td>
+{{- if (.Get "header") -}}
+      <td class="description"><div><span>{{ printf "0x%08X" $header }}</span><abbr title="Command ID">Cmd</abbr><span>{{ printf "0x%04X" $cmd }}</span><abbr title="Number of raw parameter words">Param</abbr><span>{{ $params }}</span><abbr title="Number of words in the translate section of the message">Xlat</abbr><span>{{ $xlat }}</span></div></td>
+{{- else -}}
+      <td class="description"><div><span>Header (unknown value)</span></div></td>
+{{- end -}}
+    </tr>

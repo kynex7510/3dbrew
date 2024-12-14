@@ -1,0 +1,11 @@
+{{ $ipcindex := int (or (.Page.Scratch.Get "ipcindex") 1) }}
+{{ .Page.Scratch.Set "ipcindex" (add $ipcindex 2) }}
+
+<tr class="translate static buffer descriptor">
+  <td>{{ $ipcindex }}</td>
+  <td>Descriptor for <a href="/IPC#static-buffer-translation">static buffer</a> (id {{ .Get "id" }})</td>
+</tr>
+<tr class="translate static buffer entry">
+  <td>{{ add $ipcindex 1 }}</td>
+  <td>{{ .Inner }}</td>
+</tr>

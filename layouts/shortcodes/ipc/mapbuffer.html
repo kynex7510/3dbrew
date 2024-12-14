@@ -1,0 +1,22 @@
+{{ $flags := .Get 0 }}
+{{ if (eq $flags "r") }}
+  {{ $flags = "read-only" }}
+{{ else if (eq $flags "w") }}
+  {{ $flags = "write-only" }}
+{{ else if (eq $flags "rw") }}
+  {{ $flags = "read/write" }}
+{{ else }}
+  {{ errorf "%s: Unrecognized argument for the %q shortcode (requires either 'r', 'w', or 'rw')" .Position .Name }}
+{{ end }}
+
+{{ $ipcindex := int (or (.Page.Scratch.Get "ipcindex") 1) }}
+{{ .Page.Scratch.Set "ipcindex" (add $ipcindex 2) }}
+
+<tr class="translate buffer descriptor">
+  <td>{{ $ipcindex }}</td>
+  <td>Descriptor for mapping a <a href="/IPC#buffer-mapping-translation">{{$flags}} buffer</a> in the target process</td>
+</tr>
+<tr class="translate buffer entry">
+  <td>{{ add $ipcindex 1 }}</td>
+  <td>{{ .Inner }}</td>
+</tr>

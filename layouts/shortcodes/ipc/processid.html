@@ -1,0 +1,11 @@
+{{ $ipcindex := int (or (.Page.Scratch.Get "ipcindex") 1) }}
+{{ .Page.Scratch.Set "ipcindex" (add $ipcindex 2) }}
+
+<tr class="translate processid descriptor">
+  <td>{{ $ipcindex }}</td>
+  <td>Descriptor for <a href="/IPC#handle-translation">process ID</a></td>
+</tr>
+<tr class="translate processid entry">
+  <td>{{ add $ipcindex 1 }}</td>
+  <td>Placeholder for process ID</td>
+</tr>
