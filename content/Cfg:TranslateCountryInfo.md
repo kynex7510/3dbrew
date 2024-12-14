@@ -4,11 +4,17 @@ title = 'Cfg:TranslateCountryInfo'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00080080" %}}
+{{% ipc/param %}}Original [country info](Config_Savegame#countryinfo "wikilink"){{% / %}}
+{{% ipc/param %}}(u8) Translation direction (0: versionB-\>versionA; 1: versionA-\>versionB){{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00080080" %}}
+{{% ipc/result %}}
+{{% ipc/param %}}Translated country info{{% / %}}
+{{% / %}}
 
 # Description
 

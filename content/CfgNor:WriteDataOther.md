@@ -4,8 +4,14 @@ title = 'CfgNor:WriteDataOther'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00100082" %}}
+{{% ipc/param %}}Offset{{% / %}}
+{{% ipc/param %}}Size{{% / %}}
+{{% ipc/mapbuffer r %}}Input buffer ptr{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}

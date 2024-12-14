@@ -4,11 +4,16 @@ title = 'MCUHWC:GetInfoRegisters'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00030042" %}}
+{{% ipc/param %}}size (was set to 5){{% / %}}
+{{% ipc/mapbuffer w %}}output data pointer{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}
 
 # Description
 

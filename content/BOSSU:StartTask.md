@@ -4,8 +4,13 @@ title = 'BOSSU:StartTask'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x001C0042" %}}
+{{% ipc/param %}}TaskID buffer size.{{% / %}}
+{{% ipc/mapbuffer r %}}TaskID buffer pointer{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}

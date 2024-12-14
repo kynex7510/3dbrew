@@ -4,8 +4,14 @@ title = 'BOSSU:ReconfigureTask'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x000D0082" %}}
+{{% ipc/param %}}TaskID buffer size.{{% / %}}
+{{% ipc/param %}}u8, task step ID{{% / %}}
+{{% ipc/mapbuffer r %}}TaskID buffer pointer{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}

@@ -4,20 +4,20 @@ title = 'BOSSP:GetNsDataIdListPrivileged'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x040D0182" %}}
+{{% ipc/param span=2 %}}programID{{% / %}}
+{{% ipc/param span=7 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param span=2 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").{{% / %}}
+{{% / %}}
 
 # Description
 
-Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink"),
-except the called function mentioned
-[here](BOSSU:GetNsDataIdList "wikilink") is used with the following type
-parameters: 0, 2, 1. This also doesn't call the function following that
-like [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").
+Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink"), except the called function mentioned [here](BOSSU:GetNsDataIdList "wikilink") is used with the following type parameters: 0, 2, 1. This also doesn't call the function following that like [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").
 
-Hence, this is almost exactly the same as
-[BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink") except that it
-uses the input programID(same type params for the ones that are used).
+Hence, this is almost exactly the same as [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink") except that it uses the input programID(same type params for the ones that are used).

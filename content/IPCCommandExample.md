@@ -4,13 +4,17 @@ title = 'IPCCommandExample'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
-
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00040080" %}}
+{{% ipc/param %}}[GPU](GPU "wikilink") address based at 0x1EB00000, must be word-aligned{{% / %}}
+{{% ipc/param %}}1 = Size, must be \<=0x80 and word-aligned{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/staticbuffer id=0 %}}Output data pointer{{% / %}}
+{{% / %}}
 
 # Description
 

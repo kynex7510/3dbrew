@@ -4,8 +4,14 @@ title = 'BOSSU:SendPropertyHandle'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00150042" %}}
+{{% ipc/param %}}u16 PropertyID{{% / %}}
+{{% ipc/param %}}0x0{{% / %}}
+{{% ipc/param %}}Handle{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}

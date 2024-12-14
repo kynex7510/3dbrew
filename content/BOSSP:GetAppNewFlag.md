@@ -4,13 +4,17 @@ title = 'BOSSP:GetAppNewFlag'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x04040080" %}}
+{{% ipc/param span=2 %}}u64 programID{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u8 flag: 0 = nothing new, 1 = new content.{{% / %}}
+{{% / %}}
 
 # Description
 
-This returns whether any new SpotPass content is available for the
-specified programID.
+This returns whether any new SpotPass content is available for the specified programID.

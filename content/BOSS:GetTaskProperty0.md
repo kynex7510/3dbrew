@@ -4,11 +4,17 @@ title = 'BOSS:GetTaskProperty0'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00340042" %}}
+{{% ipc/param %}}TaskID buffer size{{% / %}}
+{{% ipc/mapbuffer r %}}TaskID data pointer{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}Output value{{% / %}}
+{{% / %}}
 
 # Description
 

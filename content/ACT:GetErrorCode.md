@@ -4,8 +4,13 @@ title = 'ACT:GetErrorCode'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00020040" %}}
+{{% ipc/param %}}u32 input error code{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u32 Output value (not Result type){{% / %}}
+{{% / %}}

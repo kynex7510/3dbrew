@@ -4,8 +4,12 @@ title = 'BOSS:RegisterNewArrivalEvent'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00080002" %}}
+{{% ipc/param %}}KEvent event{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}

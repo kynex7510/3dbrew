@@ -4,8 +4,12 @@ title = 'BOSS:DeleteNsData'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00260040" %}}
+{{% ipc/param %}}NsDataId{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}

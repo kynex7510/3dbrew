@@ -4,8 +4,13 @@ title = 'BOSS:GetTaskFinishHandle'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x001F0000" %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}0x0{{% / %}}
+{{% ipc/param %}}Output handle{{% / %}}
+{{% / %}}

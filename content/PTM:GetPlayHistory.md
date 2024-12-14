@@ -4,11 +4,18 @@ title = 'PTM:GetPlayHistory'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x08070082" %}}
+{{% ipc/param %}}Entry offset{{% / %}}
+{{% ipc/param %}}Total entries{{% / %}}
+{{% ipc/mapbuffer w %}}Destination pointer{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u32, unknown.{{% / %}}
+{{% / %}}
 
 # Description
 

@@ -4,11 +4,16 @@ title = 'GPIO:GetGPIOData'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00070040" %}}
+{{% ipc/param %}}u32 gpio_bitmask{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}Output u32 data{{% / %}}
+{{% / %}}
 
 # Description
 

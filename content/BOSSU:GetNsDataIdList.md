@@ -4,42 +4,34 @@ title = 'BOSSU:GetNsDataIdList'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00100102" %}}
+{{% ipc/param %}}u32 filter{{% / %}}
+{{% ipc/param %}}Buffer size in words(max entries).{{% / %}}
+{{% ipc/param %}}u16, starting word-index in the internal NsDataId list.{{% / %}}
+{{% ipc/param %}}u32, start_NsDataId.{{% / %}}
+{{% ipc/mapbuffer w %}}Destination pointer{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u16 Actual number of output entries.{{% / %}}
+{{% ipc/param %}}u16 Last word-index copied to output in the internal NsDataId list.{{% / %}}
+{{% / %}}
 
 # Filter
 
-Content filtering is enabled when this word isn't 0xffffffff. This is
-only used for the following:
-```
-if(filterword_u16high!=contentdatatype_u16high || (filterword_u16low & contentdatatype_u16low) == 0)continue;
-```
-Hence, filterword_u16high must match contentdatatype_u16high, and the
-bitmask specified by filterword_u16low must be non-zero in
-contentdatatype_u16low. The contentdatatype is extracted from the
-extdata filename, which originates from the
-[BOSS-container](SpotPass "wikilink"). The NsDataId for the content
-entry is only written to the output when processing isn't skipped due to
-filtering.
+Content filtering is enabled when this word isn't 0xffffffff. This is only used for the following: `if(filterword_u16high!=contentdatatype_u16high || (filterword_u16low & contentdatatype_u16low) == 0)continue;` Hence, filterword_u16high must match contentdatatype_u16high, and the bitmask specified by filterword_u16low must be non-zero in contentdatatype_u16low. The contentdatatype is extracted from the extdata filename, which originates from the [BOSS-container](SpotPass "wikilink"). The NsDataId for the content entry is only written to the output when processing isn't skipped due to filtering.
 
 # Start NsDataId
 
-This field is only used when starting_wordindex is non-zero or when this
-field is non-zero.
+This field is only used when starting_wordindex is non-zero or when this field is non-zero.
 
-The NsDataId at the specified start-wordindex must match this field,
-otherwise error 0xD840F846 is returned. It will then skip normal content
-entry processing for this matching entry(cur_wordindex is field is
-increased by 0x1 before starting the content entry processing loop).
+The NsDataId at the specified start-wordindex must match this field, otherwise error 0xD840F846 is returned. It will then skip normal content entry processing for this matching entry(cur_wordindex is field is increased by 0x1 before starting the content entry processing loop).
 
 # Description
 
-This writes an array of u32 entries(NsDataId) to the output buffer, for
-the current programID.
+This writes an array of u32 entries(NsDataId) to the output buffer, for the current programID.
 
-This eventually calls a function with the following type parameters: 0,
-1, 1. This function doesn't use the second type parameter. Afterwards
-another function is called using the programID.
+This eventually calls a function with the following type parameters: 0, 1, 1. This function doesn't use the second type parameter. Afterwards another function is called using the programID.

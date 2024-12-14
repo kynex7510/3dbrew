@@ -4,11 +4,21 @@ title = 'CECDU:GetSystemInfo'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x000A00C4" %}}
+{{% ipc/param %}}Destination buffer size (unused){{% / %}}
+{{% ipc/param %}}Info type{{% / %}}
+{{% ipc/param %}}Param buffer size (unused){{% / %}}
+{{% ipc/mapbuffer r %}}Param buffer address{{% / %}}
+{{% ipc/mapbuffer w %}}Destination buffer address{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x000A0044" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer r %}}Param buffer address{{% / %}}
+{{% ipc/mapbuffer w %}}Destination buffer address{{% / %}}
+{{% / %}}
 
 # Info Type
 

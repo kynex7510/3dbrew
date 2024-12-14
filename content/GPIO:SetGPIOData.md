@@ -4,15 +4,17 @@ title = 'GPIO:SetGPIOData'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00080080" %}}
+{{% ipc/param %}}u32 data{{% / %}}
+{{% ipc/param %}}u32 gpio_bitmask{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}
 
 # Description
 
-Same as [GPIO:GetGPIOData](GPIO:GetGPIOData "wikilink") except this sets
-GPIO data. This also doesn't handle all of the GPIO
-[bits](GPIO_Services "wikilink"), hence those bits are not writable with
-this.
+Same as [GPIO:GetGPIOData](GPIO:GetGPIOData "wikilink") except this sets GPIO data. This also doesn't handle all of the GPIO [bits](GPIO_Services "wikilink"), hence those bits are not writable with this.

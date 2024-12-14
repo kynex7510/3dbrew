@@ -4,11 +4,15 @@ title = 'NFC:GetTagInfo2'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+Starting with 9.3.0-X: {{% ipc/request header="0x00100000" %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param span=25 %}}Output structure{{% / %}}
+{{% / %}}
 
 # Struct
 

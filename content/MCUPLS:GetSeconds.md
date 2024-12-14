@@ -4,8 +4,12 @@ title = 'MCUPLS:GetSeconds'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00020080" %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u8 secs{{% / %}}
+{{% / %}}

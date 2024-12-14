@@ -4,11 +4,15 @@ title = 'MCUHWC:GetBatteryLevel'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00050000" %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u8 battery_level{{% / %}}
+{{% / %}}
 
 # Description
 

@@ -4,13 +4,15 @@ title = 'MP:Initialize'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00020000" %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}
 
 # Description
 
-This is the first command used by the system-transfer application after
-loading the [handles](MP:GetHandle "wikilink").
+This is the first command used by the system-transfer application after loading the [handles](MP:GetHandle "wikilink").

@@ -4,8 +4,12 @@ title = 'BOSS:SetOptoutFlag'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x00090040" %}}
+{{% ipc/param %}}s8 flag{{% / %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% / %}}

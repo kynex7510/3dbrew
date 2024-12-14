@@ -4,8 +4,12 @@ title = 'MCUHWC:GetSoundVolume'
 
 # Request
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request header="0x000B0000" %}}
+{{% / %}}
 
 # Response
 
-{{#vardefine:ipc_offset\|0}}
+{{% ipc/request %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u8 volume_slider_state{{% / %}}
+{{% / %}}
