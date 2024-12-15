@@ -4,25 +4,19 @@ title = 'FRDU:GetMyPassword'
 
 # Request
 
-| Index Word | Description                   |
-|------------|-------------------------------|
-| 0          | Header code \[0x00100040\]    |
-| 1          | Buffer length (maximum 0x800) |
+{{% ipc/request header="0x00100040" %}}
+{{% ipc/param %}}bufsize (maximum 0x800){{% / %}}
+{{% / %}}
 
-The following is located 0x100-bytes after the beginning of the above command buffer:
-
-| Index Word | Description                 |
-|------------|-----------------------------|
-| 0          | (bufferLength \<\< 14) \| 2 |
-| 1          | char\* buffer               |
+# Request Static Buffers
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00100042" %}}
+{{% ipc/result %}}
+{{% ipc/staticbuffer id=0 %}}Output buffer{{% / %}}
+{{% / %}}
 
 # Description
 
-Returns the NEX password from the friends sysmodule's save data.
+Returns the NEX password used for signing into the friend server from the friends sysmodule's save data.
