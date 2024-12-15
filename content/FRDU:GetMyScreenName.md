@@ -13,3 +13,7 @@ title = 'FRDU:GetMyScreenName'
 {{% ipc/result %}}
 {{% ipc/param span=8 %}}UTF-16 screen name (10 characters + null termination){{% / %}}
 {{% / %}}
+
+# Description
+
+Gets the screen name of the personal [Mii](Mii "wikilink").
