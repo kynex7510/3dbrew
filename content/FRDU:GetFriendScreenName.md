@@ -19,7 +19,7 @@ title = 'FRDU:GetFriendScreenName'
 
 {{% ipc/request header="0x00130044" %}}
 {{% ipc/result %}}
-{{% ipc/staticbuffer id=0 %}}Pointer to output screen names{{% / %}}
+{{% ipc/staticbuffer id=0 %}}Pointer to output UTF-16 screen names{{% / %}}
 {{% ipc/staticbuffer id=1 %}}Pointer to output [Mii](Mii#mii_format "wikilink") character sets{{% / %}}
 {{% / %}}
 
