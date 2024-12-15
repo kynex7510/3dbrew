@@ -1,0 +1,31 @@
++++
+title = 'FRDU:RequestGameAuthentication'
++++
+
+# Request
+
+{{% ipc/request header="0x00280244" %}}
+{{% ipc/param %}}NEX Server ID{{% / %}}
+{{% ipc/param span=6 %}}UTF-16 `ingamesn` value for NASC requests, see [Online Play](Online_Play "wikilink"){{% / %}}
+{{% ipc/param %}}u32, Major SDK version{{% / %}}
+{{% ipc/param %}}u8, Minor SDK version{{% / %}}
+{{% ipc/processid %}}
+{{% ipc/copyhandle count=1 %}}
+{{% ipc/param %}}Completion event handle{{% / %}}
+{{% / %}}
+
+# Response
+
+{{% ipc/request header="0x00280040" %}}
+{{% ipc/result %}}
+{{% / %}}
+
+# Description
+
+Requests NEX authentication data for game servers.
+
+The client SDK version must be at least 0x3010000, otherwise this returns error 0xC8A0C7F0.
+
+To request authentication data, the friends module sends a NASC `LOGIN` HTTP request using the given information (see [Online Play](Online_Play "wikilink") for more details).
+
+Once the completion handle has been signaled, the client can use [FRDU:GetGameAuthenticationData](FRDU:GetGameAuthenticationData "wikilink") to retrieve the data received from the server.
