@@ -4,19 +4,17 @@ title = 'FRDU:GetMyPreference'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00060000\] |
+{{% ipc/request header="0x00060000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                                               |
-|------------|-----------------------------------------------------------|
-| 0          | Header code                                               |
-| 1          | Result code                                               |
-| 2          | Public mode (byte, 0 = private, non-zero = public)        |
-| 3          | Show current game (byte, 0 = don't show, non-zero = show) |
-| 4          | Show game history (byte, 0 = don't show, non-zero = show) |
+{{% ipc/request header="0x00060100" %}}
+{{% ipc/result %}}
+{{% ipc/param %}}bool IsPublicMode, whether or not the online status is shown{{% / %}}
+{{% ipc/param %}}bool IsShowGameMode, whether or not the currently played game is shown{{% / %}}
+{{% ipc/param %}}bool IsShowPlayedMode, whether or not the play history is shown{{% / %}}
+{{% / %}}
 
 # Description
 
