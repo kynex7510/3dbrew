@@ -20,5 +20,4 @@ title = 'FRDU:GetMyPreference'
 
 # Description
 
-Returns the current friend notification settings, as configurable in the
-friends list.
+Returns the current friend notification settings, as configurable in the friends list.

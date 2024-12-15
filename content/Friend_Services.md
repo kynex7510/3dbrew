@@ -73,8 +73,7 @@ categories = ["Services"]
 
 # "frd:a"
 
-This contains a similar (probably the same) command handler from
-0x0001.... to 0x002F.... as them in frd:u. In addition, it also contains
+This contains a similar (probably the same) command handler from 0x0001.... to 0x002F.... as them in frd:u. In addition, it also contains
 
 | Command Header | Description                                              |
 |----------------|----------------------------------------------------------|
@@ -99,9 +98,7 @@ This contains a similar (probably the same) command handler from
 
 ## Trusted RootCAs
 
-No RootCertChain(s) are used. For the nasc site, friends-module uses
-[HTTPC:AddDefaultCert](HTTPC:AddDefaultCert "wikilink") with the
-following certIDs: 0x1, 0x2, and 0x3.
+No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddDefaultCert](HTTPC:AddDefaultCert "wikilink") with the following certIDs: 0x1, 0x2, and 0x3.
 
 # Types
 
@@ -123,14 +120,9 @@ following certIDs: 0x1, 0x2, and 0x3.
 
 # Server Types
 
-The server type is stored internally as a combination of two values, the
-first value represents the server type letter and the second value is
-the number that follows it. For example, the production server type is
-"L1", so the first value is 0 and the second value is 1.
+The server type is stored internally as a combination of two values, the first value represents the server type letter and the second value is the number that follows it. For example, the production server type is "L1", so the first value is 0 and the second value is 1.
 
-[Official
-servers](https://github.com/kinnay/NintendoClients/wiki/Hpp-Server) only
-support the letters L, C, S, D, I, T, J or U.
+[Official servers](https://github.com/kinnay/NintendoClients/wiki/Hpp-Server) only support the letters L, C, S, D, I, T, J or U.
 
 | Value | Server Type Letter            |
 |-------|-------------------------------|

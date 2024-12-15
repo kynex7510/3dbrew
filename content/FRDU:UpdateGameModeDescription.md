@@ -19,7 +19,4 @@ title = 'FRDU:UpdateGameModeDescription'
 
 # Description
 
-This sets the "currently playing" text description displayed in the
-friends-list(separate from the application title text). The specified
-data seems to be sent in encrypted(?) UDP frame(s) to the friends
-server.
+This sets the "currently playing" text description displayed in the friends-list(separate from the application title text). The specified data seems to be sent in encrypted(?) UDP frame(s) to the friends server.

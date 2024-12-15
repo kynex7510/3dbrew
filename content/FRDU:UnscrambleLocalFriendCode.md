@@ -11,8 +11,7 @@ title = 'FRDU:UnscrambleLocalFriendCode'
 | 2          | ((count \* 12) \<\< 14) \| 0x402                         |
 | 3          | Pointer to encoded friend codes. Each is 12 bytes large. |
 
-The following is located 0x100-bytes after the beginning of the above
-command buffer:
+The following is located 0x100-bytes after the beginning of the above command buffer:
 
 | Index Word | Description                                                            |
 |------------|------------------------------------------------------------------------|
@@ -28,8 +27,4 @@ command buffer:
 
 # Description
 
-This decodes one or more encoded friend codes into local friend codes
-for use with some friend-related commands. Encoded friend codes seem to
-generally be retrieved from
-[NWMUDS](NWM_Services#nwm-local-wlan-service-nwmuds "wikilink")
-command [GetNodeInformation](NWMUDS:GetNodeInformation "wikilink").
+This decodes one or more encoded friend codes into local friend codes for use with some friend-related commands. Encoded friend codes seem to generally be retrieved from [NWMUDS](NWM_Services#nwm-local-wlan-service-nwmuds "wikilink") command [GetNodeInformation](NWMUDS:GetNodeInformation "wikilink").
