@@ -4,14 +4,16 @@ title = 'FRDU:HasLoggedIn'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00010000\] |
+{{% ipc/request header="0x00010000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                                                      |
-|------------|------------------------------------------------------------------|
-| 0          | Header code                                                      |
-| 1          | Result code                                                      |
-| 2          | Logged in state (8-bit, 0 = not logged in, non-zero = logged in) |
+{{% ipc/request header="0x00010080" %}}
+{{% ipc/result %}}
+{{% ipc/param %}}bool HasLoggedIn{{% / %}}
+{{% / %}}
+
+# Description
+
+Returns whether or not the current session has logged in using [FRDU:Login](FRDU:Login "wikilink").
