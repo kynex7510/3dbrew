@@ -141,6 +141,17 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x3    | 0x1  | padding                                        |
 | 0x4    | 0x5C | [Mii data](Mii#mii_format "wikilink")          |
 
+## Profile
+
+| Type    | Name                              |
+|---------|-----------------------------------|
+| u8      | Region                            |
+| u8      | Country                           |
+| u8      | Area                              |
+| u8      | Language                          |
+| u8      | Platform, always 2 (PLATFORM_CTR) |
+| u8\[3\] | padding                           |
+
 # Server Types
 
 The server type is stored internally as a combination of two values, the first value represents the server type letter and the second value is the number that follows it. For example, the production server type is "L1", so the first value is 0 and the second value is 1.
