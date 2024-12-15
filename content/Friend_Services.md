@@ -165,6 +165,14 @@ Every valid entry in the internal friends list contains a relationship field.
 | 4     | The target has been added locally: you were not online when you added the target. (presumably only happens when the "Local" method of adding a friend is used. When the system connects to the internet, a background task runs to register this relationship on the friends server.) |
 |       |                                                                                                                                                                                                                                                                                       |
 
+# Attribute Flags
+
+| Flag | Description                                                                                     |
+|------|-------------------------------------------------------------------------------------------------|
+| 0x1  | Unknown (something like "target ever registered you"?), set when relationship type is 1, 3 or 4 |
+| 0x2  | Unknown, set only when relationship type is 1                                                   |
+|      |                                                                                                 |
+
 # Server Types
 
 The server type is stored internally as a combination of two values, the first value represents the server type letter and the second value is the number that follows it. For example, the production server type is "L1", so the first value is 0 and the second value is 1.
