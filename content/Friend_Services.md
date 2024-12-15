@@ -202,6 +202,14 @@ Once the handle has been signaled by the friends module, the client can use [FRD
 | 147   | A friend changed their personal message.                                                                                          |
 | 149   | A friend sent you an invitation. (signaled regardless of whether the console's JoinGameID matches that of the friend)             |
 
+## EventNotification
+
+| Offset | Size | Description                                                                                             |
+|--------|------|---------------------------------------------------------------------------------------------------------|
+| 0x0    | 0x1  | u8, [Event Type](Friend_Services#notification_event_types "wikilink")                                   |
+| 0x1    | 0x7  | padding                                                                                                 |
+| 0x8    | 0x10 | [FriendKey](Friend_Services#friendkey "wikilink") of the friend who caused this notification to be sent |
+
 # Relationship Types
 
 Every valid entry in the internal friends list contains a relationship field.
