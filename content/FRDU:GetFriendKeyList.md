@@ -21,4 +21,4 @@ title = 'FRDU:GetFriendKeyList'
 
 # Description
 
-Returns [Friend_Services#FriendKey](Friend_Services#friendkey "wikilink") structures for all or part of the console's friend list.
+Returns [FriendKey](Friend_Services#friendkey "wikilink") structures for all or part of the console's friend list.
