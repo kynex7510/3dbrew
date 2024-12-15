@@ -4,18 +4,16 @@ title = 'FRDU:GetMyFavoriteGame'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x000D0000\] |
+{{% ipc/request header="0x000D0000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                                                        |
-|------------|--------------------------------------------------------------------|
-| 0          | Header code                                                        |
-| 1          | Result code                                                        |
-| 2-5        | [GameKey](Friend_Services#gamekey "wikilink") of the favorite game |
+{{% ipc/request header="0x000D0140" %}}
+{{% ipc/result %}}
+{{% ipc/param span=4 %}}[GameKey](Friend_Services#gamekey "wikilink"){{% / %}}
+{{% / %}}
 
 # Description
 
-Returns the game key for the favorite game set in the friends list.
+Returns the game key of the favorite game set in the friends list.
