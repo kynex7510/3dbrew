@@ -118,6 +118,19 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x8    | 0x2  | u16, Title Version |
 | 0xA    | 0x6  | Unused padding.    |
 
+## Presence
+
+| Offset | Size  | Description                    |
+|--------|-------|--------------------------------|
+| 0x0    | 0x4   | u32 JoinAvailabilityFlag       |
+| 0x4    | 0x4   | u32 MatchmakeSystemType        |
+| 0x8    | 0x4   | u32 JoinGameID                 |
+| 0xC    | 0x4   | u32 JoinGameMode               |
+| 0x10   | 0x4   | u32 OwnerPrincipalID           |
+| 0x14   | 0x4   | u32 JoinGroupID                |
+| 0x18   | 0x14  | u8 ApplicationArg\[20\]        |
+| 0x2C   | 0x100 | u16 GameModeDescription\[128\] |
+
 # Server Types
 
 The server type is stored internally as a combination of two values, the first value represents the server type letter and the second value is the number that follows it. For example, the production server type is "L1", so the first value is 0 and the second value is 1.
