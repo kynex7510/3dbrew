@@ -9,6 +9,8 @@ title = 'FRDU:GetFriendPresence'
 {{% ipc/staticbuffer id=0 %}}Pointer to input [FriendKey](Friend_Services#friendkey "wikilink") structures{{% / %}}
 {{% / %}}
 
+# Request Static Buffers
+
 # Response
 
 {{% ipc/request header="0x00120042" %}}
