@@ -4,19 +4,23 @@ title = 'FRDU:PrincipalIdToFriendCode'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00240040\] |
-| 1          | principalId                |
-
-This function takes the principalId given and applies SHA-1 over it (byte order: little endian). The first byte of the SHA-1 digest is then shifted right by 1, which forms the checksum byte.
-
-It returns an u64. The lower word is the principalId, the upper word is the checksum byte.
+{{% ipc/request header="0x00240040" %}}
+{{% ipc/param %}}Principal ID{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                    |
-|------------|--------------------------------|
-| 0          | Header code                    |
-| 1          | Result code                    |
-| 2-3        | (u64)the shareable friend code |
+{{% ipc/request header="0x002400c0" %}}
+{{% ipc/result %}}
+{{% ipc/param span=2 %}}u64, Friend code{{% / %}}
+{{% / %}}
+
+# Description
+
+Converts the given Principal ID to a Friend Code. The following algorithm is used (note: everything is in little endian):
+
+<code>
+principal_id_buf = principal_id as LE bytes
+
+friend_code = ((sha1(principal_id_buf)\[0\] \>\> 1) \<\< 32) \| principal_id
+</code>
