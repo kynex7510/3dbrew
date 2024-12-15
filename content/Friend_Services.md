@@ -161,7 +161,21 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x18   | 0x4  | u32, NcPrincipalID                                                      |
 | 0x1C   | 0x22 | 16-Character UTF-16 Personal Message (16 characters + null termination) |
 | 0x3E   | 0x2  | padding                                                                 |
-| 0x40   | 0x8  | NEX Timestamp when this friend was added to the friends list            |
+| 0x40   | 0x8  | NEX Timestamp when this friend was last seen online                     |
+
+## FriendInfo
+
+| Offset | Size | Description                                                                        |
+|--------|------|------------------------------------------------------------------------------------|
+| 0x0    | 0x10 | [FriendKey](Friend_Services#friendkey "wikilink") of this friend                   |
+| 0x10   | 0x8  | NEX Timestamp when this friend was added to the friends list                       |
+| 0x18   | 0x1  | The [relationship](Friend_Services#relationship_types "wikilink") with this friend |
+| 0x19   | 0x7  | padding                                                                            |
+| 0x20   | 0x48 | [FriendProfile](Friend_Services#friendprofile "wikilink") of this friend           |
+| 0x68   | 0x16 | 10-Character UTF-16 Screen Name (10 characters + null termination)                 |
+| 0x7E   | 0x1  | u8, [Mii character set](Mii#mii_format "wikilink")                                 |
+| 0x7F   | 0x1  | padding                                                                            |
+| 0x80   | 0x60 | This friend's [Mii](Friend_Services#mii_data "wikilink")                           |
 
 # Relationship Types
 
