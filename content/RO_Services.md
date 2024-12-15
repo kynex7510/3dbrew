@@ -31,7 +31,6 @@ one from inputaddr. Otherwise, the address is: mapvaddr = inputaddr -
 | D9012FF1   | Address is misaligned             |
 | E0A12FF9   | Service is already Initialized    |
 | E1612FF7   | Provided Kernel Handle is invalid |
-|            |                                   |
 
 # Version history
 

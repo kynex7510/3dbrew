@@ -112,7 +112,6 @@ title = 'Filesystem Services PXI'
 | 0x004A00C2                                             | [2.0.0-2](2.0.0-2 "wikilink")  | [GetFileLastModified](FSPXI:GetFileLastModified "wikilink")                         |
 | 0x004B0102                                             | [2.0.0-2](2.0.0-2 "wikilink")  | [ReadSpecialFile](FSPXI:ReadSpecialFile "wikilink")                                 |
 | 0x004C0040                                             | [2.0.0-2](2.0.0-2 "wikilink")  | [GetSpecialFileSize](FSPXI:GetSpecialFileSize "wikilink")                           |
-|                                                        |                                |                                                                                     |
 
 Commands listed in the previous chart marked as available since
 [1.0.0-0](1.0.0-0 "wikilink") that are not shown in this chart are the

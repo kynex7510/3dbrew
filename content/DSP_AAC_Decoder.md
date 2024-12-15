@@ -28,7 +28,6 @@ Size : 0x20 bytes
 | 0x2             | DecoderCommand        | Command to be handled by the decoder (See information on DecoderCommand structure below)            |
 | 0x4             | u32                   | Result Code                                                                                         |
 | 0x8             | Request/Response data | A 24-byte chunk of data containing information about the request/response. See below for more info. |
-|                 |                       |                                                                                                     |
 
 **enum DecoderCommand : u16**
 
@@ -57,7 +56,6 @@ Size : 24 bytes
 | 0xC             | u32  | Physical address to output decoded PCM16 samples for the right channel                                                  |
 | 0x10            | u32  | Unknown?                                                                                                                |
 | 0x14            | u32  | Unknown?                                                                                                                |
-|                 |      |                                                                                                                         |
 
 **AAC Decode command response**
 
@@ -71,7 +69,6 @@ Size : 24 bytes
 | 0xC             | u32             | Unknown?                                                                                                 |
 | 0x10            | u32             | Unknown?                                                                                                 |
 | 0x14            | u32             | Number of decoded samples (?)                                                                            |
-|                 |                 |                                                                                                          |
 
 # Sample rate enum
 

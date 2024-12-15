@@ -51,7 +51,6 @@ Extension: .BIN
 | 0x00E  | 0x016 | Name of texture (if texture is used)                                                  |
 | 0x024  | 0x200 | Plain text comment (255 character max) to be displayed in the banner on the HOME Menu |
 | 0x224  |       | If used, this is where the extra texture is located, otherwise file ends.             |
-|        |       |                                                                                       |
 
 The date used for never-expiring exbanners varies, on retail like with
 Mii Maker this is December 31, 2099, where year is 0x833, month is 0xC,
@@ -76,7 +75,6 @@ exbanners, not extdata-exbanners.
 | 0x0B | A4       |
 | 0x0C | ETC1     |
 | 0x0D | ETC1A4   |
-|      |          |
 
 ## Titles using extended banners
 

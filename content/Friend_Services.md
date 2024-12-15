@@ -221,7 +221,6 @@ Every valid entry in the internal friends list contains a relationship field.
 | 2     | No relationship between you and the target has been found: neither you nor the target have added each other.                                                                                                                                                                          |
 | 3     | The relationship has been deleted: the target has deleted your friend card.                                                                                                                                                                                                           |
 | 4     | The target has been added locally: you were not online when you added the target. (presumably only happens when the "Local" method of adding a friend is used. When the system connects to the internet, a background task runs to register this relationship on the friends server.) |
-|       |                                                                                                                                                                                                                                                                                       |
 
 # Attribute Flags
 
@@ -229,7 +228,6 @@ Every valid entry in the internal friends list contains a relationship field.
 |------|-------------------------------------------------------------------------------------------------|
 | 0x1  | Unknown (something like "target ever registered you"?), set when relationship type is 1, 3 or 4 |
 | 0x2  | Unknown, set only when relationship type is 1                                                   |
-|      |                                                                                                 |
 
 # Server Types
 

@@ -8,7 +8,6 @@ title = 'Homebrew Format'
 |-------------------|------------------|
 | /Nintendo 3DS/etc | Setting          |
 | /Music            | music and Lyrics |
-|                   |                  |
 
 ## Homebrew Format (goal)
 

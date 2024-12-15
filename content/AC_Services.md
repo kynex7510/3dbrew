@@ -74,7 +74,6 @@ These commands are common to both ac:u and ac:i
 | 0x003F0040     | GetNotAwakeMacFilter                                                                                             |
 | 0x00400042     | [SetClientVersion](ACU:SetClientVersion "wikilink")                                                              |
 | 0x004100C6     | SetTemporaryNetworkSettings                                                                                      |
-|                |                                                                                                                  |
 
 # AC service "ac:i"
 

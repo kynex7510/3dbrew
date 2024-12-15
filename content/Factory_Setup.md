@@ -74,7 +74,6 @@ there may be more.
 | 00040001 | 00008102 | TestMenu (O3DS)                                                        |
 | 00040001 | 00008A02 | [DevErrDi](ErrDisp "wikilink")                                         |
 | 00040030 | 00008102 | TestMenu (some O3DS (?), all N3DS)                                     |
-|          |          |                                                                        |
 
 ## TestMenu
 

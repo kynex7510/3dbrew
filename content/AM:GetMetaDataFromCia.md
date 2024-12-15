@@ -20,7 +20,6 @@ title = 'AM:GetMetaDataFromCia'
 | 0          | Header code       |
 | 1          | Result code       |
 | 2          | Size of read data |
-|            |                   |
 
 # Description
 

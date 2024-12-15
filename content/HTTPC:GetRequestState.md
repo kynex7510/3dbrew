@@ -27,7 +27,6 @@ title = 'HTTPC:GetRequestState'
 | 0x7   | Request in progress, receiving HTTP response. |
 | 0x8   | Ready to download the content.                |
 | 0xA   | Request timed out?                            |
-|       |                                               |
 
 # Description
 

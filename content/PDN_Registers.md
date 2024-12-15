@@ -61,7 +61,6 @@ finally writes to and polls this register.
 | 26   | [MCU interrupt](I2C_Registers#device_3 "wikilink")  |
 | 30   | Touch screen pressed                                |
 | 31   | CTR gamecard inserted/removed                       |
-|      |                                                     |
 
 List in progress.
 

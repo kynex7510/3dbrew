@@ -31,7 +31,6 @@ Streetpass stuff.
 | 0x001F0000     | [GetEventLogStart](CECDU:GetEventLogStart "wikilink")                                                           |
 | 0x00200000     | [GetEventLogEntryCount](CECDU:GetEventLogEntryCount "wikilink")                                                 |
 | 0x0021....     | ?                                                                                                               |
-|                |                                                                                                                 |
 
 ### CecDataPathType
 
@@ -78,7 +77,6 @@ Streetpass stuff.
 | CEC_COMMAND_OVER_BOSS_FORCE       | 0x13  |       |
 | CEC_COMMAND_OVER_BOSS_FORCE_WAIT  | 0x14  |       |
 | CEC_COMMAND_END                   | 0x15  |       |
-|                                   |       |       |
 
 ### CecStateAbbreviated
 
@@ -95,7 +93,6 @@ Streetpass stuff.
 | Type      | Field |
 |-----------|-------|
 | char\[8\] | data  |
-|           |       |
 
 # CECD Service "cecd:s"
 
@@ -121,7 +118,6 @@ contains
 | 0x04150000     | [GenHashConsoleUnique](CECDS:GenHashConsoleUnique "wikilink") |
 | 0x04160002     | ?                                                             |
 | 0x0417....     | ?                                                             |
-|                |                                                               |
 
 ### CecSprStatus
 
@@ -155,6 +151,5 @@ state of an SPR exchange it is in currently.
 | 0x00060042     | GetNZoneInfo                    |
 | 0x00070042     | SetNZoneSSIDList                |
 | 0x00080042     | SetNZoneMacFilter               |
-|                |                                 |
 
 [Category:Services](Category:Services "wikilink")

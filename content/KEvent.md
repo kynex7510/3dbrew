@@ -22,7 +22,6 @@ Size : 0x28 bytes
 | 0x22   | u8                                                                    | Reset type                                                                              |
 | 0x23   | u8                                                                    | Unused, alignment                                                                       |
 | 0x24   | [KProcess](KProcess "wikilink") \*                                    | Owner                                                                                   |
-|        |                                                                       |                                                                                         |
 
 [Category:Kernel synchronization
 objects](Category:Kernel_synchronization_objects "wikilink")

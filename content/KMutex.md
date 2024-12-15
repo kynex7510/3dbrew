@@ -20,7 +20,6 @@ Size : 0x2C bytes
 | 0x20   | [KThread](KThread "wikilink") \*                | Thread that has the KMutex locked                                                  |
 | 0x24   | u32                                             | Priority                                                                           |
 | 0x28   | [KProcess](KProcess "wikilink")\*               | Owner                                                                              |
-|        |                                                 |                                                                                    |
 
 With the following declarations:
 `struct KMutexLinkedList { KMutex *first, *last; };` and

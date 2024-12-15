@@ -261,7 +261,6 @@ though the "am:pipe" string isn't actually used.
 | 0x10   | 0x4    | private.sav size                                                                                                    |
 | 0x14   | 0x4    | Unused, padding.                                                                                                    |
 | 0x18   | 0x8    | u64, required space in bytes for installation (aligned to 0x4000, used to show amount of blocks in system settings) |
-|        |        |                                                                                                                     |
 
 # Errors
 

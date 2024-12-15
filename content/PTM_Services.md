@@ -81,21 +81,18 @@ Identical to the below "ptm:sysm"
 | 0x0816....     | Abstraction for mcu::RTC::GetSystemClock                                                                                                                                                  |
 | 0x0817....     | Abstraction for mcu::RTC::SetSystemClock                                                                                                                                                  |
 | 0x08180040     | [ConfigureNew3DSCPU](PTMSYSM:ConfigureNew3DSCPU "wikilink")                                                                                                                               |
-|                |                                                                                                                                                                                           |
 
 # GetSystemTime PTM Service "ptm:gets"
 
 | Command Header | Description   |
 |----------------|---------------|
 | 0x04010000     | GetSystemTime |
-|                |               |
 
 # SetSystemTime PTM Service "ptm:sets"
 
 | Command Header | Description   |
 |----------------|---------------|
 | 0x00010080     | SetSystemTime |
-|                |               |
 
 # PTM [System_SaveData](System_SaveData "wikilink")
 

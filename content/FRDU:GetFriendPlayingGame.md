@@ -23,7 +23,6 @@ title = 'FRDU:GetFriendPlayingGame'
 |--------|-------|---------------------------------------------------|
 | 0x0    | 0x10  | [FriendKey](Friend_Services#friendkey "wikilink") |
 | 0x10   | 0x100 | UTF-16 encoded Game Mode Description              |
-|        |       |                                                   |
 
 # Description
 

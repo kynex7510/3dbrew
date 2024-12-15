@@ -53,7 +53,6 @@ categories = ["Services"]
 | 0x002C0000     | [UpdateTickets](NIMU:UpdateTickets "wikilink")                                                     |
 | 0x002D00C0     | [DownloadTitleSeedAsync](NIMU:DownloadTitleSeedAsync "wikilink")                                   |
 | 0x002E0000     | [DownloadMissingTitleSeedsAsync](NIMU:DownloadMissingTitleSeedsAsync "wikilink")                   |
-|                |                                                                                                    |
 
 # NIM shop service "nim:s"
 
@@ -120,7 +119,6 @@ categories = ["Services"]
 | 0x00030000     | SetDaemonToWorkingState        |
 | 0x00040040     | SetDaemonToSuspendedState      |
 | 0x00050000     | GetDaemonState                 |
-|                |                                |
 
 # kagiya server
 

@@ -32,7 +32,6 @@ as CSTM, CWSD, CSEQ, and CWAV.
 | 0x34   | 0x4  | Length of main FILE partition                                              |
 | 0x38   | 0x4  | Reserved for 4th main partition location?                                  |
 | 0x3C   | 0x4  | Reserved for 4th main partition length?                                    |
-|        |      |                                                                            |
 
 ## Partitions
 
@@ -52,7 +51,6 @@ STRG contains the names of the audio files in the BCSAR.
 | 0x14   | 0x4          | This + 8 points to the string lookup table        |
 | 0x18   | 0x4          | Filename count                                    |
 | 0x1C   | 0xC \* count | String offset table                               |
-|        |              |                                                   |
 
 #### String offset table entry
 
@@ -61,7 +59,6 @@ STRG contains the names of the audio files in the BCSAR.
 | 0x0    | 0x4  | Type of the node (should be 0x1F01)                          |
 | 0x4    | 0x4  | Offset to data from the end of the STRG header (sizeof 0x18) |
 | 0x8    | 0x4  | Length of the data buffer (includes NUL terminator)          |
-|        |      |                                                              |
 
 Then every filename is rawly setted. You can set up a dictionary that
 contains, using a simple counter, the size of every filename in order.
@@ -77,7 +74,6 @@ filename in a correct order.
 | 0x0    | 0x4           | Index of the root entry |
 | 0x4    | 0x4           | Entry count             |
 | 0x8    | 0x14 \* count | Lookup entry            |
-|        |               |                         |
 
 ##### Entry
 
@@ -90,7 +86,6 @@ filename in a correct order.
 | 0xC    | 0x4  | String lookup table index (-1 if unused)                                                                 |
 | 0x10   | 0x3  | 3-byte Resource ID, Little Endian (-1 if unused)                                                         |
 | 0x13   | 0x1  | Resource type (01=sound, 02=sound list, 03=sound bank, 04=sound player name?, 06=sound group, FF=unused) |
-|        |      |                                                                                                          |
 
 ### INFO
 
@@ -122,7 +117,6 @@ but I'm working on figuring the rest out.
 | 0x3C   | 0x4  | This + 8 points to the FILE Table              |
 | 0x40   | 0x4  | Unknown Table Reference ID (0x220B)            |
 | 0x44   | 0x4  | This + 8 points to unknown                     |
-|        |      |                                                |
 
 #### Blocks
 
@@ -147,7 +141,6 @@ struct:
 | 0xC    | 0x4  | Type of the extended info                                            |
 | 0x10   | 0x4  | Offset to extended info \*relative to the beginning of this struct\* |
 | 0x14   | ???  | Unknown...                                                           |
-|        |      |                                                                      |
 
 ##### 0x2204
 
@@ -161,7 +154,6 @@ struct:
 | 0x14   | 0x4  | Offset to extended info \*relative to the beginning of this struct\* |
 | 0x18   | 0x4  | Unknown                                                              |
 | 0x1C   | 0x4  | Unknown                                                              |
-|        |      |                                                                      |
 
 ##### 0x2206
 
@@ -172,7 +164,6 @@ struct:
 | 0x8    | 0x4  | Offset to extended info \*relative to the beginning of this struct\* |
 | 0xC    | 0x4  | Unknown                                                              |
 | 0x10   | 0x4  | Unknown                                                              |
-|        |      |                                                                      |
 
 ##### Table IDs
 
@@ -185,7 +176,6 @@ struct:
 | 0x2208 | Group Table       |
 | 0x2208 | Player Table      |
 | 0x220A | FILE Table        |
-|        |                   |
 
 ### FILE
 

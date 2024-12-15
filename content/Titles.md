@@ -155,7 +155,6 @@ are:
 |            | [NAND](Flash_Filesystem "wikilink") | [SD](SD_Filesystem "wikilink")      |
 | Title Data | nand/title                          | sdmc/Nintendo 3DS/&lt;ID0&gt;/&lt;ID1&gt;/title |
 | Save Data  | nand/data/&lt;ID0&gt;/sysdata             |                                     |
-|            |                                     |                                     |
 
 ID0 is the first 0x10-bytes from a SHA256
 [hash](nand/private/movable.sed "wikilink") and ID1 is generated from

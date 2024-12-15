@@ -19,7 +19,6 @@ Homebrew.
 | [libkhax](https://github.com/Myriachan/libkhax)                                   | Library for modifying kernel memory on a certain handheld game console.       | [Myria](https://github.com/Myriachan) et al.      | [Here](https://github.com/Myriachan/libkhax/)                  | Yes         | No         |
 | [cpp3ds](https://github.com/cpp3ds/cpp3ds)                                        | Object-oriented C++ game library and port of [SFML](http://www.sfml-dev.org/) | [Cruel](https://github.com/Cruel) et al.          | [Here](https://github.com/cpp3ds/cpp3ds/releases/)             | Yes         | No         |
 | [SpriteTools](https://github.com/BtheDestroyer/SpriteTools)                       | Extension to SF2D, adding support for things like animations                  | [BtheDestroyer](https://github.com/BtheDestroyer) | [Here](https://github.com/BtheDestroyer/SpriteTools/releases/) | Yes         | Deprecated |
-|                                                                                   |                                                                               |                                                   |                                                                |             |            |
 
 ## PC Tools
 

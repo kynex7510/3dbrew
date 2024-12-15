@@ -154,7 +154,6 @@ bits 0x1800 get cleared.
 | 0x005A0000     | [GetLegacyJumpProhibitedFlag](MCURTC:GetLegacyJumpProhibitedFlag "wikilink")                                                                 |
 | 0x005B0040     | SetUUIDClockSequence                                                                                                                         |
 | 0x005C0000     | GetUUIDClockSequence                                                                                                                         |
-|                |                                                                                                                                              |
 
 # MCU sound service "mcu::SND"
 

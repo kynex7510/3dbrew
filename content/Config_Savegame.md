@@ -181,7 +181,6 @@ This is used twice in the actual WiFi slot structure.
 | 0x26   | 0x2  | Padding ?                                                                                    |
 | 0x28   | 0x40 | Plaintext of the passphrase of the network, without a trailing nullbyte.                     |
 | 0x68   | 0x20 | PBKDF2 of the passphrase and SSID (http://jorisvr.nl/wpapsk.html).                           |
-|        |      |                                                                                              |
 
 #### Actual structure
 
@@ -216,7 +215,6 @@ This is used twice in the actual WiFi slot structure.
 | 0x410  | 0x2   | Padding ?                                                                                                                    |
 | 0x412  | 0x2   | MTU value, defaults to 1400 and ranges between 576 and 1500, inclusive.                                                      |
 | 0x414  | 0x7EC | Padding.                                                                                                                     |
-|        |       |                                                                                                                              |
 
 ### LCD display config
 

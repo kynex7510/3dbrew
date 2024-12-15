@@ -7,7 +7,6 @@ title = 'CECDS:GenHashConsoleUnique'
 | Index Word | Description                |
 |------------|----------------------------|
 | 0          | Header code \[0x04150000\] |
-|            |                            |
 
 # Response
 
@@ -16,7 +15,6 @@ title = 'CECDS:GenHashConsoleUnique'
 | 0          | Header code |
 | 1          | Result code |
 | 2-3        | 64-bit hash |
-|            |             |
 
 # Description
 

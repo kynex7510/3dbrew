@@ -19,7 +19,6 @@ virtual address.
 | 0x1EC1x008 | [MTX_ACK](#mtx_ack "wikilink")   | 4     |
 | 0x1EC1x00C | [MTX_IE](#mtx_ie "wikilink")     | 4     |
 | 0x1EC1x020 | ???                              | 4     |
-|            |                                  |       |
 
 ## Matrix unit
 
@@ -86,7 +85,6 @@ always 6</td>
 | 12     | Output tiling for use with the GPU. When set, the output width and height must be a multiple of 8.                       |
 | 15     | Start bit (setting this will eventually raise MTX interrupt 0)                                                           |
 | 16     | Data still available flag (?)                                                                                            |
-|        |                                                                                                                          |
 
 ## MTX_SIZE
 
@@ -94,7 +92,6 @@ always 6</td>
 |--------|---------------------------------------------------------------------|
 | 0-8    | Output framebuffer width - 1 is written here, 1 \<= width \<= 512   |
 | 16-25  | Output framebuffer height - 1 is written here, 1 \<= height \<= 512 |
-|        |                                                                     |
 
 ## MTX_ACK
 
@@ -106,7 +103,6 @@ register will acknowledge pending interrupts where the bits are set.
 | 0      | FIFO ready (signal to start DMA)            |
 | 1      | FIFO overrun(?) (occurs if DMA is too slow) |
 | 2      | FIFO underrun(?) (occurs on VBlank)         |
-|        |                                             |
 
 ## MTX_IE
 

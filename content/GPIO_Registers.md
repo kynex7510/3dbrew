@@ -19,7 +19,6 @@ title = 'GPIO Registers'
 | Yes    | [GPIO3_INTCFG](#gpion_intcfg "wikilink") | 0x10147024 | 2     |
 | Yes    | [GPIO3_INTEN](#gpion_inten "wikilink")   | 0x10147026 | 2     |
 | Yes    | [GPIO3_DATA2](#gpion_data2 "wikilink")   | 0x10147028 | 2     |
-|        |                                          |            |       |
 
 ## Legacy RTC
 
@@ -39,7 +38,6 @@ title = 'GPIO Registers'
 | RTC_REG_FOUT2                               | 0x10147151 | 1      | Rtc dsi fout register 2 (ex command 2). Bitswapped                                                                        |
 | RTC_REG_ALRMDAT1                            | 0x10147160 | 4 (3?) | Rtc dsi alarm date register 1 (ex command 4). Byte-wise bit-swapped                                                       |
 | RTC_REG_ALRMDAT2                            | 0x10147164 | 4 (3?) | Rtc dsi alarm date register 2 (ex command 5). Byte-wise bit-swapped                                                       |
-|                                             |            |        |                                                                                                                           |
 
 # Descriptions
 

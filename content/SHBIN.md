@@ -32,7 +32,6 @@ For a description of the instruction set, see the following page :
 | 0x0    | 0x4    | Magic "DVLB"                                                                      |
 | 0x4    | 0x4    | N = number of DVLEs in SHBIN                                                      |
 | 0x8    | 0x4\*N | DVLE offset table; each offset is a u32 relative to the start of the DVLB section |
-|        |        |                                                                                   |
 
 The DVLP section comes directly after the binary header.
 
@@ -50,7 +49,6 @@ The DVLP section comes directly after the binary header.
 | 0x1C   | 0x4  | Unknown (Always zero?)                                                  |
 | 0x20   | 0x4  | Offset (relative to DVLP start) to filename symbol table                |
 | 0x24   | 0x4  | Size of filename symbol table                                           |
-|        |      |                                                                         |
 
 ## DVLE
 
@@ -78,7 +76,6 @@ The DVLP section comes directly after the binary header.
 | 0x34   | 0x4  | Number of entries in uniform table (each entry is 0x8-byte long)                                                        |
 | 0x38   | 0x4  | Offset (relative to DVLE start) to symbol table                                                                         |
 | 0x3C   | 0x4  | Size of symbol table (in bytes)                                                                                         |
-|        |      |                                                                                                                         |
 
 ### Label Table Entry
 
@@ -89,7 +86,6 @@ The DVLP section comes directly after the binary header.
 | 0x4    | 0x4  | Offset (relative to shader program blob start) to label's location, in words      |
 | 0x8    | 0x4  | Size of label's location (in words). 0xFFFFFFFF/(uint32_t)-1 if there is no size. |
 | 0xC    | 0x4  | Offset (relative to DVLE symbol table start) to label's symbol                    |
-|        |      |                                                                                   |
 
 ### Constant Table Entry
 
@@ -138,7 +134,6 @@ Corresponding constant entry formats:
 | 0x2    | 0x2  | Register ID                                                                         |
 | 0x4    | 0x2  | Output attribute component mask (e.g. 5=xz)                                         |
 | 0x6    | 0x2  | Unknown (Consistently the same number throughout the DVLE, may vary between DVLEs?) |
-|        |      |                                                                                     |
 
 Output types :
 
@@ -172,7 +167,6 @@ symbol.
 | 0x0    | 0x4  | Offset (relative to DVLE symbol table start) to variable's symbol                 |
 | 0x4    | 0x2  | Register index of the start of the uniform                                        |
 | 0x6    | 0x2  | Register index of the end of the uniform (equal to start register for non-arrays) |
-|        |      |                                                                                   |
 
 The register indices refer to a unified register space for non-output
 registers. The mapping of register index values to registers is the
@@ -184,7 +178,6 @@ following:
 | 0x10-0x6F | c0-c95    |
 | 0x70-0x73 | i0-i3     |
 | 0x78-0x87 | b0-b15    |
-|           |           |
 
 ## DVOJ
 
@@ -227,7 +220,6 @@ All offsets in the following table are given relative to the DVOJ start.
 | 0x4C   | 0x4  | Number of entries in uniform table (each entry is 0x8-byte long)                                                                                                     |
 | 0x50   | 0x4  | Offset to symbol table                                                                                                                                               |
 | 0x54   | 0x4  | Size of symbol table (in bytes)                                                                                                                                      |
-|        |      |                                                                                                                                                                      |
 
 ### Unknown Block 1 Item
 
@@ -242,7 +234,6 @@ instruction in the shader binary.
 |--------|------|------------------------------------------------------------------------------------|
 | 0x0    | 0x4  | Byte offset within symbol table pointing to a source shader filename.              |
 | 0x4    | 0x4  | Line number of the corresponding shader instruction within the shader source code. |
-|        |      |                                                                                    |
 
 ### Unknown Block 2 Item
 
@@ -251,6 +242,5 @@ instruction in the shader binary.
 | 0x0    | 0x4  | This seems to be an index of a shader instruction. All non-nullary instructions seem to be referenced exactly once. |
 | 0x4    | 0x4  |                                                                                                                     |
 | 0x8    | 0x4  |                                                                                                                     |
-|        |      |                                                                                                                     |
 
 [Category:File formats](Category:File_formats "wikilink")

@@ -31,7 +31,6 @@ command buffer:
 
 | Offset | Size | Description |
 |--------|------|-------------|
-|        |      |             |
 
 # Description
 

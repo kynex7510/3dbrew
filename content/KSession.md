@@ -46,7 +46,6 @@ Size : 0x4C bytes ([KAutoObject](KAutoObject "wikilink"),
 | 0x40   |                                             | KSession\*                                      |
 | 0x44   |                                             | u32                                             |
 | 0x48   |                                             | [KClientPort](KClientPort "wikilink")\*         |
-|        |                                             |                                                 |
 
 Session status:
 

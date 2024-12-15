@@ -48,7 +48,6 @@ These commands are common to both act:u and act:a
 | 0x00200382     |                                | ?                                                                         |
 | 0x00210002     |                                | ?                                                                         |
 | 0x00220342     |                                | ?                                                                         |
-|                |                                |                                                                           |
 
 # ACT service "act:a"
 
