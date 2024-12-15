@@ -6,7 +6,7 @@ title = 'FRDU:GetFriendProfile'
 
 {{% ipc/request header="0x00150042" %}}
 {{% ipc/param %}}Count{{% / %}}
-{{% ipc/staticbuffer id=0 %}}Input \[\[Friend_Services#FriendKey\|FriendKey}} buffer{{% / %}}
+{{% ipc/staticbuffer id=0 %}}Input [FriendKey](Friend_Services#friendkey "wikilink") buffer{{% / %}}
 {{% / %}}
 
 # Request Static Buffers
@@ -15,7 +15,7 @@ title = 'FRDU:GetFriendProfile'
 
 {{% ipc/request header="0x00150042" %}}
 {{% ipc/result %}}
-{{% ipc/staticbuffer id=0 %}}Output \[\[Friend_Services#Profile\|Profile}} buffer{{% / %}}
+{{% ipc/staticbuffer id=0 %}}Output [Profile](Friend_Services#profile "wikilink") buffer{{% / %}}
 {{% / %}}
 
 # Description
