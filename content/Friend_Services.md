@@ -152,6 +152,17 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x4    | 0x1  | u8, Platform, always 2 (PLATFORM_CTR) |
 | 0x5    | 0x3  | padding                               |
 
+## FriendProfile
+
+| Offset | Size | Description                                                             |
+|--------|------|-------------------------------------------------------------------------|
+| 0x0    | 0x8  | [Profile](Friend_Services#profile "wikilink")                           |
+| 0x8    | 0x10 | [GameKey](Friend_Services#gamekey "wikilink") of favorite game          |
+| 0x18   | 0x4  | u32, NcPrincipalID                                                      |
+| 0x1C   | 0x22 | 16-Character UTF-16 Personal Message (16 characters + null termination) |
+| 0x3E   | 0x2  | padding                                                                 |
+| 0x40   | 0x8  | NEX Timestamp when this friend was added to the friends list            |
+
 # Relationship Types
 
 Every valid entry in the internal friends list contains a relationship field.
