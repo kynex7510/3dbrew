@@ -30,7 +30,7 @@ cat $OUTPUT.temp |
   awk '/{{IPC\/RequestStaticBuffers}}/ { in_buffer_section=1; next } /{{IPC\/RequestEnd}}/ { if (in_buffer_section == 1) { in_buffer_section=0; next } } { if (in_buffer_section != 1) print $0 }' |
   sed -z 's/{{#vardefine:ipc_offset|0}}\n//g' |
   sed -z 's/{{IPC\/Request}}\n//g' |
-  sed -z 's/{{IPC\/Request|.*}}\n//g' |
+  sed -z 's/{{IPC\/Request|[^\n]*}}\n//g' |
   # # Migrate the rest
   awk -F '|' '/{{IPC\/RequestHeader/ { printf "{{%% ipc/request header=\"%s%04x\" %%}}\n", $2, or(lshift($3, 6), $4) } ! /{{IPC\/RequestHeader/ { print $0 }' |
   sed 's/{{IPC\/RequestEntry|Header code \[\(.*\)\(0x[0-9a-fA-F]*\)\]}}/\1{{% ipc\/request header="\2" %}}/g' |
@@ -67,4 +67,3 @@ do
   echo $i;
   ./$i $OUTPUT
 done
-python3 11_update_links.py --allow-ambiguous

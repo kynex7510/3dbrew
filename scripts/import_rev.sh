@@ -11,17 +11,20 @@ fi
 wget "https://www.3dbrew.org/w/api.php?action=query&prop=revisions&revids=$1&rvprop=ids|user|comment&format=json" -O $1.temp
 
 cat $1.temp
-PARENTREV=`grep '"parentid"' $1.temp | sed 's/.*"parentid":\([^,]*\).*/\1/'`
-TITLE=`grep '"title"' $1.temp | sed 's/.*"title":"\([^"]*\).*/\1/' | sed 's/ /_/g'`
-REVUSER=`grep '"user"' $1.temp | sed 's/.*"user":"\([^"]*\).*/\1/'`
-REVCOMMENT=`grep '"comment"' $1.temp | sed 's/.*"comment":"\([^"]*\).*/\1/'`
+PARENTREV=`grep -oP '(?<="parentid":)[^,]*' $1.temp`
+TITLE=`grep -oP '(?<="title":")[^"]*' $1.temp | sed 's/ /_/g'`
+REVUSER=`grep -oP '(?<="user":")[^"]*' $1.temp`
+REVCOMMENT=`grep -oP '(?<="comment":")(\\\"|[^"])*' $1.temp`
+
+echo
+echo
 
 if [ -z "$REVCOMMENT" ]
 then
   REVCOMMENT="Update $TITLE"
 fi
 
-if [ -z "$PARENTREV"]
+if [ -z "$PARENTREV" ]
 then
   echo
 else
@@ -39,6 +42,7 @@ then
   OUTPUT=content/$TITLE.md
   echo "No output filename given; defaulting to $OUTPUT"
 fi
+mkdir -p `dirname $OUTPUT`
 
 if [ -z PARENTREV ] || [ "$PARENTREV" == "0" ]
 then
@@ -51,5 +55,5 @@ fi
 
 ./scripts/sync_page.sh $TITLE $1 $OUTPUT
 git add $OUTPUT
-git commit -m "Rev $1 by $REVUSER: $REVCOMMENT" || true
+git commit -m "Rev $1: $REVCOMMENT" --author="$REVUSER <>" || true
 # git show
