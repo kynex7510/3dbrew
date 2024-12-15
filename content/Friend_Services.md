@@ -182,7 +182,7 @@ The friends module exposes a "Notification Events" system that allows client ses
 
 A client sets its per-session notification event signaling handle using [FRDU:AttachToEventNotification](FRDU:AttachToEventNotification "wikilink").
 
-The client can then customize for which [Notification Event Types](Friend_Services#notification_event_types "wikilink") it shall receive notifications using [FRDU:SetNotifcationMask](FRDU:SetNotifcationMask "wikilink").
+The client can then customize for which [Notification Event Types](Friend_Services#notification_event_types "wikilink") it shall receive notifications using [FRDU:SetNotificationMask](FRDU:SetNotificationMask "wikilink").
 
 Once the handle has been signaled by the friends module, the client can use [FRDU:GetEventNotification](FRDU:GetEventNotification "wikilink") to receive the notifications.
 
