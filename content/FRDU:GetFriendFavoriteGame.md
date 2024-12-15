@@ -11,11 +11,6 @@ title = 'FRDU:GetFriendFavoriteGame'
 
 # Request Static Buffers
 
-| Index Word | Description                                                                     |
-|------------|---------------------------------------------------------------------------------|
-| 0          | Descriptor for [static buffer](IPC#static_buffer_translation "wikilink") (ID 0) |
-| 1          | Output [GameKey](Friend_Services#gamekey "wikilink") buffer                     |
-
 # Response
 
 {{% ipc/request header="0x00190042" %}}
