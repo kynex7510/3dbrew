@@ -19,10 +19,8 @@ title = 'FRDU:IsValidFriendCode'
 
 Returns whether or not the given friend code is valid. The following logic is used (everything is in little-endian byte order):
 
-<code>
+<pre>
 is_valid = friend_code != 0 &&
-
-(u32)(friend_code \>\> 32) \<= 127 &&
-
-[FRDU:PrincipalIdToFriendCode](FRDU:PrincipalIdToFriendCode "wikilink")((u32)(friend_code & 0xFFFFFFFF)) == friend_code
-</code>
+(u32)(friend_code >> 32) <= 127 &&
+<a {{% href "FRDU:PrincipalIdToFriendCode" %}}>FRDU:PrincipalIdToFriendCode</a>((u32)(friend_code & 0xFFFFFFFF)) == friend_code
+</pre>
