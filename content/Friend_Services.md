@@ -176,6 +176,32 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x7F   | 0x1  | padding                                                                            |
 | 0x80   | 0x60 | This friend's [Mii](Friend_Services#mii_data "wikilink")                           |
 
+# Notification Events
+
+The friends module exposes a "Notification Events" system that allows client sessions to be notified of various related events.
+
+A client sets its per-session notification event signaling handle using [FRDU:AttachToEventNotification](FRDU:AttachToEventNotification "wikilink").
+
+The client can then customize for which [Notification Event Types](Friend_Services#notification_event_types "wikilink") it shall receive notifications using [FRDU:SetNotifcationMask](FRDU:SetNotifcationMask "wikilink").
+
+Once the handle has been signaled by the friends module, the client can use [FRDU:GetEventNotification](FRDU:GetEventNotification "wikilink") to receive the notifications.
+
+## Notification Event Types
+
+| Value | Description                                                                                                                       |
+|-------|-----------------------------------------------------------------------------------------------------------------------------------|
+| 1     | The console went online.                                                                                                          |
+| 2     | The console went offline.                                                                                                         |
+| 3     | A friend is now present (went online).                                                                                            |
+| 5     | A friend changed their Mii.                                                                                                       |
+| 6     | A friend changed their [Profile](Friend_Services#profile "wikilink").                                                             |
+| 7     | A friend is no longer present (went offline).                                                                                     |
+| 8     | A friend has added you back as a friend (if you had added them before as a "provisionally registered" friend).                    |
+| 9     | A friend sent you a \*\*joinable\*\* game invitation(?) (only signaled when the console's JoinGameID matches that of the friend). |
+| 146   | A friend changed their favorite game.                                                                                             |
+| 147   | A friend changed their personal message.                                                                                          |
+| 149   | A friend sent you an invitation. (signaled regardless of whether the console's JoinGameID matches that of the friend)             |
+
 # Relationship Types
 
 Every valid entry in the internal friends list contains a relationship field.
