@@ -36,7 +36,7 @@ categories = ["Services"]
 | 0x001B0080     | [IsIncludedInFriendList](FRDU:IsIncludedInFriendList "wikilink")       |
 | 0x001C0042     | [UnscrambleLocalFriendCode](FRDU:UnscrambleLocalFriendCode "wikilink") |
 | 0x001D0002     | [UpdateGameModeDescription](FRDU:UpdateGameModeDescription "wikilink") |
-| 0x001E02C2     | [UpdateGameMode](FRDU:UpdateGameMode "wikilink")                       |
+| 0x001E02C2     | [UpdateMyPresence](FRDU:UpdateMyPresence "wikilink")                   |
 | 0x001F0042     | [SendInvitation](FRDU:SendInvitation "wikilink")                       |
 | 0x00200002     | [AttachToEventNotification](FRDU:AttachToEventNotification "wikilink") |
 | 0x00210040     | [SetNotificationMask](FRDU:SetNotificationMask "wikilink")             |
