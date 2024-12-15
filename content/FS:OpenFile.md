@@ -4,7 +4,7 @@ title = 'FS:OpenFile'
 
 # Request
 
-{{% ipc/request header="0x080201C2}}0000" %}}
+{{% ipc/request header="0x080201c2" %}}
 {{% ipc/param %}}Transaction (usually 0){{% / %}}
 {{% ipc/param span=2 %}}u64, Archive Handle{{% / %}}
 {{% ipc/param %}}[Path Type](Filesystem_services#pathtype "wikilink"){{% / %}}
