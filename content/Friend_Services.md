@@ -152,6 +152,19 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | u8      | Platform, always 2 (PLATFORM_CTR) |
 | u8\[3\] | padding                           |
 
+# Relationship Types
+
+Every valid entry in the internal friends list contains a relationship field.
+
+| Value | Description                                                                                                                                                                                                                                                                           |
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0     | The target has been added locally and on the server, but is only "provisionally registered." The target has not added you as a friend.                                                                                                                                                |
+| 1     | The target has been added locally and on the server and is fully registered: the target has also added you as a friend.                                                                                                                                                               |
+| 2     | No relationship between you and the target has been found: neither you nor the target have added each other.                                                                                                                                                                          |
+| 3     | The relationship has been deleted: the target has deleted your friend card.                                                                                                                                                                                                           |
+| 4     | The target has been added locally: you were not online when you added the target. (presumably only happens when the "Local" method of adding a friend is used. When the system connects to the internet, a background task runs to register this relationship on the friends server.) |
+|       |                                                                                                                                                                                                                                                                                       |
+
 # Server Types
 
 The server type is stored internally as a combination of two values, the first value represents the server type letter and the second value is the number that follows it. For example, the production server type is "L1", so the first value is 0 and the second value is 1.
