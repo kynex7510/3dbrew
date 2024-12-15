@@ -11,8 +11,7 @@ title = 'FS:OpenFile'
 {{% ipc/param %}}Path Size (including null-terminator){{% / %}}
 {{% ipc/param %}}[Open Flags](Filesystem_services#openflags "wikilink"){{% / %}}
 {{% ipc/param %}}[Attributes](Filesystem_services#attributes "wikilink") (usually 0){{% / %}}
-{{% ipc/param %}}(PathSize \<\< 14) \| 2{{% / %}}
-{{% ipc/param %}}Path Data Pointer{{% / %}}
+{{% ipc/staticbuffer id=0 %}}Path Data Pointer{{% / %}}
 {{% / %}}
 
 # Response
