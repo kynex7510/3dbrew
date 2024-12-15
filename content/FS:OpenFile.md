@@ -16,8 +16,8 @@ title = 'FS:OpenFile'
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x08020043" %}}
 {{% ipc/result %}}
 {{% ipc/movehandle count=1 %}}
-{{% ipc/param %}}File client session handle{{% / %}}
+{{% ipc/handleentry %}}File client session handle{{% / %}}
 {{% / %}}
