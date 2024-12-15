@@ -4,13 +4,15 @@ title = 'FRDU:Logout'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00040000\] |
+{{% ipc/request header="0x00040000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00040040" %}}
+{{% ipc/result %}}
+{{% / %}}
+
+# Description
+
+Logs the current session out of friends services.
