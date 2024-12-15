@@ -1,5 +1,6 @@
 +++
 title = 'FS:OpenFile'
+categories = ["fs:USER commands","fs:LDR commands"]
 +++
 
 # Request
@@ -21,3 +22,5 @@ title = 'FS:OpenFile'
 {{% ipc/movehandle count=1 %}}
 {{% ipc/handleentry %}}File client session handle{{% / %}}
 {{% / %}}
+
+[Category:fs:USER commands](Category:fs:USER_commands "wikilink") [Category:fs:LDR commands](Category:fs:LDR_commands "wikilink")
