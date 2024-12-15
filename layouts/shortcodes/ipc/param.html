@@ -3,6 +3,6 @@
 {{ .Page.Scratch.Set "ipcindex" (add $ipcindex $span) }}
 
 <tr>
-  <td>{{ $ipcindex }}{{ if ne $span 1 }}-{{ $span }}{{ end }}</td>
+  <td>{{ $ipcindex }}{{ if ne $span 1 }}-{{ sub (add $ipcindex $span) 1 }}{{ end }}</td>
   <td>{{ .Inner }}</td>
 </tr>
