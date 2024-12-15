@@ -4,25 +4,19 @@ title = 'FRDU:GetMyPresence'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00080000\] |
+{{% ipc/request header="0x00080000" %}}
+{{% / %}}
 
-The following is located 0x100-bytes after the beginning of the above command buffer:
-
-| Index Word | Description                                                                         |
-|------------|-------------------------------------------------------------------------------------|
-| 0          | (300 \<\< 14) \| 2                                                                  |
-| 1          | Pointer to [FriendPresence](FRDU:GetMyPresence#friendpresence "wikilink") structure |
+# Request Static Buffers
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00080042" %}}
+{{% ipc/result %}}
+{{% ipc/staticbuffer id=0 %}}Pointer to [Presence](FRDU:GetMyPresence#presence_structure "wikilink") structure{{% / %}}
+{{% / %}}
 
-# FriendPresence
+# Presence Structure
 
 | Offset | Size  | Description                    |
 |--------|-------|--------------------------------|
