@@ -19,6 +19,6 @@ title = 'FS:OpenFile'
 
 {{% ipc/request %}}
 {{% ipc/result %}}
-{{% ipc/param %}}Move handle descriptor (0x10){{% / %}}
+{{% ipc/movehandle count=1 %}}
 {{% ipc/param %}}File client session handle{{% / %}}
 {{% / %}}
