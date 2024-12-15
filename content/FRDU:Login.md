@@ -4,15 +4,17 @@ title = 'FRDU:Login'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00030002\] |
-| 1          | 0x0                        |
-| 2          | Completion event handle.   |
+{{% ipc/request header="0x00030002" %}}
+{{% ipc/copyhandle count=1 %}}
+{{% ipc/param %}}Completion event handle{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00030040" %}}
+{{% ipc/result %}}
+{{% / %}}
+
+# Description
+
+Performs a login for the friends services.
