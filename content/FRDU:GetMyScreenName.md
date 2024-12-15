@@ -4,14 +4,12 @@ title = 'FRDU:GetMyScreenName'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00090000\] |
+{{% ipc/request header="0x00090000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code                |
-| 1          | Result code                |
-| 2          | 20-byte UTF-16 screen name |
+{{% ipc/request header="0x000901c0" %}}
+{{% ipc/result %}}
+{{% ipc/param span=8 %}}UTF-16 screen name (10 characters + null termination){{% / %}}
+{{% / %}}
