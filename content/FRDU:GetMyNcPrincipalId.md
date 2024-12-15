@@ -4,19 +4,15 @@ title = 'FRDU:GetMyNcPrincipalId'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x000D0000\] |
-|            |                            |
+{{% ipc/request header="0x000E0000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x000D0080\] |
-| 1          | Result code                |
-| 2          | NcPrincipalId              |
-|            |                            |
+{{% ipc/request header="0x000E0080" %}}
+{{% ipc/result %}}
+{{% ipc/param %}}NcPrincipalId{{% / %}}
+{{% / %}}
 
 # Description
 
