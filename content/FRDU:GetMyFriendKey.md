@@ -4,18 +4,16 @@ title = 'FRDU:GetMyFriendKey'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00050000\] |
+{{% ipc/request header="0x00050000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                                                     |
-|------------|-----------------------------------------------------------------|
-| 0          | Header code                                                     |
-| 1          | Result code                                                     |
-| 2-5        | The console's [FriendKey](Friend_Services#friendkey "wikilink") |
+{{% ipc/request header="0x00050140" %}}
+{{% ipc/result %}}
+{{% ipc/param span=4 %}}The [FriendKey](Friend_Services#friendkey "wikilink") of the console{{% / %}}
+{{% / %}}
 
 # Description
 
-Returns the console's friend key.
+Returns the friend key of the console.
