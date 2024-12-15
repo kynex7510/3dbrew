@@ -143,14 +143,14 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 
 ## Profile
 
-| Type    | Name                              |
-|---------|-----------------------------------|
-| u8      | Region                            |
-| u8      | Country                           |
-| u8      | Area                              |
-| u8      | Language                          |
-| u8      | Platform, always 2 (PLATFORM_CTR) |
-| u8\[3\] | padding                           |
+| Offset | Size | Description                           |
+|--------|------|---------------------------------------|
+| 0x0    | 0x1  | u8, Region                            |
+| 0x1    | 0x1  | u8, Country                           |
+| 0x2    | 0x1  | u8, Area                              |
+| 0x3    | 0x1  | u8, Language                          |
+| 0x4    | 0x1  | u8, Platform, always 2 (PLATFORM_CTR) |
+| 0x5    | 0x3  | padding                               |
 
 # Relationship Types
 
