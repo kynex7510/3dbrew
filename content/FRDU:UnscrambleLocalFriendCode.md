@@ -6,7 +6,7 @@ title = 'FRDU:UnscrambleLocalFriendCode'
 
 {{% ipc/request header="0x001C0042" %}}
 {{% ipc/param %}}Count{{% / %}}
-{{% ipc/staticbuffer id=0 %}}Input scrambled friend codes buffer (12 bytes each){{% / %}}
+{{% ipc/staticbuffer id=1 %}}Input scrambled friend codes buffer (12 bytes each){{% / %}}
 {{% / %}}
 
 # Request Static Buffers
