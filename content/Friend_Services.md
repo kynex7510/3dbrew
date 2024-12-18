@@ -3,7 +3,7 @@ title = 'Friend Services'
 categories = ["Services"]
 +++
 
-# Friend Service "frd:u"
+# Friend User Service "frd:u"
 
 | Command Header | Description                                                            |
 |----------------|------------------------------------------------------------------------|
