@@ -5,8 +5,8 @@ title = 'FRDU:GetFriendScreenName'
 # Request
 
 {{% ipc/request header="0x00130142" %}}
-{{% ipc/param %}}Output screen names buffer size (maximum 0x800){{% / %}}
-{{% ipc/param %}}Output [Mii](Mii#mii_format "wikilink") character sets buffer size (maximum 0x800){{% / %}}
+{{% ipc/param %}}<b>Number of UTF16 characters</b> the output screen names buffer can fit (maximum 0x800, corresponding to a total max buffer size of 0x1000) (Count \* 11){{% / %}}
+{{% ipc/param %}}Output [Mii](Mii#mii_format "wikilink") character sets buffer size <b>(u8)</b> (total max buffer size 0x800){{% / %}}
 {{% ipc/param %}}Count{{% / %}}
 {{% ipc/param %}}bool, Mask non-ASCII characters (see description){{% / %}}
 {{% ipc/param %}}bool, ProfanityFlag{{% / %}}
