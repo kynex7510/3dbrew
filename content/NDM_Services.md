@@ -31,17 +31,9 @@ categories = ["Services"]
 | 0x00160000     | [GetDefaultDaemons](NDMU:GetDefaultDaemons "wikilink")               |
 | 0x00170000     | [ClearHalfAwakeMacFilter](NDMU:ClearHalfAwakeMacFilter "wikilink")   |
 
-**enum ExclusiveState**
+# Types
 
-| Enum                                 | Value |
-|--------------------------------------|-------|
-| EXCLUSIVE_STATE_NONE                 | 0     |
-| EXCLUSIVE_STATE_INFRASTRUCTURE       | 1     |
-| EXCLUSIVE_STATE_LOCAL_COMMUNICATIONS | 2     |
-| EXCLUSIVE_STATE_STREETPASS           | 3     |
-| EXCLUSIVE_STATE_STREETPASS_DATA      | 4     |
-
-**enum Daemon**
+## Daemon
 
 | Enum           | Value |
 |----------------|-------|
@@ -50,7 +42,7 @@ categories = ["Services"]
 | DAEMON_NIM     | 2     |
 | DAEMON_FRIENDS | 3     |
 
-**enum DaemonMask**
+## DaemonMask
 
 | Enum                | Value                 |
 |---------------------|-----------------------|
@@ -59,7 +51,9 @@ categories = ["Services"]
 | DAEMON_MASK_NIM     | 1 \<\< DAEMON_NIM     |
 | DAEMON_MASK_FRIENDS | 1 \<\< DAEMON_FRIENDS |
 
-**enum DaemonStatus**
+## DaemonStatus
+
+Represents the status of a single daemon.
 
 | Enum                     | Value |
 |--------------------------|-------|
@@ -68,7 +62,9 @@ categories = ["Services"]
 | DAEMON_STATUS_SUSPENDING | 2     |
 | DAEMON_STATUS_SUSPENDED  | 3     |
 
-**enum State**
+## State
+
+Represents the internal state of the NDM module.
 
 | Enum                                     | Value |
 |------------------------------------------|-------|
@@ -84,5 +80,17 @@ categories = ["Services"]
 | STATE_CEC_WORKING                        | 9     |
 | STATE_CEC_FORCE_SUSPENDING               | 10    |
 | STATE_CEC_SUSPENDING                     | 11    |
+
+## ExclusiveState
+
+Represents the exlusive state of the NDM module.
+
+| Enum                                 | Value |
+|--------------------------------------|-------|
+| EXCLUSIVE_STATE_NONE                 | 0     |
+| EXCLUSIVE_STATE_INFRASTRUCTURE       | 1     |
+| EXCLUSIVE_STATE_LOCAL_COMMUNICATIONS | 2     |
+| EXCLUSIVE_STATE_STREETPASS           | 3     |
+| EXCLUSIVE_STATE_STREETPASS_DATA      | 4     |
 
 [Category:Services](Category:Services "wikilink")
