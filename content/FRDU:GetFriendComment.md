@@ -21,4 +21,4 @@ title = 'FRDU:GetFriendComment'
 
 # Description
 
-Returns the friend comment (personal message) set in the friends list for the specified friend keys. If an input friend key was not found in the friends list, t
+Returns the friend comment (personal message) set in the friends list for the specified friend keys. If an input friend key was not found in the friends list, an internal default placeholder friend entry will be used to populate the data.
