@@ -52,7 +52,7 @@ categories = ["Services"]
 | 0x002B0000     | [GetServiceLocatorData](FRDU:GetServiceLocatorData "wikilink")         |
 | 0x002C0002     | [DetectNatProperties](FRDU:DetectNatProperties "wikilink")             |
 | 0x002D0000     | [GetNatProperties](FRDU:GetNatProperties "wikilink")                   |
-| 0x002E0000     | [GetServerTimeInterval](FRDU:GetServerTimeInterval "wikilink")         |
+| 0x002E0000     | [GetServerTimeDifference](FRDU:GetServerTimeDifference "wikilink")     |
 | 0x002F0040     | [AllowHalfAwake](FRDU:AllowHalfAwake "wikilink")                       |
 | 0x00300000     | [GetServerTypes](FRDU:GetServerTypes "wikilink")                       |
 | 0x00310082     | [GetFriendComment](FRDU:GetFriendComment "wikilink")                   |
