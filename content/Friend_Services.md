@@ -190,15 +190,15 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 
 ## ServiceLocatorData
 
-| Offset | Size  | Description                                                 |
-|--------|-------|-------------------------------------------------------------|
-| 0x0    | 0x4   | [NASC Login Result](Friend_Services#nasc_result "wikilink") |
-| 0x4    | 0x4   | HTTP Status Code                                            |
-| 0x8    | 0x80  | Service Host (string)                                       |
-| 0x88   | 0x100 | Service Token (string)                                      |
-| 0x188  | 0x1   | `statusdata` from NASC response                             |
-| 0x189  | 0x7   | padding                                                     |
-| 0x190  | 0x8   | NEX Timestamp for server time                               |
+| Offset | Size  | Description                                                  |
+|--------|-------|--------------------------------------------------------------|
+| 0x0    | 0x4   | [NASC SVCLOC Result](Friend_Services#nasc_result "wikilink") |
+| 0x4    | 0x4   | HTTP Status Code                                             |
+| 0x8    | 0x80  | Service Host (string)                                        |
+| 0x88   | 0x100 | Service Token (string)                                       |
+| 0x188  | 0x1   | `statusdata` from NASC response                              |
+| 0x189  | 0x7   | padding                                                      |
+| 0x190  | 0x8   | NEX Timestamp for server time                                |
 
 # Approach Contexts
 
