@@ -216,7 +216,7 @@ It is possible to add a friend using an [encrypted payload](Friend_Services#encr
 | 0x48   | 0x1   | bool, Has Mii                                                                                                 |
 | 0x49   | 0x1   | bool, Profanity Flag                                                                                          |
 | 0x4A   | 0x1   | u8, [Mii Character Set](Mii#mii_format "wikilink")                                                            |
-| 0x4B   | 0x70  | [Friend Mii Data](Friend_Services#mii_data "wikilink") wrapped using <APT:Wrap>                               |
+| 0x4B   | 0x70  | [Friend Mii Data](Friend_Services#mii_data "wikilink") wrapped using <APT:Wrap> (Unwrapped size: 0x60)        |
 | 0xBB   | 0x16  | 10-Character UTF-16 Screen Name (10 characters + null termination)                                            |
 | 0xD1   | 0x10F | unused                                                                                                        |
 
