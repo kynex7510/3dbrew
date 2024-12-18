@@ -200,6 +200,39 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x189  | 0x7   | padding                                                     |
 | 0x190  | 0x8   | NEX Timestamp for server time                               |
 
+# Approach Contexts
+
+The approach context (in the form of an [encrypted payload](Friend_Services#encrypted_approachcontext_payload "wikilink")) of the console can be retrieved using [FRDU:GetMyApproachContext](FRDU:GetMyApproachContext "wikilink").
+
+[Encrypted payloads](Friend_Services#encrypted_approachcontext_payload "wikilink") can be decrypted using [FRDU:DecryptApproachContext](FRDU:DecryptApproachContext "wikilink").
+
+It is possible to add a friend using an [encrypted payload](Friend_Services#encrypted_approachcontext_payload "wikilink") using [FRDA:AddFriendWithApproach](FRDA:AddFriendWithApproach "wikilink").
+
+## ApproachContext
+
+| Offset | Size  | Description                                                                                                   |
+|--------|-------|---------------------------------------------------------------------------------------------------------------|
+| 0x0    | 0x48  | [Friend Profile](Friend_Services#friend_profile "wikilink") of the console that created this approach context |
+| 0x48   | 0x1   | bool, Has Mii                                                                                                 |
+| 0x49   | 0x1   | bool, Profanity Flag                                                                                          |
+| 0x4A   | 0x1   | u8, [Mii Character Set](Mii#mii_format "wikilink")                                                            |
+| 0x4B   | 0x70  | [Friend Mii Data](Friend_Services#mii_data "wikilink") wrapped using <APT:Wrap>                               |
+| 0xBB   | 0x16  | 10-Character UTF-16 Screen Name (10 characters + null termination)                                            |
+| 0xD1   | 0x10F | unused                                                                                                        |
+
+## Encrypted ApproachContext Payload
+
+| Offset | Size  | Description                                                                                                                                                                                  |
+|--------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0x0    | 0x1   | (u8) unknown, initialized to 1 internally, set to 1 when the PS encryption command succeeds, otherwise 0. Must be 1 when decrypting, otherwise error 0xE0E0C4E9 is returned                  |
+| 0x1    | 0x1   | (u8) unknown, always set to 0                                                                                                                                                                |
+| 0x2    | 0x1   | (u8) unknown, initialized to 2 internally, always set to either 1 when the PS encryption command succeeds, or otherwise 0. Must be 1 when decrypting, otherwise error 0xE0E0C4E9 is returned |
+| 0x3    | 0x1   | (u8) unknown, always set to 0                                                                                                                                                                |
+| 0x4    | 0x4   | u32, Principal ID (part of nonce)                                                                                                                                                            |
+| 0x8    | 0x8   | u64, Friend Code (part of nonce)                                                                                                                                                             |
+| 0x10   | 0x1E0 | [ApproachContext](Friend_Services#approachcontext "wikilink")                                                                                                                                |
+| 0x1F0  | 0x10  | AES-CCM MAC over the encrypted payload at 0x10 thru 0x1F0                                                                                                                                    |
+
 # Notification Events
 
 The friends module exposes a "Notification Events" system that allows client sessions to be notified of various related events.
