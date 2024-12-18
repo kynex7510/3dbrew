@@ -16,7 +16,7 @@ title = 'FRDU:GetFriendComment'
 
 {{% ipc/request header="0x00310042" %}}
 {{% ipc/result %}}
-{{% ipc/staticbuffer id=0 %}}Output friend comment buffer{{% / %}}
+{{% ipc/staticbuffer id=0 %}}Pointer to output UTF-16 friend comments{{% / %}}
 {{% / %}}
 
 # Description
