@@ -71,9 +71,9 @@ categories = ["Services"]
 | 0x00030040     | SuspendAsync                     |
 | 0x00040000     | QueryStatus                      |
 
-# "frd:a"
+# Friend Admin Service "frd:a"
 
-This contains a similar (probably the same) command handler from 0x0001.... to 0x002F.... as them in frd:u. In addition, it also contains
+Includes all the commands in [frd:u](Friend_Services#friend_user_service_frdu "wikilink"), and, in addition:
 
 | Command Header | Description                                              |
 |----------------|----------------------------------------------------------|
