@@ -176,6 +176,18 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x7F   | 0x1  | padding                                                                            |
 | 0x80   | 0x60 | This friend's [Mii](Friend_Services#mii_data "wikilink")                           |
 
+## GameAuthenticationData
+
+| Offset | Size  | Description                                                 |
+|--------|-------|-------------------------------------------------------------|
+| 0x0    | 0x4   | [NASC Login Result](Friend_Services#nasc_result "wikilink") |
+| 0x4    | 0x4   | HTTP Status Code                                            |
+| 0x8    | 0x20  | Server Address (string)                                     |
+| 0x28   | 0x2   | Server Port                                                 |
+| 0x2A   | 0x6   | padding                                                     |
+| 0x30   | 0x100 | Token for game server authentication (string)               |
+| 0x130  | 0x8   | NEX Timestamp for server time                               |
+
 # Notification Events
 
 The friends module exposes a "Notification Events" system that allows client sessions to be notified of various related events.
@@ -228,6 +240,25 @@ Every valid entry in the internal friends list contains a relationship field.
 |------|-------------------------------------------------------------------------------------------------|
 | 0x1  | Unknown (something like "target ever registered you"?), set when relationship type is 1, 3 or 4 |
 | 0x2  | Unknown, set only when relationship type is 1                                                   |
+
+# NASC Result
+
+| Value | Description                         |
+|-------|-------------------------------------|
+| 001   | Success.                            |
+| 101   | Game server is under maintenance.   |
+| 102   | Device is banned.                   |
+| 107   | Invalid product code.               |
+| 109   | Invalid/missing request parameter.  |
+| 110   | Game server is no longer available. |
+| 112   | Invalid SVC.                        |
+| 119   | Invalid FPD version.                |
+| 120   | Invalid title version.              |
+| 121   | Invalid device certificate.         |
+| 122   | Invalid PID HMAC.                   |
+| 123   | ROM ID is banned.                   |
+| 125   | Invalid Game ID.                    |
+| 127   | Invalid key hash.                   |
 
 # Server Types
 
