@@ -24,6 +24,6 @@ title = 'FRDU:RequestGameAuthentication'
 
 Requests NEX authentication data for game servers.
 
-To request authentication data, the friends module sends a NASC `LOGIN` HTTP request using the given information (see [Online Play](Online_Play "wikilink") for more details).
+To request authentication data, the friends module sends a NASC `LOGIN`-type HTTP request using the given information (see [Online Play](Online_Play "wikilink") for more details).
 
 Once the completion handle has been signaled, the client can use [FRDU:GetGameAuthenticationData](FRDU:GetGameAuthenticationData "wikilink") to retrieve the data received from the server.
