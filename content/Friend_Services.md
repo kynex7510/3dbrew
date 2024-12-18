@@ -64,12 +64,12 @@ categories = ["Services"]
 
 # Friend Network Daemon Service "frd:n"
 
-| Command Header | Description                      |
-|----------------|----------------------------------|
-| 0x00010000     | GetHandleOfNdmStatusChangedEvent |
-| 0x00020000     | Resume                           |
-| 0x00030040     | SuspendAsync                     |
-| 0x00040000     | QueryStatus                      |
+| Command Header | Description                                                                          |
+|----------------|--------------------------------------------------------------------------------------|
+| 0x00010000     | [GetHandleOfNdmStatusChangedEvent](FRDN:GetHandleOfNdmStatusChangedEvent "wikilink") |
+| 0x00020000     | [Resume](FRDN:Resume "wikilink")                                                     |
+| 0x00030040     | [SuspendAsync](FRDN:SuspendAsync "wikilink")                                         |
+| 0x00040000     | [QueryStatus](FRDN:QueryStatus "wikilink")                                           |
 
 # Friend Admin Service "frd:a"
 
