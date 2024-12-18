@@ -201,10 +201,7 @@ Display transfers are performed asynchronously, so after requesting a
 display transfer you should wait for the PPF interrupt to fire before
 reading the output data.
 
-Some color formats seem to require specific input / output sizes when
-performing a display transfer, doing an RGB5A1-\>RGBA4 display transfer
-would never fire the PPF interrupt with a 32x32 buffer, increasing the
-buffer to 128x128 made it fire correctly.
+The minimum supported dimension for output is 64x64, anything lower will hang the engine.
 
 ### Trigger Texture Copy
 
