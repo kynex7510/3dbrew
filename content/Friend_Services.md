@@ -62,7 +62,7 @@ categories = ["Services"]
 | 0x00350082     | [DecryptApproachContext](FRDU:DecryptApproachContext "wikilink")       |
 | 0x00360000     | [GetExtendedNatProperties](FRDU:GetExtendedNatProperties "wikilink")   |
 
-# "frd:n"
+# Friend Network Daemon Service "frd:n"
 
 | Command Header | Description                      |
 |----------------|----------------------------------|
