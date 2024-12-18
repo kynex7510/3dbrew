@@ -263,19 +263,19 @@ Once the handle has been signaled by the friends module, the client can use [FRD
 
 ## Notification Event Types
 
-| Value | Description                                                                                                                       |
-|-------|-----------------------------------------------------------------------------------------------------------------------------------|
-| 1     | The console went online.                                                                                                          |
-| 2     | The console went offline.                                                                                                         |
-| 3     | A friend is now present (went online).                                                                                            |
-| 5     | A friend changed their Mii.                                                                                                       |
-| 6     | A friend changed their [Profile](Friend_Services#profile "wikilink").                                                             |
-| 7     | A friend is no longer present (went offline).                                                                                     |
-| 8     | A friend has added you back as a friend (if you had added them before as a "provisionally registered" friend).                    |
-| 9     | A friend sent you a \*\*joinable\*\* game invitation(?) (only signaled when the console's JoinGameID matches that of the friend). |
-| 146   | A friend changed their favorite game.                                                                                             |
-| 147   | A friend changed their personal message.                                                                                          |
-| 149   | A friend sent you an invitation. (signaled regardless of whether the console's JoinGameID matches that of the friend)             |
+| Value | Description                                                                                                                      |
+|-------|----------------------------------------------------------------------------------------------------------------------------------|
+| 1     | The console went online.                                                                                                         |
+| 2     | The console went offline.                                                                                                        |
+| 3     | A friend is now present (went online).                                                                                           |
+| 5     | A friend changed their Mii.                                                                                                      |
+| 6     | A friend changed their [Profile](Friend_Services#profile "wikilink").                                                            |
+| 7     | A friend is no longer present (went offline).                                                                                    |
+| 8     | A friend has added you back as a friend (if you had added them before as a "provisionally registered" friend).                   |
+| 9     | A friend sent you a <b>joinable</b> game invitation(?) (only signaled when the console's JoinGameID matches that of the friend). |
+| 146   | A friend changed their favorite game.                                                                                            |
+| 147   | A friend changed their personal message.                                                                                         |
+| 149   | A friend sent you an invitation. (signaled regardless of whether or not the console's JoinGameID matches that of the friend)     |
 
 ## EventNotification
 
