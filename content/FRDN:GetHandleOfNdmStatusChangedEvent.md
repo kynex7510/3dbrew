@@ -18,3 +18,5 @@ title = 'FRDN:GetHandleOfNdmStatusChangedEvent'
 # Description
 
 Returns an event handle that will be signaled every time the friends service daemon changes its [daemon status](NDM_Services#daemonstatus "wikilink").
+
+The new [daemon status](NDM_Services#daemonstatus "wikilink") can be retrieved using [FRDN:QueryStatus](FRDN:QueryStatus "wikilink").
