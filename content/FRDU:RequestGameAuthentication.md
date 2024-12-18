@@ -7,7 +7,7 @@ title = 'FRDU:RequestGameAuthentication'
 {{% ipc/request header="0x00280244" %}}
 {{% ipc/param %}}NEX Server ID{{% / %}}
 {{% ipc/param span=6 %}}UTF-16 `ingamesn` value for NASC requests, see [Online Play](Online_Play "wikilink"){{% / %}}
-{{% ipc/param %}}u32, Major SDK version{{% / %}}
+{{% ipc/param %}}u8, Major SDK version{{% / %}}
 {{% ipc/param %}}u8, Minor SDK version{{% / %}}
 {{% ipc/processid %}}
 {{% ipc/copyhandle count=1 %}}
