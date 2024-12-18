@@ -4,15 +4,16 @@ title = 'FRDA:RemoveFriend'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x04090100\] |
-| 1          | principal_id               |
-| 2..3       | u64 friend_code            |
+{{% ipc/request header="0x04090100" %}}
+{{% ipc/param span=4 %}}[FriendKey](Friend_Services#friendkey "wikilink"){{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x04090040" %}}
+{{% ipc/result %}}
+{{% / %}}
+
+# Description
+
+Removes a friend from the friends list. If the system is connected to the internet, the friend will also be removed server-side.
