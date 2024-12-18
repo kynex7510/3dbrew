@@ -16,3 +16,5 @@ title = 'FRDN:Resume'
 # Description
 
 Resumes the friends service daemon. This does nothing if the EULA version read from the [Config Savegame](Config_Savegame "wikilink") is zero.
+
+The caller is notified when the action is completed using the handle retrieved with [FRDN:GetHandleOfNdmStatusChangedEvent](FRDN:GetHandleOfNdmStatusChangedEvent "wikilink").
