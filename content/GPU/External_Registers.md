@@ -527,18 +527,17 @@ likewise only used if bit 3 is set, and ignored otherwise.
 
 ### TextureCopy
 
-When bit 3 of the control register is set, the hardware performs a
-TextureCopy-mode transfer. In this mode, all other bits of the control
-register (except for bit 2, which still needs to be set correctly) and
-the regular dimension registers are ignored, and no format conversions
-are done. Instead, it performs a raw data copy from the source to the
-destination, but with a configurable gap between lines. The total amount
-of bytes to copy is specified in the size register, and the hardware
-loops reading lines from the input and writing them to the output until
-this amount is copied. The "gap" specified in the input/output dimension
-register is the number of chunks to skip after each "width" chunks of
-the input/output, and is NOT counted towards the total size of the
-transfer.
+When bit 3 of the control register is set, the hardware performs a TextureCopy-mode transfer: no format conversions are done, instead a raw data copy is performed from the source to the destination, with a configurable gap between lines. All bits of the control register are ignored, except for input/output dimensions, which are used for line width and gap, and bit 2, which must be set when gaps are used.
+
+The total amount of bytes to copy is specified in the size register, the hardware loops reading lines from the input and writing them to the output until this amount is copied. The gap specifies the number of bytes to skip after each line read (a gap of 0 results in a contiguous read). Gaps do not count towards the total size of the transfer.
+
+When setting line width and gap they must be divided by 2 (it can be thought as the calculation being done in bits, and the values being stripped of their lower 4 bits for the alignment). For example, if the left half of a 32x32 RGB8 texture is to be copied, the parameters will be:
+
+```
+line width = (16 * 24) >> 4 = 24
+gap = line width
+size = (16 * 32 * 24) >> 4 = 768
+```
 
 By correctly calculating the input and output gap sizes it is possible
 to use this functionality to copy arbitrary sub-rectangles between
@@ -548,8 +547,7 @@ textures/framebuffers it's important to remember that the contents of a
 tile are laid out sequentially in memory, and so this should be taken
 into account when calculating the transfer parameters.
 
-Specifying invalid/junk values for the TextureCopy dimensions can result
-in the GPU hanging while attempting to process this TextureCopy.
+Specifying invalid/junk values for the TextureCopy dimensions can result in the GPU hanging while attempting to process this TextureCopy. For instance, when in contiguous mode the size must be at least 16; when in gap mode, the size must be at least 192, and the line width must not be 0.
 
 ## Command List
 
