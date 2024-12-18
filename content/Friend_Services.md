@@ -233,6 +233,24 @@ It is possible to add a friend using an [encrypted payload](Friend_Services#encr
 | 0x10   | 0x1E0 | [ApproachContext](Friend_Services#approachcontext "wikilink")                                                                                                                                |
 | 0x1F0  | 0x10  | AES-CCM MAC over the encrypted payload at 0x10 thru 0x1F0                                                                                                                                    |
 
+## Decrypted ApproachContext Payload
+
+| Offset | Size  | Description                                                                                                                                                                                  |
+|--------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0x0    | 0x1   | (u8) unknown, initialized to 1 internally, set to 1 when the PS encryption command succeeds, otherwise 0. Must be 1 when decrypting, otherwise error 0xE0E0C4E9 is returned                  |
+| 0x1    | 0x1   | (u8) unknown, always set to 0                                                                                                                                                                |
+| 0x2    | 0x1   | (u8) unknown, initialized to 2 internally, always set to either 1 when the PS encryption command succeeds, or otherwise 0. Must be 1 when decrypting, otherwise error 0xE0E0C4E9 is returned |
+| 0x3    | 0x1   | (u8) unknown, always set to 0                                                                                                                                                                |
+| 0x4    | 0x1   | bool, Has Mii                                                                                                                                                                                |
+| 0x5    | 0x1   | bool, Profanity Flag                                                                                                                                                                         |
+| 0x6    | 0x1   | u8, [Mii Character Set](Mii#mii_format "wikilink")                                                                                                                                           |
+| 0x7    | 0x1   | padding                                                                                                                                                                                      |
+| 0x8    | 0x10  | [FriendKey](Friend_Services#friendkey "wikilink") of the console that created this approach context                                                                                          |
+| 0x18   | 0x48  | [FriendProfile](Friend_Services#friendprofile "wikilink") of the console that created this approach context                                                                                  |
+| 0x60   | 0x60  | [Friend Mii Data](Friend_Services#mii_data "wikilink") of the console that created this approach context                                                                                     |
+| 0xC0   | 0x16  | 10-Character UTF-16 Screen Name (10 characters + null termination)                                                                                                                           |
+| 0xD6   | 0x12A | unused                                                                                                                                                                                       |
+
 # Notification Events
 
 The friends module exposes a "Notification Events" system that allows client sessions to be notified of various related events.
