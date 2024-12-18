@@ -5,7 +5,7 @@ title = 'FRDU:UpdateGameModeDescription'
 # Request
 
 {{% ipc/request header="0x001D0002" %}}
-{{% ipc/staticbuffer id=0 %}}Input UTF-16 127-Character Game Mode Description (127 Characters + null termination){{% / %}}
+{{% ipc/staticbuffer id=1 %}}Input UTF-16 127-Character Game Mode Description (127 Characters + null termination){{% / %}}
 {{% / %}}
 
 # Response
