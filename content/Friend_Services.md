@@ -206,7 +206,7 @@ The approach context (in the form of an [encrypted payload](Friend_Services#encr
 
 [Encrypted payloads](Friend_Services#encrypted_approachcontext_payload "wikilink") can be decrypted using [FRDU:DecryptApproachContext](FRDU:DecryptApproachContext "wikilink").
 
-It is possible to add a friend using an [encrypted payload](Friend_Services#encrypted_approachcontext_payload "wikilink") using [FRDA:AddFriendWithApproach](FRDA:AddFriendWithApproach "wikilink").
+It is possible to add a friend using an [encrypted payload](Friend_Services#encrypted_approachcontext_payload "wikilink") using [FRDU:AddFriendWithApproach](FRDU:AddFriendWithApproach "wikilink").
 
 ## ApproachContext
 
