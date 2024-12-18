@@ -4,21 +4,19 @@ title = 'FRDA:CreateLocalAccount'
 
 # Request
 
-| Index Word | Description                                                         |
-|------------|---------------------------------------------------------------------|
-| 0          | Header code \[0x04010100\]                                          |
-| 1          | Local account ID                                                    |
-| 2          | NASC Environment (0: Prod, 1: Test, 2: Dev)                         |
-| 3          | [Server type](Friend_Services#server_types "wikilink") letter value |
-| 4          | [Server type](Friend_Services#server_types "wikilink") number value |
+{{% ipc/request header="0x04010100" %}}
+{{% ipc/param %}}u8, local account ID of to be created account{{% / %}}
+{{% ipc/param %}}NASC Environment (0: Production, 1: Testing, 2: Development){{% / %}}
+{{% ipc/param %}}[Server type](Friend_Services#server_types "wikilink") letter value{{% / %}}
+{{% ipc/param %}}u8, [Server type](Friend_Services#server_types "wikilink") number value{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x04010040" %}}
+{{% ipc/result %}}
+{{% / %}}
 
 # Description
 
-This creates a new local account with the given parameters.
+Creates a new local account with the given server configuration.
