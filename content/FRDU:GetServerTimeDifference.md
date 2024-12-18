@@ -12,6 +12,7 @@ title = 'FRDU:GetServerTimeDifference'
 {{% ipc/request header="0x002E00c0" %}}
 {{% ipc/result %}}
 {{% ipc/param span=2 %}}u64, time difference in milliseconds{{% / %}}
+{{% / %}}
 
 # Description
 
