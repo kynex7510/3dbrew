@@ -4,21 +4,18 @@ title = 'FRDU:GetServerTypes'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00300000\] |
+{{% ipc/request header="0x00300000" %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description                                                         |
-|------------|---------------------------------------------------------------------|
-| 0          | Header code                                                         |
-| 1          | Result code                                                         |
-| 2          | NASC Environment (0: Prod, 1: Test, 2: Dev)                         |
-| 3          | [Server type](Friend_Services#server_types "wikilink") letter value |
-| 4          | [Server type](Friend_Services#server_types "wikilink") number value |
+{{% ipc/request header="0x00300100" %}}
+{{% ipc/result %}}
+{{% ipc/param %}}NASC Environment (0: Production, 1: Testing, 2: Development){{% / %}}
+{{% ipc/param %}}[Server type](Friend_Services#server_types "wikilink") letter value{{% / %}}
+{{% ipc/param %}}[Server type](Friend_Services#server_types "wikilink") number value{{% / %}}
+{{% / %}}
 
 # Description
 
-This returns the environment settings of the current account being used
-by friends.
+Returns the server environment settings of the current account being used by the friends module.
