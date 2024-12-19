@@ -7,7 +7,7 @@ title = 'FRDA:AddFriendOnline'
 {{% ipc/request header="0x04060042" %}}
 {{% ipc/param %}}Principal ID of friend to add{{% / %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Completion handle{{% / %}}
+{{% ipc/handleentry %}}Completion handle{{% / %}}
 {{% / %}}
 
 # Response
