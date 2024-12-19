@@ -6,7 +6,7 @@ title = 'FRDU:AttachToEventNotification'
 
 {{% ipc/request header="0x00200002" %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Notification event handle{{% / %}}
+{{% ipc/handleentry %}}Notification event handle{{% / %}}
 {{% / %}}
 
 # Response
