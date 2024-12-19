@@ -7,7 +7,7 @@ title = 'FRDU:AddFriendWithApproach'
 {{% ipc/request header="0x00340046" %}}
 {{% ipc/param %}}? (unused){{% / %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Completion handle{{% / %}}
+{{% ipc/handleentry %}}Completion handle{{% / %}}
 {{% ipc/staticbuffer id=3 %}}Input [encrypted ApproachContext payload](Friend_Services#encrypted_approachcontext_payload "wikilink") buffer{{% / %}}
 {{% ipc/staticbuffer id=4 %}}? (unused, max. 0x600){{% / %}}
 {{% / %}}
