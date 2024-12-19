@@ -89,7 +89,7 @@ title = 'PSPXI:EncryptDecryptAes'
 <tr class="odd">
 <td>8</td>
 <td>0x36</td>
-<td>This is used by the friends module.</p>
+<td>Used by the <a {{% href "../Friend_Services" %}} title="wikilink">the friends module</a> for <a {{% href "Friend_Services#approach_contexts" "broken" %}} title="wikilink">ApproachContext</a> encryption. See <a {{% href "FRDU:GetMyApproachContext" "broken" %}} title="wikilink">FRDU:GetMyApproachContext</a>.</p>
 <p>Support for this keytype was added with the NATIVE_FIRM updated with <a {{% href "../2.2.0-X" %}} title="wikilink">2.2.0-X</a>. When the running NATIVE_FIRM doesn't support this keytype, the result is the same as using keytype7.</td>
 </tr>
 <tr class="even">
