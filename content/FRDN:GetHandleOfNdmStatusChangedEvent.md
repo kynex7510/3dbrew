@@ -12,7 +12,7 @@ title = 'FRDN:GetHandleOfNdmStatusChangedEvent'
 {{% ipc/request header="0x00010042" %}}
 {{% ipc/result %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Daemon state change event handle{{% / %}}
+{{% ipc/handleentry %}}Daemon state change event handle{{% / %}}
 {{% / %}}
 
 # Description
