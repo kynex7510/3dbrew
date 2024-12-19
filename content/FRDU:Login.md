@@ -6,7 +6,7 @@ title = 'FRDU:Login'
 
 {{% ipc/request header="0x00030002" %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Completion event handle{{% / %}}
+{{% ipc/handleentry %}}Completion event handle{{% / %}}
 {{% / %}}
 
 # Response
