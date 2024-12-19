@@ -6,7 +6,7 @@ title = 'FRDU:DetectNatProperties'
 
 {{% ipc/request header="0x002C0002" %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Completion handle{{% / %}}
+{{% ipc/handleentry %}}Completion handle{{% / %}}
 {{% / %}}
 
 # Response
