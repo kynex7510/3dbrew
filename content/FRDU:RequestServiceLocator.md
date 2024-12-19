@@ -12,7 +12,7 @@ title = 'FRDU:RequestServiceLocator'
 {{% ipc/param %}}u8, Minor SDK version{{% / %}}
 {{% ipc/processid %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Completion handle{{% / %}}
+{{% ipc/handleentry %}}Completion handle{{% / %}}
 {{% / %}}
 
 # Response
