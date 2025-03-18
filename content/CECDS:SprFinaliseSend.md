@@ -4,7 +4,7 @@ title = 'CECDS:SprFinaliseSend'
 
 # Request
 
-{{% ipc/param %}}Header code `0x040F0000`{{% / %}}
+{{% ipc/request header="0x040F0000" %}}
 {{% / %}}
 
 # Response
