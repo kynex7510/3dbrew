@@ -20,5 +20,4 @@ title = 'BOSSU:StartTaskImmediate'
 
 # Description
 
-Doesn't seem to really "start" the specified task immediately, with
-"normal" tasks at least.
+Doesn't seem to really "start" the specified task immediately, with "normal" tasks at least.
