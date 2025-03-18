@@ -30,7 +30,7 @@ The current serial number scheme began with the DSi, hence its listing in the ta
 | *DSi*               | T                      | V                        |
 | *DSi XL/LL*         | W                      | D                        |
 | *Nintendo Zone Box* | Z                      | *N/A*                    |
-| *Wii U*             | F                      | *unknown*                |
+| *Wii U*             | F/G                    | *unknown*                |
 | *Wii U gamepad*     | J                      | J                        |
 | 3DS                 | C                      | E                        |
 | 3DS XL/LL           | S                      | R                        |
