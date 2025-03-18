@@ -598,6 +598,11 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x29</td>
 <td>ASCII NULL-terminated refresh token</td>
 </tr>
+<tr class="even">
+<td>0x4B</td>
+<td>0x1</td>
+<td>padding</td>
+</tr>
 </tbody>
 </table></td>
 </tr>
