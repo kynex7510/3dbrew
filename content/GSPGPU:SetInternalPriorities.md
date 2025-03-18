@@ -19,6 +19,4 @@ title = 'GSPGPU:SetInternalPriorities'
 
 # Description
 
-Sets the priority for the thread handling incoming GSPGPU commands, and
-the priority when said thread has acquired GPU rights. Both values must
-be \< 0x40.
+Sets the priority for the thread handling incoming GSPGPU commands, and the priority when said thread has acquired GPU rights. Both values must be \< 0x40.
