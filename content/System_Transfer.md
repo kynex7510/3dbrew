@@ -4,7 +4,7 @@ title = 'System Transfer'
 
 **System Transfer** is functionality that was added with the [2.0.0-2](2.0.0-2 "wikilink") June 6/7 2011 system update, which allows you to transfer DSiWare, recorded audio from the Nintendo DSi Sound title, "internal memory" pictures, WFC configuration, from DSi to 3DS. On DSi this is done with the "Nintendo 3DS Transfer Tool" that is downloaded from DSi Shop, while on 3DS System Transfer is accessible in the [System Settings](System_Settings "wikilink"). System Transfer can also be used to transfer 3DSWare to other 3DS systems.
 
-## DSi System Transfer
+# DSi System Transfer
 
 With the DSiWare DSi-\>3DS transfer, savegames are not transferred.
 When transferring DSiWare, the DSi system transfer title will send a SOAP request to the DSi Shop server, this transfers the DSiWare license/ticket to the 3DS shop account. The DSi title will then delete the ticket from NAND. The 3DS will then download the ticket, tmd, and content immediately from shop/CDN.
@@ -55,12 +55,42 @@ Total record size is 0x128 bytes.
 | 0x1c   | 0x4    | Usually zero?                            |
 | 0x20   | ?      | Sometimes the title name is stored here? |
 
-## 3DSWare Transfer
+# 3DS System Transfer
 
-3DSWare transfer is now available 3.0.0-5.
+3DS System Transfer is now available since 3.0.0-5.
 It seems to unlock out of region eShop on the source 3DS (tested on old, not tested on new).
 See also [3DS System transfer](http://www.nintendo.com/consumer/systems/3ds/en_na/gi_index.jsp?menu=transfer&submenu=ctr-gi-apps-transfer-what-data)
 
-## See also
+## System Save Data Transfer
+
+During a system transfer, the source system transfers raw ([DISA](DISA_and_DIFF "wikilink")) [System Save Data](System_SaveData "wikilink") images (AES-128-CTR encrypted) to the destination system.
+
+It appears that both the save data for the [nim](NIM_Services "wikilink") sysmodule and the [Configuration Savegame](Config_Savegame "wikilink") are skipped during this process.
+
+The source system first begins by using [FS:StartDeviceMoveAsSource](FS:StartDeviceMoveAsSource "wikilink") to generate a [Device Move Context](Filesystem_services#devicemovecontext "wikilink").
+
+It then uses [FS:EnumerateSystemSaveData](FS:EnumerateSystemSaveData "wikilink") to obtain a list of system save data IDs.
+
+The source system then creates the encrypted, raw system save data dumps using [archive ID 0x12345681](Filesystem_services#0x12345681_archive_path_data_format "wikilink").
+
+The following encryption is used for these dumps:
+
+\- AES [Keyslot 0x20](AES_Registers#keyslots "wikilink") is used for the key.
+
+\- For the CTR, first, the random 16 bytes from the [Device Move Context](Filesystem_services#devicemovecontext "wikilink") are hashed with SHA256.
+
+\- The SHA256 hash is updated using the UTF-16 path for the save data file (relative to `nand:/data/`<ID0>), beginning with a </code>/</code> (and including a two-byte NULL termination). Therefore the path would be UTF-16 `/sysdata/<lowercase, 8 character hex system save id>/00000000` and two additional NULL bytes.
+
+\- The CTR is generated as follows: `ctr[i] = hash[i] ^ hash[i + 16]` for i from 0 to 16.
+
+The entire [DISA](DISA_and_DIFF "wikilink") save image for each system save is encrypted.
+
+On the destination system, [FS:StartDeviceMoveAsDestination](FS:StartDeviceMoveAsDestination "wikilink") is called using the [Device Move Context](Filesystem_services#devicemovecontext "wikilink") from the source console.
+
+Similarly, [archive ID 0x12345681](Filesystem_services#0x12345681_archive_path_data_format "wikilink") is used to import the raw save images, though on the destination system, in write mode.
+
+The encrypted save images are written directly to the destination system using the FS interface (and decrypted on the fly).
+
+# See also
 
 Nintendo of Japan System Transfer [page](http://www.nintendo.co.jp/3ds/support/transfer/index.html).
