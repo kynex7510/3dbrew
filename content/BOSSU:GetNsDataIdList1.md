@@ -10,9 +10,9 @@ title = 'BOSSU:GetNsDataIdList1'
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x001100c2" %}}
 {{% ipc/result %}}
-{{% ipc/param span=2 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").{{% / %}}
+{{% ipc/param span=4 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").{{% / %}}
 {{% / %}}
 
 # Description
