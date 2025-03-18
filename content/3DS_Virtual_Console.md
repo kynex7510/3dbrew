@@ -126,14 +126,14 @@ All values in the GBA VC footer and related structures are little-endian.
 
 #### Config descriptor
 
-| START | SIZE | DESCRIPTION                                                                                                                                                                                      |
-|-------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0x0   | 0x4  | If 1, then this config descriptor is used. If 0, and the following value is not 0, then the GBA VC load fails outright (causes result 0xC900464F). Otherwise, this config descriptor is skipped. |
-| 0x4   | 0x4  | Offset to config                                                                                                                                                                                 |
-| 0x8   | 0x4  | Size of config (unused by the function that parses this, which hardcodes the config size (0x324) to memcpy)                                                                                      |
-| 0xC   | 0x4  | Padding                                                                                                                                                                                          |
+| START | SIZE | DESCRIPTION                                                                                                                                       |
+|-------|------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0x0   | 0x4  | Entry type. 0 is the ROM itself (without the CAA stuff) and offset must be 0 (otherwise fails w/ result 0xC900464F). 1 is ROM metadata, see below |
+| 0x4   | 0x4  | Offset to entry data                                                                                                                              |
+| 0x8   | 0x4  | Size of entry data (unused by the function that parses this, which hardcodes the config size (0x324) to memcpy for type 1)                        |
+| 0xC   | 0x4  | Padding                                                                                                                                           |
 
-#### Config
+#### AGB ROM metadata
 
 <table>
 <thead>
@@ -178,7 +178,7 @@ If the GBA title supports a button-combo based sleep mode and it's set here, Agb
 <tr class="odd">
 <td>0x020</td>
 <td>0x4</td>
-<td>LCD ghosting (01-FF, lower values equal more ghosting)</td>
+<td>"Accumulated" interframe alpha blending (01-FF, lower values equal more "ghosting"). Uses previous *output* instead of previous input</td>
 </tr>
 <tr class="even">
 <td>0x024</td>
