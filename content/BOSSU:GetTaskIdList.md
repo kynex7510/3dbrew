@@ -9,10 +9,10 @@ title = 'BOSSU:GetTaskIdList'
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x000E0040" %}}
 {{% ipc/result %}}
 {{% / %}}
 
 # Description
 
-This seems to initialize the data for PropertyIDs 0x35 and 0x36 which can then be loaded with [BOSSU:ReceiveProperty](BOSSU:ReceiveProperty "wikilink").
+Loads the list of task IDs into the local session so that it can be retrieved with PropertyIDs 0x35 and 0x36 on [BOSSU:ReceiveProperty](BOSSU:ReceiveProperty "wikilink").
