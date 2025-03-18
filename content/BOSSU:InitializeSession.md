@@ -4,15 +4,17 @@ title = 'BOSSU:InitializeSession'
 
 # Request
 
-| Index Word | Description                                                                                                                    |
-|------------|--------------------------------------------------------------------------------------------------------------------------------|
-| 0          | Header code \[0x00010082\]                                                                                                     |
-| 1-2        | programID, normally zero for using the programID determined from the below input PID. Only used with BOSSP, unused with BOSSU. |
-| 3          | 0x20, ARM11-kernel processID translate-header.                                                                                 |
+{{% ipc/request header="0x00010082" %}}
+{{% ipc/param span=2 %}}u64, Program ID, unused with BOSS:U.{{% / %}}
+{{% ipc/processid %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00010040" %}}
+{{% ipc/result %}}
+{{% / %}}
+
+# Description
+
+Initializes a BOSS session with access to the data belonging to either the provided program ID (only in privileged mode), or to the caller process.
