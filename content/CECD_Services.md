@@ -121,20 +121,15 @@ This contains a similar (probably the same) command handler from 0x0001.... to 0
 
 This enum is used internally of the cecd service to keep track of which state of an SPR exchange it is in currently.
 
-| Name                            | Value | Notes                                                                                |
-|---------------------------------|-------|--------------------------------------------------------------------------------------|
-| CEC_SPR_SEND_RECV_START         | 0     | The internal objects were just created                                               |
-| CEC_SPR_SEND_RECV_INIT          | 1     | The internal objects for sending and receiving have been initialised                 |
-| CEC_SPR_SEND_READY              | 2     | The sysmodule is ready for SPR Send, now it is possible to fetch the SPR data needed |
-| CEC_SPR_SEND                    | 3     | The other program should be sending the SPR request now                              |
-| CEC_SPR_RECEIVE_READY           | 4     | The sysmodule is ready to receive SPR data now                                       |
-| CEC_SPR_RECEIVE                 | 5     | The sysmodule is done receiving SPR data                                             |
-| CEC_SPR_CONNECTION_FINISHED_TCP | 6     |                                                                                      |
-| CEC_SPR_CONNECTION_FINISHED     | 7     | ??? Enum usage not found in source                                                   |
-| CEC_SPR_SEND_POST               | 8     | ??? Enum usage not found in source                                                   |
-| CEC_SPR_RECEIVE_POST            | 9     | ??? Enum usage not found in source                                                   |
-| CEC_SPR_FINISHING               | 0x0F  | ??? Enum usage not found in source                                                   |
-| CEC_SPR_FINISHED                | 0x10  | ??? Enum usage not found in source                                                   |
+| Name                        | Value | Notes                                                                                |
+|-----------------------------|-------|--------------------------------------------------------------------------------------|
+| CEC_SPR_SEND_RECV_START     | 0     | The internal objects were just created                                               |
+| CEC_SPR_SEND_RECV_INIT      | 1     | The internal objects for sending and receiving have been initialised                 |
+| CEC_SPR_SEND_READY          | 2     | The sysmodule is ready for SPR Send, now it is possible to fetch the SPR data needed |
+| CEC_SPR_SEND                | 3     | The other program should be sending the SPR request now                              |
+| CEC_SPR_RECEIVE_READY       | 4     | The sysmodule is ready to receive SPR data now                                       |
+| CEC_SPR_RECEIVE             | 5     | The sysmodule is done receiving SPR data                                             |
+| CEC_SPR_CONNECTION_FINISHED | 6     |                                                                                      |
 
 # CECD Service "cecd:ndm"
 
