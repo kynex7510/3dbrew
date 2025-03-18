@@ -786,6 +786,20 @@ This is the Mii format used in ACT commands.
 | 0x5C   | 0x2  | padding                                                                                                    |
 | 0x5E   | 0x2  | CRC16 over the above 0x5E bytes (see [Mii Checksum](Mii#checksum "wikilink") for details on the algorithm) |
 
+## Mii Image Types
+
+| Value | Description       |
+|-------|-------------------|
+| 0     | Primary Mii Image |
+| 1     | Unknown           |
+| 2     | Unknown           |
+| 3     | Unknown           |
+| 4     | Unknown           |
+| 5     | Unknown           |
+| 6     | Unknown           |
+| 7     | Unknown           |
+| 8     | Unknown           |
+
 ## Timezone
 
 | Offset | Size     | Description                                                                |
