@@ -4,21 +4,19 @@ title = 'BOSSU:ReceiveProperty'
 
 # Request
 
-| Index Word | Description                                 |
-|------------|---------------------------------------------|
-| 0          | Header code \[0x00160082\]                  |
-| 1          | [PropertyID](BOSSU:SendProperty "wikilink") |
-| 2          | Size                                        |
-| 3          | (Size \<\< 4) \| 0xC                        |
-| 4          | Data Pointer                                |
+{{% ipc/request header="0x00160082" %}}
+{{% ipc/param %}}u16, [Property ID](BOSS_Services#propertyids "wikilink"){{% / %}}
+{{% ipc/param %}}u32, Buffer size{{% / %}}
+{{% ipc/mapbuffer w %}}Data buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description      |
-|------------|------------------|
-| 0          | Header code      |
-| 1          | Result code      |
-| 2          | Actual read size |
+{{% ipc/request header="0x00160082" %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u32, Actual read size{{% / %}}
+{{% ipc/mapbuffer w %}}Data buffer{{% / %}}
+{{% / %}}
 
 # Description
 
