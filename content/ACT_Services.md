@@ -367,33 +367,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0xA</td>
 <td>0x4</td>
 <td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
-<td>Birthdate</p>
-<table>
-<thead>
-<tr class="header">
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x0</td>
-<td>0x2</td>
-<td>Year</td>
-</tr>
-<tr class="even">
-<td>0x2</td>
-<td>0x1</td>
-<td>Month</td>
-</tr>
-<tr class="odd">
-<td>0x3</td>
-<td>0x1</td>
-<td>Day</td>
-</tr>
-</tbody>
-</table></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">Birth Date</a></td>
 </tr>
 <tr class="odd">
 <td>0xB</td>
@@ -470,33 +444,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <tr class="even">
 <td>0x98</td>
 <td>0x4</td>
-<td>Birthdate</p>
-<table>
-<thead>
-<tr class="header">
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x0</td>
-<td>0x2</td>
-<td>Year</td>
-</tr>
-<tr class="even">
-<td>0x2</td>
-<td>0x1</td>
-<td>Month</td>
-</tr>
-<tr class="odd">
-<td>0x3</td>
-<td>0x1</td>
-<td>Day</td>
-</tr>
-</tbody>
-</table></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">Birth Date</a></td>
 </tr>
 <tr class="odd">
 <td>0x9C</td>
