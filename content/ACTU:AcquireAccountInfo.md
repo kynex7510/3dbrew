@@ -14,6 +14,7 @@ title = 'ACTU:AcquireAccountInfo'
 # Response
 
 {{% ipc/request header="0x00160040" %}}
+{{% ipc/result %}}
 {{% / %}}
 
 # Description
