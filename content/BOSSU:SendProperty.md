@@ -4,21 +4,19 @@ title = 'BOSSU:SendProperty'
 
 # Request
 
-| Index Word | Description                                |
-|------------|--------------------------------------------|
-| 0          | Header code \[0x00140082\]                 |
-| 1          | u16 [PropertyID](BOSS_Services "wikilink") |
-| 2          | Size                                       |
-| 3          | (Size \<\< 4) \| 0xA                       |
-| 4          | Data Pointer                               |
+{{% ipc/request header="0x00140082" %}}
+{{% ipc/param %}}u16, [Property ID](BOSS_Services#propertyids "wikilink"){{% / %}}
+{{% ipc/param %}}u32, Buffer size{{% / %}}
+{{% ipc/mapbuffer r %}}Data buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00140042" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer r %}}Data buffer{{% / %}}
+{{% / %}}
 
 # Description
 
-This sets the data for the specified property with the currently selected BOSS task. This data will be written into FS later(normally with [BOSSU:RegisterTask](BOSSU:RegisterTask "wikilink")).
+Sets the data for the specified property within the current session. This data will be written into FS later when registering or reconfiguring a task.
