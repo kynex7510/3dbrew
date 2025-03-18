@@ -229,16 +229,6 @@ They can be requested and cached using [ACTU:AcquireIndependentServiceTokenV2](A
 | 0x21A  | 0x158 + 1 | base64 NULL-terminated Signature                                                    |
 | 0x373  | 0x2 + 1   | ASCII [Server Environment](Friend_Services#server_types "wikilink") type and number |
 
-# CFLStoreData
-
-This is the Mii format used in ACT commands.
-
-| Offset | Size | Description                                                                                                |
-|--------|------|------------------------------------------------------------------------------------------------------------|
-| 0x0    | 0x5C | [Mii Data](Mii#mii_format "wikilink")                                                                      |
-| 0x5E   | 0x2  | padding                                                                                                    |
-| 0x5C   | 0x2  | CRC16 over the above 0x5E bytes (see [Mii Checksum](Mii#checksum "wikilink") for details on the algorithm) |
-
 # DataBlocks
 
 Data blocks can be accessed from specific commands depending on the data that is requested. These follow a similar order to the Wii U [ACTInfoTypes](https://github.com/decaf-emu/decaf-emu/blob/master/src/libdecaf/src/nn/act/nn_act_enum.h).
@@ -714,6 +704,16 @@ Data blocks can be accessed from specific commands depending on the data that is
 </table>
 
 # Types
+
+## CFLStoreData
+
+This is the Mii format used in ACT commands.
+
+| Offset | Size | Description                                                                                                |
+|--------|------|------------------------------------------------------------------------------------------------------------|
+| 0x0    | 0x5C | [Mii Data](Mii#mii_format "wikilink")                                                                      |
+| 0x5E   | 0x2  | padding                                                                                                    |
+| 0x5C   | 0x2  | CRC16 over the above 0x5E bytes (see [Mii Checksum](Mii#checksum "wikilink") for details on the algorithm) |
 
 ## Timezone
 
