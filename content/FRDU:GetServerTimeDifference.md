@@ -11,9 +11,9 @@ title = 'FRDU:GetServerTimeDifference'
 
 {{% ipc/request header="0x002E00c0" %}}
 {{% ipc/result %}}
-{{% ipc/param span=2 %}}u64, time difference in milliseconds{{% / %}}
+{{% ipc/param span=2 %}}u64, time difference in nanoseconds{{% / %}}
 {{% / %}}
 
 # Description
 
-Returns the difference between the server time gotten from the NASC login response and the system time when the friends module logged into friends services.
+Returns the difference (in nanoseconds) between the server time gotten from the NASC login response and the system time when the friends module logged into friends services.
