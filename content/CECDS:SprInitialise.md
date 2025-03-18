@@ -17,4 +17,4 @@ title = 'CECDS:SprInitialise'
 
 # Description
 
-This initialises the data needed to start an SPR exchange. Requires the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to be `CEC_SPR_SEND_RECV_START` and sets it to `CEC_SPR_SEND_RECV_INIT` upon success.
+This initialises the data needed to start an SPR exchange. Requires the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to be `CEC_SPR_SEND_RECV_INIT` and sets it to `CEC_SPR_SEND_READY` upon success.
