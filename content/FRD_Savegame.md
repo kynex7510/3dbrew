@@ -23,12 +23,12 @@ This file only contains the local account ID of the currently active account.
 
 The friends sysmodule uses this file to determine which account to load by default.
 
-| Offset | Size | Description                                   |
-|--------|------|-----------------------------------------------|
-| 0x00   | 4    | File magic "FPCF" (Friends Preference Config) |
-| 0x04   | 4    | File magic number (0x20101021)                |
-| 0x08   | 8    | Padding                                       |
-| 0x10   | 4    | Current Local Account ID                      |
+| Offset | Size | Description                                |
+|--------|------|--------------------------------------------|
+| 0x00   | 4    | File magic "FPCF" (Friend Presence Config) |
+| 0x04   | 4    | File magic number (0x20101021)             |
+| 0x08   | 8    | Padding                                    |
+| 0x10   | 4    | Current Local Account ID                   |
 
 ## account
 
@@ -36,7 +36,7 @@ This file stores various essential data related to the corresponding account.
 
 | Offset | Size          | Description                                                                                               |
 |--------|---------------|-----------------------------------------------------------------------------------------------------------|
-| 0x00   | 4             | File magic "FPAC" (Friends Preference Account Config)                                                     |
+| 0x00   | 4             | File magic "FPAC" (Friend Presence Account Config)                                                        |
 | 0x04   | 4             | File magic number (0x20101021)                                                                            |
 | 0x08   | 8             | Padding                                                                                                   |
 | 0x10   | 4             | Local Account ID                                                                                          |
@@ -55,7 +55,7 @@ Stores console-specific information related to the account.
 
 | Offset | Size          | Description                                                                                             |
 |--------|---------------|---------------------------------------------------------------------------------------------------------|
-| 0x00   | 4             | File magic "FPMD" (Friends Preference My Data/Device)                                                   |
+| 0x00   | 4             | File magic "FPMD" (Friend Presence My Data/Device)                                                      |
 | 0x04   | 4             | File magic number (0x20101021)                                                                          |
 | 0x08   | 8             | Padding                                                                                                 |
 | 0x10   | 4             | My NC Principal ID                                                                                      |
@@ -97,7 +97,7 @@ Contains the friend list associated with the account.
 
 | Offset | Size         | Description                                                          |
 |--------|--------------|----------------------------------------------------------------------|
-| 0x00   | 4            | File magic "FPFL" (Friends Preference Friend List)                   |
+| 0x00   | 4            | File magic "FPFL" (Friend Presence Friend List)                      |
 | 0x04   | 4            | File magic number (0x20101021)                                       |
 | 0x08   | 8            | Padding                                                              |
 | 0x10   | 100 \* 0x100 | [Friend entries](FRD_Savegame#friend_entry "wikilink") (maximum 100) |
