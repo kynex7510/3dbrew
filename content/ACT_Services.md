@@ -13,7 +13,7 @@ These commands are used generally by most titles, and are also present in act:a.
 |----------------|--------------------------------------------------------------------------------------|
 | 0x00010084     | [Initialize](ACTU:Initialize "wikilink")                                             |
 | 0x00020040     | [GetErrorCode](ACTU:GetErrorCode "wikilink")                                         |
-| 0x00030000     | [GetLastResponseCode](ACTU:GetLastResponseCode "wikilink")                           |
+| 0x00030000     | [GetLastResponseResult](ACTU:GetLastResponseResult "wikilink")                       |
 | 0x00040000     | [Cancel](ACTU:Cancel "wikilink")                                                     |
 | 0x00050082     | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                       |
 | 0x000600C2     | [GetAccountDataBlock](ACTU:GetAccountDataBlock "wikilink")/GetAccountInfo            |
