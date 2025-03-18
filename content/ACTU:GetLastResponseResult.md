@@ -9,6 +9,7 @@ title = 'ACTU:GetLastResponseResult'
 
 # Response
 
+{{% ipc/request header="0x00030080" %}}
 {{% ipc/result %}}
 {{% ipc/param %}}Last response Result code{{% / %}}
 {{% / %}}
