@@ -4,21 +4,21 @@ title = 'ACTU:GetCommonInfo'
 
 # Request
 
-| Index Word | Description                                 |
-|------------|---------------------------------------------|
-| 0          | Header code \[0x00050082\]                  |
-| 2          | Size                                        |
-| 3          | [BlkID](ACT_Services#datablocks "wikilink") |
-| 4          | (Size\<\<4) \| 12                           |
-| 5          | Output buffer ptr                           |
+{{% ipc/request header="0x00050082" %}}
+{{% ipc/param %}}Output buffer size{{% / %}}
+{{% ipc/param %}}Common data type{{% / %}}
+{{% ipc/mapbuffer w %}}Output buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00050042" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer w %}}Output buffer{{% / %}}
+{{% / %}}
 
 # Description
 
-This returns common account info. This data usually comes from common.dat
+Returns common account information, not specific to any account.
+
+See [DataBlocks](ACT_Services#datablocks "wikilink") for possible data types.
