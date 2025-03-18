@@ -32,4 +32,4 @@ This command does the following, in order:
 
 6\. ACT system save data is mounted (loaded).
 
-7\. Further changes to the system save data are blocked.
+7\. Further changes to the system save data are blocked (though, this can be bypassed by letting the system enter sleep mode, then letting it exit sleep mode)
