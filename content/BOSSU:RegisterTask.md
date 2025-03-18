@@ -4,22 +4,22 @@ title = 'BOSSU:RegisterTask'
 
 # Request
 
-| Index Word | Description                                                   |
-|------------|---------------------------------------------------------------|
-| 0          | Header code \[0x000B00C2\]                                    |
-| 1          | TaskID buffer size                                            |
-| 2          | u8, unknown(bool). Usually zero, regardless of HTTP GET/POST. |
-| 3          | u8, unknown. Usually zero, regardless of HTTP GET/POST.       |
-| 4          | (Size \<\< 4) \| 0xA                                          |
-| 5          | TaskID data pointer                                           |
+{{% ipc/request header="0x000B00c2" %}}
+{{% ipc/param %}}u32, Task ID size, including NULL terminator{{% / %}}
+{{% ipc/param %}}bool, TaskOption configured{{% / %}}
+{{% ipc/param %}}u8, Step ID{{% / %}}
+{{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x000B0042" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
+{{% / %}}
 
 # Description
 
-This registers a task and updates the BOSS savedata immediately, including info previously initialized with [BOSSU:SendProperty](BOSSU:SendProperty "wikilink").
+Registers a task and updates the BOSS savedata immediately, using information previously configured with [BOSSU:SendProperty](BOSSU:SendProperty "wikilink").
+
+The input bool is set to true in the SDK if the application provides a TaskOption, which contains some of the properties that can be configured.
