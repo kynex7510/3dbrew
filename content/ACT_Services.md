@@ -128,6 +128,52 @@ Associating a console account with a Nintendo Network ID (server-side) is facili
 
 Account slot -2 (0xFE) always refers to the currently loaded account.
 
+# Password Management
+
+The ACT sysmodule uses a distinct password management system.
+
+## Password Hashing Algorithm
+
+Passwords are not stored in plaintext. Instead, they are hashed using the following algorithm:
+
+    void hash_password(void *out_hash, void *input, int input_size, unsigned int num_iterations, unsigned int principal_id) {
+        static const unsigned char constant[4] = { 0x02, 0x65, 0x43, 0x46 };
+
+        unsigned char hash_data[8 + 32] = { 0 };
+        unsigned int bswap_pid = bswap32(principal_id);
+
+        while ( num_iterations-- ) {
+            memcpy(&hash_data[0], &bswap_pid, 4);
+            memcpy(&hash_data[4], &constant, 4);
+            memcpy(&hash_data[8], input, input_size);
+
+            /* output, input, size */
+            sha256(out_hash, hash_data, 8 + input_size);
+            input_size = 32;
+            input = out_hash;
+        }
+    }
+
+## Account Password Hash
+
+The AccountPasswordHash field in the account data is the result of one iteration of the above algorithm, using the plaintext password as the input. It is generally used to verify the input password in [ACTA:LoadConsoleAccount](ACTA:LoadConsoleAccount "wikilink").
+
+This field in the account data is set when [ACTA:BindToNewServerAccount](ACTA:BindToNewServerAccount "wikilink"), [ACTA:BindToExistentServerAccount](ACTA:BindToExistentServerAccount "wikilink"), or [ACTA:UpdateAccountPassword](ACTA:UpdateAccountPassword "wikilink") is used.
+
+## Account Password Cache
+
+It is possible to cache the password for an account so the user isn't asked for it every time. This can be configured in Nintendo Network ID settings or during an NNID login prompt (e.g. in the eShop). The AccountPasswordCache field in the account data is the result of two iterations of the above algorithm, using the plaintext password as the input.
+
+## Account Password Input
+
+The account password input represents the in-memory input value of the password. It can be thought of as the value that will be autofilled by default in a login form. When the ACT sysmodule is started and the default account is loaded, the AccountPasswordCache is copied to the AccountPasswordInput, allowing automatic login.
+
+However, it is possible to override this value using [ACTA:SetAccountPasswordInput](ACTA:SetAccountPasswordInput "wikilink"). The AccountPasswordInput value set using this command can then be saved to the account password cache by using [ACTA:EnableAccountPasswordCache](ACTA:EnableAccountPasswordCache "wikilink").
+
+The account password cache can be enabled or disabled through [ACTA:EnableAccountPasswordCache](ACTA:EnableAccountPasswordCache "wikilink").
+
+The AccountPasswordInput is always loaded into memory and is not saved to the system save data.
+
 # Server Types
 
 The ACT sysmodule uses two different server types for Nintendo Network accounts.
