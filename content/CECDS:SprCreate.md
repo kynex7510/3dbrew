@@ -17,4 +17,4 @@ title = 'CECDS:SprCreate'
 
 # Description
 
-This creates the data needed to start an SPR exchange. Sets the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to `CEC_SPR_SEND_RECV_START`.
+This creates the data needed to start an SPR exchange. Sets the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to `CEC_SPR_SEND_RECV_START` and then to `CEC_SPR_SEND_RECV_INIT` upon success.
