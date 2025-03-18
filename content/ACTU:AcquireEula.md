@@ -13,7 +13,6 @@ title = 'ACTU:AcquireEula'
 
 # Response
 
-{{#vardefine:ipc_offset}}
 {{% ipc/request header="0x001E0040" %}}
 {{% ipc/result %}}
 {{% / %}}
