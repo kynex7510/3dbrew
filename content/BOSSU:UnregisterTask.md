@@ -12,7 +12,7 @@ title = 'BOSSU:UnregisterTask'
 
 # Response
 
-{{% ipc/request header="0x000B0042" %}}
+{{% ipc/request header="0x000C0042" %}}
 {{% ipc/result %}}
 {{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
 {{% / %}}
