@@ -18,13 +18,13 @@ title = 'GSPLCD:GetPowerState'
 
 # Power state flags
 
-| Bit | Description          |
-|-----|----------------------|
-| 0   | Top backlight on     |
-| 1   | Bottom backlight on  |
-| 2   | LC panel on          |
-| 3   | Operation in process |
-| 7   | Fatal error          |
+| Bit | Description           |
+|-----|-----------------------|
+| 0   | Top backlight on      |
+| 1   | Bottom backlight on   |
+| 2   | LC panel on           |
+| 3   | Operation in progress |
+| 7   | Fatal error           |
 
 # Description
 
