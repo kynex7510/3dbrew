@@ -4,7 +4,7 @@ title = 'CECDS:SprGetSendSlotsMetadata'
 
 # Request
 
-{{% ipc/param %}}Header code `0x040C0042`{{% / %}}
+{{% ipc/request header="0x040C0042" %}}
 {{% ipc/param %}}buffer size{{% / %}}
 {{% ipc/mapbuffer w %}}buffer address{{% / %}}
 {{% / %}}
