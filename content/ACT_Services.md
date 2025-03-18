@@ -530,7 +530,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x1A</td>
 <td>0x1</td>
 <td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
-<td>IsCommited</td>
+<td>IsCommitted</td>
 </tr>
 <tr class="even">
 <td>0x1B</td>
