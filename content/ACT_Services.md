@@ -725,6 +725,14 @@ Data blocks can be accessed from specific commands depending on the data that is
 | 0x85   | 0x3      | padding                                                                    |
 | 0x88   | 0x8      | s64, UtcOffset in seconds                                                  |
 
+## EulaInfo
+
+| Offset | Size    | Description                                                                      |
+|--------|---------|----------------------------------------------------------------------------------|
+| 0x0    | 0x2 + 1 | ASCII NULL-terminated two-letter country code (2 characters + NULL termination)  |
+| 0x3    | 0x2 + 1 | ASCII NULL-terminated two-letter language code (2 characters + NULL termination) |
+| 0x6    | 0x2     | u16, EULA version                                                                |
+
 # HTTPS Requests
 
 With each request, ACT-sysmodule specifies request-header "X-Nintendo-Device-Model". This is the only \*dedicated\* request-header that's contains anything Old3DS/New3DS specific. This was implemented with [9.0.0-X](9.0.0-20 "wikilink"), and presumably [8.1.0-0_New3DS](8.1.0-0_New3DS "wikilink"). The value is from a string initialized during ACT-sysmodule startup. The value-string is the [codename](Cfg:GetSystemModel "wikilink") string for all 5 of the model values from [Cfg:GetSystemModel](Cfg:GetSystemModel "wikilink"). When the output from GetSystemModel is \>=5(switch statement default case), it runs this: "len = snprintf(outstr, outmaxsize, "3DS-%u", model);"
