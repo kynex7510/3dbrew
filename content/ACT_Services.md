@@ -424,7 +424,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <tr class="even">
 <td>0x10</td>
 <td>0x60</td>
-<td><a {{% href "../Mii" %}} title="wikilink">Mii</a></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">Mii CFLStoreData</a></td>
 </tr>
 <tr class="odd">
 <td>0x70</td>
