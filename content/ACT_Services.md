@@ -5,9 +5,9 @@ categories = ["Services"]
 
 The ACT module handles NNID accounts. This module behaves very similarly to the [Wii U](https://github.com/devkitPro/wut/blob/master/cafe/nn_act.def) implementation (nn::act)
 
-# ACT service "act:u"
+# ACT User Service "act:u"
 
-These commands are common to both act:u and act:a
+These commands are used generally by most titles, and are also present in act:a.
 
 | Command Header | Description                                                                          |
 |----------------|--------------------------------------------------------------------------------------|
@@ -46,67 +46,65 @@ These commands are common to both act:u and act:a
 | 0x00210002     | [GetServiceTokenRaw](ACTU:GetServiceTokenRaw "wikilink")                             |
 | 0x00220342     | [GetIndepdendentServiceTokenV2](ACTU:GetIndepdendentServiceTokenV2 "wikilink")       |
 
-# ACT service "act:a"
+# ACT Admin Service "act:a"
 
-These commands are exclusive to act:a
+This service is used mainly by the Nintendo Network ID Settings application accessible in System Settings.
 
-| Command Header | Available since system-version | Description                                                  |
-|----------------|--------------------------------|--------------------------------------------------------------|
-| 0x04010080     |                                | ?                                                            |
-| 0x04020000     |                                | [CreateConsoleAccount](ACTA:CreateConsoleAccount "wikilink") |
-| 0x04030040     |                                | CommitConsoleAccount                                         |
-| 0x04040080     |                                | [UnbindServerAccount](ACTA:UnbindServerAccount "wikilink")   |
-| 0x04050040     |                                | DeleteConsoleAccount                                         |
-| 0x04060240     |                                | ?                                                            |
-| 0x04070000     |                                | UnloadConsoleAccount                                         |
-| 0x04080080     |                                | EnableAccountPasswordCache                                   |
-| 0x04090040     |                                | [SetDefaultAccount](ACTA:SetDefaultAccount "wikilink")       |
-| 0x040A0040     |                                | ReplaceAccountId                                             |
-| 0x040B0040     |                                | GetSupportContext                                            |
-| 0x040C0100     |                                | ?                                                            |
-| 0x040D00C0     |                                | ?                                                            |
-| 0x040E02C0     |                                | ?                                                            |
-| 0x040F0280     |                                | ?                                                            |
-| 0x04100040     |                                | ?                                                            |
-| 0x04110040     |                                | ?                                                            |
-| 0x041207C0     |                                | [UpdateMii](ACTA:UpdateMii "wikilink")                       |
-| 0x041300C2     |                                | UpdateMiiImage                                               |
-| 0x04140182     |                                | InquireAccountIdAvailability                                 |
-| 0x04150EC4     |                                | BindToNewServerAccount                                       |
-| 0x041602C4     |                                | BindToExistentServerAccount                                  |
-| 0x041702C4     |                                | InquireBindingToExistentServerAccount                        |
-| 0x04180042     |                                | ?                                                            |
-| 0x04190042     |                                | ?                                                            |
-| 0x041A01C2     |                                | AcquireAccountTokenEx                                        |
-| 0x041B0142     |                                | AgreeEula                                                    |
-| 0x041C0042     |                                | SyncAccountInfo                                              |
-| 0x041D0080     |                                | ?                                                            |
-| 0x041E0182     |                                | UpdateAccountPassword                                        |
-| 0x041F0042     |                                | ReissueAccountPassword                                       |
-| 0x04200180     |                                | SetAccountPasswordInput                                      |
-| 0x04210042     |                                | UploadMii                                                    |
-| 0x04220042     |                                | ?                                                            |
-| 0x04230082     |                                | ValidateMailAddress                                          |
-| 0x04240044     |                                | ?                                                            |
-| 0x04250042     |                                | SendConfirmationMail                                         |
-| 0x04260044     |                                | ?                                                            |
-| 0x04270084     |                                | ?                                                            |
-| 0x04280044     |                                | ApproveByCreditCard                                          |
-| 0x04290082     |                                | SendCoppaCodeMail                                            |
-| 0x042A0080     |                                | ?                                                            |
-| 0x042B01C4     |                                | ?                                                            |
-| 0x042C0042     |                                | ?                                                            |
-| 0x042D0042     |                                | ?                                                            |
-| 0x042E0080     |                                | ?                                                            |
-| 0x042F0084     |                                | UpdateAccountInfoEx                                          |
-| 0x04300044     |                                | UpdateAccountMailAddress                                     |
-| 0x04310042     |                                | ?                                                            |
-| 0x04320042     |                                | ?                                                            |
-| 0x04330042     |                                | ?                                                            |
-| 0x04340003     |                                | ?                                                            |
-| 0x04350042     |                                | DeleteServerAccount                                          |
-
-This is the service used by regular applications.
+| Command Header | Description                                                                                    |
+|----------------|------------------------------------------------------------------------------------------------|
+| 0x04010080     | [SwapAccountSlots](ACTA:SwapAccountSlots "wikilink")                                           |
+| 0x04020000     | [CreateConsoleAccount](ACTA:CreateConsoleAccount "wikilink")                                   |
+| 0x04030040     | [CommitConsoleAccount](ACTA:CommitConsoleAccount "wikilink")                                   |
+| 0x04040080     | [UnbindServerAccount](ACTA:UnbindServerAccount "wikilink")                                     |
+| 0x04050040     | [DeleteConsoleAccount](ACTA:DeleteConsoleAccount "wikilink")                                   |
+| 0x04060240     | [LoadConsoleAccount](ACTA:LoadConsoleAccount "wikilink")                                       |
+| 0x04070000     | [UnloadConsoleAccount](ACTA:UnloadConsoleAccount "wikilink")                                   |
+| 0x04080080     | [EnableAccountPasswordCache](ACTA:EnableAccountPasswordCache "wikilink")                       |
+| 0x04090040     | [SetDefaultAccount](ACTA:SetDefaultAccount "wikilink")                                         |
+| 0x040A0040     | [ReplaceAccountId](ACTA:ReplaceAccountId "wikilink")                                           |
+| 0x040B0040     | [GetSupportContext](ACTA:GetSupportContext "wikilink")                                         |
+| 0x040C0100     | [SetAccountEnvironment](ACTA:SetAccountEnvironment "wikilink")                                 |
+| 0x040D00C0     | [SetDefaultAccountEnvironment](ACTA:SetDefaultAccountEnvironment "wikilink")                   |
+| 0x040E02C0     | [SetAccountEnvironmentStrings](ACTA:SetAccountEnvironmentStrings "wikilink")                   |
+| 0x040F0280     | [SetDefaultAccountEnvironmentStrings](ACTA:SetDefaultAccountEnvironmentStrings "wikilink")     |
+| 0x04100040     | [SetPersistentIdHead](ACTA:SetPersistentIdHead "wikilink")                                     |
+| 0x04110040     | [SetTransferableIdCounter](ACTA:SetTransferableIdCounter "wikilink")                           |
+| 0x041207C0     | [UpdateMii](ACTA:UpdateMii "wikilink")                                                         |
+| 0x041300C2     | [UpdateMiiImage](ACTA:UpdateMiiImage "wikilink")                                               |
+| 0x04140182     | [InquireAccountIdAvailability](ACTA:InquireAccountIdAvailability "wikilink")                   |
+| 0x04150EC4     | [BindToNewServerAccount](ACTA:BindToNewServerAccount "wikilink")                               |
+| 0x041602C4     | [BindToExistentServerAccount](ACTA:BindToExistentServerAccount "wikilink")                     |
+| 0x041702C4     | [InquireBindingToExistentServerAccount](ACTA:InquireBindingToExistentServerAccount "wikilink") |
+| 0x04180042     | [DeleteServerAccount](ACTA:DeleteServerAccount "wikilink")                                     |
+| 0x04190042     | AccountAccountToken? (stubbed)                                                                 |
+| 0x041A01C2     | [AcquireAccountTokenEx](ACTA:AcquireAccountTokenEx "wikilink")                                 |
+| 0x041B0142     | [AgreeEula](ACTA:AgreeEula "wikilink")                                                         |
+| 0x041C0042     | [SyncAccountInfo](ACTA:SyncAccountInfo "wikilink")                                             |
+| 0x041D0080     | [ManageAccountToken](ACTA:ManageAccountToken "wikilink")                                       |
+| 0x041E0182     | [UpdateAccountPassword](ACTA:UpdateAccountPassword "wikilink")                                 |
+| 0x041F0042     | [ReissueAccountPassword](ACTA:ReissueAccountPassword "wikilink")                               |
+| 0x04200180     | [SetAccountPasswordInput](ACTA:SetAccountPasswordInput "wikilink")                             |
+| 0x04210042     | [UploadMii](ACTA:UploadMii "wikilink")                                                         |
+| 0x04220042     | [InactivateDevice](ACTA:InactivateDevice "wikilink")                                           |
+| 0x04230082     | [ValidateMailAddress](ACTA:ValidateMailAddress "wikilink")                                     |
+| 0x04240044     | [RequestParentalApproval](ACTA:RequestParentalApproval "wikilink")                             |
+| 0x04250042     | [SendConfirmationMail](ACTA:SendConfirmationMail "wikilink")                                   |
+| 0x04260044     | [SendPinConfirmationMail](ACTA:SendPinConfirmationMail "wikilink")                             |
+| 0x04270084     | [SubmitResetPasswordPin](ACTA:SubmitResetPasswordPin "wikilink")                               |
+| 0x04280044     | [ApproveByCreditCard](ACTA:ApproveByCreditCard "wikilink")                                     |
+| 0x04290082     | [SendCoppaCodeMail](ACTA:SendCoppaCodeMail "wikilink")                                         |
+| 0x042A0080     | [SetAccountRequiresMiiUpdate](ACTA:SetAccountRequiresMiiUpdate "wikilink")                     |
+| 0x042B01C4     | [InitializeAccountMigration](ACTA:InitializeAccountMigration "wikilink")                       |
+| 0x042C0042     | [CommitAccountMigration](ACTA:CommitAccountMigration "wikilink")                               |
+| 0x042D0042     | [InactivateAccountDevice](ACTA:InactivateAccountDevice "wikilink")                             |
+| 0x042E0080     | [SetServerTimeDifference](ACTA:SetServerTimeDifference "wikilink")                             |
+| 0x042F0084     | [UpdateAccountInfoEx](ACTA:UpdateAccountInfoEx "wikilink")                                     |
+| 0x04300044     | [UpdateAccountMailAddress](ACTA:UpdateAccountMailAddress "wikilink")                           |
+| 0x04310042     | [DeleteCurrentDevice](ACTA:DeleteCurrentDevice "wikilink")                                     |
+| 0x04320042     | [DeleteAccountCurrentDevice](ACTA:DeleteAccountCurrentDevice "wikilink")                       |
+| 0x04330042     | [DeleteAccountMigrations](ACTA:DeleteAccountMigrations "wikilink")                             |
+| 0x04340003     | [ReloadSaveData](ACTA:ReloadSaveData "wikilink")                                               |
+| 0x04350042     | [DeleteServerAccount](ACTA:DeleteServerAccount "wikilink")                                     |
 
 # Account slots
 
