@@ -19,3 +19,5 @@ title = 'ACTU:AcquireEulaLanguageList'
 # Description
 
 Requests a list of languages the Nintendo Network EULA is available in for the specified country.
+
+The resulting data will be in the format of a [EulaList](ACT_Services#eulaheader "wikilink") structure, with each entry header having all offsets zeroed out except for the LanguageName offset.
