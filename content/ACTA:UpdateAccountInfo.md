@@ -21,7 +21,7 @@ title = 'ACTA:UpdateAccountInfo'
 
 # Description
 
-Sends the given raw XML account info to the account server. In the official Nintendo Network ID Settings application, the following template is used for this command:
+Sends the given raw XML account info to the account server. In the official Nintendo Network ID Settings application, the following is one of the templates used for this command:
 
     <person>
         <gender>%c</gender>
