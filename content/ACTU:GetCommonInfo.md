@@ -21,5 +21,4 @@ title = 'ACTU:GetCommonInfo'
 
 # Description
 
-This returns common account info. This data usually comes from
-common.dat
+This returns common account info. This data usually comes from common.dat
