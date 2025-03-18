@@ -128,6 +128,10 @@ A "server account" is essentially a Nintendo Network ID.
 
 Associating a console account with a Nintendo Network ID (server-side) is facilitated by the commands [ACTA:BindToNewServerAccount](ACTA:BindToNewServerAccount "wikilink") (to create and link an NNID) or [ACTA:BindToExistentServerAccount](ACTA:BindToExistentServerAccount "wikilink") (to log into an existing linked NNID).
 
+Nintendo Network IDs can be transferred to other consoles using [ACTA:ReserveTransfer](ACTA:ReserveTransfer "wikilink") initially, and then [ACTA:CompleteTransfer](ACTA:CompleteTransfer "wikilink").
+
+NNIDs can be deleted using either [ACTA:DeleteServerAccount](ACTA:DeleteServerAccount "wikilink"), [ACTA:InactivateAccountDeviceAssociation](ACTA:InactivateAccountDeviceAssociation "wikilink"), [ACTA:DeleteAccountDeviceAssociation](ACTA:DeleteAccountDeviceAssociation "wikilink") or [ACTA:ReserveServerAccountDeletion](ACTA:ReserveServerAccountDeletion "wikilink").
+
 # Password Management
 
 The ACT sysmodule uses a distinct password management system.
