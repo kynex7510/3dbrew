@@ -6,9 +6,9 @@ title = 'ACTA:SendConfirmationMailForPin'
 
 {{% ipc/request header="0x04260044" %}}
 {{% ipc/param %}}u8, Account slot{{% / %}}
-{{% ipc/mapbuffer r %}}Input parental email address buffer (max. 256 characters + NULL termination){{% / %}}
 {{% ipc/copyhandle count=1 %}}
 {{% ipc/handleentry %}}Completion event handle{{% / %}}
+{{% ipc/mapbuffer r %}}Input parental email address buffer (max. 256 characters + NULL termination){{% / %}}
 {{% / %}}
 
 # Response
