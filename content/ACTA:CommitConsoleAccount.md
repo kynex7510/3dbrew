@@ -16,4 +16,4 @@ title = 'ACTA:CommitConsoleAccount'
 
 # Description
 
-Sets the IsCommitted field to true in the internal data for the specified account.
+Sets the IsCommitted field to true in the internal data ([BlkID 0x1A](ACT_Services#datablocks "wikilink")) for the specified account.
