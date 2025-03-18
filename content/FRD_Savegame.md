@@ -2,9 +2,26 @@
 title = 'FRD Savegame'
 +++
 
-This page describes the contents of the [friend](Friend_Services "wikilink") sysmodule savegame. Except for the config file, all of the data is stored inside a folder that represents the local account ID of the account. For example: /1/account stores the data of the main account.
+This page describes the contents of the [friends](Friend_Services "wikilink") sysmodule savegame.
+
+Save data for the sysmodule has the following general structure:
+
+`data`  
+`├── `[`config`](FRD_Savegame#config "wikilink")  
+`└── `<Local Account ID>  
+`    ├── `[`account`](FRD_Savegame#account "wikilink")  
+`    ├── `[`friendlist`](FRD_Savegame#friendlist "wikilink")  
+`    └── `[`mydata`](FRD_Savegame#mydata "wikilink")
+
+Despite being generally unused, the sysmodule supports the usage of multiple accounts.
+
+Each account gets its own "Local Account ID", and a directory named after this ID. The directory contains all relevant account information.
 
 ## config
+
+This file only contains the local account ID of the currently active account.
+
+The friends sysmodule uses this file to determine which account to load by default.
 
 | Offset | Size | Description                                   |
 |--------|------|-----------------------------------------------|
@@ -15,255 +32,95 @@ This page describes the contents of the [friend](Friend_Services "wikilink") sys
 
 ## account
 
-| Offset | Size          | Description                                                         |
-|--------|---------------|---------------------------------------------------------------------|
-| 0x00   | 4             | File magic "FPAC" (Friends Preference Account Config)               |
-| 0x04   | 4             | File magic number (0x20101021)                                      |
-| 0x08   | 8             | Padding                                                             |
-| 0x10   | 4             | Local Account ID                                                    |
-| 0x14   | 4             | PrincipalID                                                         |
-| 0x18   | 8             | LocalFriendCode                                                     |
-| 0x20   | (16 + 1) \* 2 | NEX Password                                                        |
-| 0x42   | (8 + 1) \* 2  | PrincipalID HMAC (Used for logging into NASC server)                |
-| 0x54   | 1             | NASC Environment (0: Prod, 1: Test, 2: Dev)                         |
-| 0x55   | 1             | [Server type](Friend_Services#server_types "wikilink") letter value |
-| 0x56   | 1             | [Server type](Friend_Services#server_types "wikilink") number value |
-| 0x57   | 1             | Padding                                                             |
+This file stores various essential data related to the corresponding account.
+
+| Offset | Size          | Description                                                                                               |
+|--------|---------------|-----------------------------------------------------------------------------------------------------------|
+| 0x00   | 4             | File magic "FPAC" (Friends Preference Account Config)                                                     |
+| 0x04   | 4             | File magic number (0x20101021)                                                                            |
+| 0x08   | 8             | Padding                                                                                                   |
+| 0x10   | 4             | Local Account ID                                                                                          |
+| 0x14   | 4             | PrincipalID                                                                                               |
+| 0x18   | 8             | LocalFriendCode                                                                                           |
+| 0x20   | (16 + 1) \* 2 | 16-character UTF-16 NEX Password (16 characters + NULL termination)                                       |
+| 0x42   | (8 + 1) \* 2  | 8-character UTF-16 PrincipalID HMAC (Used for logging into NASC server) (8 characters + NULL termination) |
+| 0x54   | 1             | NASC Environment (0: Production, 1: Testing, 2: Development)                                              |
+| 0x55   | 1             | [Server type](Friend_Services#server_types "wikilink") letter value                                       |
+| 0x56   | 1             | [Server type](Friend_Services#server_types "wikilink") number value                                       |
+| 0x57   | 1             | Padding                                                                                                   |
 
 ## mydata
 
-<table>
-<thead>
-<tr class="header">
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x00</td>
-<td>4</td>
-<td>File magic "FPMD" (Friends Preference My Data/Device)</td>
-</tr>
-<tr class="even">
-<td>0x04</td>
-<td>4</td>
-<td>File magic number (0x20101021)</td>
-</tr>
-<tr class="odd">
-<td>0x08</td>
-<td>8</td>
-<td>Padding</td>
-</tr>
-<tr class="even">
-<td>0x10</td>
-<td>4</td>
-<td>My NC Principal ID</td>
-</tr>
-<tr class="odd">
-<td>0x14</td>
-<td>4</td>
-<td>Unknown</td>
-</tr>
-<tr class="even">
-<td>0x18</td>
-<td>4</td>
-<td><a href="https://github.com/kinnay/NintendoClients/wiki/Friends-Protocol-(3DS)#nintendopresence-structure">Changed bit flags</a></td>
-</tr>
-<tr class="odd">
-<td>0x1C</td>
-<td>1</td>
-<td>Is public mode</td>
-</tr>
-<tr class="even">
-<td>0x1D</td>
-<td>1</td>
-<td>Is show game mode</td>
-</tr>
-<tr class="odd">
-<td>0x1E</td>
-<td>1</td>
-<td>Is show played game</td>
-</tr>
-<tr class="even">
-<td>0x1F</td>
-<td>1</td>
-<td>Padding</td>
-</tr>
-<tr class="odd">
-<td>0x20</td>
-<td>0x10</td>
-<td>GameKey of my favorite game:</p>
-<p><code> u64 title_id</code><br />
-<code> u32 title_version</code><br />
-<code> u32 unknown</code></td>
-</tr>
-<tr class="even">
-<td>0x30</td>
-<td>16 * 2</td>
-<td>UTF16 string of personal message</td>
-</tr>
-<tr class="odd">
-<td>0x50</td>
-<td>8</td>
-<td>Unknown</td>
-</tr>
-<tr class="even">
-<td>0x58</td>
-<td>8</td>
-<td><code> u8 region</code><br />
-<code> u8 country</code><br />
-<code> u8 area</code><br />
-<code> u8 language</code><br />
-<code> u8 platform = 2</code><br />
-<code> u8 padding[3]</code></td>
-</tr>
-<tr class="odd">
-<td>0x60</td>
-<td>8</td>
-<td>LocalFriendCodeSeed u64</td>
-</tr>
-<tr class="even">
-<td>0x68</td>
-<td>(12 + 1) * 2</td>
-<td>UTF16 string of MAC address of the console (only the digits)</td>
-</tr>
-<tr class="odd">
-<td>0x82</td>
-<td>(15 + 1) * 2</td>
-<td>UTF16 string of console serial number without the checksum digit</td>
-</tr>
-<tr class="even">
-<td>0xA2</td>
-<td>(10 + 1) * 2</td>
-<td>UTF16 string of Display name</td>
-</tr>
-<tr class="odd">
-<td>0xBB</td>
-<td>0x60</td>
-<td>Unaligned <a {{% href "../Mii" %}} title="wikilink">Mii data</a></td>
-</tr>
-<tr class="even">
-<td>0x11B</td>
-<td>5</td>
-<td>Padding (0x120)</td>
-</tr>
-</tbody>
-</table>
+Stores console-specific information related to the account.
+
+| Offset | Size          | Description                                                                                             |
+|--------|---------------|---------------------------------------------------------------------------------------------------------|
+| 0x00   | 4             | File magic "FPMD" (Friends Preference My Data/Device)                                                   |
+| 0x04   | 4             | File magic number (0x20101021)                                                                          |
+| 0x08   | 8             | Padding                                                                                                 |
+| 0x10   | 4             | My NC Principal ID                                                                                      |
+| 0x14   | 4             | Unknown                                                                                                 |
+| 0x18   | 4             | [Change bit flag](FRD_Savegame#change_bit_flags "wikilink")                                             |
+| 0x1C   | 3             | [Preferences](Friend_Services#preference "wikilink")                                                    |
+| 0x1F   | 1             | Padding                                                                                                 |
+| 0x20   | 0x10          | [GameKey](Friend_Services#gamekey "wikilink") of favorite title                                         |
+| 0x30   | (16 + 1) \* 2 | 16-Character UTF-16 personal message (comment) (16 characters + NULL termination)                       |
+| 0x52   | 1             | First byte of the console's LocalFriendCodeSeed                                                         |
+| 0x53   | 5             | Padding                                                                                                 |
+| 0x58   | 8             | [Profile](Friend_Services#profile "wikilink")                                                           |
+| 0x60   | 8             | u64, LocalFriendCodeSeed                                                                                |
+| 0x68   | (12 + 1) \* 2 | 12-character UTF-16 MAC address (only the digits) (12 characters + NULL termination)                    |
+| 0x82   | (15 + 1) \* 2 | 15-character UTF-16 console serial number without the checksum digit (15 characters + NULL termination) |
+| 0xA2   | (10 + 1) \* 2 | 10-character UTF-16 Display name (10 characters + NULL termination)                                     |
+| 0xBB   | 0x60          | [Mii data](Friend_Services#mii_data "wikilink")                                                         |
+| 0x11B  | 5             | Padding                                                                                                 |
+
+### Change Bit Flags
+
+| Value | Description                                             |
+|-------|---------------------------------------------------------|
+| 1     | [Game Key](Friend_Services#gamekey "wikilink") changed. |
+| 2     | Game mode description changed.                          |
+| 4     | Join availability flag changed.                         |
+| 8     | Matchmake system type changed.                          |
+| 16    | Join game ID changed.                                   |
+| 32    | Join game mode changed.                                 |
+| 64    | Owner \[PID\] changed.                                  |
+| 128   | Join group ID changed.                                  |
+| 256   | Application argument changed.                           |
 
 ## friendlist
 
+Contains the friend list associated with the account.
+
 ### Header
 
-| Offset | Size       | Description                                               |
-|--------|------------|-----------------------------------------------------------|
-| 0x00   | 4          | File magic "FPFL" (Friends Preference Friend List)        |
-| 0x04   | 4          | File magic number (0x20101021)                            |
-| 0x08   | 8          | Padding                                                   |
-| 0x10   | ? \* 0x100 | [Friend entries](FRD_Savegame#friend_entry "wikilink")... |
+| Offset | Size         | Description                                                          |
+|--------|--------------|----------------------------------------------------------------------|
+| 0x00   | 4            | File magic "FPFL" (Friends Preference Friend List)                   |
+| 0x04   | 4            | File magic number (0x20101021)                                       |
+| 0x08   | 8            | Padding                                                              |
+| 0x10   | 100 \* 0x100 | [Friend entries](FRD_Savegame#friend_entry "wikilink") (maximum 100) |
 
 ### Friend entry
 
-<table>
-<thead>
-<tr class="header">
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0x00</td>
-<td>0x10</td>
-<td>FriendKey:</p>
-<p><code> u32 principal_id</code><br />
-<code> u32 padding</code><br />
-<code> u64 friend_code</code></td>
-</tr>
-<tr class="even">
-<td>0x10</td>
-<td>0x4</td>
-<td>Unknown</td>
-</tr>
-<tr class="odd">
-<td>0x14</td>
-<td>1</td>
-<td>Friend relationship</td>
-</tr>
-<tr class="even">
-<td>0x15</td>
-<td>8</td>
-<td><code> u8 region</code><br />
-<code> u8 country</code><br />
-<code> u8 area</code><br />
-<code> u8 language</code><br />
-<code> u8 platform = 2</code><br />
-<code> u8 padding[3]</code></td>
-</tr>
-<tr class="odd">
-<td>0x1D</td>
-<td>3</td>
-<td>Padding</td>
-</tr>
-<tr class="even">
-<td>0x20</td>
-<td>0x10</td>
-<td>GameKey of friend favorite game:</p>
-<p><code> u64 title_id</code><br />
-<code> u32 title_version</code><br />
-<code> u32 unknown</code></td>
-</tr>
-<tr class="odd">
-<td>0x30</td>
-<td>16 * 2</td>
-<td>UTF16 string of personal message</td>
-</tr>
-<tr class="even">
-<td>0x50</td>
-<td>0x8</td>
-<td>Unknown</td>
-</tr>
-<tr class="odd">
-<td>0x58</td>
-<td>8</td>
-<td>Message update <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
-</tr>
-<tr class="even">
-<td>0x60</td>
-<td>8</td>
-<td>Mii update <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
-</tr>
-<tr class="odd">
-<td>0x68</td>
-<td>8</td>
-<td>Last online <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
-</tr>
-<tr class="even">
-<td>0x70</td>
-<td>0x60</td>
-<td><a {{% href "../Mii" %}} title="wikilink">Mii data</a></td>
-</tr>
-<tr class="odd">
-<td>0xD0</td>
-<td>(10 + 1) * 2</td>
-<td>UTF16 string of display name</td>
-</tr>
-<tr class="even">
-<td>0xE8</td>
-<td>8</td>
-<td>Friendship? <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
-</tr>
-<tr class="odd">
-<td>0xF0</td>
-<td>8</td>
-<td>Same as 0x58?</td>
-</tr>
-<tr class="even">
-<td>0xF8</td>
-<td>8</td>
-<td>Same as 0x60?</td>
-</tr>
-</tbody>
-</table>
+| Offset | Size          | Description                                                                                      |
+|--------|---------------|--------------------------------------------------------------------------------------------------|
+| 0x00   | 0x10          | [FriendKey](Friend_Services#friendkey "wikilink") of this friend                                 |
+| 0x10   | 0x4           | NC Principal ID of this friend                                                                   |
+| 0x14   | 1             | [Relationship](Friend_Services#relationship_types "wikilink") with this friend                   |
+| 0x15   | 8             | [Profile](Friend_Services#profile "wikilink") of this friend                                     |
+| 0x1D   | 3             | Padding                                                                                          |
+| 0x20   | 0x10          | [GameKey](Friend_Services#gamekey "wikilink") of this friend's favorite title                    |
+| 0x30   | (16 + 1) \* 2 | 16-character UTF-16 personal message (comment) of this friend (16 characters + NULL termination) |
+| 0x52   | 0x6           | padding                                                                                          |
+| 0x58   | 8             | NEX timestamp for the last time this friend updated their personal comment (message)             |
+| 0x60   | 8             | NEX timestamp for the last time this friend updated their Mii                                    |
+| 0x68   | 8             | NEX timestamp for the last time this friend was seen online                                      |
+| 0x70   | 0x60          | [Mii data](Friend_Services#mii_data "wikilink")                                                  |
+| 0xD0   | (10 + 1) \* 2 | 10-character UTF-16 Display name                                                                 |
+| 0xE6   | 1             | bool, profanity flag                                                                             |
+| 0xE7   | 1             | u8, [Mii character set](Mii#mii_format "wikilink")                                               |
+| 0xE8   | 8             | NEX timestamp for when this friend was added                                                     |
+| 0xF0   | 8             | Appears to be identical to the timestamp at offset 0x58.                                         |
+| 0xF8   | 8             | Appears to be identical to the timestamp at offset 0x60.                                         |
