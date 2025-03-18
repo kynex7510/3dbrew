@@ -21,4 +21,4 @@ title = 'FSPXI:StartDeviceMoveAsSource'
 
 An u8 state flag must be zero when using this command, otherwise error-code 0xE02046EE is returned. This state flag is then set to value 1. The stored movable.sed keyY hash is then loaded, then 0x10-bytes of data is randomly generated.
 
-The random data is used during system transfers for encrypting raw [System Save Data](System_SaveData "wikilink") archives (and probably more). See [System_Transfer#system_save_data_transfer](system_transfer#system_save_data_transfer "wikilink") for details.
+The random data is used during system transfers for encrypting raw [System Save Data](System_SaveData "wikilink") archives (and probably more). See [System Transfer](System_Transfer#system_save_data_transfer "wikilink") for details.
