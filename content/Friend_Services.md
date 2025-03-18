@@ -94,6 +94,10 @@ Includes all the commands in [frd:u](Friend_Services#friend_user_service_frdu "w
 | 0x040F0240     | [UpdateComment](FRDA:UpdateComment "wikilink")                     |
 | 0x04100000     | Currently unknown. Increments a u32 value in the savegame.         |
 
+# Save Data
+
+See [FRD Savegame](FRD_Savegame "wikilink").
+
 # HTTPS Requests
 
 ## Trusted RootCAs
