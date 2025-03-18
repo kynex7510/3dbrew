@@ -112,6 +112,60 @@ Like the friends sysmodule, the ACT module supports multiple accounts internally
 
 Some commands require require the account slot as an argument, which is 1-indexed. The value for using the current loaded account is 0xFE.
 
+# Server Types
+
+The ACT sysmodule uses two different server types for Nintendo Network accounts.
+
+See below how these types are determined by default. These types can also be overridden using [ACTA:SetHostServerSettings](ACTA:SetHostServerSettings "wikilink"), [ACTA:SetDefaultHostServerSettings](ACTA:SetDefaultHostServerSettings "wikilink"), [ACTA:SetHostServerSettingsStr](ACTA:SetHostServerSettingsStr "wikilink"), and [ACTA:SetDefaultHostServerSettingsStr](ACTA:SetDefaultHostServerSettingsStr "wikilink").
+
+The base URL for the Nintendo Network Account Server (NNAS) is: [`https://`](https://)`[`<prefix>`]account.nintendo.net`.
+
+## NNAS (Nintendo Network Authentication Server) Types
+
+This is used to determine the NNAS subdomain used for the account server.
+
+| Value | Description                                                           | NNAS Subdomain | Complete NNAS URL                          |
+|-------|-----------------------------------------------------------------------|----------------|--------------------------------------------|
+| 0     | Production                                                            | (None)         | `https://account.nintendo.net`             |
+| 1     | Game Development (also the default for debug mode on developer units) | `game-dev.`    | `https://game-dev.account.nintendo.net`    |
+| 2     | System Development                                                    | `system-dev.`  | `https://system-dev.account.nintendo.net`  |
+| 3     | Library Development                                                   | `library-dev.` | `https://library-dev.account.nintendo.net` |
+| 4     | Staging                                                               | `staging.`     | `https://staging.account.nintendo.net`     |
+
+Values beyond 4 are considered invalid.
+
+### Default NNAS Server Types
+
+By default, ACT uses the letter value from [FRDU:GetServerTypes](FRDU:GetServerTypes "wikilink") to determine the correct NNAS subdomain when a Nintendo Network ID is created.
+
+| Value from [FRDU:GetServerTypes](FRDU:GetServerTypes "wikilink") | NNAS Server Type                                                      | Corresponding NNAS Subdomain | Corresponding complete NNAS URL            |
+|------------------------------------------------------------------|-----------------------------------------------------------------------|------------------------------|--------------------------------------------|
+| 0 (L)                                                            | Production (default on retail units)                                  | (None)                       | `https://account.nintendo.net`             |
+| 2 (S)                                                            | Staging                                                               | `staging.`                   | `https://staging.account.nintendo.net`     |
+| 3 (D)                                                            | Game Development (also the default for debug mode on developer units) | `game-dev.`                  | `https://game-dev.account.nintendo.net`    |
+| 5 (T)                                                            | Library Development                                                   | `library-dev.`               | `https://library-dev.account.nintendo.net` |
+| 7 (J)                                                            | System Development                                                    | `system-dev.`                | `https://system-dev.account.nintendo.net`  |
+
+## NFS (Nintendo Friend Server) Types
+
+ACT uses the same [Server Types](Friend_Services#server_types "wikilink") as the friends sysmodule as the NfsType.
+
+A small subset of these types are used in [ACTA:SetHostServerSettings](ACTA:SetHostServerSettings "wikilink"), [ACTA:SetDefaultHostServerSettings](ACTA:SetDefaultHostServerSettings "wikilink"), [ACTA:SetHostServerSettingsStr](ACTA:SetHostServerSettingsStr "wikilink"), and [ACTA:SetDefaultHostServerSettingsStr](ACTA:SetDefaultHostServerSettingsStr "wikilink"):
+
+| Input value used in ACT commands | Corresponding [Friends Server Type](Friend_Services#server_types "wikilink") value |
+|----------------------------------|------------------------------------------------------------------------------------|
+| 0                                | 0 (L)                                                                              |
+| 1                                | 3 (D)                                                                              |
+| 2                                | 2 (S)                                                                              |
+| 3                                | 5 (T)                                                                              |
+| 4                                | 7 (J)                                                                              |
+
+### Default NFS Server Types
+
+By default, ACT uses [FRDU:GetServerTypes](FRDU:GetServerTypes "wikilink") to obtain the correct [NFS (Nintendo Friend Server) environment](Friend_Services#server_types "wikilink") to create Nintendo Network IDs.
+
+This is necessary to ensure proper online play functionality, because the friends server account is tied to the Nintendo Network ID when one is linked.
+
 # UUIDs
 
 The ACT service generates UUIDs for accounts and for the console in general.
