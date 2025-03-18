@@ -4,24 +4,22 @@ title = 'BOSSU:ReadNsData'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x00280102\] |
-| 1          | NsDataId                   |
-| 2-3        | u64 offset                 |
-| 4          | Size                       |
-| 5          | (Size \<\< 4) \| 0xC       |
-| 6          | Data Pointer               |
+{{% ipc/request header="0x00280102" %}}
+{{% ipc/param %}}u32, NS Data ID{{% / %}}
+{{% ipc/param span=2 %}}s64, Offset{{% / %}}
+{{% ipc/param %}}u32, Buffer size{{% / %}}
+{{% ipc/mapbuffer w %}}Data buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description         |
-|------------|---------------------|
-| 0          | Header code         |
-| 1          | Result code         |
-| 2          | Actual read size    |
-| 3          | Unknown output u32. |
+{{% ipc/request header="0x002800c2" %}}
+{{% ipc/result %}}
+{{% ipc/param %}}u32, Actual read size{{% / %}}
+{{% ipc/param %}}u32, Version of the NS Data{{% / %}}
+{{% ipc/mapbuffer w %}}Data buffer{{% / %}}
+{{% / %}}
 
 # Description
 
-This is used for reading the actual SpotPass content.
+Reads the content from the given NS Data ID of the program ID of the current session.
