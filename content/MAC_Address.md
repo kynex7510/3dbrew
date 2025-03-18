@@ -4,8 +4,7 @@ title = 'MAC Address'
 
 ## List of known Nintendo MAC prefixes
 
-[Vendor/Ethernet/Bluetooth MAC Address Lookup and
-Search](http://www.coffer.com/mac_find/?string=Nintendo)
+[Vendor/Ethernet/Bluetooth MAC Address Lookup and Search](http://www.coffer.com/mac_find/?string=Nintendo)
 
 ## List of known 3DS MAC prefixes
 
