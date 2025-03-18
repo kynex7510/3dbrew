@@ -13,9 +13,10 @@ title = 'BOSSU:RegisterPrivateClientCert'
 
 # Response
 
-{{% ipc/request header="0x00050042" %}}
+{{% ipc/request header="0x00060044" %}}
 {{% ipc/result %}}
-{{% ipc/mapbuffer r %}}Input root CA buffer{{% / %}}
+{{% ipc/mapbuffer r %}}Input client certificate buffer{{% / %}}
+{{% ipc/mapbuffer r %}}Input client certificate key buffer{{% / %}}
 {{% / %}}
 
 # Description
