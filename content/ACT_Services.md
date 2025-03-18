@@ -470,17 +470,17 @@ Data blocks can be accessed from specific commands depending on the data that is
 <tr class="odd">
 <td>0x0</td>
 <td>0x1</td>
-<td>NNAS (Nintendo Network Authentication Server) Type</td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NNAS (Nintendo Network Authentication Server) Type</a></td>
 </tr>
 <tr class="even">
 <td>0x1</td>
 <td>0x1</td>
-<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Type Value</a></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Type Value</a></td>
 </tr>
 <tr class="odd">
 <td>0x2</td>
 <td>0x1</td>
-<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Number</a></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Number</a></td>
 </tr>
 <tr class="even">
 <td>0x3</td>
@@ -641,12 +641,12 @@ Data blocks can be accessed from specific commands depending on the data that is
 <tr class="odd">
 <td>0x0</td>
 <td>0x21</td>
-<td>ASCII NULL-terminated NNAS subdomain</td>
+<td>ASCII NULL-terminated <a {{% href "../ACT_Services" %}} title="wikilink">NNAS</a> subdomain</td>
 </tr>
 <tr class="even">
 <td>0x21</td>
 <td>0x3</td>
-<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Environment</a></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Type</a></td>
 </tr>
 </tbody>
 </table></td>
@@ -668,12 +668,12 @@ Data blocks can be accessed from specific commands depending on the data that is
 <tr class="odd">
 <td>0x0</td>
 <td>0x21</td>
-<td>ASCII NULL-terminated NNAS subdomain</td>
+<td>ASCII NULL-terminated <a {{% href "../ACT_Services" %}} title="wikilink">NNAS</a> subdomain</td>
 </tr>
 <tr class="even">
 <td>0x21</td>
 <td>0x3</td>
-<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Environment</a></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Type</a></td>
 </tr>
 </tbody>
 </table></td>
