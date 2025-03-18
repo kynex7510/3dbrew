@@ -4,7 +4,7 @@ title = 'CECDS:SprAddSlot'
 
 # Request
 
-{{% ipc/param %}}Header code `0x041200C2`{{% / %}}
+{{% ipc/request header="0x041200c2" %}}
 {{% ipc/param %}}title id{{% / %}}
 {{% ipc/param %}}`0xFF` (flags?){{% / %}}
 {{% ipc/param %}}buffer size{{% / %}}
