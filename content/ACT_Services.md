@@ -747,6 +747,14 @@ This is the Mii format used in ACT commands.
 | 0x85   | 0x3      | padding                                                                    |
 | 0x88   | 0x8      | s64, UtcOffset in seconds                                                  |
 
+## AcquireTimeZoneListData
+
+| Offset | Size             | Description                                   |
+|--------|------------------|-----------------------------------------------|
+| 0x0    | 0x4              | u32, Capacity (32)                            |
+| 0x4    | 0x4              | u32, Count                                    |
+| 0x8    | 0x90 \* Capacity | [Timezones](ACT_Services#timezone "wikilink") |
+
 ## EulaInfo
 
 | Offset | Size    | Description                                                                      |
