@@ -17,6 +17,10 @@ title = 'ACTA:ApproveByCreditCard'
 {{% ipc/result %}}
 {{% / %}}
 
+# Description
+
+Requests COPPA parental consent using the given credit card information. The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
+
 # CreditCardInfo
 
 | Offset | Size        | Description                                    |
@@ -28,7 +32,3 @@ title = 'ACTA:ApproveByCreditCard'
 | 0x17   | 0x1         | u8, ExpirationYear                             |
 | 0x18   | 0x7         | NULL-terminated 6-character ASCII PostalCode   |
 | 0x1F   | 0x100 + 0x1 | NULL-terminated 256-character ASCII Email      |
-
-# Description
-
-Requests COPPA parental consent using the given credit card information. The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
