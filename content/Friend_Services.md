@@ -275,6 +275,8 @@ Once the handle has been signaled by the friends module, the client can use [FRD
 
 ## Notification Event Types
 
+The following event types are accessible to all frd:u and frd:a sessions:
+
 | Value | Description                                                                                                      |
 |-------|------------------------------------------------------------------------------------------------------------------|
 | 1     | The console went online.                                                                                         |
@@ -286,11 +288,16 @@ Once the handle has been signaled by the friends module, the client can use [FRD
 | 7     | A friend is no longer present (went offline).                                                                    |
 | 8     | A friend has added you back as a friend (if you had added them before as a "provisionally registered" friend).   |
 | 9     | A friend sent you an invitation, and the current system's JoinGameID matches that of the friend.                 |
-| 145   | A friend changed their game mode description.                                                                    |
-| 146   | A friend changed their favorite game.                                                                            |
-| 147   | A friend changed their personal message.                                                                         |
-| 148   | A friend changed their presence, but their JoinGameID does not match that of the system.                         |
-| 149   | A friend sent you an invitation, but their JoinGameID does not match that of the system.                         |
+
+The following values, while signaled internally normally, are not exposed to sessions in any way:
+
+| Value | Description                                                                              |
+|-------|------------------------------------------------------------------------------------------|
+| 145   | A friend changed their game mode description.                                            |
+| 146   | A friend changed their favorite game.                                                    |
+| 147   | A friend changed their personal message.                                                 |
+| 148   | A friend changed their presence, but their JoinGameID does not match that of the system. |
+| 149   | A friend sent you an invitation, but their JoinGameID does not match that of the system. |
 
 ## EventNotification
 
