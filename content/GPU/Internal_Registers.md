@@ -2151,11 +2151,11 @@ This register configures the color buffer physical address.
 
 ### GPUREG_FRAMEBUFFER_DIM
 
-| Bits  | Description          |
-|-------|----------------------|
-| 0-10  | unsigned, Width      |
-| 12-21 | unsigned, Height - 1 |
-| 24    | 0x1                  |
+| Bits  | Description                                        |
+|-------|----------------------------------------------------|
+| 0-10  | unsigned, Width                                    |
+| 12-21 | unsigned, Height - 1                               |
+| 24    | unsigned, Vertical flip? (0 = enable, 1 = disable) |
 
 This register configures the framebuffer dimensions.
 
