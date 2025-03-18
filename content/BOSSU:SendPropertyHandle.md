@@ -7,7 +7,7 @@ title = 'BOSSU:SendPropertyHandle'
 {{% ipc/request header="0x00150042" %}}
 {{% ipc/param %}}u16 PropertyID{{% / %}}
 {{% ipc/copyhandle count=1 %}}
-{{% ipc/param %}}Handle{{% / %}}
+{{% ipc/handleentry %}}Handle{{% / %}}
 {{% / %}}
 
 # Response
