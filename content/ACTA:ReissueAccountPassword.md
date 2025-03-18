@@ -18,4 +18,4 @@ title = 'ACTA:ReissueAccountPassword'
 
 # Description
 
-Requests the issuing of a temporary password (valid for 24 hours) via an email sent to the account's mail address.
+Requests the issuing of a temporary password (valid for 24 hours) via an email sent to the account's mail address. The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
