@@ -211,7 +211,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <tr class="odd">
 <td>0x9</td>
 <td>0x101</td>
-<td><a {{% href "../ACTU:AcquireAccountInfo" "broken" %}} title="wikilink">AcquireAccountInfo</a></td>
+<td><a {{% href "../ACTU:AcquireAccountInfo" %}} title="wikilink">AcquireAccountInfo</a></td>
 <td>Mail address</td>
 </tr>
 <tr class="even">
