@@ -86,7 +86,7 @@ This service is used mainly by the Nintendo Network ID Settings application acce
 | 0x04200180     | [SetAccountPasswordInput](ACTA:SetAccountPasswordInput "wikilink")                             |
 | 0x04210042     | [UploadMii](ACTA:UploadMii "wikilink")                                                         |
 | 0x04220042     | [InactivateDeviceAssociation](ACTA:InactivateDeviceAssociation "wikilink")                     |
-| 0x04230082     | [InquireMailAddressAvailability](ACTA:InquireMailAddressAvailability "wikilink")               |
+| 0x04230082     | [ValidateMailAddress](ACTA:ValidateMailAddress "wikilink")                                     |
 | 0x04240044     | [SendPostingApprovalMail](ACTA:SendPostingApprovalMail "wikilink")                             |
 | 0x04250042     | [SendConfirmationMail](ACTA:SendConfirmationMail "wikilink")                                   |
 | 0x04260044     | [SendConfirmationMailForPin](ACTA:SendConfirmationMailForPin "wikilink")                       |
