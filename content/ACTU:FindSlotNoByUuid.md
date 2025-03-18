@@ -5,7 +5,7 @@ title = 'ACTU:FindSlotNoByUuid'
 # Request
 
 {{% ipc/request header="0x000F0140" %}}
-{{% ERROR_UNKNOWN_IPC_DESCRIPTOR_OMITTED %}}
+{{% ipc/param %}}u32, Unique ID (see description){{% / %}}
 {{% ipc/param span=4 %}}Input [UUID](ACT_Services#uuids "wikilink"){{% / %}}
 {{% / %}}
 
