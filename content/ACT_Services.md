@@ -712,8 +712,8 @@ This is the Mii format used in ACT commands.
 | Offset | Size | Description                                                                                                |
 |--------|------|------------------------------------------------------------------------------------------------------------|
 | 0x0    | 0x5C | [Mii Data](Mii#mii_format "wikilink")                                                                      |
-| 0x5E   | 0x2  | padding                                                                                                    |
-| 0x5C   | 0x2  | CRC16 over the above 0x5E bytes (see [Mii Checksum](Mii#checksum "wikilink") for details on the algorithm) |
+| 0x5C   | 0x2  | padding                                                                                                    |
+| 0x5E   | 0x2  | CRC16 over the above 0x5E bytes (see [Mii Checksum](Mii#checksum "wikilink") for details on the algorithm) |
 
 ## Timezone
 
