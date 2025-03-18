@@ -13,6 +13,7 @@ title = 'BOSSU:StartTask'
 
 {{% ipc/request header="0x001C0042" %}}
 {{% ipc/result %}}
+{{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
 {{% / %}}
 
 # Description
