@@ -15,4 +15,4 @@ title = 'FRDA:UnloadLocalAccount'
 
 # Description
 
-Deletes the account with the specified local account ID.
+Unloads the account with the specified local account ID.
