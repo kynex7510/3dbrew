@@ -4,13 +4,13 @@ title = 'ACTU:GetIndependentServiceTokenV2'
 
 # Request
 
-{{% ipc/request header="0x00150002" %}}
+{{% ipc/request header="0x00210002" %}}
 {{% ipc/mapbuffer w %}}Output [V2 independent service token](ACT_Services#v2_independent_service_token "wikilink") buffer pointer{{% / %}}
 {{% / %}}
 
 # Response
 
-{{% ipc/request header="0x00150042" %}}
+{{% ipc/request header="0x00210042" %}}
 {{% ipc/result %}}
 {{% ipc/mapbuffer w %}}Output [V2 independent service token](ACT_Services#v2_independent_service_token "wikilink") buffer pointer{{% / %}}
 {{% / %}}
