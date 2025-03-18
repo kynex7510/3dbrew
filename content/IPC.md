@@ -73,11 +73,11 @@ Translation type 0 is used to send handles across processes. The corresponding t
 
 | Bits  | Description                                                                                                               |
 |-------|---------------------------------------------------------------------------------------------------------------------------|
-| 4     | If set, the handles are closed for the caller. Interaction with bit5 unknown.                                             |
+| 4     | If set, the handles are closed for the caller.                                                                            |
 | 5     | If set, the following handles are replaced by the process ID. Otherwise, translate each handle between client and server. |
 | 26-31 | Number of handles following this descriptor (minus one).                                                                  |
 
-Usage examples:
+Setting both bit4 and bit5 causes a kernel panic. Usage examples:
 
 <table>
 <thead>
