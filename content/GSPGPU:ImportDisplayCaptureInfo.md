@@ -28,4 +28,4 @@ title = 'GSPGPU:ImportDisplayCaptureInfo'
 
 # Description
 
-This returns the current framebuffer state. The returned framebuffer addresses are for the new framebuffers (the ones that will be drawn next VSync) for the process with GPU rights.
+This returns the current framebuffer state. The returned framebuffer addresses are for the currently active framebuffers (or the ones presented in FB info sharedmem if fb entry has bit0 set) for the process with GPU rights.
