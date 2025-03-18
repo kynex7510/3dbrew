@@ -610,7 +610,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <tr class="even">
 <td>0x23</td>
 <td>0x4</td>
-<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
 <td>Default account server types</p>
 <table>
 <thead>
