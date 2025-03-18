@@ -48,7 +48,7 @@ Old 3DS development systems (Partner-CTR, IS-CTR-BOX, IS-SPR-BOX) use the "E" an
 
 | Sales Region                 | Region Lock   | Region Suffix  |
 |------------------------------|---------------|----------------|
-| Japan                        | Japan         | JF, JH, JM     |
+| Japan                        | Japan         | JE, JF, JH, JM |
 | North America                | North America | W              |
 | Brazil                       | North America | B              |
 | Middle East / Southeast Asia | North America | S              |
