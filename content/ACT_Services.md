@@ -780,6 +780,13 @@ Represents the device information for the console linked to the NNID.
 | 0x173  | 0x1       | padding                                                  |
 | 0x174  | 0x4       | [Birth Date](ACT_Services#birthdate "wikilink")          |
 
+## SendCoppaCodeMailData
+
+| Offset | Size      | Description                                        |
+|--------|-----------|----------------------------------------------------|
+| 0x0    | 0x5 + 1   | 5-character ASCII CoppaCode + NULL termination     |
+| 0x6    | 0x100 + 1 | 256-character ASCII ParentEmail + NULL termination |
+
 ## AcquireEulaData/AcquireEulaListData
 
 Data returned from [ACTU:AcquireEula](ACTU:AcquireEula "wikilink") and [ACTU:AcquireEulaList](ACTU:AcquireEulaList "wikilink") uses a special format.
