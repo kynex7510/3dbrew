@@ -18,4 +18,4 @@ title = 'ACTA:UpdateMiiData'
 
 # Description
 
-Updates the Mii data for the given account and also increments the internal Mii index.
+Updates the Mii data for the given account.
