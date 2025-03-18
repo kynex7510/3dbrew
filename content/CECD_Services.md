@@ -37,16 +37,16 @@ Streetpass stuff.
 | Name                  | Value                    | Notes                                          |
 |-----------------------|--------------------------|------------------------------------------------|
 | CEC_PATH_MBOX_LIST    | 1                        | <data:/CEC/MBoxList____>                       |
-| CEC_PATH_MBOX_INFO    | 2                        | <data:/CEC/><id>/MBoxInfo____              |
-| CEC_PATH_INBOX_INFO   | 3                        | <data:/CEC/><id>/InBox___/BoxInfo_____ |
-| CEC_PATH_OUTBOX_INFO  | 4                        | <data:/CEC/><id>/OutBox__/BoxInfo_____  |
-| CEC_PATH_OUTBOX_INDEX | 5                        | <data:/CEC/><id>/OutBox__/OBIndex_____  |
-| CEC_PATH_INBOX_MSG    | 6                        | <data:/CEC/><id>/InBox___/_<message_id>    |
-| CEC_PATH_OUTBOX_MSG   | 7                        | <data:/CEC/><id>/OutBox__/_<message_id>     |
+| CEC_PATH_MBOX_INFO    | 2                        | <data:/CEC/><id>/MBoxInfo\_\_\_\_              |
+| CEC_PATH_INBOX_INFO   | 3                        | <data:/CEC/><id>/InBox\_\_\_/BoxInfo\_\_\_\_\_ |
+| CEC_PATH_OUTBOX_INFO  | 4                        | <data:/CEC/><id>/OutBox\_\_/BoxInfo\_\_\_\_\_  |
+| CEC_PATH_OUTBOX_INDEX | 5                        | <data:/CEC/><id>/OutBox\_\_/OBIndex\_\_\_\_\_  |
+| CEC_PATH_INBOX_MSG    | 6                        | <data:/CEC/><id>/InBox\_\_\_/\_<message_id>    |
+| CEC_PATH_OUTBOX_MSG   | 7                        | <data:/CEC/><id>/OutBox\_\_/\_<message_id>     |
 | CEC_PATH_ROOT_DIR     | 10                       | <data:/CEC>                                    |
 | CEC_PATH_MBOX_DIR     | 11                       | <data:/CEC/><id>                               |
-| CEC_PATH_INBOX_DIR    | 12                       | <data:/CEC/><id>/InBox___                   |
-| CEC_PATH_OUTBOX_DIR   | 13                       | <data:/CEC/><id>/OutBox__                    |
+| CEC_PATH_INBOX_DIR    | 12                       | <data:/CEC/><id>/InBox\_\_\_                   |
+| CEC_PATH_OUTBOX_DIR   | 13                       | <data:/CEC/><id>/OutBox\_\_                    |
 |                       | 101 thru 199 (inclusive) | <data:/CEC/><id>/MBoxData.0<i-100>             |
 | CECMESSAGE_BOX_ICON   | 101                      | <data:/CEC/><id>/MBoxData.001                  |
 | CECMESSAGE_BOX_TITLE  | 110                      | <data:/CEC/><id>/MBoxData.010                  |
@@ -96,9 +96,7 @@ Streetpass stuff.
 
 # CECD Service "cecd:s"
 
-This contains a similar (probably the same) command handler from
-0x0001.... to 0x0021.... as them in cecd:u. In addition, it also
-contains
+This contains a similar (probably the same) command handler from 0x0001.... to 0x0021.... as them in cecd:u. In addition, it also contains
 
 | Command Header | Description                                                   |
 |----------------|---------------------------------------------------------------|
@@ -121,8 +119,7 @@ contains
 
 ### CecSprStatus
 
-This enum is used internally of the cecd service to keep track of which
-state of an SPR exchange it is in currently.
+This enum is used internally of the cecd service to keep track of which state of an SPR exchange it is in currently.
 
 | Name                            | Value | Notes                                                                                |
 |---------------------------------|-------|--------------------------------------------------------------------------------------|
