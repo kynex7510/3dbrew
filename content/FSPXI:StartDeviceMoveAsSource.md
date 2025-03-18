@@ -19,7 +19,4 @@ title = 'FSPXI:StartDeviceMoveAsSource'
 
 # Description
 
-An u8 state flag must be zero when using this command, otherwise
-error-code 0xE02046EE is returned. This state flag is then set to
-value 1. The stored movable.sed keyY hash is then loaded, then
-0x10-bytes of data is randomly generated.
+An u8 state flag must be zero when using this command, otherwise error-code 0xE02046EE is returned. This state flag is then set to value 1. The stored movable.sed keyY hash is then loaded, then 0x10-bytes of data is randomly generated.
