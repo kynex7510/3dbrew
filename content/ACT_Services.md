@@ -41,7 +41,7 @@ These commands are used generally by most titles, and are also present in act:a.
 | 0x001C0342     | [GetServiceToken](ACTU:GetServiceToken "wikilink")                                   |
 | 0x001D0004     | [InquireMailAddressAvailability](ACTU:InquireMailAddressAvailability "wikilink")     |
 | 0x001E0082     | [AcquireEula](ACTU:AcquireEula "wikilink")                                           |
-| 0x001F0082     | [AcquireEulaList](ACTU:AcquireEulaList "wikilink")                                   |
+| 0x001F0082     | [AcquireEulaLanguageList](ACTU:AcquireEulaLanguageList "wikilink")                   |
 | 0x00200382     | [AcquireIndependentServiceTokenV2](ACTU:AcquireIndependentServiceTokenV2 "wikilink") |
 | 0x00210002     | [GetIndepdendentServiceTokenV2](ACTU:GetIndepdendentServiceTokenV2 "wikilink")       |
 | 0x00220342     | [GetServiceTokenV2](ACTU:GetServiceTokenV2 "wikilink")                               |
