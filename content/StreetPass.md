@@ -158,7 +158,7 @@ The last byte (flags) have been observed between those possibilities :
 ```
 
 Only the bits 2,5,6 were used. When set, the bit n°2 indicates the
-presence of a followinf 6-byte field filled with 0xff.
+presence of a following 6-byte field filled with 0xff.
 
 Some services have a 6-byte field succeeding the StreetPass service that
 is just FF bytes (e.g. FF FF FF FF FF FF). The purpose of these is
