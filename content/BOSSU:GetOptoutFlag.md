@@ -9,7 +9,11 @@ title = 'BOSSU:GetOptoutFlag'
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x000A0080" %}}
 {{% ipc/result %}}
-{{% ipc/param %}}Output u8 flag{{% / %}}
+{{% ipc/param %}}bool, Flag{{% / %}}
 {{% / %}}
+
+# Description
+
+Gets whether the program ID of the current session has opted out of any BOSS communications.
