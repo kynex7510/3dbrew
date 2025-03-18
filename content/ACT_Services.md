@@ -140,7 +140,7 @@ These UUIDs are specific to the title that requested them to be generated, speci
 
 The following technique is used internally to generate these UUIDs:
 
-\- Generate a regular UUID using the above mentioned node data (`regular_uuid`)
+\- Generate or use an existing regular UUID the with the above mentioned node data (`regular_uuid`)
 
 \- `hash = SHA256 ( byte-swapped unique ID (thus, big endian) + 095E273A + 48-bit node data from regular_uuid )`
 
