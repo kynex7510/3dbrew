@@ -19,4 +19,4 @@ title = 'ACTA:UpdateAccountPassword'
 
 # Description
 
-Requests a password change for the account. The account slot must be 0xFE. Therefore, this command can only be used with the currently load account.
+Requests a password change for the account. The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
