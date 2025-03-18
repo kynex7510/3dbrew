@@ -28,5 +28,4 @@ title = 'GSPGPU:ImportDisplayCaptureInfo'
 
 # Description
 
-This returns the current framebuffer state. The returned framebuffer
-addresses are for the currently active framebuffers.
+This returns the current framebuffer state. The returned framebuffer addresses are for the currently active framebuffers.
