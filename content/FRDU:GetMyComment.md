@@ -11,7 +11,7 @@ title = 'FRDU:GetMyComment'
 
 {{% ipc/request header="0x000F0280" %}}
 {{% ipc/result %}}
-{{% ipc/param span=9 %}}UTF-16 screen name (16 characters + null termination) {{% / %}}
+{{% ipc/param span=9 %}}UTF-16 comment (16 characters + null termination) {{% / %}}
 {{% / %}}
 
 # Description
