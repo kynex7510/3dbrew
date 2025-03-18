@@ -283,7 +283,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x7</td>
 <td>0x60</td>
 <td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
-<td><a {{% href "../Mii" %}} title="wikilink">MiiData</a></td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">Mii CFLStoreData</a></td>
 </tr>
 <tr class="even">
 <td>0x8</td>
