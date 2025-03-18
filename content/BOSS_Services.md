@@ -65,34 +65,96 @@ categories = ["Services"]
 
 ## Privileged BOSS Service "boss:P"
 
-| Command Header | Description                                                                     |
-|----------------|---------------------------------------------------------------------------------|
-| 0x04010082     | [InitializeSessionPrivileged](BOSSP:InitializeSessionPrivileged "wikilink")     |
-| 0x04040080     | [GetAppNewFlag](BOSSP:GetAppNewFlag "wikilink")                                 |
-| 0x040500C0     | unknown...                                                                      |
-| 0x040600C0     | unknown...                                                                      |
-| 0x04070080     | unknown...                                                                      |
-| 0x04090102     | unknown...                                                                      |
-| 0x040B0080     | unknown...                                                                      |
-| 0x040D0182     | [GetNsDataIdListPrivileged](BOSSP:GetNsDataIdListPrivileged "wikilink")         |
-| 0x040E0182     | [GetNsDataIdListPrivileged1](BOSSP:GetNsDataIdListPrivileged1 "wikilink")       |
-| 0x04130082     | [SendPropertyPrivileged](BOSSP:SendPropertyPrivileged "wikilink")               |
-| 0x041500C0     | DeleteNsDataPrivileged                                                          |
-| 0x04160142     | [GetNsDataHeaderInfoPrivileged](BOSSP:GetNsDataHeaderInfoPrivileged "wikilink") |
-| 0x04170182     | [ReadNsDataPrivileged](BOSSP:ReadNsDataPrivileged "wikilink")                   |
-| 0x041A0100     | SetNsDataNewFlagPrivileged                                                      |
-| 0x041B00C0     | GetNsDataNewFlagPrivileged                                                      |
-| 0x041C00C0     | unknown...                                                                      |
-| 0x042E00C2     | unknown...                                                                      |
-| 0x042F00C2     | unknown...                                                                      |
-| 0x043000C2     | unknown...                                                                      |
-| 0x04490142     | unknown...                                                                      |
-| 0x044A0180     | unknown...                                                                      |
-| 0x044D0080     | unknown...                                                                      |
-| 0x04500102     | unknown...                                                                      |
-| 0x04540102     | unknown...                                                                      |
-| 0x045500C2     | unknown...                                                                      |
-| 0x04580104     | ?                                                                               |
+| Command Header | Description                                                                                     |
+|----------------|-------------------------------------------------------------------------------------------------|
+| 0x04010082     | [InitializeSessionPrivileged](BOSSP:InitializeSessionPrivileged "wikilink")                     |
+| 0x04020000     | ?                                                                                               |
+| 0x04030000     | ?                                                                                               |
+| 0x04040080     | [GetAppNewFlag](BOSSP:GetAppNewFlag "wikilink")                                                 |
+| 0x040500C0     | [SetAppNewFlag](BOSSP:SetAppNewFlag "wikilink")                                                 |
+| 0x040600C0     | SetOptoutFlagPrivileged                                                                         |
+| 0x04070080     | GetOptoutFlagPrivileged                                                                         |
+| 0x04080040     | (u8 optout) Sets the optout flag to all apps?                                                   |
+| 0x04090102     | UnregisterTaskPrivileged                                                                        |
+| 0x040A0000     | ?                                                                                               |
+| 0x040B0080     | GetTaskIdListPrivileged                                                                         |
+| 0x040C00C2     | GetStepIdListPrivileged                                                                         |
+| 0x040D0182     | [GetNsDataIdListPrivileged](BOSSP:GetNsDataIdListPrivileged "wikilink")                         |
+| 0x040E0182     | [GetNsDataIdListPrivileged1](BOSSP:GetNsDataIdListPrivileged1 "wikilink")                       |
+| 0x040F0102     | GetTaskInfoPrivileged                                                                           |
+| 0x04100102     | Same as GetTaskStatusPrivileged, but the input bool is set to false                             |
+| 0x04110102     | GetTaskErrorPrivileged                                                                          |
+| 0x04120000     | Related to the sysmodule savedata?                                                              |
+| 0x04130082     | [SendPropertyPrivileged](BOSSP:SendPropertyPrivileged "wikilink")                               |
+| 0x04140082     | [ReceivePropertyPrivileged](BOSSP:ReceivePropertyPrivileged "wikilink")                         |
+| 0x041500C0     | DeleteNsDataPrivileged                                                                          |
+| 0x04160142     | [GetNsDataHeaderInfoPrivileged](BOSSP:GetNsDataHeaderInfoPrivileged "wikilink")                 |
+| 0x04170182     | [ReadNsDataPrivileged](BOSSP:ReadNsDataPrivileged "wikilink")                                   |
+| 0x04180100     | SetNsDataAdditionalInfoPrivileged                                                               |
+| 0x041900C0     | GetNsDataAdditionalInfoPrivileged                                                               |
+| 0x041A0100     | SetNsDataNewFlagPrivileged                                                                      |
+| 0x041B00C0     | GetNsDataNewFlagPrivileged                                                                      |
+| 0x041C00C0     | GetNsDataLastUpdatePrivileged                                                                   |
+| 0x041D0040     | (bool unk_flag1)                                                                                |
+| 0x041E0000     | Returns: bool unk_flag1                                                                         |
+| 0x041F0040     | (bool unk_flag2)                                                                                |
+| 0x04200000     | Returns: bool unk_flag2                                                                         |
+| 0x04210000?    | Stubbed                                                                                         |
+| 0x04220000     | ?                                                                                               |
+| 0x04230000?    | Stubbed                                                                                         |
+| 0x04240000     | ?                                                                                               |
+| 0x04250042     | SetPolicyListEnvId. Sets the policylist env ID (default env ID is "p01"): strncpy("p01", in, 8) |
+| 0x04260042     | GetPolicyListEnvId. Gets the policylist env ID (default env ID is "p01"): strcpy(out, "p01")    |
+| 0x04270042     | SetPolicyListUrl. Sets a custom policylist URL. Max of 0x200 chars                              |
+| 0x04280042     | GetPolicyListUrl. Gets the custom policylist URL                                                |
+| 0x04290002     | (Handle unk)                                                                                    |
+| 0x042A0000     | Closes the previous handle                                                                      |
+| 0x042B0000     | Returns: u8 unk                                                                                 |
+| 0x042C0042     | (u32 Size, ((Size\<\<4)\|0xC), Buf)                                                             |
+| 0x042D0000     | Returns: u32 unk                                                                                |
+| 0x042E00C2     | StartTaskPrivileged                                                                             |
+| 0x042F00C2     | StartTaskImmediatePrivileged                                                                    |
+| 0x043000C2     | CancelTaskPrivileged                                                                            |
+| 0x04310040     | (u32 unk_4) The input is stored in a variable whose default value is 0x70                       |
+| 0x04320040     | Returns: u32 unk_4                                                                              |
+| 0x04330080     | GetStorageOptionPrivileged                                                                      |
+| 0x043400C2     | StartBgImmediatePrivileged                                                                      |
+| 0x04350042     | (u32 Size, ((Size\<\<4)\|0xA), Buf). Stubbed                                                    |
+| 0x04360042     | (u32 Size, ((Size\<\<4)\|0xC), Buf). Stubbed                                                    |
+| 0x043700C2     | GetTaskProperty0Privileged                                                                      |
+| 0x04380000     | ?                                                                                               |
+| 0x04390104     | GetTaskQueryPrivileged                                                                          |
+| 0x043A0042     | (u32 Size, ((Size\<\<4)\|0xA), Buf). Stubbed                                                    |
+| 0x043B0042     | (u32 Size, ((Size\<\<4)\|0xC), Buf). Stubbed                                                    |
+| 0x043C0080     | (u64 title_id)                                                                                  |
+| 0x043D0080     | (u64 title_id)                                                                                  |
+| 0x043E0042     | (u32 Size, ((Size\<\<4)\|0xA), Buf). Sets the sprelay URL                                       |
+| 0x043F0042     | (u32 Size, ((Size\<\<4)\|0xC), Buf). Gets the sprelay URL                                       |
+| 0x04400080     | (u32 interval, u32 unk). Sets the sprelay interval, and other things                            |
+| 0x04410000     | Returns: u32 interval, u32 unk. Gets the sprelay interval, and other things                     |
+| 0x04420000     | ?                                                                                               |
+| 0x04430042     | (u32 Size, ((Size\<\<4)\|0xC), Buf). Size must be at least 0x208                                |
+| 0x04440042     | (u32 Size, ((Size\<\<4)\|0xC), Buf). Size must be at least 0x130                                |
+| 0x04450040     | (u8 unk_5)                                                                                      |
+| 0x04460000     | Returns: u8 unk_5                                                                               |
+| 0x04470002     | RegisterNewArrivalEventPrivileged                                                               |
+| 0x04480000?    | Stubbed                                                                                         |
+| 0x04490142     | RegisterTaskPrivileged                                                                          |
+| 0x044A0180     | SetStorageInfoPrivileged                                                                        |
+| 0x044B01C0     | RegisterStorageEntryPrivileged                                                                  |
+| 0x044C0080     | UnregisterStoragePrivileged                                                                     |
+| 0x044D0080     | GetStorageInfoPrivileged                                                                        |
+| 0x044E0080     | GetStorageEntryInfoPrivileged                                                                   |
+| 0x044F0102     | UpdateTaskIntervalPrivileged                                                                    |
+| 0x04500102     | UpdateTaskCountPrivileged                                                                       |
+| 0x045100C2     | GetTaskIntervalPrivileged                                                                       |
+| 0x045200C2     | GetTaskCountPrivileged                                                                          |
+| 0x045300C2     | GetTaskServiceStatusPrivileged                                                                  |
+| 0x04540102     | GetTaskStatePrivileged                                                                          |
+| 0x045500C2     | GetTaskResultPrivileged                                                                         |
+| 0x045600C2     | GetTaskCommErrorCodePrivileged                                                                  |
+| 0x04570142     | GetTaskStatusPrivileged                                                                         |
+| 0x04580104     | SetTaskQueryPrivileged                                                                          |
 
 boss:P also contains all of the commands from boss:U.
 
