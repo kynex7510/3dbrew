@@ -458,7 +458,8 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x12</td>
 <td>0x4</td>
 <td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
-<td><table>
+<td>Account server types</p>
+<table>
 <thead>
 <tr class="header">
 <th>Offset</th>
@@ -542,7 +543,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x1C</td>
 <td>0x11</td>
 <td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
-<td>ASCII NULL-termiinated NfsPassword</td>
+<td>ASCII NULL-terminated NfsPassword</td>
 </tr>
 <tr class="even">
 <td>0x1D</td>
@@ -596,6 +597,49 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x22</td>
 <td>0x29</td>
 <td>ASCII NULL-terminated refresh token</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="odd">
+<td>0x22</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
+<td>IsApplicationUpdateRequired</td>
+</tr>
+<tr class="even">
+<td>0x23</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>Default account server types</p>
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x1</td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NNAS (Nintendo Network Authentication Server) Type</a></td>
+</tr>
+<tr class="even">
+<td>0x1</td>
+<td>0x1</td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Type Value</a></td>
+</tr>
+<tr class="odd">
+<td>0x2</td>
+<td>0x1</td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Number</a></td>
+</tr>
+<tr class="even">
+<td>0x3</td>
+<td>0x1</td>
+<td>padding (0)</td>
 </tr>
 </tbody>
 </table></td>
