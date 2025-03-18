@@ -18,3 +18,5 @@ title = 'ACTA:SetAccountPasswordInput'
 # Description
 
 Sets the account password input for the given account. This value is only stored in memory and not in the save data. It is possible to update the cached password by first using this command and then [ACTA:EnableAccountPasswordCache](ACTA:EnableAccountPasswordCache "wikilink").
+
+The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
