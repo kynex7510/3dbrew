@@ -7,43 +7,43 @@ categories = ["Services"]
 
 # GSP service "gsp::Gpu"
 
-| Command Header | Available since system version  | GSP rights required | Description                                                                      |
-|----------------|---------------------------------|---------------------|----------------------------------------------------------------------------------|
-| 0x00010082     |                                 | Yes                 | [WriteHWRegs](GSPGPU:WriteHWRegs "wikilink")                                     |
-| 0x00020084     |                                 | Yes                 | [WriteHWRegsWithMask](GSPGPU:WriteHWRegsWithMask "wikilink")                     |
-| 0x00030082     |                                 | Yes                 | [WriteHWRegRepeat](GSPGPU:WriteHWRegRepeat "wikilink")                           |
-| 0x00040080     |                                 | Yes                 | [ReadHWRegs](GSPGPU:ReadHWRegs "wikilink")                                       |
-| 0x00050200     |                                 | Yes                 | [SetBufferSwap](GSPGPU:SetBufferSwap "wikilink")                                 |
-| 0x00060082     |                                 | No                  | SetCommandList (Stubbed)                                                         |
-| 0x000700C2     |                                 | No                  | RequestDma (Stubbed)                                                             |
-| 0x00080082     |                                 | No                  | [FlushDataCache](GSPGPU:FlushDataCache "wikilink")                               |
-| 0x00090082     |                                 | No                  | [InvalidateDataCache](GSPGPU:InvalidateDataCache "wikilink")                     |
-| 0x000A0044     |                                 | No                  | RegisterInterruptEvents (Stubbed)                                                |
-| 0x000B0040     |                                 | See below           | [SetLcdForceBlack](GSPGPU:SetLcdForceBlack "wikilink")                           |
-| 0x000C0000     |                                 | No                  | [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink")                       |
-| 0x000D0140     |                                 | No                  | SetDisplayTransfer (Stubbed)                                                     |
-| 0x000E0180     |                                 | No                  | SetTextureCopy (Stubbed)                                                         |
-| 0x000F0200     |                                 | No                  | SetMemoryFill (Stubbed)                                                          |
-| 0x00100040     |                                 | No                  | [SetAxiConfigQoSMode](GSPGPU:SetAxiConfigQoSMode "wikilink")                     |
-| 0x00110040     |                                 | No                  | [SetPerfLogMode](GSPGPU:SetPerfLogMode "wikilink")                               |
-| 0x00120000     |                                 | No                  | [GetPerfLog](GSPGPU:GetPerfLog "wikilink")                                       |
-| 0x00130042     |                                 | No                  | [RegisterInterruptRelayQueue](GSPGPU:RegisterInterruptRelayQueue "wikilink")     |
-| 0x00140000     |                                 | No                  | [UnregisterInterruptRelayQueue](GSPGPU:UnregisterInterruptRelayQueue "wikilink") |
-| 0x00150002     |                                 | No                  | [TryAcquireRight](GSPGPU:TryAcquireRight "wikilink")                             |
-| 0x00160042     |                                 | No                  | [AcquireRight](GSPGPU:AcquireRight "wikilink")                                   |
-| 0x00170000     |                                 | No                  | [ReleaseRight](GSPGPU:ReleaseRight "wikilink")                                   |
-| 0x00180000     |                                 | No                  | [ImportDisplayCaptureInfo](GSPGPU:ImportDisplayCaptureInfo "wikilink")           |
-| 0x00190000     |                                 | See below           | [SaveVramSysArea](GSPGPU:SaveVramSysArea "wikilink")                             |
-| 0x001A0000     |                                 | See below           | [RestoreVramSysArea](GSPGPU:RestoreVramSysArea "wikilink")                       |
-| 0x001B0000     |                                 | Yes                 | [ResetGpuCore](GSPGPU:ResetGpuCore "wikilink")                                   |
-| 0x001C0040     |                                 | No                  | [SetLedForceOff](GSPGPU:SetLedForceOff "wikilink")                               |
-| 0x001D0040     |                                 | No                  | SetTestCommand (Stubbed)                                                         |
-| 0x001E0080     |                                 | No                  | [SetInternalPriorities](GSPGPU:SetInternalPriorities "wikilink")                 |
-| 0x001F0082     | [8.0.0-18](8.0.0-18 "wikilink") | No                  | [StoreDataCache](GSPGPU:StoreDataCache "wikilink")                               |
+| Command Header | Available since system version  | GSP rights required     | Description                                                                      |
+|----------------|---------------------------------|-------------------------|----------------------------------------------------------------------------------|
+| 0x00010082     |                                 | Yes                     | [WriteHWRegs](GSPGPU:WriteHWRegs "wikilink")                                     |
+| 0x00020084     |                                 | Yes                     | [WriteHWRegsWithMask](GSPGPU:WriteHWRegsWithMask "wikilink")                     |
+| 0x00030082     |                                 | Yes                     | [WriteHWRegRepeat](GSPGPU:WriteHWRegRepeat "wikilink")                           |
+| 0x00040080     |                                 | Yes                     | [ReadHWRegs](GSPGPU:ReadHWRegs "wikilink")                                       |
+| 0x00050200     |                                 | Yes                     | [SetBufferSwap](GSPGPU:SetBufferSwap "wikilink")                                 |
+| 0x00060082     |                                 | No                      | SetCommandList (Stubbed)                                                         |
+| 0x000700C2     |                                 | No                      | RequestDma (Stubbed)                                                             |
+| 0x00080082     |                                 | No                      | [FlushDataCache](GSPGPU:FlushDataCache "wikilink")                               |
+| 0x00090082     |                                 | No                      | [InvalidateDataCache](GSPGPU:InvalidateDataCache "wikilink")                     |
+| 0x000A0044     |                                 | No                      | RegisterInterruptEvents (Stubbed)                                                |
+| 0x000B0040     |                                 | Usually not (see below) | [SetLcdForceBlack](GSPGPU:SetLcdForceBlack "wikilink")                           |
+| 0x000C0000     |                                 | No                      | [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink")                       |
+| 0x000D0140     |                                 | No                      | SetDisplayTransfer (Stubbed)                                                     |
+| 0x000E0180     |                                 | No                      | SetTextureCopy (Stubbed)                                                         |
+| 0x000F0200     |                                 | No                      | SetMemoryFill (Stubbed)                                                          |
+| 0x00100040     |                                 | No                      | [SetAxiConfigQoSMode](GSPGPU:SetAxiConfigQoSMode "wikilink")                     |
+| 0x00110040     |                                 | No                      | [SetPerfLogMode](GSPGPU:SetPerfLogMode "wikilink")                               |
+| 0x00120000     |                                 | No                      | [GetPerfLog](GSPGPU:GetPerfLog "wikilink")                                       |
+| 0x00130042     |                                 | No                      | [RegisterInterruptRelayQueue](GSPGPU:RegisterInterruptRelayQueue "wikilink")     |
+| 0x00140000     |                                 | No                      | [UnregisterInterruptRelayQueue](GSPGPU:UnregisterInterruptRelayQueue "wikilink") |
+| 0x00150002     |                                 | No                      | [TryAcquireRight](GSPGPU:TryAcquireRight "wikilink")                             |
+| 0x00160042     |                                 | No                      | [AcquireRight](GSPGPU:AcquireRight "wikilink")                                   |
+| 0x00170000     |                                 | No                      | [ReleaseRight](GSPGPU:ReleaseRight "wikilink")                                   |
+| 0x00180000     |                                 | No                      | [ImportDisplayCaptureInfo](GSPGPU:ImportDisplayCaptureInfo "wikilink")           |
+| 0x00190000     |                                 | See below               | [SaveVramSysArea](GSPGPU:SaveVramSysArea "wikilink")                             |
+| 0x001A0000     |                                 | See below               | [RestoreVramSysArea](GSPGPU:RestoreVramSysArea "wikilink")                       |
+| 0x001B0000     |                                 | Yes                     | [ResetGpuCore](GSPGPU:ResetGpuCore "wikilink")                                   |
+| 0x001C0040     |                                 | No                      | [SetLedForceOff](GSPGPU:SetLedForceOff "wikilink")                               |
+| 0x001D0040     |                                 | No                      | SetTestCommand (Stubbed)                                                         |
+| 0x001E0080     |                                 | No                      | [SetInternalPriorities](GSPGPU:SetInternalPriorities "wikilink")                 |
+| 0x001F0082     | [8.0.0-18](8.0.0-18 "wikilink") | No                      | [StoreDataCache](GSPGPU:StoreDataCache "wikilink")                               |
 
 The GSP module starts a thread for handling commands for each service session, a maximum of 4 processes can use this service at once. Official applications have an optional code-path which [writes](GSPGPU:WriteHWRegs "wikilink") to registers during initialization, this is normally not used however.
 
-If a process has acquired rights, attempting to [set LCDs to black](GSPGPU:SetLcdForceBlack "wikilink") from another process will fail.
+If a process has forcefully acquired rights (ErrDisp), attempting [unset LCDs black-fill](GSPGPU:SetLcdForceBlack "wikilink") from another process will fail.
 Saving/restoring VRAM requires bit0 of process [flags](GSPGPU:RegisterInterruptRelayQueue "wikilink") to be set.
 
 # GSP service "gsp::Lcd"
