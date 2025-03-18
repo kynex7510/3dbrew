@@ -20,4 +20,6 @@ title = 'ACTA:SetDefaultHostServerSettings'
 
 Updates the default server environment settings, which will be used whenever a new account is created.
 
+This will also update [Configuration block 0x150002](Config_Savegame#configuration_blocks "wikilink") with the NFS Type and Number.
+
 See [Server Types](ACT_Services#server_types "wikilink") for more information.
