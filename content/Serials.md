@@ -53,7 +53,7 @@ Old 3DS development systems (Partner-CTR, IS-CTR-BOX, IS-SPR-BOX) use the "E" an
 | Brazil                       | North America | B              |
 | Middle East / Southeast Asia | North America | S              |
 | Europe                       | Europe        | EE, EF, EH, EM |
-| Australia                    | Europe        | AH, AG         |
+| Australia                    | Europe        | AF, AH, AG, AM |
 | South Korea                  | Korea         | KF, KH, KM     |
 | China (iQue)                 | China         | CF, CH, CM     |
 
