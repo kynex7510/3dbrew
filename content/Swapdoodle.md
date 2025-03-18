@@ -10,7 +10,7 @@ title = 'Swapdoodle'
 
 Currently, only these SpotPass endpoints are known to exist:
 
-- https://npdl.cdn.nintendowifi.net/p01/nsa/\<regionID\>/RNG_LS1/dstsetting LZ10 compressed BPK1 structure
+- https://npdl.cdn.nintendowifi.net/p01/nsa/\<regionID\>/RNG_LS1/dstsetting LZ11 compressed BPK1 structure
 - https://npdl.cdn.nintendowifi.net/p01/nsa/\<regionID\>/RNG_EC1/x.dlp BPK1 structure with all game lessons (x = 1, 2 or 3)
 - https://npdl.cdn.nintendowifi.net/p01/nsa/\<regionID\>/RNG_MD1/dstdatList.bin BPK1 structure with game metadata
 - https://npdl.cdn.nintendowifi.net/p01/nsa/\<regionID\>/RNG_NTX/\<language\>/ntx For game notifications (x = 1 or 2)
@@ -26,7 +26,7 @@ Also, the game uses Hpp[1](https://github.com/kinnay/NintendoClients/wiki/Hpp-Se
 
 ## BPK1
 
-The BPK1 structure is used in almost all game data files. Some of the files that use this structure are LZ10 compressed (like the ones used for doodles and stationery).
+The BPK1 structure is used in almost all game data files. Some of the files that use this structure are either LZ11 or LZ10 compressed (like the ones used for doodles and stationery).
 
 The structure starts with a BPK1 header, followed by all of its block headers, which can share names between each other. The headers are the followed by each block's data, which can hold any data (including another BPK1 structure).
 
@@ -50,16 +50,15 @@ All of the structure entries are stored as little-endian data.
 | 0xC    | 0x4  | Structure length          |
 | 0x10   | 0x4  | Header length             |
 | 0x14   | 0x2C | Padding                   |
-| 0x40   | 0x4  | Header length             |
 
 ### Block header
 
-| Offset | Size | Description                                                  |
-|--------|------|--------------------------------------------------------------|
-| 0x0    | 0x4  | Block size                                                   |
-| 0x4    | 0x4  | Checksum of block data                                       |
-| 0x8    |      | Block name (null terminated)                                 |
-|        | 0x4  | Size of BPK1 header and previous blocks (including this one) |
+| Offset | Size | Description                                                                      |
+|--------|------|----------------------------------------------------------------------------------|
+| 0x0    | 0x4  | Block data offset                                                                |
+| 0x4    | 0x4  | Block size                                                                       |
+| 0x8    | 0x4  | Checksum of block data                                                           |
+| 0x10   | 0x8  | Block name (if the name is smaller tahn 0x8, the rest is filled with NULL bytes) |
 
 ### Block checksum
 
