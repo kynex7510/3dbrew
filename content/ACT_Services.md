@@ -3,10 +3,7 @@ title = 'ACT Services'
 categories = ["Services"]
 +++
 
-The ACT module handles NNID accounts. This module behaves very similarly
-to the [Wii
-U](https://github.com/devkitPro/wut/blob/master/cafe/nn_act.def)
-implementation (nn::act)
+The ACT module handles NNID accounts. This module behaves very similarly to the [Wii U](https://github.com/devkitPro/wut/blob/master/cafe/nn_act.def) implementation (nn::act)
 
 # ACT service "act:u"
 
@@ -113,19 +110,13 @@ This is the service used by regular applications.
 
 # Account slots
 
-Like the friends sysmodule, the ACT module supports multiple accounts
-internally, although this functionality is not exposed to the users.
-Unlike the Wii U which supports up to 12 accounts, the 3DS only has 8
-account slots.
+Like the friends sysmodule, the ACT module supports multiple accounts internally, although this functionality is not exposed to the users. Unlike the Wii U which supports up to 12 accounts, the 3DS only has 8 account slots.
 
-Some commands require require the account slot as an argument, which is
-1-indexed. The value for using the current loaded account is 0xFE.
+Some commands require require the account slot as an argument, which is 1-indexed. The value for using the current loaded account is 0xFE.
 
 # DataBlocks
 
-Data blocks can be accessed from specific commands depending on the data
-that is requested. These follow a similar order to the Wii U
-[ACTInfoTypes](https://github.com/decaf-emu/decaf-emu/blob/master/src/libdecaf/src/nn/act/nn_act_enum.h).
+Data blocks can be accessed from specific commands depending on the data that is requested. These follow a similar order to the Wii U [ACTInfoTypes](https://github.com/decaf-emu/decaf-emu/blob/master/src/libdecaf/src/nn/act/nn_act_enum.h).
 
 | BlkID | Size  | Command needed                                                                                       | Description                                                                                                                                                                                                           |
 |-------|-------|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -174,26 +165,14 @@ that is requested. These follow a similar order to the Wii U
 
 # HTTPS Requests
 
-With each request, ACT-sysmodule specifies request-header
-"X-Nintendo-Device-Model". This is the only \*dedicated\* request-header
-that's contains anything Old3DS/New3DS specific. This was implemented
-with [9.0.0-X](9.0.0-20 "wikilink"), and presumably
-[8.1.0-0_New3DS](8.1.0-0_New3DS "wikilink"). The value is from a string
-initialized during ACT-sysmodule startup. The value-string is the
-[codename](Cfg:GetSystemModel "wikilink") string for all 5 of the model
-values from [Cfg:GetSystemModel](Cfg:GetSystemModel "wikilink"). When
-the output from GetSystemModel is \>=5(switch statement default case),
-it runs this: "len = snprintf(outstr, outmaxsize, "3DS-%u", model);"
+With each request, ACT-sysmodule specifies request-header "X-Nintendo-Device-Model". This is the only \*dedicated\* request-header that's contains anything Old3DS/New3DS specific. This was implemented with [9.0.0-X](9.0.0-20 "wikilink"), and presumably [8.1.0-0_New3DS](8.1.0-0_New3DS "wikilink"). The value is from a string initialized during ACT-sysmodule startup. The value-string is the [codename](Cfg:GetSystemModel "wikilink") string for all 5 of the model values from [Cfg:GetSystemModel](Cfg:GetSystemModel "wikilink"). When the output from GetSystemModel is \>=5(switch statement default case), it runs this: "len = snprintf(outstr, outmaxsize, "3DS-%u", model);"
 
 ## Trusted Root CAs
 
-ACT module uses a [RootCertChain](HTTP_Services "wikilink") for all
-HTTPS requests, the only trusted root CA is
-[default](SSLC:RootCertChainAddDefaultCert "wikilink") CertID 0x3.
+ACT module uses a [RootCertChain](HTTP_Services "wikilink") for all HTTPS requests, the only trusted root CA is [default](SSLC:RootCertChainAddDefaultCert "wikilink") CertID 0x3.
 
 # New3DS
 
-Even though ACT-sysmodule uses [ptm:s](PTM_Services "wikilink"), it
-doesn't use CheckNew3DS at all.
+Even though ACT-sysmodule uses [ptm:s](PTM_Services "wikilink"), it doesn't use CheckNew3DS at all.
 
 [Category:Services](Category:Services "wikilink")
