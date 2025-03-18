@@ -148,34 +148,15 @@ You can at most have 32 FS archive handles.
 | 0x0885....     | [9.6.0-X](9.6.0-24 "wikilink")                     | ?                                                                                                                                                                                                                           | 0x00200000                                                                |
 | 0x088600C0     | [11.1.0-X](11.1.0-34 "wikilink")                   | [CheckUpdatedDat](FS:CheckUpdatedDat "wikilink")                                                                                                                                                                            | 0x00080000                                                                |
 
-Note: The question marks from Dummy1 to GetSpecialFileSize on the
-"available since system version" field are mainly there because I think
-that most of these are necessary for the main system to function, so
-theoretically that would mean that since the creation of the 3DS these
-were available, or since launch if that makes more sense. But because of
-the peculiar nature of some of the functions, they will remain question
-marks until they can be confirmed 100%.
+Note: The question marks from Dummy1 to GetSpecialFileSize on the "available since system version" field are mainly there because I think that most of these are necessary for the main system to function, so theoretically that would mean that since the creation of the 3DS these were available, or since launch if that makes more sense. But because of the peculiar nature of some of the functions, they will remain question marks until they can be confirmed 100%.
 
-When access rights are required for a command, at least one of the bits
-in the process access info specified in the above table for the command
-must be set. Error 0xD9004676 is returned when a process attempts to use
-a command which it doesn't have access rights for the command. The
-exheader access info field is all zero's for most applications. Note
-that the permissions listed in the above table is for system-version
-v2.x, therefore permission bit(s) added with newer FIRM may be missing
-from this.
+When access rights are required for a command, at least one of the bits in the process access info specified in the above table for the command must be set. Error 0xD9004676 is returned when a process attempts to use a command which it doesn't have access rights for the command. The exheader access info field is all zero's for most applications. Note that the permissions listed in the above table is for system-version v2.x, therefore permission bit(s) added with newer FIRM may be missing from this.
 
-Each session for fs:USER has separate permissions, initially these are
-set to all zero's for new fs:USER sessions. The permissions/etc for
-fs:USER sessions are initialized via
-[FS:Initialize](FS:Initialize "wikilink")(loaded from the user process
-exheader).
+Each session for fs:USER has separate permissions, initially these are set to all zero's for new fs:USER sessions. The permissions/etc for fs:USER sessions are initialized via [FS:Initialize](FS:Initialize "wikilink")(loaded from the user process exheader).
 
 ## Filesystem service "fs:LDR"
 
-This service is identical to fs:USER, except
-[FS:OpenArchive](FS:OpenArchive "wikilink") archive 0x2345678E can only
-be accessed with fs:LDR.
+This service is identical to fs:USER, except [FS:OpenArchive](FS:OpenArchive "wikilink") archive 0x2345678E can only be accessed with fs:LDR.
 
 ## ProgramRegistry service "fs:REG"
 
@@ -189,23 +170,13 @@ be accessed with fs:LDR.
 | 0x04050080     | [UnloadProgram](FSReg:UnloadProgram "wikilink")     |
 | 0x04060080     | [CheckHostLoadId](FSReg:CheckHostLoadId "wikilink") |
 
-Only two sessions can be opened for this service at a time, hence no
-other processes can use this due to
-[pm-module](Process_Manager_Services "wikilink") and
-[loader](Loader_Services "wikilink") using this.
+Only two sessions can be opened for this service at a time, hence no other processes can use this due to [pm-module](Process_Manager_Services "wikilink") and [loader](Loader_Services "wikilink") using this.
 
 # File and directory access
 
 ## Files
 
-File session handles obtained via [FS:OpenFile](FS:OpenFile "wikilink")
-and [FS:OpenFileDirectly](FS:OpenFileDirectly "wikilink") can be used to
-access files through a service-like interface, despite not being an
-actual service registered using
-[SRV:RegisterService](SRV:RegisterService "wikilink"). To use this
-service-like interface, simply call the SendSyncRequest SVC with a file
-session handle, using the IPC buffer in thread-local storage for
-parameters and responses, just like you would with a proper service.
+File session handles obtained via [FS:OpenFile](FS:OpenFile "wikilink") and [FS:OpenFileDirectly](FS:OpenFileDirectly "wikilink") can be used to access files through a service-like interface, despite not being an actual service registered using [SRV:RegisterService](SRV:RegisterService "wikilink"). To use this service-like interface, simply call the SendSyncRequest SVC with a file session handle, using the IPC buffer in thread-local storage for parameters and responses, just like you would with a proper service.
 
 | Command Header | Description                                      |
 |----------------|--------------------------------------------------|
@@ -227,10 +198,7 @@ parameters and responses, just like you would with a proper service.
 
 ## Directories
 
-Directory session handles obtained via
-[FS:OpenDirectory](FS:OpenDirectory "wikilink") are usable via a
-service-like interface, following the exact same procedure described
-above for file sessions.
+Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wikilink") are usable via a service-like interface, following the exact same procedure described above for file sessions.
 
 | Command Header | Available since system version | Description                                 |
 |----------------|--------------------------------|---------------------------------------------|
@@ -277,24 +245,13 @@ above for file sessions.
 | 0x567890B2 | UserSaveData (for check). This is the same as the regular SaveData archive, except with this the savedata ID and mediatype is loaded from the input archive lowpath. | Yes                                                 | No                                                         | No                                     | Yes                                               | 0x6                                                                  |
 | 0x567890B4 | Similar to 0x567890B2 but can only access Accessible Save specified in [exheader](NCCH/Extended_Header#storage_info "wikilink")?                                     | Yes                                                 | No                                                         | No                                     | Yes                                               | ?                                                                    |
 
-Archives listed as not requiring a binary lowpath, use lowpath type
-[empty](FS:OpenFile "wikilink").
+Archives listed as not requiring a binary lowpath, use lowpath type [empty](FS:OpenFile "wikilink").
 
-The above permission bitmasks are from v2.x, see the above Services
-section for how these are handled.
+The above permission bitmasks are from v2.x, see the above Services section for how these are handled.
 
-Archives CTR NAND, NAND RO Write FS, TWL NAND, NAND W FS, and CARD SPI
-FS require the corresponding process exheader access control mount flag
-to be set, in the exheader for any of the currently running ARM11
-processes, for [FSPXI](Filesystem_services_PXI "wikilink"). The access
-rights checked by [FS](Filesystem_services "wikilink") module for
-archive mounting with fs:USER, are stored in the process' exheader
-accessinfo.
+Archives CTR NAND, NAND RO Write FS, TWL NAND, NAND W FS, and CARD SPI FS require the corresponding process exheader access control mount flag to be set, in the exheader for any of the currently running ARM11 processes, for [FSPXI](Filesystem_services_PXI "wikilink"). The access rights checked by [FS](Filesystem_services "wikilink") module for archive mounting with fs:USER, are stored in the process' exheader accessinfo.
 
-The CARDSPI archive allows access to the gamecard CARD1 raw savedata
-flash(aka "cardspi:/" in [Process9](FIRM "wikilink")), the file lowpath
-must be WCHAR "/". The "NAND W FS" archive allows access to the raw NAND
-image(aka "wnand:/" in Process9), the file lowpath must be WCHAR "/".
+The CARDSPI archive allows access to the gamecard CARD1 raw savedata flash(aka "cardspi:/" in [Process9](FIRM "wikilink")), the file lowpath must be WCHAR "/". The "NAND W FS" archive allows access to the raw NAND image(aka "wnand:/" in Process9), the file lowpath must be WCHAR "/".
 
 # Filenames and Paths
 
@@ -309,13 +266,11 @@ PathType:
 | 0x3   | ASCII - Text-based path with 7-bit ASCII characters padded to 8-bits each (signed char)                                                                     |
 | 0x4   | UTF16 - Text-based path with UTF-16 characters                                                                                                              |
 
-In IPC requests, sizes of ASCII and UTF16 paths must include space for
-the null-terminator.
+In IPC requests, sizes of ASCII and UTF16 paths must include space for the null-terminator.
 
 ## Binary LowPath
 
-The format of the data that a binary LowPath points to is custom per
-archive.
+The format of the data that a binary LowPath points to is custom per archive.
 
 ### SelfNCCH File Path Data Format
 
@@ -341,14 +296,12 @@ archive.
 </tr>
 <tr class="even">
 <td>1-2</td>
-<td>File name for ExeFS ("icon"/"banner"/"logo"). ".code" is not
-allowed</td>
+<td>File name for ExeFS ("icon"/"banner"/"logo"). ".code" is not allowed</td>
 </tr>
 </tbody>
 </table>
 
-Note that ExeFS files only support reading from offset=0 and with
-size=file_size.
+Note that ExeFS files only support reading from offset=0 and with size=file_size.
 
 ### SystemSaveData Archive Path Data Format
 
@@ -359,8 +312,7 @@ size=file_size.
 | 0          | [Mediatype](Mediatypes "wikilink") (must be zero for NAND) |
 | 1          | saveid                                                     |
 
-The file/directory lowpath is a text lowpath in the
-[savegame](Savegames "wikilink") filesystem.
+The file/directory lowpath is a text lowpath in the [savegame](Savegames "wikilink") filesystem.
 
 #### FSPXI
 
@@ -368,10 +320,7 @@ The file/directory lowpath is a text lowpath in the
 |------------|---------------------------------------------------------------|
 | 0          | u8 [Mediatype](Mediatypes "wikilink") (must be zero for NAND) |
 
-The file lowpath is a binary lowpath containing the u64 saveid, however
-the high word of the saveid is always zero. The mounted file is the
-cleartext savegame image. Up to 32 SystemSaveData image files can be
-opened under a single mounted FSPXI archive.
+The file lowpath is a binary lowpath containing the u64 saveid, however the high word of the saveid is always zero. The mounted file is the cleartext savegame image. Up to 32 SystemSaveData image files can be opened under a single mounted FSPXI archive.
 
 ### UserSaveDataForCheck Archive Path Data Format
 
@@ -381,8 +330,7 @@ opened under a single mounted FSPXI archive.
 | 1          | Lower word saveid                                     |
 | 2          | Upper word saveid                                     |
 
-The file/directory lowpath for this FS archive is a text path in the
-[savegame](Savegames "wikilink") filesystem.
+The file/directory lowpath for this FS archive is a text path in the [savegame](Savegames "wikilink") filesystem.
 
 ### 0x567890B4 Archive Path Data Format
 
@@ -400,10 +348,7 @@ The file/directory lowpath for this FS archive is a text path in the
 | 1          | Lower word saveid                  |
 | 2          | Upper word saveid                  |
 
-For FS, the file/directory lowpath is a text path in the
-[extdata](extdata "wikilink") filesystem. For FSPXI, the file lowpath is
-a text path relative to the "/extdata/<ExtdataIDHigh>/<ExtdataIDLow>"
-directory on SD/NAND, for the cleartext extdata image to mount.
+For FS, the file/directory lowpath is a text path in the [extdata](extdata "wikilink") filesystem. For FSPXI, the file lowpath is a text path relative to the "/extdata/<ExtdataIDHigh>/<ExtdataIDLow>" directory on SD/NAND, for the cleartext extdata image to mount.
 
 ### 0x2345678A Archive Path Data Format
 
@@ -427,21 +372,11 @@ The 0x14-byte lowpath is all-zero for accessing the title's main RomFS.
 
 ### [RomFS](RomFS "wikilink")
 
-Archives 0x3 and 0x2345678E both allow for accessing the [level-3 IVFC
-images](RomFS#level_3_format "wikilink") for RomFS access. The main CXI
-RomFS is accessible via an all-zero 0xc-byte binary file-lowpath. The
-update RomFS can be accessed with the first u32 in the binary
-file-lowpath being set to 0x5. The user must handle parsing the
-filesystem used in the exposed image itself.
+Archives 0x3 and 0x2345678E both allow for accessing the [level-3 IVFC images](RomFS#level_3_format "wikilink") for RomFS access. The main CXI RomFS is accessible via an all-zero 0xc-byte binary file-lowpath. The update RomFS can be accessed with the first u32 in the binary file-lowpath being set to 0x5. The user must handle parsing the filesystem used in the exposed image itself.
 
-With FSPXI the returned data for RomFS is the entire RomFS section from
-the NCCH, starting at the IVFC header.
+With FSPXI the returned data for RomFS is the entire RomFS section from the NCCH, starting at the IVFC header.
 
-The 0x3 archive is an interface for the 0x2345678E archive with the
-current process programID+mediatype. The file lowpath is 3-words. These
-words are written to 0x2345678E-archive file_lowpath+0, with the rest of
-that lowpath set to all-zero(lowpath is different from archive
-0x2345678A). File lowpath:
+The 0x3 archive is an interface for the 0x2345678E archive with the current process programID+mediatype. The file lowpath is 3-words. These words are written to 0x2345678E-archive file_lowpath+0, with the rest of that lowpath set to all-zero(lowpath is different from archive 0x2345678A). File lowpath:
 
 <table>
 <thead>
@@ -453,8 +388,7 @@ that lowpath set to all-zero(lowpath is different from archive
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>See above. The only values which FS-module doesn't allow to be
-used here are:</p>
+<td>See above. The only values which FS-module doesn't allow to be used here are:</p>
 <ul>
 <li>0x1: Error 0xE0E046BE.</li>
 <li>0x3: Error 0xE0E046BE.</li>
@@ -470,15 +404,9 @@ used here are:</p>
 
 # SEEDDB
 
-With [9.6.0-X](9.6.0-24 "wikilink") new
-[System_SaveData](System_SaveData "wikilink") with saveID 0001000F was
-added, this seems to be handled by FS-module itself, probably via the
-new service-cmds added to fsuser. [Home Menu](Home_Menu "wikilink") and
-[NIM](NIM_Services "wikilink") module have access to those commands.
+With [9.6.0-X](9.6.0-24 "wikilink") new [System_SaveData](System_SaveData "wikilink") with saveID 0001000F was added, this seems to be handled by FS-module itself, probably via the new service-cmds added to fsuser. [Home Menu](Home_Menu "wikilink") and [NIM](NIM_Services "wikilink") module have access to those commands.
 
-The SEEDDB savedata contains the title-unique seed-data used for the new
-[NCCH](NCCH "wikilink") keyY generation added with FIRM
-[9.6.0-X](9.6.0-24 "wikilink").
+The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](NCCH "wikilink") keyY generation added with FIRM [9.6.0-X](9.6.0-24 "wikilink").
 
 # Common Types
 
