@@ -4,7 +4,7 @@ title = 'CECDS:SprSetRecvSlotsMetadata'
 
 # Request
 
-{{% ipc/param %}}Header code `0x04110042`{{% / %}}
+{{% ipc/request header="0x04110042" %}}
 {{% ipc/param %}}buffer size{{% / %}}
 {{% ipc/mapbuffer r %}}buffer address{{% / %}}
 {{% / %}}
