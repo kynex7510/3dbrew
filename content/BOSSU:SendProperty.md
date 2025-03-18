@@ -21,6 +21,4 @@ title = 'BOSSU:SendProperty'
 
 # Description
 
-This sets the data for the specified property with the currently
-selected BOSS task. This data will be written into FS later(normally
-with [BOSSU:RegisterTask](BOSSU:RegisterTask "wikilink")).
+This sets the data for the specified property with the currently selected BOSS task. This data will be written into FS later(normally with [BOSSU:RegisterTask](BOSSU:RegisterTask "wikilink")).
