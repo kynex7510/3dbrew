@@ -27,17 +27,18 @@ The current serial number scheme began with the DSi, hence its listing in the ta
 
 | Model               | Device Prefix (Retail) | Device Prefix (Dev/Test) |
 |---------------------|------------------------|--------------------------|
+| *Wii*               | L                      | *unknown*                |
 | *DSi*               | T                      | V                        |
 | *DSi XL/LL*         | W                      | D                        |
 | *Nintendo Zone Box* | Z                      | *N/A*                    |
 | *Wii U*             | F/G                    | *unknown*                |
 | *Wii U gamepad*     | J                      | J                        |
-| 3DS                 | C                      | E                        |
-| 3DS XL/LL           | S                      | R                        |
-| 2DS                 | A                      | P                        |
-| New 3DS             | Y                      | Y                        |
-| New 3DS XL/LL       | Q                      | Q                        |
-| New 2DS XL/LL       | N                      | N                        |
+| *3DS*               | C                      | E                        |
+| *3DS XL/LL*         | S                      | R                        |
+| *2DS*               | A                      | P                        |
+| *New 3DS*           | Y                      | Y                        |
+| *New 3DS XL/LL*     | Q                      | Q                        |
+| *New 2DS XL/LL*     | N                      | N                        |
 
 Some United Kingdom models' serial numbers will include "UH" after the device model prefix.
 
