@@ -5,14 +5,14 @@ title = 'BOSSU:GetNsDataIdList3'
 # Request
 
 {{% ipc/request header="0x00130102" %}}
-{{% ipc/param span=6 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").{{% / %}}
+{{% ipc/param span=6 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink"){{% / %}}
 {{% / %}}
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x001300c2" %}}
 {{% ipc/result %}}
-{{% ipc/param span=2 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").{{% / %}}
+{{% ipc/param span=4 %}}Identical to [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink"){{% / %}}
 {{% / %}}
 
 # Description
