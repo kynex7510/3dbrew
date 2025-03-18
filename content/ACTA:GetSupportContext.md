@@ -17,7 +17,7 @@ title = 'ACTA:GetSupportContext'
 
 # Description
 
-Creates a structure used in the Nintendo Network ID Settings application to contact support.
+Creates a structure used in the Nintendo Network ID Settings application to contact support. The account slot must be 0xFE. Therefore, it is only possible to create a support context for the currently loaded account.
 
 # SupportContext
 
