@@ -130,6 +130,10 @@ There are two versions of independent service tokens.
 
 These are more basic, consisting of only a base64 token. These can be requested and cached using [ACTU:AcquireIndependentServiceToken](ACTU:AcquireIndependentServiceToken "wikilink"), retrieved either immediately after requesting them using [ACTU:GetIndependentServiceToken](ACTU:GetIndependentServiceToken "wikilink") or from an internal cache using [ACTU:GetServiceToken](ACTU:GetServiceToken "wikilink").
 
+| Offset | Size      | Description                  |
+|--------|-----------|------------------------------|
+| 0x0    | 0x200 + 1 | base64 NULL-terminated Token |
+
 ### V2 Independent Service Token
 
 V2 indpendent service tokens include more fields like an IV, signature, and account server environment compared to V1 tokens.
