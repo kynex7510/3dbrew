@@ -96,110 +96,57 @@ categories = ["Services"]
 
 boss:P also contains all of the commands from boss:U.
 
-When Home Menu loads the SpotPass [CBMD](CBMD "wikilink") with
-[Extended_Banner](Extended_Banner "wikilink"), it uses bossP command
-0x040D0182 first. Then it uses GetNsDataHeaderInfoPrivileged, then
-ReadNsDataPrivileged for loading the actual banner data.
+When Home Menu loads the SpotPass [CBMD](CBMD "wikilink") with [Extended_Banner](Extended_Banner "wikilink"), it uses bossP command 0x040D0182 first. Then it uses GetNsDataHeaderInfoPrivileged, then ReadNsDataPrivileged for loading the actual banner data.
 
 ## BOSS Service "boss:M"
 
 ## programIDs
 
-BOSS uses programIDs raw without any handling for the New3DS
-programID-low bitmask. For example, attempting a NsDataId listing with
-the New3DS bitmask set will fail, if BOSS is only setup for that
-programID with the New3DS bitmask clear.
+BOSS uses programIDs raw without any handling for the New3DS programID-low bitmask. For example, attempting a NsDataId listing with the New3DS bitmask set will fail, if BOSS is only setup for that programID with the New3DS bitmask clear.
 
-When [initializing](BOSSU:InitializeSession "wikilink") BOSS with the
-default programID, the New3DS programID-low bitmask is always clear for
-New3DS titles since that's how it was originally registered with
-[FS](Filesystem_services "wikilink"). Hence, the programID in the
-[BOSS-container](SpotPass "wikilink") must always have the New3DS
-bitmask clear. This also means everything using the BOSSP commands with
-the raw programIDs loaded from AM title-listing are broken with New3DS
-titles, for example [Extended_Banner](Extended_Banner "wikilink").
+When [initializing](BOSSU:InitializeSession "wikilink") BOSS with the default programID, the New3DS programID-low bitmask is always clear for New3DS titles since that's how it was originally registered with [FS](Filesystem_services "wikilink"). Hence, the programID in the [BOSS-container](SpotPass "wikilink") must always have the New3DS bitmask clear. This also means everything using the BOSSP commands with the raw programIDs loaded from AM title-listing are broken with New3DS titles, for example [Extended_Banner](Extended_Banner "wikilink").
 
 ## Content Data Storage
 
-SpotPass content for each application is stored under the extdata
-specified by [BOSS:SetStorageInfo](BOSS:SetStorageInfo "wikilink").
-Certain commands verify that the PID associated with the current service
-session has access to the specified extdata by using
-[FS:CheckAuthorityToAccessExtSaveData](FS:CheckAuthorityToAccessExtSaveData "wikilink"),
-returning an error on failure. This basically renders SpotPass unusable
-under user-processes(when initialized under those processes) which don't
-have access to any SD extdata(unless NAND extdata is used instead).
+SpotPass content for each application is stored under the extdata specified by [BOSS:SetStorageInfo](BOSS:SetStorageInfo "wikilink"). Certain commands verify that the PID associated with the current service session has access to the specified extdata by using [FS:CheckAuthorityToAccessExtSaveData](FS:CheckAuthorityToAccessExtSaveData "wikilink"), returning an error on failure. This basically renders SpotPass unusable under user-processes(when initialized under those processes) which don't have access to any SD extdata(unless NAND extdata is used instead).
 
-All of these commands using
-[FS:CheckAuthorityToAccessExtSaveData](FS:CheckAuthorityToAccessExtSaveData "wikilink")
-are: [BOSS:SetStorageInfo](BOSS:SetStorageInfo "wikilink") and
-RegisterStorageEntry, for both BOSSU and BOSSP.
+All of these commands using [FS:CheckAuthorityToAccessExtSaveData](FS:CheckAuthorityToAccessExtSaveData "wikilink") are: [BOSS:SetStorageInfo](BOSS:SetStorageInfo "wikilink") and RegisterStorageEntry, for both BOSSU and BOSSP.
 
-BOSS-container content is stored in the extdata registered for the
-programID specified in the BOSS-container, what task it's associated
-with / what title registered it is irrelevant with BOSS-container data
-storage.
+BOSS-container content is stored in the extdata registered for the programID specified in the BOSS-container, what task it's associated with / what title registered it is irrelevant with BOSS-container data storage.
 
 ## Custom SpotPass content
 
-SpotPass supports raw content download without using the
-encrypted+signed SpotPass container(raw content is used by [Home
-Menu](Home_Menu "wikilink") SpotPass VersionList for example). However,
-this is incompatible with the data-loading method used with
-SpotPass-container content(NsData commands can't be used with it).
+SpotPass supports raw content download without using the encrypted+signed SpotPass container(raw content is used by [Home Menu](Home_Menu "wikilink") SpotPass VersionList for example). However, this is incompatible with the data-loading method used with SpotPass-container content(NsData commands can't be used with it).
 
-When writing the raw content, it firsts deletes and creates the
-`<taskID>` file under the data-storage extdata with normal extdata(not
-the separate boss archive). Once successful, the final filename
-specified by the task config will be deleted if needed, then the
-`<taskID>` file will be renamed to the final filename. Afterwards, the
-user-process can access the final file just like any other extdata file.
+When writing the raw content, it firsts deletes and creates the "<taskID>" file under the data-storage extdata with normal extdata(not the separate boss archive). Once successful, the final filename specified by the task config will be deleted if needed, then the "<taskID>" file will be renamed to the final filename. Afterwards, the user-process can access the final file just like any other extdata file.
 
-For using custom content with the SpotPass container(like official
-titles), the only known ways to do so is: "CFW" / ARM11-kernelhax with
-the sigchecks for this patched, or some sort of BOSS-sysmodule exploit
-if there's any vulns to begin with.
+For using custom content with the SpotPass container(like official titles), the only known ways to do so is: "CFW" / ARM11-kernelhax with the sigchecks for this patched, or some sort of BOSS-sysmodule exploit if there's any vulns to begin with.
 
 ## HTTP upload
 
-SpotPass tasks can be used for uploading data via HTTP POST. The exact
-method varies, but the main one is a
-[raw](HTTPC:SendPOSTDataRawTimeout "wikilink") POST.
+SpotPass tasks can be used for uploading data via HTTP POST. The exact method varies, but the main one is a [raw](HTTPC:SendPOSTDataRawTimeout "wikilink") POST.
 
-The content data is loaded from the following path: snprintf(outpath,
-outpathsize, "%s/%s%02x.up", archivepath, taskidstr_probably, unk);
+The content data is loaded from the following path: snprintf(outpath, outpathsize, "%s/%s%02x.up", archivepath, taskidstr_probably, unk);
 
-The archivepath can be either "bossdb:"(BOSS-sysmodule NAND savedata) or
-the content-data-storage extdata. Certain other paths in the BOSS
-savedata can be used too.
+The archivepath can be either "bossdb:"(BOSS-sysmodule NAND savedata) or the content-data-storage extdata. Certain other paths in the BOSS savedata can be used too.
 
 ## BOSS Tasks
 
-The TaskID is a 8-byte buffer containing a string including
-NUL-terminator(taskIDs are compared with: strncmp(str0, str1, 7)).
+The TaskID is a 8-byte buffer containing a string including NUL-terminator(taskIDs are compared with: strncmp(str0, str1, 7)).
 
-When disabling SpotPass, applications use
-[BOSSU:CancelTask](BOSSU:CancelTask "wikilink") then
-[BOSSU:UnregisterTask](BOSSU:UnregisterTask "wikilink"), to delete each
-task.
+When disabling SpotPass, applications use [BOSSU:CancelTask](BOSSU:CancelTask "wikilink") then [BOSSU:UnregisterTask](BOSSU:UnregisterTask "wikilink"), to delete each task.
 
-Each process can only access tasks which it created, not other
-processes' tasks(even when using bossP with
-[init_programID](BOSSP:InitializeSessionPrivileged "wikilink")=0).
+Each process can only access tasks which it created, not other processes' tasks(even when using bossP with [init_programID](BOSSP:InitializeSessionPrivileged "wikilink")=0).
 
-After registration, tasks will not automatically run until they are
-started using one of the start-task commands.
+After registration, tasks will not automatically run until they are started using one of the start-task commands.
 
 ## NsDataId
 
-This is an u32 ID for SpotPass content, used with the NsData service
-commands etc.
+This is an u32 ID for SpotPass content, used with the NsData service commands etc.
 
 ## NsDataHeaderInfo
 
-When the input type is not one of the below or when the specified output
-size doesn't match the expected size for this type, an error is
-returned.
+When the input type is not one of the below or when the specified output size doesn't match the expected size for this type, an error is returned.
 
 ### Type0
 
@@ -299,12 +246,7 @@ Total size is 0x20-bytes.
 | 0x3E | 0x200 | ?                                                                                                                                                                                                                                                                                                         |
 | 0x3F | 0x1   | ?                                                                                                                                                                                                                                                                                                         |
 
-The only valid PropertyIDs for
-[BOSSU:SendProperty](BOSSU:SendProperty "wikilink") are the ones listed
-above, except 0x35 and 0x36. If the specified size for the command is
-larger than the property size, it will use the actual property size
-instead. When the specified size is less than the actual property size,
-all of the property data that won't be written to is cleared.
+The only valid PropertyIDs for [BOSSU:SendProperty](BOSSU:SendProperty "wikilink") are the ones listed above, except 0x35 and 0x36. If the specified size for the command is larger than the property size, it will use the actual property size instead. When the specified size is less than the actual property size, all of the property data that won't be written to is cleared.
 
 ## TaskStatus
 
@@ -316,8 +258,7 @@ all of the property data that won't be written to is cleared.
 | 0x6   | Unknown                                                                   |
 | 0x7   | Task processing failed(such as network error).                            |
 
-This u8 is returned by
-[BOSSU:GetTaskState](BOSSU:GetTaskState "wikilink").
+This u8 is returned by [BOSSU:GetTaskState](BOSSU:GetTaskState "wikilink").
 
 ## Errors
 
