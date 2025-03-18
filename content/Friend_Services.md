@@ -75,24 +75,24 @@ categories = ["Services"]
 
 Includes all the commands in [frd:u](Friend_Services#friend_user_service_frdu "wikilink"), and, in addition:
 
-| Command Header | Description                                                        |
-|----------------|--------------------------------------------------------------------|
-| 0x04010100     | [CreateLocalAccount](FRDA:CreateLocalAccount "wikilink")           |
-| 0x04020040     | [DeleteLocalAccount](FRDA:DeleteLocalAccount "wikilink")           |
-| 0x04030040     | [LoadLocalAccount](FRDA:LoadLocalAccount "wikilink")               |
-| 0x04040000     | [UnloadLocalAccount](FRDA:UnloadLocalAccount "wikilink")           |
-| 0x04050000     | [SaveLocalAccountData](FRDA:SaveLocalAccountData "wikilink")       |
-| 0x04060042     | [AddFriendOnline](FRDA:AddFriendOnline "wikilink")                 |
-| 0x04070D80     | [AddFriendOffline](FRDA:AddFriendOffline "wikilink")               |
-| 0x040802C0     | [UpdateFriendDisplayName](FRDA:UpdateFriendDisplayName "wikilink") |
-| 0x04090100     | [RemoveFriend](FRDA:RemoveFriend "wikilink")                       |
-| 0x040A0100     | [UpdatePlayingGame](FRDA:UpdatePlayingGame "wikilink")             |
-| 0x040B00C0     | [UpdatePreference](FRDA:UpdatePreference "wikilink")               |
-| 0x040C0800     | [UpdateMii](FRDA:UpdateMii "wikilink")                             |
-| 0x040D0100     | [UpdateFavoriteGame](FRDA:UpdateFavoriteGame "wikilink")           |
-| 0x040E0040     | [SetNcPrincipalId](FRDA:SetNcPrincipalId "wikilink")               |
-| 0x040F0240     | [UpdateComment](FRDA:UpdateComment "wikilink")                     |
-| 0x04100000     | Currently unknown. Increments a u32 value in the savegame.         |
+| Command Header | Description                                                      |
+|----------------|------------------------------------------------------------------|
+| 0x04010100     | [CreateLocalAccount](FRDA:CreateLocalAccount "wikilink")         |
+| 0x04020040     | [DeleteLocalAccount](FRDA:DeleteLocalAccount "wikilink")         |
+| 0x04030040     | [LoadLocalAccount](FRDA:LoadLocalAccount "wikilink")             |
+| 0x04040000     | [UnloadLocalAccount](FRDA:UnloadLocalAccount "wikilink")         |
+| 0x04050000     | [SaveLocalAccountData](FRDA:SaveLocalAccountData "wikilink")     |
+| 0x04060042     | [AddFriendOnline](FRDA:AddFriendOnline "wikilink")               |
+| 0x04070D80     | [AddFriendOffline](FRDA:AddFriendOffline "wikilink")             |
+| 0x040802C0     | [UpdateFriendScreenName](FRDA:UpdateFriendScreenName "wikilink") |
+| 0x04090100     | [RemoveFriend](FRDA:RemoveFriend "wikilink")                     |
+| 0x040A0100     | [UpdatePlayingGame](FRDA:UpdatePlayingGame "wikilink")           |
+| 0x040B00C0     | [UpdatePreference](FRDA:UpdatePreference "wikilink")             |
+| 0x040C0800     | [UpdateMii](FRDA:UpdateMii "wikilink")                           |
+| 0x040D0100     | [UpdateFavoriteGame](FRDA:UpdateFavoriteGame "wikilink")         |
+| 0x040E0040     | [SetNcPrincipalId](FRDA:SetNcPrincipalId "wikilink")             |
+| 0x040F0240     | [UpdateComment](FRDA:UpdateComment "wikilink")                   |
+| 0x04100000     | Currently unknown. Increments a u32 value in the savegame.       |
 
 # Save Data
 
