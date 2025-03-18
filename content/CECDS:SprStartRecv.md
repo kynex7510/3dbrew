@@ -4,7 +4,7 @@ title = 'CECDS:SprStartRecv'
 
 # Request
 
-{{% ipc/param %}}Header code `0x04100000`{{% / %}}
+{{% ipc/request header="0x04100000" %}}
 {{% / %}}
 
 # Response
