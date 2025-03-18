@@ -341,34 +341,8 @@ The server type is stored internally as a combination of two values, the first v
 
 [Official servers](https://github.com/kinnay/NintendoClients/wiki/Hpp-Server) only support the letters L, C, S, D, I, T, J or U.
 
-| Value | Server Type Letter            |
-|-------|-------------------------------|
-| 0     | L                             |
-| 1     | C                             |
-| 2     | S                             |
-| 3     | D                             |
-| 4     | I                             |
-| 5     | T                             |
-| 6     | U (fallback to default value) |
-| 7     | J                             |
-| 8     | X                             |
-| 9     | A                             |
-| 10    | B                             |
-| 11    | C                             |
-| 12    | D                             |
-| 13    | E                             |
-| 14    | F                             |
-| 15    | G                             |
-| 16    | H                             |
-| 17    | I                             |
-| 18    | J                             |
-| 19    | K                             |
-| 20    | L                             |
-| 21    | M                             |
-| 22    | N                             |
-| 23    | O                             |
-| 24    | P                             |
-| 25    | Q                             |
-| \>=26 | U                             |
+| Value  | 0   | 1   | 2   | 3   | 4   | 5   | 6                             | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  | 18  | 19  | 20  | 21  | 22  | 23  | 24  | 25  | \>=26 |
+|--------|-----|-----|-----|-----|-----|-----|-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-------|
+| Letter | L   | C   | S   | D   | I   | T   | U (fallback to default value) | J   | X   | A   | B   | C   | D   | E   | F   | G   | H   | I   | J   | K   | L   | M   | N   | O   | P   | Q   | U     |
 
 [Category:Services](Category:Services "wikilink")
