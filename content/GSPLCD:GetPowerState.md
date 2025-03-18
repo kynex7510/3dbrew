@@ -28,5 +28,4 @@ title = 'GSPLCD:GetPowerState'
 
 # Description
 
-Read LCD power state. If set, the fatal error bit halts any successive
-power operation; the result code tells the cause of the error.
+Read LCD power state. If set, the fatal error bit halts any successive power operation; the result code tells the cause of the error.
