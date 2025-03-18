@@ -6,7 +6,7 @@ title = 'ACTU:AcquireEula'
 
 {{% ipc/request header="0x001E0082" %}}
 {{% ipc/param %}}u8, [Country code](Config_Savegame#countryinfo "wikilink"){{% / %}}
-{{% ipc/param %}}3-character ASCII ISO language code (2 characters + NULL termination){{% / %}}
+{{% ipc/param %}}ISO 639 Set 1 language code (2 characters + NULL termination){{% / %}}
 {{% ipc/copyhandle count=1 %}}
 {{% ipc/handleentry %}}Completion event handle{{% / %}}
 {{% / %}}
