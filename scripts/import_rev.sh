@@ -50,7 +50,7 @@ then
 else
   ./scripts/sync_page.sh $TITLE $PARENTREV $OUTPUT
   git add $OUTPUT
-  git commit -m "TODODROP: Artifact from updating $OUTPUT (prev rev $PARENTREV; pre-$1)" || true
+  git commit -m "Reimport pages with line breaks preserved (revisions $PARENTREV - $1)" || true
 fi
 
 ./scripts/sync_page.sh $TITLE $1 $OUTPUT
