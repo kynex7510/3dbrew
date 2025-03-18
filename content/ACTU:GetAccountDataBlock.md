@@ -4,24 +4,22 @@ title = 'ACTU:GetAccountDataBlock'
 
 # Request
 
-| Index Word | Description                                   |
-|------------|-----------------------------------------------|
-| 0          | Header code \[0x000600C2\]                    |
-| 1          | u8 Account slot (0xFE to use current account) |
-| 2          | Size                                          |
-| 3          | [BlkID](ACT_Services#datablocks "wikilink")   |
-| 4          | (Size\<\<4) \| 12                             |
-| 5          | Output buffer ptr                             |
+{{% ipc/request header="0x000600c2" %}}
+{{% ipc/param %}}u8, Account slot (0xFE for default){{% / %}}
+{{% ipc/param %}}Output buffer size{{% / %}}
+{{% ipc/param %}}Account data type{{% / %}}
+{{% ipc/mapbuffer w %}}Output buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00060042" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer w %}}Output buffer{{% / %}}
+{{% / %}}
 
 # Description
 
-This returns NNID account info. This data usually comes from account.dat
+Returns information associated to the account specified by the account slot.
 
-Also known as GetAccountInfo.
+See [DataBlocks](ACT_Services#datablocks "wikilink") for possible data types.
