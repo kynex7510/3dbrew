@@ -16,4 +16,4 @@ title = 'BOSSU:SetOptoutFlag'
 
 # Description
 
-Opts out of any BOSS communications for the program ID of the current session.
+Sets whether to opt out of any BOSS communications for the program ID of the current session.
