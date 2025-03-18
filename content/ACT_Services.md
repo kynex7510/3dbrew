@@ -180,10 +180,6 @@ The ACT sysmodule uses two different server types for Nintendo Network accounts.
 
 See below how these types are determined by default. These types can also be overridden using [ACTA:SetHostServerSettings](ACTA:SetHostServerSettings "wikilink"), [ACTA:SetDefaultHostServerSettings](ACTA:SetDefaultHostServerSettings "wikilink"), [ACTA:SetHostServerSettingsStr](ACTA:SetHostServerSettingsStr "wikilink"), and [ACTA:SetDefaultHostServerSettingsStr](ACTA:SetDefaultHostServerSettingsStr "wikilink").
 
-Nintendo Network IDs can be transferred to other consoles using [ACTA:ReserveTransfer](ACTA:ReserveTransfer "wikilink") initially, and then [ACTA:CompleteTransfer](ACTA:CompleteTransfer "wikilink").
-
-NNIDs can be deleted using either [ACTA:DeleteServerAccount](ACTA:DeleteServerAccount "wikilink"), [ACTA:InactivateAccountDeviceAssociation](ACTA:InactivateAccountDeviceAssociation "wikilink"), [ACTA:DeleteAccountDeviceAssociation](ACTA:DeleteAccountDeviceAssociation "wikilink") or [ACTA:ReserveServerAccountDeletion](ACTA:ReserveServerAccountDeletion "wikilink").
-
 The base URL for the Nintendo Network Account Server (NNAS) is: [`https://`](https://)`[`<prefix>`]account.nintendo.net`.
 
 ## NNAS (Nintendo Network Authentication Server) Types
