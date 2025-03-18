@@ -12,7 +12,7 @@ title = 'FRDU:GetServerTypes'
 {{% ipc/request header="0x00300100" %}}
 {{% ipc/result %}}
 {{% ipc/param %}}u8, NASC Environment (0: Production, 1: Testing, 2: Development){{% / %}}
-{{% ipc/param %}}char, [Server type](Friend_Services#server_types "wikilink") letter value{{% / %}}
+{{% ipc/param %}}u8, [Server type](Friend_Services#server_types "wikilink") letter <b>value</b>{{% / %}}
 {{% ipc/param %}}u8, [Server type](Friend_Services#server_types "wikilink") number value{{% / %}}
 {{% / %}}
 
