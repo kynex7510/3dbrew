@@ -118,50 +118,475 @@ Some commands require require the account slot as an argument, which is 1-indexe
 
 Data blocks can be accessed from specific commands depending on the data that is requested. These follow a similar order to the Wii U [ACTInfoTypes](https://github.com/decaf-emu/decaf-emu/blob/master/src/libdecaf/src/nn/act/nn_act_enum.h).
 
-| BlkID | Size  | Command needed                                                                                       | Description                                                                                                                                                                                                           |
-|-------|-------|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0x1   | 0x1   | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                                       | Number of accounts                                                                                                                                                                                                    |
-| 0x2   | 0x1   | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                                       | Current account slot                                                                                                                                                                                                  |
-| 0x3   | 0x1   | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                                       | Default account slot                                                                                                                                                                                                  |
-| 0x4   | 0x8   | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                                       | ?                                                                                                                                                                                                                     |
-| 0x5   | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | PersistentId                                                                                                                                                                                                          |
-| 0x6   | 0x8   | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")/[GetAccountInfo](ACTU:GetAccountDataBlock "wikilink") | CommonTransferableIdBase on GetCommonInfo / TransferableIdBase on GetAccountInfo                                                                                                                                      |
-| 0x7   | 0x60  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | [MiiData](Mii#mii_format "wikilink")                                                                                                                                                                                  |
-| 0x8   | 0x11  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | AccountId (ASCII NUL-terminated Nintendo Network ID)                                                                                                                                                                  |
-| 0x9   | 0x101 | AcquireAccountInfo                                                                                   | Mail address                                                                                                                                                                                                          |
-| 0xA   | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | Birthday {u16 year; u8 month; u8 day;}                                                                                                                                                                                |
-| 0xB   | 0x3   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | ASCII NUL-terminated Country Name                                                                                                                                                                                     |
-| 0xC   | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | PrincipalId                                                                                                                                                                                                           |
-| 0xE   | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | IsPasswordCacheEnabled                                                                                                                                                                                                |
-| 0xF   | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | Does nothing?                                                                                                                                                                                                         |
-| 0x11  | 0xA0  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | struct{u32 PersistentID; u32 padding; u64 TransferableIDBase; u8\[0x60\] MiiData; char16_t\[0xB\] MachinUserName?; char\[0x11\] AccountID; u8 padding; struct{u16 year; u8 month; u8 day;}Birthday; u32 PrincipalID;} |
-| 0x12  | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | ?                                                                                                                                                                                                                     |
-| 0x13  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | Gender                                                                                                                                                                                                                |
-| 0x14  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | LastAuthenticationResult                                                                                                                                                                                              |
-| 0x15  | 0x11  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | AssignedAccountId (ASCII NUL-terminated Nintendo Network ID)                                                                                                                                                          |
-| 0x16  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | ParentalControlSlotNo                                                                                                                                                                                                 |
-| 0x17  | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | SimpleAddressId ([CountryInfo](Config_Savegame#countryinfo "wikilink"))                                                                                                                                               |
-| 0x19  | 0x8   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | UtcOffset                                                                                                                                                                                                             |
-| 0x1A  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | IsCommited                                                                                                                                                                                                            |
-| 0x1B  | 0x16  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | MiiName (NUL-terminated UTF-16 Mii name)                                                                                                                                                                              |
-| 0x1C  | 0x11  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | NfsPassword                                                                                                                                                                                                           |
-| 0x1D  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | Bool: if EciVirtualAccount has a value                                                                                                                                                                                |
-| 0x1E  | 0x41  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | TimeZoneId (ASCII Time Zone Location)                                                                                                                                                                                 |
-| 0x1F  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | IsMiiUpdated                                                                                                                                                                                                          |
-| 0x20  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | IsMailAddressValidated                                                                                                                                                                                                |
-| 0x21  | 0x4C  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | ?                                                                                                                                                                                                                     |
-| 0x24  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | IsServerAccountDeleted                                                                                                                                                                                                |
-| 0x25  | 0x101 | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | MiiImageUrl (ASCII NUL-terminated URL to account mii image)                                                                                                                                                           |
-| 0x26  | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | AssignedPrincipalId                                                                                                                                                                                                   |
-| 0x27  | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | ? (Only accessible with param\[1\] = 0xFE)                                                                                                                                                                            |
-| 0x28  | 0x24  | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | struct{char\[0x21\] NnasSubDomain?; char\[0x3\] NnasNfsEnv;}                                                                                                                                                          |
-| 0x29  | 0x24  | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                                       | struct{char\[0x21\] DefaultNnasSubDomain?; char\[0x3\] DefaultNnasNfsEnv;}                                                                                                                                            |
-| 0x2A  | 0x8   | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                                       | ?                                                                                                                                                                                                                     |
-| 0x2B  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | FpLocalAccountId                                                                                                                                                                                                      |
-| 0x2C  | 0x2   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | Age                                                                                                                                                                                                                   |
-| 0x2D  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | IsEnabledReceiveAds                                                                                                                                                                                                   |
-| 0x2E  | 0x1   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | IsOffDeviceAccessEnabled                                                                                                                                                                                              |
-| 0x2F  | 0x4   | [GetAccountInfo](ACTU:GetAccountDataBlock "wikilink")                                                | [Translated](Cfg:TranslateCountryInfo "wikilink") SimpleAddressId ([CountryInfo](Config_Savegame#countryinfo "wikilink"))                                                                                             |
+<table>
+<thead>
+<tr class="header">
+<th>BlkID</th>
+<th>Size</th>
+<th>Command needed</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x1</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
+<td>Number of accounts</td>
+</tr>
+<tr class="even">
+<td>0x2</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
+<td>Current account slot</td>
+</tr>
+<tr class="odd">
+<td>0x3</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
+<td>Default account slot</td>
+</tr>
+<tr class="even">
+<td>0x4</td>
+<td>0x8</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
+<td>Difference betwwen server time and device time (in nanoseconds)</td>
+</tr>
+<tr class="odd">
+<td>0x5</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>PersistentId</td>
+</tr>
+<tr class="even">
+<td>0x6</td>
+<td>0x8</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a>/<a {{% href "ACTU:GetAccountDataBlock" "broken" %}} title="wikilink">GetAccountInfo</a></td>
+<td>CommonTransferableIdBase on GetCommonInfo / TransferableIdBase on GetAccountInfo</td>
+</tr>
+<tr class="odd">
+<td>0x7</td>
+<td>0x60</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td><a {{% href "../Mii" %}} title="wikilink">MiiData</a></td>
+</tr>
+<tr class="even">
+<td>0x8</td>
+<td>0x11</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>AccountId (ASCII NULL-terminated Nintendo Network ID)</td>
+</tr>
+<tr class="odd">
+<td>0x9</td>
+<td>0x101</td>
+<td><a {{% href "../ACTU:AcquireAccountInfo" "broken" %}} title="wikilink">AcquireAccountInfo</a></td>
+<td>Mail address</td>
+</tr>
+<tr class="even">
+<td>0xA</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>Birthdate</p>
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x2</td>
+<td>Year</td>
+</tr>
+<tr class="even">
+<td>0x2</td>
+<td>0x1</td>
+<td>Month</td>
+</tr>
+<tr class="odd">
+<td>0x3</td>
+<td>0x1</td>
+<td>Day</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="odd">
+<td>0xB</td>
+<td>0x3</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>ASCII NULL-terminated Country Name</td>
+</tr>
+<tr class="even">
+<td>0xC</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>PrincipalId</td>
+</tr>
+<tr class="odd">
+<td>0xE</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>IsPasswordCacheEnabled</td>
+</tr>
+<tr class="even">
+<td>0xF</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>Does not return anything.</td>
+</tr>
+<tr class="odd">
+<td>0x11</td>
+<td>0xA0</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td><table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x4</td>
+<td>u32 PersistentID</td>
+</tr>
+<tr class="even">
+<td>0x4</td>
+<td>0x4</td>
+<td>padding</td>
+</tr>
+<tr class="odd">
+<td>0x8</td>
+<td>0x8</td>
+<td>u64 TransferableIDBase</td>
+</tr>
+<tr class="even">
+<td>0x10</td>
+<td>0x60</td>
+<td><a {{% href "../Mii" %}} title="wikilink">Mii</a></td>
+</tr>
+<tr class="odd">
+<td>0x70</td>
+<td>(10 + 1) * 2</td>
+<td>10-character UTF-16 Mii Display Name</td>
+</tr>
+<tr class="even">
+<td>0x86</td>
+<td>0x11</td>
+<td>ASCII NULL-terminated NNID Account ID (username)</td>
+</tr>
+<tr class="odd">
+<td>0x97</td>
+<td>1</td>
+<td>padding</td>
+</tr>
+<tr class="even">
+<td>0x98</td>
+<td>0x4</td>
+<td>Birthdate</p>
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x2</td>
+<td>Year</td>
+</tr>
+<tr class="even">
+<td>0x2</td>
+<td>0x1</td>
+<td>Month</td>
+</tr>
+<tr class="odd">
+<td>0x3</td>
+<td>0x1</td>
+<td>Day</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="odd">
+<td>0x9C</td>
+<td>0x4</td>
+<td>u32, PrincipalID</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="even">
+<td>0x12</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td><table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x1</td>
+<td>NNAS (Nintendo Network Authentication Server) Type</td>
+</tr>
+<tr class="even">
+<td>0x1</td>
+<td>0x1</td>
+<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Type Value</a></td>
+</tr>
+<tr class="odd">
+<td>0x2</td>
+<td>0x1</td>
+<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Number</a></td>
+</tr>
+<tr class="even">
+<td>0x3</td>
+<td>0x1</td>
+<td>padding (0)</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="odd">
+<td>0x13</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>Gender</td>
+</tr>
+<tr class="even">
+<td>0x14</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>LastAuthenticationResult</td>
+</tr>
+<tr class="odd">
+<td>0x15</td>
+<td>0x11</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>AssignedAccountId (ASCII NULL-terminated Nintendo Network ID)</td>
+</tr>
+<tr class="even">
+<td>0x16</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>ParentalControlSlotNo</td>
+</tr>
+<tr class="odd">
+<td>0x17</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>SimpleAddressId (<a {{% href "../Config_Savegame" %}} title="wikilink">CountryInfo</a>)</td>
+</tr>
+<tr class="even">
+<td>0x19</td>
+<td>0x8</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>UtcOffset</td>
+</tr>
+<tr class="odd">
+<td>0x1A</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>IsCommited</td>
+</tr>
+<tr class="even">
+<td>0x1B</td>
+<td>0x16</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>10-character UTF-16 Mii Name (10 characters + NULL termination)</td>
+</tr>
+<tr class="odd">
+<td>0x1C</td>
+<td>0x11</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>ASCII NULL-termiinated NfsPassword</td>
+</tr>
+<tr class="even">
+<td>0x1D</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>HasEciVirtualAccount (checks whether EciVirtualAccount has a value)</td>
+</tr>
+<tr class="odd">
+<td>0x1E</td>
+<td>0x41</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>TimeZoneId (ASCII Time Zone Location)</td>
+</tr>
+<tr class="even">
+<td>0x1F</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>IsMiiUpdated</td>
+</tr>
+<tr class="odd">
+<td>0x20</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>IsMailAddressValidated</td>
+</tr>
+<tr class="even">
+<td>0x21</td>
+<td>0x4C</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>(Developer units only) Account access token</p>
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x1</td>
+<td>Access token state (0: uninitialized, 1: expired, 2: valid)</td>
+</tr>
+<tr class="even">
+<td>0x1</td>
+<td>0x21</td>
+<td>ASCII NULL-terminated access token</td>
+</tr>
+<tr class="odd">
+<td>0x22</td>
+<td>0x29</td>
+<td>ASCII NULL-terminated refresh token</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="odd">
+<td>0x24</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>IsServerAccountDeleted</td>
+</tr>
+<tr class="even">
+<td>0x25</td>
+<td>0x101</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>MiiImageUrl (ASCII NULL-terminated URL to account mii image)</td>
+</tr>
+<tr class="odd">
+<td>0x26</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>AssignedPrincipalId</td>
+</tr>
+<tr class="even">
+<td>0x27</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>Account Access token state, only accessible with account slot = 0xFE: (0: uninitialized, 1: expired, 2: valid)</td>
+</tr>
+<tr class="odd">
+<td>0x28</td>
+<td>0x24</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>Account server environment</p>
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x21</td>
+<td>ASCII NULL-terminated NNAS subdomain</td>
+</tr>
+<tr class="even">
+<td>0x21</td>
+<td>0x3</td>
+<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Environment</a></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="even">
+<td>0x29</td>
+<td>0x24</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
+<td>Server environment of default account</p>
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x21</td>
+<td>ASCII NULL-terminated NNAS subdomain</td>
+</tr>
+<tr class="even">
+<td>0x21</td>
+<td>0x3</td>
+<td><a {{% href "../Friend_Services" %}} title="wikilink">NFS (Nintendo Friend Server) Environment</a></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="odd">
+<td>0x2A</td>
+<td>0x8</td>
+<td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
+<td>first 8 bytes of <code>SHA256 ( </code><a {{% href "../AM:GetDeviceId" %}} title="wikilink"><code>AM:GetDeviceId</code></a><code>() as 4 little endian bytes + 'A2257354' )</code></td>
+</tr>
+<tr class="even">
+<td>0x2B</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>FpLocalAccountId (local account ID of <a {{% href "../Friend_Services" %}} title="wikilink">friends sysmodule</a>)</td>
+</tr>
+<tr class="odd">
+<td>0x2C</td>
+<td>0x2</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>Age (calculated using server time, not device time)</td>
+</tr>
+<tr class="even">
+<td>0x2D</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>IsEnabledReceiveAds</td>
+</tr>
+<tr class="odd">
+<td>0x2E</td>
+<td>0x1</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td>IsOffDeviceAccessEnabled</td>
+</tr>
+<tr class="even">
+<td>0x2F</td>
+<td>0x4</td>
+<td><a {{% href "../ACTU:GetAccountDataBlock" %}} title="wikilink">GetAccountInfo</a></td>
+<td><a {{% href "../Cfg:TranslateCountryInfo" %}} title="wikilink">Translated</a> SimpleAddressId (<a {{% href "Config_Savegame#countryinfo" "broken" %}} title="wikilink">CountryInfo</a>)</td>
+</tr>
+</tbody>
+</table>
 
 # HTTPS Requests
 
