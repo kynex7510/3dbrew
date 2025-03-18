@@ -21,9 +21,9 @@ categories = ["Services"]
 | 0x000A0044     |                                 | No                      | RegisterInterruptEvents (Stubbed)                                                |
 | 0x000B0040     |                                 | Usually not (see below) | [SetLcdForceBlack](GSPGPU:SetLcdForceBlack "wikilink")                           |
 | 0x000C0000     |                                 | No                      | [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink")                       |
-| 0x000D0140     |                                 | No                      | SetDisplayTransfer (Stubbed)                                                     |
-| 0x000E0180     |                                 | No                      | SetTextureCopy (Stubbed)                                                         |
-| 0x000F0200     |                                 | No                      | SetMemoryFill (Stubbed)                                                          |
+| 0x000D0140     |                                 | No                      | [SetDisplayTransfer](GSPGPU:SetDisplayTransfer "wikilink")                       |
+| 0x000E0180     |                                 | No                      | [SetTextureCopy](GSPGPU:SetTextureCopy "wikilink")                               |
+| 0x000F0200     |                                 | No                      | [SetMemoryFill](GSPGPU:SetMemoryFill "wikilink")                                 |
 | 0x00100040     |                                 | No                      | [SetAxiConfigQoSMode](GSPGPU:SetAxiConfigQoSMode "wikilink")                     |
 | 0x00110040     |                                 | No                      | [SetPerfLogMode](GSPGPU:SetPerfLogMode "wikilink")                               |
 | 0x00120000     |                                 | No                      | [GetPerfLog](GSPGPU:GetPerfLog "wikilink")                                       |
