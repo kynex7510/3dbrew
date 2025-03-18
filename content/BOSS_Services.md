@@ -76,7 +76,7 @@ categories = ["Services"]
 | 0x04070080     | GetOptoutFlagPrivileged                                                                         |
 | 0x04080040     | (u8 optout) Sets the optout flag to all apps?                                                   |
 | 0x04090102     | UnregisterTaskPrivileged                                                                        |
-| 0x040A0000     | ?                                                                                               |
+| 0x040A0000     | GetAppIdList                                                                                    |
 | 0x040B0080     | GetTaskIdListPrivileged                                                                         |
 | 0x040C00C2     | GetStepIdListPrivileged                                                                         |
 | 0x040D0182     | [GetNsDataIdListPrivileged](BOSSP:GetNsDataIdListPrivileged "wikilink")                         |
@@ -97,8 +97,8 @@ categories = ["Services"]
 | 0x041C00C0     | GetNsDataLastUpdatePrivileged                                                                   |
 | 0x041D0040     | (bool unk_flag1)                                                                                |
 | 0x041E0000     | Returns: bool unk_flag1                                                                         |
-| 0x041F0040     | (bool unk_flag2)                                                                                |
-| 0x04200000     | Returns: bool unk_flag2                                                                         |
+| 0x041F0040     | SetTestModeAvailability (bool test_mode_flag)                                                   |
+| 0x04200000     | GetTestModeAvailability. Returns: bool test_mode_flag                                           |
 | 0x04210000?    | Stubbed                                                                                         |
 | 0x04220000     | ?                                                                                               |
 | 0x04230000?    | Stubbed                                                                                         |
