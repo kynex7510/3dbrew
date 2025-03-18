@@ -2,9 +2,7 @@
 title = 'Config Savegame'
 +++
 
-This page describes the format of the [Cfg](Config_Services "wikilink")
-[NAND](System_SaveData "wikilink") savegame. These blocks can be
-accessed with the Cfg service commands.
+This page describes the format of the [Cfg](Config_Services "wikilink") [NAND](System_SaveData "wikilink") savegame. These blocks can be accessed with the Cfg service commands.
 
 ## Structure of save-file "/config"
 
@@ -34,8 +32,7 @@ The filesize for this /config file is 0x8000-bytes.
 | 0x4      | System Writable (cfg:s / cfg:i) |
 | 0x8      | System Readable (cfg:s / cfg:i) |
 
-Config blocks will typically either use 0xC for system readable/writable
-or 0xE for all 3.
+Config blocks will typically either use 0xC for system readable/writable or 0xE for all 3.
 
 ## Configuration blocks
 
@@ -158,10 +155,7 @@ All values are hard-coded in cfg module.
 | 0x16-0x17 | u16 NGWord flag to denote that the user name is inappropriate                                                                                                                                                                                                             |
 | 0x18-0x1B | u32 NGWord version the username was last checked with. If this value is less than the u32 stored in the NGWord CFA "romfs:/version.dat", the system then checks the username string with the bad-word list CFA again, then updates this field with the value from the CFA |
 
-While the user name is NULL-terminated, the terminator is not applied
-when the user name is 10 characters long, which leads to online access
-breaking (002-0109) and buffer overflows when the user name is
-retrieved, even in DS games.
+While the user name is NULL-terminated, the terminator is not applied when the user name is 10 characters long, which leads to online access breaking (002-0109) and buffer overflows when the user name is retrieved, even in DS games.
 
 ### WiFi Slot Structure
 
@@ -218,10 +212,7 @@ This is used twice in the actual WiFi slot structure.
 
 ### LCD display config
 
-There seems to be some sort of LCD display configuration stored in this
-cfg. When using the cfg-save from an Old3DS on a New3DS without
-formatting the cfg first, the bottom-screen display is somewhat
-off(which is fixed by formatting the cfg-save).
+There seems to be some sort of LCD display configuration stored in this cfg. When using the cfg-save from an Old3DS on a New3DS without formatting the cfg first, the bottom-screen display is somewhat off(which is fixed by formatting the cfg-save).
 
 ### Parental Control Settings Block 0x00100001
 
