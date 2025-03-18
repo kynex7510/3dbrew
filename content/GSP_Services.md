@@ -3,6 +3,8 @@ title = 'GSP Services'
 categories = ["Services"]
 +++
 
+\_\_TOC\_\_
+
 # GSP service "gsp::Gpu"
 
 | Command Header | Available since system version  | GSP rights required | Description                                                                      |
@@ -39,16 +41,10 @@ categories = ["Services"]
 | 0x001E0080     |                                 | No                  | [SetInternalPriorities](GSPGPU:SetInternalPriorities "wikilink")                 |
 | 0x001F0082     | [8.0.0-18](8.0.0-18 "wikilink") | No                  | [StoreDataCache](GSPGPU:StoreDataCache "wikilink")                               |
 
-The GSP module starts a thread for handling commands for each service
-session, a maximum of 4 processes can use this service at once. Official
-applications have an optional code-path which
-[writes](GSPGPU:WriteHWRegs "wikilink") to registers during
-initialization, this is normally not used however.
+The GSP module starts a thread for handling commands for each service session, a maximum of 4 processes can use this service at once. Official applications have an optional code-path which [writes](GSPGPU:WriteHWRegs "wikilink") to registers during initialization, this is normally not used however.
 
-If a process has acquired rights, attempting to [set LCDs to
-black](GSPGPU:SetLcdForceBlack "wikilink") from another process will
-fail. Saving/restoring VRAM requires bit0 of process
-[flags](GSPGPU:RegisterInterruptRelayQueue "wikilink") to be set.
+If a process has acquired rights, attempting to [set LCDs to black](GSPGPU:SetLcdForceBlack "wikilink") from another process will fail.
+Saving/restoring VRAM requires bit0 of process [flags](GSPGPU:RegisterInterruptRelayQueue "wikilink") to be set.
 
 # GSP service "gsp::Lcd"
 
@@ -76,8 +72,7 @@ fail. Saving/restoring VRAM requires bit0 of process
 | 0x00140000     | [8.0.0-18](8.0.0-18 "wikilink") | [GetVendor](GSPLCD:GetVendor "wikilink") New3DS-only, stubbed on Old3DS: This only returns an error. Uninitialized data(not set by this command itself) is also written to u8 cmdreply_word\[2\].          |
 | 0x00150040     | [8.0.0-18](8.0.0-18 "wikilink") | [GetBrightness](GSPLCD:GetBrightness "wikilink") New3DS-only, stubbed on Old3DS: This only returns an error. Uninitialized data(not set by this command itself) is also written to u32 cmdreply_word\[2\]. |
 
-Unlike gsp::Gpu, GSP module does not start a separate thread for
-handling these service commands.
+Unlike gsp::Gpu, GSP module does not start a separate thread for handling these service commands.
 
 # Version history
 
@@ -87,10 +82,6 @@ handling these service commands.
 
 # New3DS
 
-There's separate GSP-module titles for Old3DS and New3DS. PTM
-CheckNew3DS is only used by the New3DS title, for copying that flag into
-a state field. Elsewhere that field is checked for running additional
-code only on New3DS, for processing various state / using
-[QTM](QTM_Services "wikilink") commands.
+There's separate GSP-module titles for Old3DS and New3DS. PTM CheckNew3DS is only used by the New3DS title, for copying that flag into a state field. Elsewhere that field is checked for running additional code only on New3DS, for processing various state / using [QTM](QTM_Services "wikilink") commands.
 
 [Category:Services](Category:Services "wikilink")
