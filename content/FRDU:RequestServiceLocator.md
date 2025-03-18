@@ -6,8 +6,8 @@ title = 'FRDU:RequestServiceLocator'
 
 {{% ipc/request header="0x002A0204" %}}
 {{% ipc/param %}}NEX Server ID{{% / %}}
-{{% ipc/param span=3 %}}UTF-16 `keyhash` value for NASC requests, see [Online Play](Online_Play "wikilink"){{% / %}}
-{{% ipc/param span=2 %}}UTF-16 `svc` value for NASC requests, see [Online Play](Online_Play "wikilink"){{% / %}}
+{{% ipc/param span=3 %}}ASCII `keyhash` value for NASC requests, see [Online Play](Online_Play "wikilink"){{% / %}}
+{{% ipc/param span=2 %}}ASCII `svc` value for NASC requests, see [Online Play](Online_Play "wikilink"){{% / %}}
 {{% ipc/param %}}u8, Major SDK version{{% / %}}
 {{% ipc/param %}}u8, Minor SDK version{{% / %}}
 {{% ipc/processid %}}
