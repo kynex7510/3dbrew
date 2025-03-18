@@ -132,7 +132,7 @@ In general, the following 48-bit node data is used.
 
 ### Regular UUIDs
 
-These are just standard RFC9562 [2](https://www.rfc-editor.org/rfc/rfc9562.html#name-uuid-version-1) UUIDs with the above node data.
+These are just standard Version 1 RFC9562 [2](https://www.rfc-editor.org/rfc/rfc9562.html#name-uuid-version-1) UUIDs with the above node data.
 
 ### Title-specific UUIDs
 
