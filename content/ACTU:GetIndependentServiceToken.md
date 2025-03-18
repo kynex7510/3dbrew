@@ -18,3 +18,5 @@ title = 'ACTU:GetIndependentServiceToken'
 # Description
 
 Returns the service token acquired using [ACTU:AcquireIndependentServiceToken](ACTU:AcquireIndependentServiceToken "wikilink").
+
+The token format is NULL-terminated base64.
