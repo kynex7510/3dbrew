@@ -14,6 +14,7 @@ title = 'ACTU:AcquirePrincipalIdByAccountId'
 # Response
 
 {{% ipc/request header="0x00180040" %}}
+{{% ipc/result %}}
 {{% / %}}
 
 # Description
