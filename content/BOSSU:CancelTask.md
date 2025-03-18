@@ -4,16 +4,18 @@ title = 'BOSSU:CancelTask'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x001E0042\] |
-| 1          | TaskID buffer size         |
-| 2          | (Size \<\< 4) \| 0xA       |
-| 3          | TaskID data pointer        |
+{{% ipc/request header="0x001E0042" %}}
+{{% ipc/param %}}Task ID size, including NULL terminator{{% / %}}
+{{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x001E0042" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
+{{% / %}}
+
+# Description
+
+Cancels the given task on the program ID of the current session.
