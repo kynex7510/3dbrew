@@ -228,7 +228,7 @@ Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wiki
 | 0x1234567E | NAND RO                                                                                                                                                              | Yes                                                 | Yes                                                        | No                                     | No                                                | 0x200                                                                |
 | 0x1234567F | NAND RO Write FS                                                                                                                                                     | No                                                  | Yes                                                        | No                                     | No                                                | ?                                                                    |
 | 0x12345680 | Unknown. There's code for this in spider v9.9, but that code isn't actually used.                                                                                    | Yes                                                 | ?                                                          | No                                     | Yes                                               | ?                                                                    |
-| 0x12345681 | Unknown. Accessed by FS service.                                                                                                                                     | ?                                                   | ?                                                          | No                                     | ?                                                 | ?                                                                    |
+| 0x12345681 | Used for dumping raw [System Save Data](System_SaveData "wikilink") during system tranfers.                                                                          | ?                                                   | ?                                                          | No                                     | ?                                                 | ?                                                                    |
 | 0x12345682 | Unknown. There's code for this in spider v9.9, but that code isn't actually used.                                                                                    | Yes                                                 | ?                                                          | No                                     | Yes                                               | ?                                                                    |
 | 0x2345678A | Used for accessing general NCCH data. With FSPXI this also allows savedata access.                                                                                   | Yes                                                 | Yes                                                        | No                                     | Yes                                               | 0x1005                                                               |
 | 0x2345678B | ?                                                                                                                                                                    | No                                                  | No                                                         | Yes                                    | Yes                                               |                                                                      |
@@ -339,6 +339,21 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 | 0          | [Mediatype](Mediatypes "wikilink")                                  |
 | 1          | `Lower_word_saveid >> 8` ?                                          |
 | 2          | Unknown. Game calculate this using formula `0xFFFFFF00 | unknown_b` |
+
+### 0x12345681 Archive Path Data Format
+
+Archive path:
+
+| Index word | Description                  |
+|------------|------------------------------|
+| 0          | Mode (0: read, 0x200: write) |
+
+File path:
+
+| Index word | Description                                           |
+|------------|-------------------------------------------------------|
+| 0          | [System Savedata Save ID](System_SaveData "wikilink") |
+| 1          | 0                                                     |
 
 ### ExtSaveData Archive Path Data Format
 
