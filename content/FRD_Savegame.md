@@ -59,7 +59,7 @@ Stores console-specific information related to the account.
 | 0x04   | 4             | File magic number (0x20101021)                                                                          |
 | 0x08   | 8             | Padding                                                                                                 |
 | 0x10   | 4             | My NC Principal ID                                                                                      |
-| 0x14   | 4             | Unknown                                                                                                 |
+| 0x14   | 4             | MoveCount                                                                                               |
 | 0x18   | 4             | [Change bit flag](FRD_Savegame#change_bit_flags "wikilink")                                             |
 | 0x1C   | 3             | [Preferences](Friend_Services#preference "wikilink")                                                    |
 | 0x1F   | 1             | Padding                                                                                                 |
