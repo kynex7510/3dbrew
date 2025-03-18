@@ -9,6 +9,10 @@ title = 'BOSSU:UnregisterStorage'
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x00030040" %}}
 {{% ipc/result %}}
 {{% / %}}
+
+# Description
+
+Unregisters the storage of the program ID of the current session.
