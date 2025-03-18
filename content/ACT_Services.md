@@ -17,7 +17,7 @@ These commands are used generally by most titles, and are also present in act:a.
 | 0x00040000     | [Cancel](ACTU:Cancel "wikilink")                                                     |
 | 0x00050082     | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                       |
 | 0x000600C2     | [GetAccountDataBlock](ACTU:GetAccountDataBlock "wikilink")/GetAccountInfo            |
-| 0x00070082     | [GetResponseData](ACTU:GetResponseData "wikilink")                                   |
+| 0x00070082     | [GetAsyncResult](ACTU:GetAsyncResult "wikilink")                                     |
 | 0x000800C2     | [GetMiiImage](ACTU:GetMiiImage "wikilink")                                           |
 | 0x00090180     | [SetNfsPassword](ACTU:SetNfsPassword "wikilink")                                     |
 | 0x000A0000     | [SetIsApplicationUpdateRequired](ACTU:SetIsApplicationUpdateRequired "wikilink")     |
