@@ -24,7 +24,7 @@ title = 'ACTU:GetCachedIndependentServiceToken'
 
 Returns a V1 independent service token corresponding to the given account and client ID from an internal cache.
 
-For a cached token to be considered valid for being returned by this command, it must have been acquired within at least `Cache duration in seconds` seconds.
+For a cached token to be considered valid for being returned by this command, it must have been acquired within at least `Cache duration` seconds.
 
 It is not possible to retrieve cached V2 independent service tokens using this command.
 
