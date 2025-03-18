@@ -27,7 +27,7 @@ The current serial number scheme began with the DSi, hence its listing in the ta
 
 | Model               | Device Prefix (Retail) | Device Prefix (Dev/Test) |
 |---------------------|------------------------|--------------------------|
-| *Wii*               | L                      | *unknown*                |
+| *Wii*               | L                      | R                        |
 | *DSi*               | T                      | V                        |
 | *DSi XL/LL*         | W                      | D                        |
 | *Nintendo Zone Box* | Z                      | *N/A*                    |
