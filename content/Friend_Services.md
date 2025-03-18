@@ -92,7 +92,7 @@ Includes all the commands in [frd:u](Friend_Services#friend_user_service_frdu "w
 | 0x040D0100     | [UpdateFavoriteGame](FRDA:UpdateFavoriteGame "wikilink")         |
 | 0x040E0040     | [SetNcPrincipalId](FRDA:SetNcPrincipalId "wikilink")             |
 | 0x040F0240     | [UpdateComment](FRDA:UpdateComment "wikilink")                   |
-| 0x04100000     | Currently unknown. Increments a u32 value in the savegame.       |
+| 0x04100000     | [IncrementMoveCount](FRDA:IncrementMoveCount "wikilink")         |
 
 # Save Data
 
