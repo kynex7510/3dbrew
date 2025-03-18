@@ -10,20 +10,22 @@ title = 'ACTU:GetCachedIndependentServiceToken'
 {{% ipc/param %}}Cache duration in seconds{{% / %}}
 {{% ipc/param %}}bool, do parental controls check (unused){{% / %}}
 {{% ipc/param %}}bool, get a non-process specific service token from the cache{{% / %}}
-{{% ipc/mapbuffer w %}}Output token buffer pointer (0x201 in size){{% / %}}
+{{% ipc/mapbuffer w %}}Output [V1 independent service token](ACT_Services#v1_independent_service_token "wikilink") buffer pointer{{% / %}}
 {{% / %}}
 
 # Response
 
 {{% ipc/request header="0x001C0042" %}}
 {{% ipc/result %}}
-{{% ipc/mapbuffer w %}}Output token buffer pointer{{% / %}}
+{{% ipc/mapbuffer w %}}Output [V1 independent service token](ACT_Services#v1_independent_service_token "wikilink") buffer pointer{{% / %}}
 {{% / %}}
 
 # Description
 
-Returns a V1 independent service token corresponding to the given account and client ID from the an internal cache.
+Returns a V1 independent service token corresponding to the given account and client ID from an internal cache.
 
 For a cached token to be considered valid for being returned by this command, it must have been acquired within at least `Cache duration in seconds` seconds.
 
 It is not possible to retrieve cached V2 independent service tokens using this command.
+
+See [Independent Service Tokens](ACT_Services#independent_service_tokens "wikilink") for details.
