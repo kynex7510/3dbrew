@@ -4,17 +4,19 @@ title = 'BOSSU:UnregisterTask'
 
 # Request
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x000C0082\] |
-| 1          | TaskID buffer size         |
-| 2          | ? (Probably step_id?)      |
-| 3          | (Size \<\< 4) \| 0xA       |
-| 4          | TaskID data pointer        |
+{{% ipc/request header="0x000C0082" %}}
+{{% ipc/param %}}u32, Task ID size, including NULL terminator{{% / %}}
+{{% ipc/param %}}u8, Step ID{{% / %}}
+{{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x000B0042" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer r %}}Task ID buffer{{% / %}}
+{{% / %}}
+
+# Description
+
+Unregisters the given task from the program ID of the current session.
