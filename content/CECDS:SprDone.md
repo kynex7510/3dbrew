@@ -4,7 +4,7 @@ title = 'CECDS:SprDone'
 
 # Request
 
-{{% ipc/param %}}Header code `0x04140040`{{% / %}}
+{{% ipc/request header="0x04140040" %}}
 {{% ipc/param %}}(bool) success{{% / %}}
 {{% / %}}
 
