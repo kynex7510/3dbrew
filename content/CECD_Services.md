@@ -98,24 +98,24 @@ Streetpass stuff.
 
 This contains a similar (probably the same) command handler from 0x0001.... to 0x0021.... as them in cecd:u. In addition, it also contains
 
-| Command Header | Description                                                                   |
-|----------------|-------------------------------------------------------------------------------|
-| 0x0401....     | ?                                                                             |
-| 0x04020002     | GetCecInfoEventHandleSys                                                      |
-| 0x040A....     | [SprCreate](CECDS:SprCreate "wikilink")                                       |
-| 0x040B....     | [SprInitialise](CECDS:SprInitialise "wikilink")                               |
-| 0x040C0042     | [SprGetSendSlotsMetadata](CECDS:SprGetSendSlotsMetadata "wikilink")           |
-| 0x040D0082     | [SprGetSlot](CECDS:SprGetSlot "wikilink") title_id, write_buffer, buffer_size |
-| 0x040E....     | [SprSetTitleSent](CECDS:SprSetTitleSent "wikilink") title_id, bool success    |
-| 0x040F....     | [SprFinaliseSend](CECDS:SprFinaliseSend "wikilink")                           |
-| 0x0410....     | [SprStartRecv](CECDS:SprStartRecv "wikilink")                                 |
-| 0x04110042     | [SprSetRecvSlotsMetadata](CECDS:SprSetRecvSlotsMetadata "wikilink")           |
-| 0x041200C2     | [SprAddSlot](CECDS:SprAddSlot "wikilink")                                     |
-| 0x0413....     | [SprFinaliseRecv](CECDS:SprFinaliseRecv "wikilink")                           |
-| 0x0414....     | [SprDone](CECDS:SprDone "wikilink") bool success                              |
-| 0x04150000     | [GenHashConsoleUnique](CECDS:GenHashConsoleUnique "wikilink")                 |
-| 0x04160002     | ?                                                                             |
-| 0x0417....     | ?                                                                             |
+| Command Header | Description                                                         |
+|----------------|---------------------------------------------------------------------|
+| 0x0401....     | ?                                                                   |
+| 0x04020002     | GetCecInfoEventHandleSys                                            |
+| 0x040A0000     | [SprCreate](CECDS:SprCreate "wikilink")                             |
+| 0x040B0000     | [SprInitialise](CECDS:SprInitialise "wikilink")                     |
+| 0x040C0042     | [SprGetSendSlotsMetadata](CECDS:SprGetSendSlotsMetadata "wikilink") |
+| 0x040D0082     | [SprGetSlot](CECDS:SprGetSlot "wikilink")                           |
+| 0x040E0080     | [SprSetTitleSent](CECDS:SprSetTitleSent "wikilink")                 |
+| 0x040F0000     | [SprFinaliseSend](CECDS:SprFinaliseSend "wikilink")                 |
+| 0x04100000     | [SprStartRecv](CECDS:SprStartRecv "wikilink")                       |
+| 0x04110042     | [SprSetRecvSlotsMetadata](CECDS:SprSetRecvSlotsMetadata "wikilink") |
+| 0x041200C2     | [SprAddSlot](CECDS:SprAddSlot "wikilink")                           |
+| 0x04130000     | [SprFinaliseRecv](CECDS:SprFinaliseRecv "wikilink")                 |
+| 0x04140040     | [SprDone](CECDS:SprDone "wikilink")                                 |
+| 0x04150000     | [GenHashConsoleUnique](CECDS:GenHashConsoleUnique "wikilink")       |
+| 0x04160002     | ?                                                                   |
+| 0x0417....     | ?                                                                   |
 
 ### CecSprStatus
 
