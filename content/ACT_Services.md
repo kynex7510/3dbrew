@@ -103,7 +103,7 @@ This service is used mainly by the Nintendo Network ID Settings application acce
 | 0x04310042     | [DeleteDeviceAssociation](ACTA:DeleteDeviceAssociation "wikilink")                             |
 | 0x04320042     | [DeleteAccountDeviceAssociation](ACTA:DeleteAccountDeviceAssociation "wikilink")               |
 | 0x04330042     | [CancelTransfer](ACTA:CancelTransfer "wikilink")                                               |
-| 0x04340003     | [ReloadSaveData](ACTA:ReloadSaveData "wikilink")                                               |
+| 0x04340003     | [ReloadAndBlockSaveData](ACTA:ReloadAndBlockSaveData "wikilink")                               |
 | 0x04350042     | [ReserveServerAccountDeletion](ACTA:ReserveServerAccountDeletion "wikilink")                   |
 
 # Account slots
