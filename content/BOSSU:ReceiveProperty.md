@@ -22,5 +22,4 @@ title = 'BOSSU:ReceiveProperty'
 
 # Description
 
-Same as [BOSSU:SendProperty](BOSSU:SendProperty "wikilink") except for
-reading.
+Same as [BOSSU:SendProperty](BOSSU:SendProperty "wikilink") except for reading.
