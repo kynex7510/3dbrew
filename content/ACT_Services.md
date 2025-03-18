@@ -38,12 +38,12 @@ These commands are used generally by most titles, and are also present in act:a.
 | 0x00190044     | [AcquireMii](ACTU:AcquireMii "wikilink")                                                 |
 | 0x001A0042     | [AcquireAccountInfoRaw](ACTU:AcquireAccountInfoRaw "wikilink")                           |
 | 0x001B0084     | AcquireOtherTypePrincipalID (stubbed)                                                    |
-| 0x001C0342     | [GetCachedServiceToken](ACTU:GetCachedServiceToken "wikilink")                           |
+| 0x001C0342     | [GetCachedIndependentServiceToken](ACTU:GetCachedIndependentServiceToken "wikilink")     |
 | 0x001D0004     | [InquireMailAddressAvailability](ACTU:InquireMailAddressAvailability "wikilink")         |
 | 0x001E0082     | [AcquireEula](ACTU:AcquireEula "wikilink")                                               |
 | 0x001F0082     | [AcquireEulaLanguageList](ACTU:AcquireEulaLanguageList "wikilink")                       |
 | 0x00200382     | [AcquireIndependentServiceTokenV2](ACTU:AcquireIndependentServiceTokenV2 "wikilink")     |
-| 0x00210002     | [GetIndepdendentServiceTokenV2](ACTU:GetIndepdendentServiceTokenV2 "wikilink")           |
+| 0x00210002     | [GetIndepdendentServiceTokenV2](ACTU:GetIndependentServiceTokenV2 "wikilink")            |
 | 0x00220342     | [GetCachedIndependentServiceTokenV2](ACTU:GetCachedIndependentServiceTokenV2 "wikilink") |
 
 # ACT Admin Service "act:a"
@@ -128,7 +128,7 @@ There are two versions of independent service tokens.
 
 ### V1 Independent Service Token
 
-These are more basic, consisting of only a base64 token. These can be requested and cached using [ACTU:AcquireIndependentServiceToken](ACTU:AcquireIndependentServiceToken "wikilink"), retrieved either immediately after requesting them using [ACTU:GetIndependentServiceToken](ACTU:GetIndependentServiceToken "wikilink") or from an internal cache using [ACTU:GetServiceToken](ACTU:GetServiceToken "wikilink").
+These are more basic, consisting of only a base64 token. These can be requested and cached using [ACTU:AcquireIndependentServiceToken](ACTU:AcquireIndependentServiceToken "wikilink"), retrieved either immediately after requesting them using [ACTU:GetIndependentServiceToken](ACTU:GetIndependentServiceToken "wikilink") or from an internal cache using [ACTU:GetCachedIndependentServiceToken](ACTU:GetCachedIndependentServiceToken "wikilink").
 
 | Offset | Size      | Description                  |
 |--------|-----------|------------------------------|
@@ -138,7 +138,7 @@ These are more basic, consisting of only a base64 token. These can be requested 
 
 V2 indpendent service tokens include more fields like an IV, signature, and account server environment compared to V1 tokens.
 
-They can be requested and cached using [ACTU:AcquireIndependentServiceTokenV2](ACTU:AcquireIndependentServiceTokenV2 "wikilink"), retrieved either immediately after requesting them using [ACTU:GetIndependentServiceTokenV2](ACTU:GetIndependentServiceTokenV2 "wikilink") or from an internal cache using [ACTU:GetServiceTokenV2](ACTU:GetServiceTokenV2 "wikilink").
+They can be requested and cached using [ACTU:AcquireIndependentServiceTokenV2](ACTU:AcquireIndependentServiceTokenV2 "wikilink"), retrieved either immediately after requesting them using [ACTU:GetIndependentServiceTokenV2](ACTU:GetIndependentServiceTokenV2 "wikilink") or from an internal cache using [ACTU:GetCachedIndependentServiceTokenV2](ACTU:GetCachedIndependentServiceTokenV2 "wikilink").
 
 | Offset | Size      | Description                                                                         |
 |--------|-----------|-------------------------------------------------------------------------------------|
