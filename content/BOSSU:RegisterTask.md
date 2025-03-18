@@ -20,6 +20,6 @@ title = 'BOSSU:RegisterTask'
 
 # Description
 
-Registers a task and updates the BOSS savedata immediately, using information previously configured with [BOSSU:SendProperty](BOSSU:SendProperty "wikilink").
+Registers a task for the program ID of the current session and updates the BOSS savedata immediately, using information previously configured with [BOSSU:SendProperty](BOSSU:SendProperty "wikilink").
 
 The input bool is set to true in the SDK if the application provides a TaskOption, which contains some of the properties that can be configured.
