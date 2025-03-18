@@ -9,8 +9,12 @@ title = 'BOSSU:GetTaskFinishHandle'
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x001F0042" %}}
 {{% ipc/result %}}
-{{% ipc/param %}}0x0{{% / %}}
-{{% ipc/param %}}Output handle{{% / %}}
+{{% ipc/copyhandle count=1 %}}
+{{% ipc/handleentry %}}KEvent event{{% / %}}
 {{% / %}}
+
+# Description
+
+Returns an event handle for the current session which is signaled when the task currently loaded in the session finishes.
