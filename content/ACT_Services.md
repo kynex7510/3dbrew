@@ -114,6 +114,8 @@ When the ACT sysmodule is started, it loads the default account slot. The defaul
 
 It is also possible to change the account slot number of an account by using [ACTA:SwapAccounts](ACTA:SwapAccounts "wikilink").
 
+Account slot -2 (0xFE) always refers to the currently loaded account.
+
 ## Console Accounts
 
 A "console account" refers to a specific account slot, and may or may not be associated with a Nintendo Network ID (server account). By default, there is only one console account.
@@ -125,8 +127,6 @@ More console accounts can be created using [ACTA:CreateConsoleAccount](ACTA:Crea
 A "server account" is essentially a Nintendo Network ID.
 
 Associating a console account with a Nintendo Network ID (server-side) is facilitated by the commands [ACTA:BindToNewServerAccount](ACTA:BindToNewServerAccount "wikilink") (to create and link an NNID) or [ACTA:BindToExistentServerAccount](ACTA:BindToExistentServerAccount "wikilink") (to log into an existing linked NNID).
-
-Account slot -2 (0xFE) always refers to the currently loaded account.
 
 # Password Management
 
