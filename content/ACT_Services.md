@@ -771,6 +771,14 @@ Data blocks can be accessed from specific commands depending on the data that is
 
 # Types
 
+## Birthdate
+
+| Offset | Size | Description |
+|--------|------|-------------|
+| 0x0    | 0x2  | u16, Year   |
+| 0x2    | 0x1  | u8, Month   |
+| 0x3    | 0x1  | u8, Day     |
+
 ## CFLStoreData
 
 This is the Mii format used in ACT commands.
@@ -798,6 +806,23 @@ This is the Mii format used in ACT commands.
 | 0x0    | 0x2 + 1 | ASCII NULL-terminated two-letter country code (2 characters + NULL termination)  |
 | 0x3    | 0x2 + 1 | ASCII NULL-terminated two-letter language code (2 characters + NULL termination) |
 | 0x6    | 0x2     | u16, EULA version                                                                |
+
+## InquireBindingToExistentServerAccountData
+
+Represents the device information for the console linked to the NNID.
+
+| Offset | Size      | Description                                              |
+|--------|-----------|----------------------------------------------------------|
+| 0x0    | 0x1       | bool, HasMii                                             |
+| 0x1    | 0x3       | padding                                                  |
+| 0x4    | 0x60      | [Mii CFLStoreData](ACT_Services#cflstoredata "wikilink") |
+| 0x64   | 0x4       | u32, PrincipalId                                         |
+| 0x68   | 0x1       | bool, CoppaRequiredFlag                                  |
+| 0x69   | 0x3       | padding                                                  |
+| 0x6C   | 0x5 + 1   | ASCII 5-character CoppaCode + NULL termination           |
+| 0x72   | 0x100 + 1 | ASCII 256-character ParentEmail + NULL termination       |
+| 0x173  | 0x1       | padding                                                  |
+| 0x174  | 0x4       | [Birth Date](ACT_Services#birthdate "wikilink")          |
 
 # HTTPS Requests
 
