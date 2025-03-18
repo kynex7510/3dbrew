@@ -371,6 +371,14 @@ with <a {{% href "../9.3.0-21" %}} title="wikilink">9.3.0-X</a>).</td>
 <td>No</td>
 </tr>
 <tr class="odd">
+<td>0x20</td>
+<td><a {{% href "../System_SaveData" %}} title="wikilink">System Save Data</a> encryption key during <a {{% href "../System_Transfer" %}} title="wikilink">System Transfers</a>. See <a {{% href "../System_Transfer#system-save-data-transfer" %}} title="wikilink">System Save Data Transfer</a>.</td>
+<td>Bootrom.</td>
+<td>NATIVE_FIRM</td>
+<td>NATIVE_FIRM</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
 <td>0x24</td>
 <td>AGB_FIRM savegame AES-CMAC key.</td>
 <td>Bootrom.</td>
@@ -378,7 +386,7 @@ with <a {{% href "../9.3.0-21" %}} title="wikilink">9.3.0-X</a>).</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x25</td>
 <td><a {{% href "../7.0.0-13" %}} title="wikilink">v7.0</a> <a {{% href "NCCH" "broken" %}}
 title="wikilink">NCCH</a> key, when ncchflag[3] is 0x01.</td>
@@ -388,7 +396,7 @@ title="wikilink">boot</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x2C</td>
 <td>Original <a {{% href "../NCCH" %}} title="wikilink">NCCH</a> key, when
 ncchflag[3] is 0x00 and always for certain NCCH sections.</td>
@@ -397,7 +405,7 @@ ncchflag[3] is 0x00 and always for certain NCCH sections.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x2D</td>
 <td>UDS local-WLAN CCMP key.</p>
 <p>See <a {{% href "../PSPXI:EncryptDecryptAes" %}}
@@ -407,7 +415,7 @@ title="wikilink">EncryptDecryptAes</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x2E</td>
 <td>Streetpass key.</p>
 <p>See <a {{% href "../PSPXI:EncryptDecryptAes" %}}
@@ -417,7 +425,7 @@ title="wikilink">EncryptDecryptAes</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x2F</td>
 <td><a {{% href "../Savegames" %}}
 title="wikilink">v6.0</a> save key.</td>
@@ -426,7 +434,7 @@ title="wikilink">v6.0</a> save key.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x30</td>
 <td>SD/NAND AES-CMAC key.</p>
 <p>This keyY is initialized via <a {{% href "../Nand/private/movable.sed" %}}
@@ -440,7 +448,7 @@ title="wikilink">NAND</a> /data/.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x31</td>
 <td>APT wrap key.</p>
 <p>See <a {{% href "../PSPXI:EncryptDecryptAes" %}}
@@ -451,7 +459,7 @@ the same one used for keyslot 0x2E.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x32</td>
 <td>Unknown.</p>
 <p>See <a {{% href "../PSPXI:EncryptDecryptAes" %}}
@@ -461,7 +469,7 @@ title="wikilink">EncryptDecryptAes</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x33</td>
 <td>Gamecard <a {{% href "../Savegames" %}} title="wikilink">savedata</a>
 AES-CMAC.</td>
@@ -470,7 +478,7 @@ AES-CMAC.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x34</td>
 <td>SD key.</p>
 <p>This keyY is initialized via <a {{% href "../Nand/private/movable.sed" %}}
@@ -482,7 +490,7 @@ card data under <a {{% href "../SD_Filesystem" %}} title="wikilink">/Nintendo
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x35</td>
 <td>Movable.sed key.</p>
 <p>This is the keyslot used for movable.sed encryption + AES-CBC MAC
@@ -494,7 +502,7 @@ different, but both can be found in process9 rodata.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x36</td>
 <td>Unknown. Used by friends module.</p>
 <p>See <a {{% href "../PSPXI:EncryptDecryptAes" %}}
@@ -504,7 +512,7 @@ title="wikilink">EncryptDecryptAes</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x37</td>
 <td>Gamecard <a {{% href "../Savegames" %}} title="wikilink">savedata</a> actual
 key.</td>
@@ -513,7 +521,7 @@ key.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x38</td>
 <td>BOSS key.</p>
 <p>See <a {{% href "../PSPXI:EncryptDecryptAes" %}}
@@ -523,7 +531,7 @@ title="wikilink">EncryptDecryptAes</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x39</td>
 <td>Download Play key, and the actual NFC key for generating retail
 <a {{% href "../Amiibo" %}} title="wikilink">Amiibo</a> keys.</p>
@@ -536,7 +544,7 @@ the same one used for keyslot 0x2E.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x3A</td>
 <td>DSiWare export key.</p>
 <p>This keyY is initialized via <a {{% href "../Nand/private/movable.sed" %}}
@@ -548,7 +556,7 @@ title="wikilink">DSiWare_Exports</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x3B</td>
 <td><a {{% href "../CTRCARD_Registers" %}}
 title="wikilink">CTR-CARD hardware-crypto seed</a> decryption key.</p>
@@ -560,7 +568,7 @@ Header</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0x3D</td>
 <td>Common key.</p>
 <p>Used to decrypt title keys in <a {{% href "../Ticket" %}}
@@ -570,7 +578,7 @@ title="wikilink">Ticket</a>.</td>
 <td>-</td>
 <td>Yes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>0x3F</td>
 <td>Used for various internal Boot9 crypto operations, different
 keydata for each one. Used to decrypt the <a {{% href "../OTP_Registers" %}}
