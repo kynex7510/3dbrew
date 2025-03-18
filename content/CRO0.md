@@ -3,25 +3,15 @@ title = 'CRO0'
 categories = ["File formats"]
 +++
 
-CRO with extension .cro is used for "DLLs". CRS with extension .crs is
-in the same format of CRO but storing the symbol information of the
-static module (the main application). The end of the file is aligned to
-a 0x1000-byte boundary with 0xCC bytes.
+CRO with extension .cro is used for "DLLs". CRS with extension .crs is in the same format of CRO but storing the symbol information of the static module (the main application). The end of the file is aligned to a 0x1000-byte boundary with 0xCC bytes.
 
-The first hash-table entry hashes the 0x100-byte header following the
-hash-table. The following hash-table entries hash the sections specified
-in the header.
+The first hash-table entry hashes the 0x100-byte header following the hash-table. The following hash-table entries hash the sections specified in the header.
 
-When the RO module loads the entire CRO into process memory(mapped in
-the 0x00100000-0x04000000 region), it modifies the mapped CRO data. The
-magic field is also changed to "FIXD" if fix level is not 0.
+When the RO module loads the entire CRO into process memory(mapped in the 0x00100000-0x04000000 region), it modifies the mapped CRO data. The magic field is also changed to "FIXD" if fix level is not 0.
 
-Upon loading, the RO module will look for export symbol
-"nnroAeabiAtexit_" to patch it to its import symbol "__aeabi_atexit".
+Upon loading, the RO module will look for export symbol "nnroAeabiAtexit\_" to patch it to its import symbol "\_\_aeabi_atexit".
 
-For dumping symbols and loading a CRO into IDA, see
-[1](https://github.com/plutooo/ctr/) and
-[2](https://github.com/wwylele/IDA_plugin_CRO).
+For dumping symbols and loading a CRO into IDA, see [1](https://github.com/plutooo/ctr/) and [2](https://github.com/wwylele/IDA_plugin_CRO).
 
 | Offset | Size | Description                                                                                                                                |
 |--------|------|--------------------------------------------------------------------------------------------------------------------------------------------|
@@ -34,7 +24,7 @@ For dumping symbols and loading a CRO into IDA, see
 | 0x94   | 0x04 | .bss size                                                                                                                                  |
 | 0x98   | 0x04 | Unknown                                                                                                                                    |
 | 0x9C   | 0x04 | Unknown                                                                                                                                    |
-| 0xA0   | 0x04 | "Segment offset" that is always the same as export symbol "nnroControlObject_". 0xFFFFFFFF in CRS                                         |
+| 0xA0   | 0x04 | "Segment offset" that is always the same as export symbol "nnroControlObject\_". 0xFFFFFFFF in CRS                                         |
 | 0xA4   | 0x04 | "Segment offset" for "OnLoad" function, which will be called when the module is initialized. Set to 0xFFFFFFFF if not exists.              |
 | 0xA8   | 0x04 | "Segment offset" for "OnExit" function, which will be called when the module is finalized. Set to 0xFFFFFFFF if not exists.                |
 | 0xAC   | 0x04 | "Segment offset" for "OnUnresolved" function, which will be called when an unresolved function is called. Set to 0xFFFFFFFF if not exists. |
@@ -145,9 +135,9 @@ Patch entry (12 bytes)
 
 ARM32 branch instruction is constructed as follows:
 
+` If addend > 0x2000000 or addend < 0xFE000000, then skip.`  
+` If (addend&1) == 1 then write "b +4" (nop).`  
 ```
- If addend > 0x2000000 or addend < 0xFE000000, then skip.
- If (addend&1) == 1 then write "b +4" (nop).
  Else write as normal.
 ```
 
