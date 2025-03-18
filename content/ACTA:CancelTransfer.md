@@ -18,4 +18,4 @@ title = 'ACTA:CancelTransfer'
 
 # Description
 
-Cancels a reserved (initialized) Nintendo Network ID transfer that was previously initialized with [ACTA:ReserveTransfer](ACTA:ReserveTransfer "wikilink"). The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
+Cancels a reserved Nintendo Network ID transfer that was previously initialized with [ACTA:ReserveTransfer](ACTA:ReserveTransfer "wikilink"). The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
