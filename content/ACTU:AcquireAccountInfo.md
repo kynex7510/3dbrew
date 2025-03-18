@@ -6,7 +6,7 @@ title = 'ACTU:AcquireAccountInfo'
 
 {{% ipc/request header="0x00160082" %}}
 {{% ipc/param %}}u8, Account slot{{% / %}}
-{{% ipc/param %}}u8, [DataBlock BlkID](ACT_Services#datablocks "wikilink") (see description){{% / %}}
+{{% ipc/param %}}u32, [DataBlock BlkID](ACT_Services#datablocks "wikilink") (see description){{% / %}}
 {{% ipc/copyhandle count=1 %}}
 {{% ipc/handleentry %}}Completion event handle{{% / %}}
 {{% / %}}
