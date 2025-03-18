@@ -4,7 +4,7 @@ title = 'ACTA:InactivateDeviceAssociation'
 
 # Request
 
-{{% ipc/param %}}0x0422\|1\|2{{% / %}}
+{{% ipc/request header="0x04220042" %}}
 {{% ipc/param %}}u8, Account slot{{% / %}}
 {{% ipc/copyhandle count=1 %}}
 {{% ipc/handleentry %}}Completion event handle{{% / %}}
