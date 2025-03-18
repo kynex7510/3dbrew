@@ -108,15 +108,35 @@ This service is used mainly by the Nintendo Network ID Settings application acce
 
 # Account slots
 
-Like the friends sysmodule, the ACT module supports multiple accounts internally, although this functionality is not exposed to the users. Unlike the Wii U which supports up to 12 accounts, the 3DS only has 8 account slots.
+Like the friends sysmodule, the ACT module has support for multiple [console accounts](ACT_Services#console_accounts "wikilink"). The ACT sysmodule has support for 8 account "slots", which are 1-indexed numbers (n) referring the to the `n`th account. This means that up to 8 different [console accounts](ACT_Services#console_accounts "wikilink") can be used with the ACT sysmodule, unlike the Wii U, which has support for 12. This multi-account functionality is not exposed to users, and the Nintendo Network ID Settings application only ever uses the default account slot.
 
-Some commands require require the account slot as an argument, which is 1-indexed. The value for using the current loaded account is 0xFE.
+When the ACT sysmodule is started, it loads the default account slot. The default account can be set using [ACTA:SetDefaultAccount](ACTA:SetDefaultAccount "wikilink").
+
+It is also possible to change the account slot number of an account by using [ACTA:SwapAccounts](ACTA:SwapAccounts "wikilink").
+
+## Console Accounts
+
+A "console account" refers to a specific account slot, and may or may not be associated with a Nintendo Network ID (server account). By default, there is only one console account.
+
+More console accounts can be created using [ACTA:CreateConsoleAccount](ACTA:CreateConsoleAccount "wikilink"), loaded using [ACTA:LoadConsoleAccount](ACTA:LoadConsoleAccount "wikilink"), unloaded using [ACTA:UnloadConsoleAccount](ACTA:UnloadConsoleAccount "wikilink"), or deleted using [ACTA:DeleteConsoleAccount](ACTA:DeleteConsoleAccount "wikilink").
+
+## Server Accounts
+
+A "server account" is essentially a Nintendo Network ID.
+
+Associating a console account with a Nintendo Network ID (server-side) is facilitated by the commands [ACTA:BindToNewServerAccount](ACTA:BindToNewServerAccount "wikilink") (to create and link an NNID) or [ACTA:BindToExistentServerAccount](ACTA:BindToExistentServerAccount "wikilink") (to log into an existing linked NNID).
+
+Account slot -2 (0xFE) always refers to the currently loaded account.
 
 # Server Types
 
 The ACT sysmodule uses two different server types for Nintendo Network accounts.
 
 See below how these types are determined by default. These types can also be overridden using [ACTA:SetHostServerSettings](ACTA:SetHostServerSettings "wikilink"), [ACTA:SetDefaultHostServerSettings](ACTA:SetDefaultHostServerSettings "wikilink"), [ACTA:SetHostServerSettingsStr](ACTA:SetHostServerSettingsStr "wikilink"), and [ACTA:SetDefaultHostServerSettingsStr](ACTA:SetDefaultHostServerSettingsStr "wikilink").
+
+Nintendo Network IDs can be transferred to other consoles using [ACTA:ReserveTransfer](ACTA:ReserveTransfer "wikilink") initially, and then [ACTA:CompleteTransfer](ACTA:CompleteTransfer "wikilink").
+
+NNIDs can be deleted using either [ACTA:DeleteServerAccount](ACTA:DeleteServerAccount "wikilink"), [ACTA:InactivateAccountDeviceAssociation](ACTA:InactivateAccountDeviceAssociation "wikilink"), [ACTA:DeleteAccountDeviceAssociation](ACTA:DeleteAccountDeviceAssociation "wikilink") or [ACTA:ReserveServerAccountDeletion](ACTA:ReserveServerAccountDeletion "wikilink").
 
 The base URL for the Nintendo Network Account Server (NNAS) is: [`https://`](https://)`[`<prefix>`]account.nintendo.net`.
 
