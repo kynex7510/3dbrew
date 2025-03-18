@@ -22,7 +22,7 @@ title = 'ACTA:ReserveTransfer'
 
 # Description
 
-Initializes a Nintendo Network ID account transfer to a new device.
+Initializes a Nintendo Network ID account transfer to a new device. The account slot must be 0xFE. Therefore, this command can only be used with the currently loaded account.
 
 # DeviceInfo
 
