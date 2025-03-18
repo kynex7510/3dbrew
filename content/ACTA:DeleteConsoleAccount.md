@@ -16,4 +16,4 @@ title = 'ACTA:DeleteConsoleAccount'
 
 # Description
 
-Deletes the account data for the specified account slot. It is not possible to delete the default account using this command, error 0xC8A14D9D is returned when this is attempted.
+Deletes the account data for the specified account slot. It is not possible to delete the default account data using this command, error 0xC8A14D9D is returned when this is attempted.
