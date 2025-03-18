@@ -4,22 +4,20 @@ title = 'ACTU:Initialize'
 
 # Request
 
-| Index Word | Description                                           |
-|------------|-------------------------------------------------------|
-| 0          | Header code \[0x00010084\]                            |
-| 1          | SDK Version                                           |
-| 2          | Shared memory size                                    |
-| 3          | Always 0x20(kernel PID header)                        |
-| 4          | 0x20(The code to request the current process handle.) |
-| 5          | 0x00 (handle-transfer header for kernel)              |
-| 6          | Shared memory address value.                          |
+{{% ipc/request header="0x00010084" %}}
+{{% ipc/param %}}SDK Version{{% / %}}
+{{% ipc/copyhandle count=1 %}}
+{{% ipc/handleentry %}}Handle to caller process{{% / %}}
+{{% ipc/param %}}u32, Shared memory size (optional){{% / %}}
+{{% ipc/copyhandle count=1 %}}
+{{% ipc/handleentry %}}Handle to shared memory (optional){{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00010040" %}}
+{{% ipc/result %}}
+{{% / %}}
 
 # Description
 
