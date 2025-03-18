@@ -23,4 +23,4 @@ Each metadata object consists out of a tuple of three words: `send method`, `tit
 
 Returns the amount of slots read, *not* the amount of bytes read.
 
-Requires the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to be `CEC_SPR_SEND_RECV_INIT`.
+Requires the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to be `CEC_SPR_SEND_READY`.
