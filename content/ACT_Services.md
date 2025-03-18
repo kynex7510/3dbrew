@@ -682,7 +682,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x2A</td>
 <td>0x8</td>
 <td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
-<td>first 8 bytes of <code>SHA256 ( </code><a {{% href "../AM:GetDeviceId" %}} title="wikilink"><code>AM:GetDeviceId</code></a><code>() as 4 little endian bytes + 'A2257354' )</code></td>
+<td>first 8 bytes of <code>SHA256 ( </code><a {{% href "../AM:GetDeviceId" %}} title="wikilink"><code>AM:GetDeviceId</code></a><code>() as 4 little endian bytes + A2257354 )</code></td>
 </tr>
 <tr class="even">
 <td>0x2B</td>
