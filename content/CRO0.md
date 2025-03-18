@@ -70,7 +70,7 @@ For dumping symbols and loading a CRO into IDA, see [1](https://github.com/pluto
 | 0-3  | Segment index for table |
 | 4-31 | Offset into segment     |
 
-Segment Table entry (12 bytes)
+## Segment Table entry (12 bytes)
 
 | Offset | Size | Description                                              |
 |--------|------|----------------------------------------------------------|
@@ -78,41 +78,41 @@ Segment Table entry (12 bytes)
 | 0x4    | 0x4  | Segment size                                             |
 | 0x8    | 0x4  | Segment id (0 = .text, 1 = .rodata, 2 = .data, 3 = .bss) |
 
-Named Export Table entry (8 bytes)
+## Named Export Table entry (8 bytes)
 
 | Offset | Size | Description                                                       |
 |--------|------|-------------------------------------------------------------------|
 | 0x0    | 0x4  | Name offset                                                       |
 | 0x4    | 0x4  | [Segment offset](#segment_offset_(4_bytes) "wikilink") for export |
 
-Indexed Export Table entry (4 bytes)
+## Indexed Export Table entry (4 bytes)
 
 | Offset | Size | Description                                                       |
 |--------|------|-------------------------------------------------------------------|
 | 0x0    | 0x4  | [Segment offset](#segment_offset_(4_bytes) "wikilink") for export |
 
-Named Import Table entry (8 bytes)
+## Named Import Table entry (8 bytes)
 
 | Offset | Size | Description                                                                   |
 |--------|------|-------------------------------------------------------------------------------|
 | 0x0    | 0x4  | Name offset                                                                   |
 | 0x4    | 0x4  | Offset of the head of a linear list that contains the patches for this import |
 
-Indexed Import Table entry (8 bytes)
+## Indexed Import Table entry (8 bytes)
 
 | Offset | Size | Description                                                                   |
 |--------|------|-------------------------------------------------------------------------------|
 | 0x0    | 0x4  | index of the export symbol                                                    |
 | 0x4    | 0x4  | Offset of the head of a linear list that contains the patches for this import |
 
-Anonymous Import Table entry (8 bytes)
+## Anonymous Import Table entry (8 bytes)
 
 | Offset | Size | Description                                                                   |
 |--------|------|-------------------------------------------------------------------------------|
 | 0x0    | 0x4  | [Segment offset](#segment_offset_(4_bytes) "wikilink") of the export symbol   |
 | 0x4    | 0x4  | Offset of the head of a linear list that contains the patches for this import |
 
-Import Module Table entry (20 bytes)
+## Import Module Table entry (20 bytes)
 
 | Offset | Size | Description                                                |
 |--------|------|------------------------------------------------------------|
@@ -122,7 +122,7 @@ Import Module Table entry (20 bytes)
 | 0xC    | 0x4  | Anonymous import num                                       |
 | 0x10   | 0x4  | Offset of the head of a sub list in Anonymous Import Table |
 
-Patch entry (12 bytes)
+## Patch entry (12 bytes)
 
 | Offset | Size | Description                                                                                                                                                                                                                                                                                                                 |
 |--------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
