@@ -442,11 +442,11 @@ MessageHeader:
 | 0x10   | 0x04 | u32         | title_id          | The title id of the message                                                                             |
 | 0x14   | 0x04 | u32         | title_id2         | ???                                                                                                     |
 | 0x18   | 0x04 | u32         | batch_id          | The sending client sets an ID here if multiple messages should be batched together into one transaction |
-| 0x1C   | 0x04 | u32         | transfer_id       | ???                                                                                                     |
+| 0x1C   | 0x04 | u32         | transfer_id       | All messages from the same transfer (That is, sending the messages) contain the same transfer id        |
 | 0x20   | 0x08 | MessageId   | message_id        | The ID of the sending message                                                                           |
 | 0x28   | 0x04 | u32         | message_version   | ???                                                                                                     |
 | 0x2C   | 0x08 | MessageId   | message_id_2      | The message ID that this message is referring to, e.g. the individual responses in Streetpass Mii Plaza |
-| 0x34   | 0x01 | u8          | flags             | ???                                                                                                     |
+| 0x34   | 0x01 | u8          | recipients        | bitfield: 0x01: everyone; 0x02: friends                                                                 |
 | 0x35   | 0x01 | SendMethod  | send_method       |                                                                                                         |
 | 0x36   | 0x01 | bool        | unopened          | Set if the message hasn't been opened yet                                                               |
 | 0x37   | 0x01 | bool        | is_new            | Set if the message is new                                                                               |
