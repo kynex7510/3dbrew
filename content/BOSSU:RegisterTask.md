@@ -22,6 +22,4 @@ title = 'BOSSU:RegisterTask'
 
 # Description
 
-This registers a task and updates the BOSS savedata immediately,
-including info previously initialized with
-[BOSSU:SendProperty](BOSSU:SendProperty "wikilink").
+This registers a task and updates the BOSS savedata immediately, including info previously initialized with [BOSSU:SendProperty](BOSSU:SendProperty "wikilink").
