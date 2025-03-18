@@ -9,42 +9,42 @@ The ACT module handles NNID accounts. This module behaves very similarly to the 
 
 These commands are used generally by most titles, and are also present in act:a.
 
-| Command Header | Description                                                                          |
-|----------------|--------------------------------------------------------------------------------------|
-| 0x00010084     | [Initialize](ACTU:Initialize "wikilink")                                             |
-| 0x00020040     | [GetErrorCode](ACTU:GetErrorCode "wikilink")                                         |
-| 0x00030000     | [GetLastResponseResult](ACTU:GetLastResponseResult "wikilink")                       |
-| 0x00040000     | [Cancel](ACTU:Cancel "wikilink")                                                     |
-| 0x00050082     | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                       |
-| 0x000600C2     | [GetAccountDataBlock](ACTU:GetAccountDataBlock "wikilink")/GetAccountInfo            |
-| 0x00070082     | [GetAsyncResult](ACTU:GetAsyncResult "wikilink")                                     |
-| 0x000800C2     | [GetMiiImage](ACTU:GetMiiImage "wikilink")                                           |
-| 0x00090180     | [SetNfsPassword](ACTU:SetNfsPassword "wikilink")                                     |
-| 0x000A0000     | [SetIsApplicationUpdateRequired](ACTU:SetIsApplicationUpdateRequired "wikilink")     |
-| 0x000B0042     | [AcquireEulaList](ACTU:AcquireEulaList "wikilink")                                   |
-| 0x000C0082     | [AcquireTimeZoneList](ACTU:AcquireTimeZoneList "wikilink")                           |
-| 0x000D0040     | [GenerateUuid](ACTU:GenerateUuid "wikilink")                                         |
-| 0x000E0080     | [GetUuid](ACTU:GetUuid "wikilink")                                                   |
-| 0x000F0140     | [FindSlotNoByUuid](ACTU:FindSlotNoByUuid "wikilink")                                 |
-| 0x00100000     | [Save](ACTU:Save "wikilink")                                                         |
-| 0x00110080     | [GetTransferableId](ACTU:GetTransferableId "wikilink")                               |
-| 0x00120102     | [AcquireNexServiceToken](ACTU:AcquireNexServiceToken "wikilink")                     |
-| 0x00130002     | [GetNexServiceToken](ACTU:GetNexServiceToken "wikilink")                             |
-| 0x00140382     | [AcquireIndependentServiceToken](ACTU:AcquireIndependentServiceToken "wikilink")     |
-| 0x00150002     | [GetIndependentServiceToken](ACTU:GetIndependentServiceToken "wikilink")             |
-| 0x00160082     | [AcquireAccountInfo](ACTU:AcquireAccountInfo "wikilink")                             |
-| 0x00170084     | [AcquireAccountIdByPrincipalId](ACTU:AcquireAccountIdByPrincipalId "wikilink")       |
-| 0x00180044     | [AcquirePrincipalIdByAccountId](ACTU:AcquirePrincipalIdByAccountId "wikilink")       |
-| 0x00190044     | [AcquireMii](ACTU:AcquireMii "wikilink")                                             |
-| 0x001A0042     | [AcquireAccountInfoRaw](ACTU:AcquireAccountInfoRaw "wikilink")                       |
-| 0x001B0084     | AcquireOtherTypePrincipalID (stubbed)                                                |
-| 0x001C0342     | [GetServiceToken](ACTU:GetServiceToken "wikilink")                                   |
-| 0x001D0004     | [InquireMailAddressAvailability](ACTU:InquireMailAddressAvailability "wikilink")     |
-| 0x001E0082     | [AcquireEula](ACTU:AcquireEula "wikilink")                                           |
-| 0x001F0082     | [AcquireEulaLanguageList](ACTU:AcquireEulaLanguageList "wikilink")                   |
-| 0x00200382     | [AcquireIndependentServiceTokenV2](ACTU:AcquireIndependentServiceTokenV2 "wikilink") |
-| 0x00210002     | [GetIndepdendentServiceTokenV2](ACTU:GetIndepdendentServiceTokenV2 "wikilink")       |
-| 0x00220342     | [GetServiceTokenV2](ACTU:GetServiceTokenV2 "wikilink")                               |
+| Command Header | Description                                                                              |
+|----------------|------------------------------------------------------------------------------------------|
+| 0x00010084     | [Initialize](ACTU:Initialize "wikilink")                                                 |
+| 0x00020040     | [GetErrorCode](ACTU:GetErrorCode "wikilink")                                             |
+| 0x00030000     | [GetLastResponseResult](ACTU:GetLastResponseResult "wikilink")                           |
+| 0x00040000     | [Cancel](ACTU:Cancel "wikilink")                                                         |
+| 0x00050082     | [GetCommonInfo](ACTU:GetCommonInfo "wikilink")                                           |
+| 0x000600C2     | [GetAccountDataBlock](ACTU:GetAccountDataBlock "wikilink")/GetAccountInfo                |
+| 0x00070082     | [GetAsyncResult](ACTU:GetAsyncResult "wikilink")                                         |
+| 0x000800C2     | [GetMiiImage](ACTU:GetMiiImage "wikilink")                                               |
+| 0x00090180     | [SetNfsPassword](ACTU:SetNfsPassword "wikilink")                                         |
+| 0x000A0000     | [SetIsApplicationUpdateRequired](ACTU:SetIsApplicationUpdateRequired "wikilink")         |
+| 0x000B0042     | [AcquireEulaList](ACTU:AcquireEulaList "wikilink")                                       |
+| 0x000C0082     | [AcquireTimeZoneList](ACTU:AcquireTimeZoneList "wikilink")                               |
+| 0x000D0040     | [GenerateUuid](ACTU:GenerateUuid "wikilink")                                             |
+| 0x000E0080     | [GetUuid](ACTU:GetUuid "wikilink")                                                       |
+| 0x000F0140     | [FindSlotNoByUuid](ACTU:FindSlotNoByUuid "wikilink")                                     |
+| 0x00100000     | [Save](ACTU:Save "wikilink")                                                             |
+| 0x00110080     | [GetTransferableId](ACTU:GetTransferableId "wikilink")                                   |
+| 0x00120102     | [AcquireNexServiceToken](ACTU:AcquireNexServiceToken "wikilink")                         |
+| 0x00130002     | [GetNexServiceToken](ACTU:GetNexServiceToken "wikilink")                                 |
+| 0x00140382     | [AcquireIndependentServiceToken](ACTU:AcquireIndependentServiceToken "wikilink")         |
+| 0x00150002     | [GetIndependentServiceToken](ACTU:GetIndependentServiceToken "wikilink")                 |
+| 0x00160082     | [AcquireAccountInfo](ACTU:AcquireAccountInfo "wikilink")                                 |
+| 0x00170084     | [AcquireAccountIdByPrincipalId](ACTU:AcquireAccountIdByPrincipalId "wikilink")           |
+| 0x00180044     | [AcquirePrincipalIdByAccountId](ACTU:AcquirePrincipalIdByAccountId "wikilink")           |
+| 0x00190044     | [AcquireMii](ACTU:AcquireMii "wikilink")                                                 |
+| 0x001A0042     | [AcquireAccountInfoRaw](ACTU:AcquireAccountInfoRaw "wikilink")                           |
+| 0x001B0084     | AcquireOtherTypePrincipalID (stubbed)                                                    |
+| 0x001C0342     | [GetCachedServiceToken](ACTU:GetCachedServiceToken "wikilink")                           |
+| 0x001D0004     | [InquireMailAddressAvailability](ACTU:InquireMailAddressAvailability "wikilink")         |
+| 0x001E0082     | [AcquireEula](ACTU:AcquireEula "wikilink")                                               |
+| 0x001F0082     | [AcquireEulaLanguageList](ACTU:AcquireEulaLanguageList "wikilink")                       |
+| 0x00200382     | [AcquireIndependentServiceTokenV2](ACTU:AcquireIndependentServiceTokenV2 "wikilink")     |
+| 0x00210002     | [GetIndepdendentServiceTokenV2](ACTU:GetIndepdendentServiceTokenV2 "wikilink")           |
+| 0x00220342     | [GetCachedIndependentServiceTokenV2](ACTU:GetCachedIndependentServiceTokenV2 "wikilink") |
 
 # ACT Admin Service "act:a"
 
