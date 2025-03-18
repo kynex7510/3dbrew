@@ -34,22 +34,22 @@ All of the structure entries are stored as little-endian data.
 
 | Offset | Size | Description              |
 |--------|------|--------------------------|
-| 0x0    | 0x44 | BPK1 header              |
-| 0x44   |      | Block header             |
+| 0x0    | 0x40 | BPK1 header              |
+| 0x40   |      | Block header             |
 |        |      | Additional block headers |
 |        |      | Block data               |
 |        |      | Additional blocks data   |
 
 ### BPK1 header
 
-| Offset | Size | Description               |
-|--------|------|---------------------------|
-| 0x0    | 0x4  | Header magic (BPK1)       |
-| 0x4    | 0x4  | Number of blocks          |
-| 0x8    | 0x4  | Maximum block name length |
-| 0xC    | 0x4  | Structure length          |
-| 0x10   | 0x4  | Header length             |
-| 0x14   | 0x2C | Padding                   |
+| Offset | Size | Description                |
+|--------|------|----------------------------|
+| 0x0    | 0x4  | Header magic (BPK1)        |
+| 0x4    | 0x4  | Number of blocks           |
+| 0x8    | 0x4  | Maximum block name length? |
+| 0xC    | 0x4  | Structure length           |
+| 0x10   | 0x4  | Header length              |
+| 0x14   | 0x2C | Padding                    |
 
 ### Block header
 
@@ -58,7 +58,7 @@ All of the structure entries are stored as little-endian data.
 | 0x0    | 0x4  | Block data offset                                                                |
 | 0x4    | 0x4  | Block size                                                                       |
 | 0x8    | 0x4  | Checksum of block data                                                           |
-| 0x10   | 0x8  | Block name (if the name is smaller tahn 0x8, the rest is filled with NULL bytes) |
+| 0x10   | 0x8  | Block name (if the name is smaller than 0x8, the rest is filled with NULL bytes) |
 
 ### Block checksum
 
