@@ -2,11 +2,7 @@
 title = 'FRD Savegame'
 +++
 
-This page describes the contents of the
-[friend](Friend_Services "wikilink") sysmodule savegame. Except for the
-config file, all of the data is stored inside a folder that represents
-the local account ID of the account. For example: /1/account stores the
-data of the main account.
+This page describes the contents of the [friend](Friend_Services "wikilink") sysmodule savegame. Except for the config file, all of the data is stored inside a folder that represents the local account ID of the account. For example: /1/account stores the data of the main account.
 
 ## config
 
@@ -73,9 +69,7 @@ data of the main account.
 <tr class="even">
 <td>0x18</td>
 <td>4</td>
-<td><a
-href="https://github.com/kinnay/NintendoClients/wiki/Friends-Protocol-(3DS)#nintendopresence-structure">Changed
-bit flags</a></td>
+<td><a href="https://github.com/kinnay/NintendoClients/wiki/Friends-Protocol-(3DS)#nintendopresence-structure">Changed bit flags</a></td>
 </tr>
 <tr class="odd">
 <td>0x1C</td>
@@ -133,14 +127,12 @@ bit flags</a></td>
 <tr class="even">
 <td>0x68</td>
 <td>(12 + 1) * 2</td>
-<td>UTF16 string of MAC address of the console (only the
-digits)</td>
+<td>UTF16 string of MAC address of the console (only the digits)</td>
 </tr>
 <tr class="odd">
 <td>0x82</td>
 <td>(15 + 1) * 2</td>
-<td>UTF16 string of console serial number without the checksum
-digit</td>
+<td>UTF16 string of console serial number without the checksum digit</td>
 </tr>
 <tr class="even">
 <td>0xA2</td>
@@ -150,8 +142,7 @@ digit</td>
 <tr class="odd">
 <td>0xBB</td>
 <td>0x60</td>
-<td>Unaligned <a {{% href "../Mii" %}} title="wikilink">Mii
-data</a></td>
+<td>Unaligned <a {{% href "../Mii" %}} title="wikilink">Mii data</a></td>
 </tr>
 <tr class="even">
 <td>0x11B</td>
@@ -237,20 +228,17 @@ data</a></td>
 <tr class="odd">
 <td>0x58</td>
 <td>8</td>
-<td>Message update <a
-href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
+<td>Message update <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
 </tr>
 <tr class="even">
 <td>0x60</td>
 <td>8</td>
-<td>Mii update <a
-href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
+<td>Mii update <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
 </tr>
 <tr class="odd">
 <td>0x68</td>
 <td>8</td>
-<td>Last online <a
-href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
+<td>Last online <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
 </tr>
 <tr class="even">
 <td>0x70</td>
@@ -265,8 +253,7 @@ href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">
 <tr class="even">
 <td>0xE8</td>
 <td>8</td>
-<td>Friendship? <a
-href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
+<td>Friendship? <a href="https://github.com/kinnay/NintendoClients/wiki/NEX-Common-Types#datetime">timestamp</a></td>
 </tr>
 <tr class="odd">
 <td>0xF0</td>
