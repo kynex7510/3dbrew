@@ -19,3 +19,5 @@ title = 'ACTA:DeleteServerAccount'
 # Description
 
 Deletes the Nintendo Network ID (on the server-side) for the given account slot.
+
+This also sets the [IsServerAccountDeleted (BlkID 0x24)](ACT_Services#datablocks "wikilink") field in the account data to `true`.
