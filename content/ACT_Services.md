@@ -772,6 +772,80 @@ Represents the device information for the console linked to the NNID.
 | 0x173  | 0x1       | padding                                                  |
 | 0x174  | 0x4       | [Birth Date](ACT_Services#birthdate "wikilink")          |
 
+## AcquireEulaData/AcquireEulaListData
+
+Data returned from [ACTU:AcquireEula](ACTU:AcquireEula "wikilink") and [ACTU:AcquireEulaList](ACTU:AcquireEulaList "wikilink") uses a special format.
+
+### EulaHeader
+
+| Offset | Size | Description                                        |
+|--------|------|----------------------------------------------------|
+| 0x0    | 0x3  | 2-character Country code + NULL termination        |
+| 0x3    | 0x1  | padding                                            |
+| 0x4    | 0x3  | 2-character Language code + NULL termination       |
+| 0x7    | 0x1  | padding                                            |
+| 0x8    | 0x2  | u16, Version                                       |
+| 0xA    | 0x2  | padding                                            |
+| 0xC    | 0x4  | u32, end offset of this EULA within full data blob |
+| 0x10   | 0x4  | EulaType offset                                    |
+| 0x14   | 0x4  | AgreeText offset                                   |
+| 0x18   | 0x4  | NonAgreeText offset                                |
+| 0x1C   | 0x4  | LanguageName offset                                |
+| 0x20   | 0x4  | MainTitle offset                                   |
+| 0x24   | 0x4  | MainText offset                                    |
+| 0x28   | 0x4  | SubTitle offset                                    |
+| 0x2C   | 0x4  | SubText offset                                     |
+
+`X offset` refers to an offset to a NULL-terminated ASCII string value for `X` within the full EULA data blob (see below).
+
+### EulaList
+
+This is the full data blob retrieved using [ACTU:GetAsyncResult](ACTU:GetAsyncResult "wikilink").
+Each EULA list entry is appended at the very end of the previous one. The end offset in the header can be used to get to subsequent EULA list entries.
+
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x1</td>
+<td>u8, Number of EULA list entries (n)</td>
+</tr>
+<tr class="even">
+<td>0x1</td>
+<td>n * (...)</td>
+<td>concatenated EULA list entries</p>
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x30</td>
+<td><a {{% href "../ACT_Services" %}} title="wikilink">EulaHeader</a></td>
+</tr>
+<tr class="even">
+<td>0x30</td>
+<td>...</td>
+<td>EULA data</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
 # HTTPS Requests
 
 With each request, ACT-sysmodule specifies request-header "X-Nintendo-Device-Model". This is the only \*dedicated\* request-header that's contains anything Old3DS/New3DS specific. This was implemented with [9.0.0-X](9.0.0-20 "wikilink"), and presumably [8.1.0-0_New3DS](8.1.0-0_New3DS "wikilink"). The value is from a string initialized during ACT-sysmodule startup. The value-string is the [codename](Cfg:GetSystemModel "wikilink") string for all 5 of the model values from [Cfg:GetSystemModel](Cfg:GetSystemModel "wikilink"). When the output from GetSystemModel is \>=5(switch statement default case), it runs this: "len = snprintf(outstr, outmaxsize, "3DS-%u", model);"
