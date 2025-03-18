@@ -21,6 +21,6 @@ title = 'CECDS:SprGetSendSlotsMetadata'
 This copies the metadata for all slots that need to be sent into the specified buffer.
 Each metadata object consists out of a tuple of three words: `send method`, `title_id`, `size` whereas the size is the size in bytes of the corresponding spr slot. Copies up to `buffer size / (4*3)` slots into the buffer.
 
-Returns the amount of slots read, \_not\_ the amount of bytes read.
+Returns the amount of slots read, *not* the amount of bytes read.
 
 Requires the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to be `CEC_SPR_SEND_RECV_INIT`.
