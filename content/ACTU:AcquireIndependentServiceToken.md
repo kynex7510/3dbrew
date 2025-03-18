@@ -28,3 +28,5 @@ Requests an independent service token using the given client ID.
 The validity duration specifies for how long the requested token will be cached locally. If a token with the same configuration was found in the cache, and this token was acquired within the past `Cache duration` seconds, this command will use the cached token instead of requesting a new one. It follows that specifying 0 as the cache duration will force the ACT module to always request a new token.
 
 Setting `mark this token as non-process specific` to `true` causes the requested token to be accessible from any process. Otherwise, the requested token will only be accessible to the process that created it (via the process ID).
+
+See [Independent Service Tokens](ACT_Services#independent_service_tokens "wikilink") for details.
