@@ -17,7 +17,7 @@ title = 'ACTA:InvalidateAccountToken'
 
 # Description
 
-Resets the account access token (used for certain requests) for the specified account slot.
+Resets the account access token (used for certain requests) for the account. The account slot must be 0xFE. Therefore, this command can only be used to invalidate the account access token for the currently loaded account.
 
 The following invalidation actions are supported using this command:
 
