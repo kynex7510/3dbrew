@@ -20,4 +20,4 @@ title = 'CECDS:SprGetSlot'
 
 This copies a [slot](StreetPass#slot_0x6161 "wikilink") to be sent into the specified buffer.
 
-Requires the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to be `CEC_SPR_SEND_RECV_INIT`.
+Requires the [Cec Spr Status](CECD_Services#cecsprstatus "wikilink") to be `CEC_SPR_SEND_READY`.
