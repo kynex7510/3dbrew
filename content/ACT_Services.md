@@ -150,7 +150,7 @@ Data blocks can be accessed from specific commands depending on the data that is
 <td>0x4</td>
 <td>0x8</td>
 <td><a {{% href "../ACTU:GetCommonInfo" %}} title="wikilink">GetCommonInfo</a></td>
-<td>Difference betwwen server time and device time (in nanoseconds)</td>
+<td>Difference between server time and device time (in nanoseconds)</td>
 </tr>
 <tr class="odd">
 <td>0x5</td>
