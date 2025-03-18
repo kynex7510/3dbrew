@@ -4,18 +4,20 @@ title = 'BOSSU:GetNsDataHeaderInfo'
 
 # Request
 
-| Index Word | Description                                                           |
-|------------|-----------------------------------------------------------------------|
-| 0          | Header code \[0x002700C2\]                                            |
-| 1          | NsDataId                                                              |
-| 2          | u8 type                                                               |
-| 3          | Size                                                                  |
-| 4          | (Size \<\< 4) \| 0xC                                                  |
-| 5          | Output Data Pointer for [NsDataHeaderInfo](BOSS_Services "wikilink"). |
+{{% ipc/request header="0x002700c2" %}}
+{{% ipc/param %}}u32, NS Data ID{{% / %}}
+{{% ipc/param %}}u8, [HeaderInfoType](BOSS_Services#nsdataheaderinfo "wikilink"){{% / %}}
+{{% ipc/param %}}u32, Buffer size{{% / %}}
+{{% ipc/mapbuffer w %}}Data buffer{{% / %}}
+{{% / %}}
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
+{{% ipc/request header="0x00270042" %}}
+{{% ipc/result %}}
+{{% ipc/mapbuffer w %}}Data buffer{{% / %}}
+{{% / %}}
+
+# Description
+
+Gets information from the header of the given NS Data ID of the program ID of the current session.
