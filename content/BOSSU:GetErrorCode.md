@@ -5,18 +5,20 @@ title = 'BOSSU:GetErrorCode'
 # Request
 
 {{% ipc/request header="0x002E0040" %}}
-{{% ipc/param %}}s8 input{{% / %}}
+{{% ipc/param %}}u8, TaskResultCode{{% / %}}
 {{% / %}}
 
 # Response
 
-{{% ipc/request %}}
+{{% ipc/request header="0x002E0080" %}}
 {{% ipc/result %}}
-{{% ipc/param %}}u32 Output value{{% / %}}
+{{% ipc/param %}}u32, Error code{{% / %}}
 {{% / %}}
 
 # Description
 
-This loads a 16bit value from a table using the input value. This loops through the table, comparing a field in each array entry with the input. When the input value is 0x71, the output is 0xB3B1+5(0xB3B6). Otherwise when no match is found in the table and it's not 0x71, the output is 0xB3B1.
+Converts the given task result code into an error code (004-XXXX). The returned value is an integer 004XXXX.
 
-This always returns result-code 0.
+The error code is looked up in a table. When the input value is 0x71, the output is 46001+5 (004-6006). Otherwise when no match is found in the table and it's not 0x71, the error code is 004-6001.
+
+This always returns result code 0.
