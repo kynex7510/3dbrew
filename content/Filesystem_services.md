@@ -593,11 +593,12 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 
 ## SpecialContentType
 
-| Value | Description |
-|-------|-------------|
-| 0x1   | Update      |
-| 0x2   | Manual      |
-| 0x3   | DLP Child   |
+| Value | Description                   | Found in                  |
+|-------|-------------------------------|---------------------------|
+| 0x1   | CTR (Old3DS) Update Partition | Gamecards                 |
+| 0x2   | Manual                        | Gamecards, Digital titles |
+| 0x3   | DLP Child                     | Gamecards, Digital titles |
+| 0x4   | KTR (New3DS) Update Partition | Gamecards                 |
 
 ## DeviceMoveContext
 
