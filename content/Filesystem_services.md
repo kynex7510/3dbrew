@@ -344,9 +344,45 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 
 Archive path:
 
-| Index word | Description                  |
-|------------|------------------------------|
-| 0          | Mode (0: read, 0x200: write) |
+<table>
+<thead>
+<tr class="header">
+<th>Index word</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x1</td>
+<td>Media Type</td>
+</tr>
+<tr class="even">
+<td>0x1</td>
+<td>0x1</td>
+<td>bool, for writing</td>
+</tr>
+<tr class="odd">
+<td>0x2</td>
+<td>0x2</td>
+<td>padding</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
 
 File path:
 
