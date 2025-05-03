@@ -644,6 +644,20 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 </tbody>
 </table>
 
+## TitleTag
+
+| Offset | Size | Description                                                                                               |
+|--------|------|-----------------------------------------------------------------------------------------------------------|
+| 0x0    | 0x4  | Magic, `PREP` (PREPurchase install)                                                                       |
+| 0x4    | 0x4  | s32, Release date year                                                                                    |
+| 0x8    | 0x1  | u8, Release date month                                                                                    |
+| 0x9    | 0x1  | u8, Release date day                                                                                      |
+| 0xA    | 0x2  | u16, Country code                                                                                         |
+| 0xC    | 0x4  | u32, Seed status (0: not downloaded yet, 1: last download attempt failed, 2: seed installed successfully) |
+| 0x10   | 0x4  | Result code from last seed installation attempt                                                           |
+| 0x14   | 0x4  | Support error code from last seed installation attempt                                                    |
+| 0x18   | 0x68 | reserved padding (unused)                                                                                 |
+
 ## CardSpiBaudRate
 
 | Value | Description |
