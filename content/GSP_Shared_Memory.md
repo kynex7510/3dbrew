@@ -83,19 +83,17 @@ The command queue is located at sharedMemBase + 0x800 + (clientID \*
 Each command entry is of size 0x20 and has an header followed by command
 specific parameters.
 
-After adding a command,
-[TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") must be used
-to trigger GSP processing when the total commands field is value 1.
+After adding a command, [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") must be used to start command processing (official code does so when the total commands field is 1).
 
 ## Command Queue Header
 
-| Index Byte | Description                                                                                                                                                |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0          | Index of the command to process, this is incremented by GSP before handling the command                                                                    |
-| 1          | Total commands to process, this is incremented by the application when adding the command to the queue, and decremented by GSP before handling the command |
-| 2          | Flags (bit0 = completed?, bit7 = fatal error)                                                                                                              |
-| 3          | ? (bit0 = set flags.bit0)                                                                                                                                  |
-| 4          | Result code for the last GX command which failed                                                                                                           |
+| Index Byte | Description                                                                                                                                                      |
+|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0          | Index of the command to process, this is incremented by GSP before handling the command                                                                          |
+| 1          | Total commands to process, this is incremented by the application when adding the command to the queue, and decremented by GSP before handling the command       |
+| 2          | Flags (bit0 = completed, bit7 = fatal error)                                                                                                                     |
+| 3          | When bit0 is set, further processing of commands is halted until the client resets the flag and calls [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") |
+| 4          | Result code for the last command which failed                                                                                                                    |
 
 ## Command Header
 
@@ -103,7 +101,7 @@ to trigger GSP processing when the total commands field is value 1.
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | 0          | Command ID                                                                                                                                         |
 | 1          | ?                                                                                                                                                  |
-| 2          | ? (bit0 = set queue.flags.bit0 after processing)                                                                                                   |
+| 2          | When bit0 is set, GSP stops processing further commands (can be used for packing together sets of commands)                                        |
 | 3          | When set, the command fails if GSP is busy handling any other command; otherwise, it only fails if GSP is busy handling a command of the same kind |
 
 ## Commands
@@ -119,7 +117,7 @@ Address and size parameters except for command 0 and command 5 must be
 
 | Index Word | Description                               |
 |------------|-------------------------------------------|
-| 0          | u8 CommandID is 0x00                      |
+| 0          | Command header (ID = 0x00)                |
 | 1          | Source address                            |
 | 2          | Destination address                       |
 | 3          | Size                                      |
@@ -135,7 +133,7 @@ is used to flush the source buffer.
 
 | Index Word | Description                                                      |
 |------------|------------------------------------------------------------------|
-| 0          | u8 CommandID is 0x01                                             |
+| 0          | Command header (ID = 0x01)                                       |
 | 1          | Buffer address                                                   |
 | 2          | Buffer size                                                      |
 | 3          | Update gas additive blend results (0 = don't update, 1 = update) |
@@ -152,7 +150,7 @@ svcFlushProcessDataCache is used to flush the buffer.
 
 | Index Word | Description                                  |
 |------------|----------------------------------------------|
-| 0          | u8 CommandID is 0x02                         |
+| 0          | Command header (ID = 0x02)                   |
 | 1          | Buf0 start address (0 = don't fill anything) |
 | 2          | Buf0 value                                   |
 | 3          | Buf0 end address                             |
@@ -178,7 +176,7 @@ for more information about memory fill parameters.
 
 | Index Word | Description                                                                                                     |
 |------------|-----------------------------------------------------------------------------------------------------------------|
-| 0          | u8 CommandID is 0x03                                                                                            |
+| 0          | Command header (ID = 0x03)                                                                                      |
 | 1          | Input framebuffer address                                                                                       |
 | 2          | Output framebuffer address                                                                                      |
 | 3          | Input framebuffer [dimensions](categories/GPU "wikilink")                                                                  |
@@ -207,7 +205,7 @@ The minimum supported dimension for output is 64x64, anything lower will hang th
 
 | Index Word | Description                                                                                                                                                                                                                                                  |
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0          | u8 CommandID is 0x04                                                                                                                                                                                                                                         |
+| 0          | Command header (ID = 0x04)                                                                                                                                                                                                                                   |
 | 1          | Input buffer address.                                                                                                                                                                                                                                        |
 | 2          | Output buffer address.                                                                                                                                                                                                                                       |
 | 3          | Total bytes to copy, not including gaps.                                                                                                                                                                                                                     |
@@ -222,16 +220,16 @@ the TextureCopy parameters.
 
 ### Flush Cache Regions
 
-| Index Word | Description          |
-|------------|----------------------|
-| 0          | u8 CommandID is 0x05 |
-| 1          | Buf0 address         |
-| 2          | Buf0 size            |
-| 3          | Buf1 address         |
-| 4          | Buf1 size            |
-| 5          | Buf2 address         |
-| 6          | Buf2 size            |
-| 7          | Unused               |
+| Index Word | Description                |
+|------------|----------------------------|
+| 0          | Command header (ID = 0x05) |
+| 1          | Buf0 address               |
+| 2          | Buf0 size                  |
+| 3          | Buf1 address               |
+| 4          | Buf1 size                  |
+| 5          | Buf2 address               |
+| 6          | Buf2 size                  |
+| 7          | Unused                     |
 
 The application buffer addresses specified in the parameters are used
 with [svcFlushProcessDataCache](SVC "wikilink"). The input buf0 size
