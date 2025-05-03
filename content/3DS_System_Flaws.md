@@ -2432,6 +2432,17 @@ new <a {{% href "../SVC" %}} title="wikilink">SVC</a> 0x59.</td>
 title="wikilink">Yellows8</a>/others before then</td>
 </tr>
 <tr class="odd">
+<td><a {{% href "../GSP_Services" %}} title="wikilink">GSP</a> client management failures</td>
+<td>Shared memory of GSP clients is all on the same page, this allows any GSP client to craft custom GX commands for other clients.</p>
+<p>When a process with memtype != APPLICATION acquires rights, the FCRAM cutoff is increased to 0x26800000 (O3DS) / 0x2D000000 (N3DS). Meanwhile, <a {{% href "../GSPGPU:TriggerCmdReqQueue" %}} title="wikilink">GSPGPU:TriggerCmdReqQueue</a> does not check if the calling client has rendering rights. This allows any process to access most of the SYSTEM region by crafting DMA commands for the <a {{% href "Home_Menu" "broken" %}} title="wikilink">Home Menu</a> (a non-APPLICATION process which is always a client of GSP) and jumping to it so that GSP updates the cutoff, while triggering queue processing from a separate thread.</td>
+<td>Access to most of the SYSTEM memory region.</td>
+<td>None</td>
+<td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
+<td></td>
+<td>May 2025</td>
+<td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a>, probably others</td>
+</tr>
+<tr class="even">
 <td>rohax</td>
 <td>Using gspwn, it is possible to overwrite a loaded <a {{% href "../CRO0" %}}
 title="wikilink">CRO0</a>/<a {{% href "../CRR0" %}} title="wikilink">CRR0</a> after
@@ -2452,7 +2463,7 @@ them.</td>
 <td>smea, <a {{% href "../User:Plutooo" "broken" %}} title="wikilink">plutoo</a> joint
 effort</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Region free</td>
 <td>Only <a {{% href "../Home_Menu" %}} title="wikilink">Home Menu</a> itself
 checks gamecards' region when launching them. Therefore, any application
@@ -2472,17 +2483,11 @@ title="wikilink">10.1.0-X</a>.</td>
 <td></td>
 <td><a {{% href "../User:Yellows8" "broken" %}} title="wikilink">Yellows8</a></td>
 </tr>
-<tr class="odd">
-<td><a {{% href "../NWM_Services" %}} title="wikilink">NWM</a> service-cmd state
-null-ptr deref</td>
-<td>The NWMUDS service command code loads a ptr from .data, adds an
-offset to that, then passes that as the state address for the actual
-command-handler function. The value of the ptr loaded from .data is not
-checked, therefore this will cause crashes due to that being 0x0 when
-NWMUDS was not properly initialized. It's unknown whether any NWM
-services besides NWMUDS have this issue.</td>
-<td>This is rather useless since it's only a crash caused by a state
-ptr based at 0x0.</td>
+<tr class="even">
+<td><a {{% href "../NWM_Services" %}} title="wikilink">NWM</a> service-cmd state null-ptr deref</td>
+<td>The NWMUDS service command code loads a ptr from .data, adds an offset to that, then passes that as the state address for the actual command-handler function. The value of the ptr loaded from .data is not checked, therefore this will cause crashes due to that being 0x0 when NWMUDS was not properly initialized.
+It's unknown whether any NWM services besides NWMUDS have this issue.</td>
+<td>This is rather useless since it's only a crash caused by a state ptr based at 0x0.</td>
 <td>None</td>
 <td><a {{% href "../9.0.0-20" %}} title="wikilink">9.0.0-20</a></td>
 <td>2013?</td>
