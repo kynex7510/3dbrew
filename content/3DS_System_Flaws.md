@@ -2433,9 +2433,9 @@ title="wikilink">Yellows8</a>/others before then</td>
 </tr>
 <tr class="odd">
 <td><a {{% href "../GSP_Services" %}} title="wikilink">GSP</a> client management failures</td>
-<td>Shared memory of GSP clients is all on the same page, this allows any GSP client to craft custom GX commands for other clients.</p>
-<p>When a process with memtype != APPLICATION acquires rights, the FCRAM cutoff is increased to 0x26800000 (O3DS) / 0x2D000000 (N3DS). Meanwhile, <a {{% href "../GSPGPU:TriggerCmdReqQueue" %}} title="wikilink">GSPGPU:TriggerCmdReqQueue</a> does not check if the calling client has rendering rights. This allows any process to access most of the SYSTEM region by crafting DMA commands for the <a {{% href "Home_Menu" "broken" %}} title="wikilink">Home Menu</a> (a non-APPLICATION process which is always a client of GSP) and jumping to it so that GSP updates the cutoff, while triggering queue processing from a separate thread.</td>
-<td>Access to most of the SYSTEM memory region.</td>
+<td>Shared memory of GSP clients is all on the same page, this allows any GSP client to craft custom GX commands for other clients. Additionally, <a {{% href "../GSPGPU:TriggerCmdReqQueue" %}} title="wikilink">GSPGPU:TriggerCmdReqQueue</a> does not check if the calling client has rendering rights.</p>
+<p>These two flaws can be used to craft DMA/Transfer Engine commands within a different GSP client to issue reads/writes to both physical (akin to gspwn) and virtual memory of said client.</td>
+<td>Arbitrary RW from and into a client process.</td>
 <td>None</td>
 <td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
 <td></td>
