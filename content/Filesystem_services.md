@@ -622,7 +622,7 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>No entry with the given slot and title ID was found.</td>
+<td>No entry with the given slot and title ID was found, or: this entry is unused.</td>
 </tr>
 <tr class="even">
 <td>1</td>
