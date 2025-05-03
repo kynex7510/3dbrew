@@ -22,5 +22,4 @@ title = 'AMNet:CommitImportTitles'
 
 # Description
 
-See [this](Title_Data_Structure "wikilink") for how the system finalizes
-title installation.
+See [this](Title_Data_Structure "wikilink") for how the system finalizes title installation.
