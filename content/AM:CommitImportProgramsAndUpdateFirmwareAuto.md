@@ -22,5 +22,4 @@ title = 'AM:CommitImportProgramsAndUpdateFirmwareAuto'
 
 # Description
 
-This is the same as
-[AMNet:CommitImportTitlesAndUpdateFirmwareAuto](AMNet:CommitImportTitlesAndUpdateFirmwareAuto "wikilink").
+This is the same as [AMNet:CommitImportTitlesAndUpdateFirmwareAuto](AMNet:CommitImportTitlesAndUpdateFirmwareAuto "wikilink").
