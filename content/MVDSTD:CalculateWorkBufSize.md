@@ -71,7 +71,7 @@ title = 'MVDSTD:CalculateWorkBufSize'
 | 0x0F  | Level 5.1   |
 | 0x10  | Level 5.2   |
 
-This will calculate maximum possible buffer size (==buffer size that ***may*** be needed to decode video) based on H.264 level and resolution, so any videos that are compliant with H.264 specs should be decoded with this buffer size.
+This will calculate maximum possible buffer size (==buffer size that ***may**'' be needed to decode video) based on H.264 level and resolution, <s>so any videos that are compliant with H.264 specs should be decoded with this buffer size</s>***it seems there is some buffer overflow (some hundreds bytes according to test) when maximum number of reference frames are used**'', so adding some extra bytes (maybe around 4K is enough) is safer.
 
 Calculation procedures are :
 
