@@ -536,7 +536,7 @@ When setting line width and gap they must be divided by 2 (it can be thought as 
 ```
 line width = (16 * 24) >> 4 = 24
 gap = line width
-size = (16 * 32 * 24) >> 4 = 768
+size = 16 * 32 * 3 = 1536
 ```
 
 By correctly calculating the input and output gap sizes it is possible
