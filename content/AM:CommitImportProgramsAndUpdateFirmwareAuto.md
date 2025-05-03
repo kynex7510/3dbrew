@@ -4,14 +4,14 @@ title = 'AM:CommitImportProgramsAndUpdateFirmwareAuto'
 
 # Request
 
-| Index Word | Description                                                            |
-|------------|------------------------------------------------------------------------|
-| 0          | Header code \[0x040E00C2\]                                             |
-| 1          | [Media Type](Filesystem_services#mediatype "wikilink")                 |
-| 2          | Title count                                                            |
-| 3          | u8, [Database](Title_Database "wikilink") (0 = title.db, 1 = tmp\*.db) |
-| 4          | ((Title Count \* 8) \<\< 4) \| 0xA                                     |
-| 5          | Title IDs Pointer                                                      |
+| Index Word | Description                                            |
+|------------|--------------------------------------------------------|
+| 0          | Header code \[0x040E00C2\]                             |
+| 1          | [Media Type](Filesystem_services#mediatype "wikilink") |
+| 2          | Title count                                            |
+| 3          | u8, cleanup (0 = no cleanup, 1 = cleanup)              |
+| 4          | ((Title Count \* 8) \<\< 4) \| 0xA                     |
+| 5          | Title IDs Pointer                                      |
 
 # Response
 
