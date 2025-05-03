@@ -108,21 +108,23 @@ To perform calculation, enable calculation (ofset 0x00) must be non-zero, otherw
 
 If number of reference frames (offset 0x01) is less than 0x02, 0x02 is used internally, if it's greater than 0x10, 0x10 is used internally.
 
-It is possible to enable more than 1 calculation methods simultaneously, in that case the biggest buffer size among them is returned.
+------------------------------------------------------------------------
+
+It is possible to enable more than 1 calculation methods simultaneously, in that case the largest buffer size among them is returned.
 
 SKATER uses
 ```
-cmd.CalculateWorkBufWithLevel.enable = 0x01;
-cmd.CalculateWorkBufWithLevel.flag = 0x07; //(FLAG_ENABLE_CALCULATION \| FLAG_ENABLE_EXTRA_OP \| FLAG_UNK).
-cmd.CalculateWorkBufWithLevel.doubleSize = 0x00;
-cmd.CalculateWorkBufWithLevel.level = 0x0A; //Level 3.2.
-cmd.CalculateWorkBufWithNumOfRefFramesA.enable = 0x00;
-cmd.CalculateWorkBufWithNumOfRefFramesA.numOfReferenceFrames = 0x00;
-cmd.CalculateWorkBufWithNumOfRefFramesB.enable = 0x00;
-cmd.CalculateWorkBufWithNumOfRefFramesB.numOfReferenceFrames = 0x00;
-cmd.width = 854; //Regardless of input video, 854 is always used.
-cmd.height = 480; //Regardless of input video, 480 is always used.
+cmd.CalculateWorkBufWithLevel.enable = 0x01;
+cmd.CalculateWorkBufWithLevel.flag = 0x07; //(FLAG_ENABLE_CALCULATION | FLAG_ENABLE_EXTRA_OP | FLAG_UNK).
+cmd.CalculateWorkBufWithLevel.doubleSize = 0x00;
+cmd.CalculateWorkBufWithLevel.level = 0x0A; //Level 3.2.
+cmd.CalculateWorkBufWithNumOfRefFramesA.enable = 0x00;
+cmd.CalculateWorkBufWithNumOfRefFramesA.numOfReferenceFrames = 0x00;
+cmd.CalculateWorkBufWithNumOfRefFramesB.enable = 0x00;
+cmd.CalculateWorkBufWithNumOfRefFramesB.numOfReferenceFrames = 0x00;
+cmd.width = 854; //Regardless of input video, 854 is always used.
+cmd.height = 480; //Regardless of input video, 480 is always used.
 ```
-and result is 9438920Bytes (0x9006C8), aka MVD_DEFAULT_WORKBUF_SIZE.
+and result is **9438920Bytes** (0x9006C8), aka MVD_DEFAULT_WORKBUF_SIZE.
 
 This doesn't write to MVD state / registers at all.
