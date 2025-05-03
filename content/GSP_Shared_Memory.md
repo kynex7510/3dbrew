@@ -95,7 +95,7 @@ After adding a command, [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink
 | 3          | When bit0 is set, further processing of commands is halted until the client resets the flag and calls [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") |
 | 7-4        | Result code for the last command which failed                                                                                                                    |
 
-GSP checks for status.bit0 and optionally avoids handling further commands, however the check is done by equality, which means it will always fail if status.bit7 is also set (and thus other commands will be processed). This bug prevents the halting logic from working propertly, but can worked around by keeping bit0 of word3 set, as that will force halting on each iteration.
+GSP checks for status.bit0 and optionally avoids handling further commands, however the check is done by equality, which means it will always fail if status.bit7 is also set (and thus other commands will be processed). This bug prevents the halting logic from working propertly, but can be worked around by keeping bit0 of word3 set, as that will force halting on each iteration.
 
 ## Command Header
 
