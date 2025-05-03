@@ -573,6 +573,77 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 |--------|----------------|
 | 0x1000 | SD Application |
 
+## SecureValueEntry
+
+<table>
+<thead>
+<tr class="header">
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x0</td>
+<td>0x4</td>
+<td>u32, <a {{% href "../Filesystem_services" %}} title="wikilink">Secure Value Slot</a></td>
+</tr>
+<tr class="even">
+<td>0x4</td>
+<td>0x1</td>
+<td>When used as an input entry:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>This entry should be removed.</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>This entry should be updated with the given value.</td>
+</tr>
+</tbody>
+</table>
+<p>When returned from a command:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>No entry with the given slot and title ID was found.</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>The entry with the given slot and title ID was found.</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr class="odd">
+<td>0x5</td>
+<td>0x3</td>
+<td>padding</td>
+</tr>
+<tr class="even">
+<td>0x8</td>
+<td>0x8</td>
+<td>u64, Secure Value</td>
+</tr>
+</tbody>
+</table>
+
 ## CardSpiBaudRate
 
 | Value | Description |
