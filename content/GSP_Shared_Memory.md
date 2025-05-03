@@ -93,14 +93,14 @@ After adding a command, [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink
 | 1          | Total commands to process, this is incremented by the application when adding the command to the queue, and decremented by GSP before handling the command       |
 | 2          | Flags (bit0 = completed, bit7 = fatal error)                                                                                                                     |
 | 3          | When bit0 is set, further processing of commands is halted until the client resets the flag and calls [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") |
-| 4          | Result code for the last command which failed                                                                                                                    |
+| 7-4        | Result code for the last command which failed                                                                                                                    |
 
 ## Command Header
 
 | Index Byte | Description                                                                                                                                        |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | 0          | Command ID                                                                                                                                         |
-| 1          | ?                                                                                                                                                  |
+| 1          | Unused                                                                                                                                             |
 | 2          | When bit0 is set, GSP stops processing further commands (can be used for packing together sets of commands)                                        |
 | 3          | When set, the command fails if GSP is busy handling any other command; otherwise, it only fails if GSP is busy handling a command of the same kind |
 
