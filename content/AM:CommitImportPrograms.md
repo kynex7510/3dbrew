@@ -22,10 +22,4 @@ title = 'AM:CommitImportPrograms'
 
 # Description
 
-The input parameters for this are the same as
-[AMNet:InstallTitlesFinish](AMNet:InstallTitlesFinish "wikilink"). This
-is an interface for [AMPXI](Application_Manager_Services_PXI "wikilink")
-command 0x002A00C2. The AMPXI command used here only finalizes the
-install in the [database](Title_Database "wikilink"), the now-unused
-files under /title for the title(s) are not deleted by this. These files
-are deleted later.
+The input parameters for this are the same as [AMNet:InstallTitlesFinish](AMNet:InstallTitlesFinish "wikilink"). This is an interface for [AMPXI](Application_Manager_Services_PXI "wikilink") command 0x002A00C2. The AMPXI command used here only finalizes the install in the [database](Title_Database "wikilink"), the now-unused files under /title for the title(s) are not deleted by this. These files are deleted later.
