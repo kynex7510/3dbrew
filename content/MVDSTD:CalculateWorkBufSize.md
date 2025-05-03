@@ -47,7 +47,7 @@ title = 'MVDSTD:CalculateWorkBufSize'
 | 0x00 | FLAG_NONE                        |
 | 0x01 | FLAG_ENABLE_CALCULATION          |
 | 0x02 | FLAG_ENABLE_EXTRA_OP (see below) |
-| 0x03 | FLAG_UNK                         |
+| 0x04 | FLAG_UNK                         |
 
 #### H.264 level
 
