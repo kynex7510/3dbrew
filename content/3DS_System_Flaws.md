@@ -1408,7 +1408,7 @@ Since both of these commands are stubbed in the Old3DS NFC module from the very 
 <td>smea, <a {{% href "../User:Yellows8" "broken" %}} title="wikilink">Yellows8</a>/others before then</td>
 </tr>
 <tr>
-<td><a {{% href "../GSP_Services" %}} title="wikilink">GSP</a> client management failures</td>
+<td><a {{% href "../GSP_Services" %}} title="wikilink">GSP</a>: client management failures</td>
 <td>Shared memory of GSP clients is all on the same page, this allows any GSP client to craft custom GX commands for other clients. Additionally, <a {{% href "../GSPGPU:TriggerCmdReqQueue" %}} title="wikilink">GSPGPU:TriggerCmdReqQueue</a> does not check if the calling client has rendering rights.</p>
 <p>These two flaws can be used to craft DMA/Transfer Engine commands within a different GSP client to issue reads/writes to both physical (akin to gspwn) and virtual memory of said client.</td>
 <td>Arbitrary RW from and into a client process.</td>
@@ -1417,6 +1417,16 @@ Since both of these commands are stubbed in the Old3DS NFC module from the very 
 <td></td>
 <td>May 2025</td>
 <td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a>, probably others</td>
+</tr>
+<tr>
+<td><a {{% href "../GSP_Services" %}} title="wikilink">GSP</a>: unbound DMA</td>
+<td>GSP doesn't really care what process handle is passed to <a {{% href "../GSPGPU:AcquireRight" %}} title="wikilink">GSPGPU:AcquireRight</a>. Hence, it's possible to craft DMA commands to read/write within that process virtual address space.</td>
+<td>Arbitrary RW within any process.</td>
+<td>None</td>
+<td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
+<td></td>
+<td>June 2025</td>
+<td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a></td>
 </tr>
 <tr>
 <td>rohax</td>
@@ -1428,6 +1438,22 @@ Since both of these commands are stubbed in the Old3DS NFC module from the very 
 <td></td>
 <td></td>
 <td>smea, <a {{% href "../User:Plutooo" "broken" %}} title="wikilink">plutoo</a> joint effort</td>
+</tr>
+<tr>
+<td><a {{% href "../RO_Services" %}} title="wikilink">RO</a>: custom CRO mapping into any process</td>
+<td>RO stores pointers to previously loaded CRRs in internal state, however it doesn't keep track to which process they belong to. Thus pointers can be reused among different processes, and since CRR verification only happens on load this bypasses it.</p>
+<p>Granted a handle to the target process is available, the following strategy can be used to load a custom CRO into any process:</p>
+<ul>
+<li>Map valid CRS, CRR into the current application, and initialize RO normally;</li>
+<li>Write custom CRR, CRO into the target process at the same addresses (process handle can be used with GSP DMA capabilities for read/write operations, see above);</li>
+<li>Load CRO into the target process using its handle.</li>
+</ul></td>
+<td>Code execution in the target process.</td>
+<td>None</td>
+<td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
+<td></td>
+<td>June 2025</td>
+<td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a></td>
 </tr>
 <tr>
 <td>Region free</td>
