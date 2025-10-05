@@ -19,7 +19,7 @@ The SaveID for system modules is usually 0x00010000 \| [uniqueID](Titles "wikili
 | 0x00010015 | [AM](Application_Manager_Services "wikilink") module savedata |
 | 0x00010017 | [Config Savegame](Config_Savegame "wikilink") |
 | 0x00010022 | [PTM](PTM "wikilink") [savegame](PTM_Savegame "wikilink") |
-| 0x00010026 | [CECD](StreetPass "wikilink") savegame |
+| 0x00010026 | [CECD](StreetPass "wikilink") [savegame](CECD_Savegame "wikilink") |
 | 0x0001002C | [NIM](NIM_Services "wikilink") savegame |
 | 0x00010032 | [Friends module savegame](FRD_Savegame "wikilink") |
 | 0x00010034 | [BOSS](SpotPass "wikilink") module [savegame](BOSS_Savegame "wikilink") |
