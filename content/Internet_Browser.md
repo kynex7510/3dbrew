@@ -61,6 +61,7 @@ Mobile User-Agent is always `Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS 
 | 1.9.10160 | Mozilla/5.0 (New Nintendo 3DS like iPhone) AppleWebKit/536.30 (KHTML, like Gecko) NX/3.0.0.5.20 Mobile NintendoBrowser/1.9.10160.<region> | v9232 | [11.4.0-37](11.4.0-37 "wikilink") | See below. |
 | 1.10.10166 | Mozilla/5.0 (New Nintendo 3DS like iPhone) AppleWebKit/536.30 (KHTML, like Gecko) NX/3.0.0.5.22 Mobile NintendoBrowser/1.10.10166.<region> | v10272 | [11.9.0-42](11.9.0-42 "wikilink") | See below. |
 | 1.11.10172 | Mozilla/5.0 (New Nintendo 3DS like iPhone) AppleWebKit/536.30 (KHTML, like Gecko) NX/3.0.0.5.23 Mobile NintendoBrowser/1.11.10172.<region> | v11264 | [11.14.0-46](11.14.0-46 "wikilink") | See below. |
+| 1.12.10178 | Mozilla/5.0 (New Nintendo 3DS like iPhone) AppleWebKit/536.30 (KHTML, like Gecko) NX/3.0.0.5.24 Mobile NintendoBrowser/1.12.10178.<region> | v12289 | [11.15.0-47](11.15.0-47 "wikilink") | See below. |
 
 Note that the latest Old3DS browser WebKit version at the time the initial New3DS browser was released, was the following: 532.8.
 
@@ -571,9 +572,9 @@ User-agent format: `Mozilla/5.0 (Nintendo 3DS; U; ; `<lang>`) Version/`<version>
 <td>See below.</td>
 </tr>
 <tr>
-<td>1.7639</td>
-<td>v12288</td>
-<td><a {{% href "../11.14.0-46" %}} title="wikilink">11.14.0-46</a></td>
+<td>1.7642</td>
+<td>v13313</td>
+<td><a {{% href "../11.15.0-47" %}} title="wikilink">11.15.0-47</a></td>
 <td>See below.</td>
 </tr>
 </tbody>
