@@ -32,7 +32,7 @@ See [NAND_Redirection](NAND_Redirection "wikilink").
 
 ### Encryption
 
-The NAND file system is encrypted using [AES-CTR](AES "wikilink"). The TWL regions of NAND use the TWL NAND [keyslot](AES "wikilink"), while the CTR regions use the CTR NAND [keyslots](AES "wikilink"). The keyslot used for each partition is determined by the NCSD partition FS type and encryption type. The TWL/CTR NAND regions are specified by the NCSD header. The first 0x0B100000 bytes of NAND is encrypted with the TWL keyslot, however before 0x00012E00 only the MBR partition table is encrypted with the TWL keyslot. That region contains the TWL partitions listed below.
+The NAND file system is encrypted using [AES-CTR](AES "wikilink"). The TWL regions of NAND use the TWL NAND [keyslot](AES "wikilink"), while the nonce is the sha1 hash of the NAND CID, byte reversed. The CTR regions use the CTR NAND [keyslots](AES "wikilink"), while the nonce is the sha256 hash of the NAND CID. The keyslot used for each partition is determined by the NCSD partition FS type and encryption type. The TWL/CTR NAND regions are specified by the NCSD header. The first 0x0B100000 bytes of NAND is encrypted with the TWL keyslot, however before 0x00012E00 only the MBR partition table is encrypted with the TWL keyslot. That region contains the TWL partitions listed below.
 
 The New3DS CTRNAND partition uses a [keyslot](AES "wikilink") separate from the Old3DS one.
 
