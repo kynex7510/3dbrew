@@ -127,20 +127,79 @@ For dumping symbols and loading a CRO into IDA, see [1](https://github.com/pluto
 | Offset | Size | Description |
 |----|----|----|
 | 0x0 | 0x4 | [Segment offset](#segment_offset_(4_bytes) "wikilink") for output. |
-| 0x4 | 0x1 | Patch type (0=nothing/ignore, 2=38=write u32 absolute (base+addend), 3=write u32 relative (base+addend-in_ptr), 10=THUMB branch, 28=ARM32 branch, 29=modify ARM32 branch offset, 42=write u32 relative (((signed int)base\*2)/2+addend-in_ptr), otherwise err) (This is apparently a subset of relocation type for ARM ELF) |
+| 0x4 | 0x1 | Patch type (R_ARM_NONE = 0, R_ARM_ABS32 = 2, R_ARM_REL32 = 3, R_ARM_THM_PC22 = 10, R_ARM_CALL = 28, R_ARM_JUMP24 = 29, R_ARM_TARGET1 = 38, R_ARM_PREL31 = 42) |
 | 0x5 | 0x1 | For import patches, non-zero if last entry; for relocation patches, this is the referred segment index |
 | 0x6 | 0x1 | For import patches, 1 is written to first entry if all symbols loaded successfully; unknown (padding?) for relocation patches |
 | 0x7 | 0x1 | Unknown (padding?) |
 | 0x8 | 0x4 | addend |
 
-ARM32 branch instruction is constructed as follows:
+Relocation code from RO:
 
-` If addend > 0x2000000 or addend < 0xFE000000, then skip.`  
-` If (addend&1) == 1 then write "b +4" (nop).`  
+`static Result writePatch(u32* out, u32 patchType, u32 addend, u32 base, u32 inputPtr) {`  
+`    const s32 branchOffset = inputPtr - base;`  
+`    u32 offset = base + addend - inputPtr;`  
+  
+`    if (patchType == R_ARM_NONE)`  
+`        return 0;`  
+  
+`    if (patchType == R_ARM_ABS32 || patchType == R_ARM_TARGET1) {`  
+`        *out = base + addend;`  
+`        return 0;`  
+`    }`  
+  
+`    if (patchType == R_ARM_REL32) {`  
+`        *out = offset;`  
+`        return 0;`  
+`    }`  
+  
+`    if (patchType == R_ARM_THM_PC22) {`  
+`        // +-4MB.`  
+`        if (branchOffset >= 0x400000 || branchOffset <= -0x400000)`  
+`            return 0xD9012C23;`  
+  
+`        if (base & 1) {`  
+`            *out = (((offset >> 12) | 0xF000) << 16) | ((offset << 4) >> 5) | 0xF800;`  
+`        } else {`  
+`            if (offset & 2)`  
+`                offset += 2;`  
+  
+`            *out = ((offset >> 12) | 0xF000) << 16 | ((offset << 4) >> 5) | 0xE800;`  
+`        }`  
+  
+`        return 0;`  
+`    }`  
+  
+`    if (patchType == R_ARM_CALL) {`  
+`        // +-32MB.`  
+`        if (branchOffset >= 0x2000000 || branchOffset <= -0x2000000)`  
+`            return 0xD9012C23;`  
+  
+`        if (base & 1) {`  
+`            *out = ((offset << 23) & 0x1000000) | ((offset << 6) >> 8) | 0xFA000000;`  
+`        } else {`  
+`            *out = 0xEB000000 | ((offset << 6) >> 8);`  
+`        }`  
+  
+`        return 0;`  
+`    }`  
+  
+`    if (patchType == R_ARM_JUMP24) {`  
+`        // +-32MB.`  
+`        if (branchOffset >= 0x2000000 || branchOffset <= -0x2000000 || (base & 1))`  
+`            return 0xD9012C23;`  
+  
+`        *out = (*out & 0xFF000000) | ((offset << 6) >> 8);`  
+`        return 0;`  
+`    }`  
+  
+`    if (patchType == R_ARM_PREL31) {`  
+`        *out = addend + ((base << 1) >> 1) - inputPtr;`  
+`        return 0;`  
+`    }`  
+  
+`    return 0xD9012C22;`  
 ```
- Else write as normal.
+}
 ```
-
-------------------------------------------------------------------------
 
 [Category:File formats](Category:File_formats "wikilink")
