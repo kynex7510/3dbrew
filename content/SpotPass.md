@@ -91,7 +91,7 @@ The hash at offset 0x12 hashes the 0x12-byte data at offset 0x0 followed by a ze
 
 | Offset | Length | Description |
 |----|----|----|
-| 0x0 | 0x8 | ProgramID |
+| 0x0 | 0x8 | Program ID |
 | 0x8 | 0x4 | Usually zero? |
 | 0xC | 0x4 | Content datatype, used for filtering with [BOSSU:GetNsDataIdList](BOSSU:GetNsDataIdList "wikilink").
 Usually 0x10001? (observed 0x20001 in eShop strings) |
@@ -103,18 +103,27 @@ Usually 0x10001? (observed 0x20001 in eShop strings) |
 
 This signature is signed by Nintendo with the same key-pair as the content header.
 
-The hash at offset 0x1C hashes the 0x1C-byte data at offset 0x0 followed by a zero u16, followed by all of the remaining cleartext data following this header(the actual content data).
+The hash at offset 0x1C hashes the 0x1C-byte data at offset 0x0 followed by a zero u16, followed by all of the remaining cleartext data following this header (the actual content data).
 
-The downloaded boss data is written in the following format to extdata. The file name that is generated might be Base85/Ascii85 encoded.
-First an extdata header in the following format
+The file name of the downloaded boss data is Ascii85 encoded with the following data:
+
+| Offset | Length | Description      |
+|--------|--------|------------------|
+| 0x0    | 0x5    | NS Data ID       |
+| 0x5    | 0x5    | Version          |
+| 0xA    | 0x5    | Content datatype |
+| 0xF    | 0x1    | New flag         |
+
+The downloaded boss data is written in the following format to extdata. First an extdata header in the following format:
 
 | Offset | Length | Description |
 |----|----|----|
 | 0x0 | 0x1 | Size of header including this field. Always 0x18 |
-| 0x1 | 0xB | Usually zero? |
-| 0xC | 0x4 | Unknown |
-| 0x10 | 0x4 | Download date in format: Bit 0-5 = day, Bit 6-9 = month, Bit 10-20 = year |
-| 0x14 | 0x4 | Usually zero? Padding? |
+| 0x1 | 0x3 | Padding |
+| 0x4 | 0x4 | [Additional info](BOSSU:GetNsDataAdditionalInfo "wikilink") |
+| 0x8 | 0x4 | Unknown |
+| 0xC | 0x8 | [Last update](BOSSU:GetNsDataLastUpdate "wikilink") in number of seconds since the year 2000 |
+| 0x14 | 0x4 | Padding |
 
 Followed by the Payload Content Header without the hash and signature (first 0x1C bytes) and the actual payload.
 
