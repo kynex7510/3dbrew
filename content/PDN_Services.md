@@ -5,11 +5,11 @@ categories = ["Services"]
 
 # PDN PTM Service "pdn:s"
 
-| Command Header | Description |
-|----|----|
-| 0x00010000 | [GetWakeStatus](PDNS:GetWakeStatus "wikilink") |
-| 0x00020080 | [ConfigureWakeEvents](PDNS:ConfigureWakeEvents "wikilink") |
-| 0x00030040 | Acknowledge. Writes cmdword\[1\] to [PDN_WAKE_REASON](PDN_Registers#pdn_wake_reason "wikilink"). |
+| Command Header | Description                                                |
+|----------------|------------------------------------------------------------|
+| 0x00010000     | [GetWakeStatus](PDNS:GetWakeStatus "wikilink")             |
+| 0x00020080     | [ConfigureWakeEvents](PDNS:ConfigureWakeEvents "wikilink") |
+| 0x00030040     | [Acknowledge](PDNS:Acknowledge "wikilink")                 |
 
 # PDN DSP Service "pdn:d"
 
