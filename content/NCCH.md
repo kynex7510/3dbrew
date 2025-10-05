@@ -142,7 +142,7 @@ Given offsets are based on the start of the file.
 | 6 | Content Unit Size i.e. u32 ContentUnitSize = 0x200\*2^flags\[6\]; |
 | 7 | Bit-masks: FixedCryptoKey = 0x1, NoMountRomFs = 0x2, NoCrypto = 0x4, using a new keyY generator = 0x20(starting with FIRM [9.6.0-X](9.6.0-24 "wikilink")). |
 
-CXIs NCCH header signature is verified using the RSA public key stored in the accessdesc,(which follows the exheader) while CFAs NCCH header is verified with a fixed RSA public key.
+CXIs NCCH header signature is verified using the RSA modulus stored in the exheader, while CFAs NCCH header is verified with a fixed RSA modulus. The public exponent is 65537 for both.
 
 #### NCCH header example for Lego Starwars III
 
