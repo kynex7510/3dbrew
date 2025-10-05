@@ -344,7 +344,7 @@ Note that ExeFS files only support reading from offset=0 and with size=file_size
 </tr>
 <tr>
 <td>2</td>
-<td>Accesses from/to <code>nand:/data/&lt;ID0 from source console's </code><a {{% href "../Filesystem_services" %}} title="wikilink"><code>Device Move Context</code></a><code>&gt;</code></td>
+<td>Accesses from/to <code>nand:/data/&lt;ID0 from </code><a {{% href "../Filesystem_services" %}} title="wikilink"><code>Device Move Context</code></a><code>&gt;</code></td>
 </tr>
 </tbody>
 </table></td>
