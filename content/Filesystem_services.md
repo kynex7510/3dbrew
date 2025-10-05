@@ -704,8 +704,6 @@ If no patch title exists, the base title is considered to be the patch title, i.
 
 #### FS Limitations
 
-\\
-
 \- FSPXI allows all access types.
 
 \- When used through fs:LDR by loader, FS only provides access to `exefs:/.code`.
