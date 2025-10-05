@@ -57,7 +57,7 @@ The bitmask used by the service commands determines which bits in the GPIO regis
 | 2 | 0x4 | None |  | Not known to be used by *anything*, with the latest system-version at least. |
 | 3 | 0x8 | gpio:CDC | ? | ? |
 | 4 | 0x10 | None |  | Not known to be used by *anything*, with the latest system-version at least. |
-| 5 | 0x20 | gpio:MCU, gpio:NWM | ? | ? |
+| 5 | 0x20 | gpio:MCU, gpio:NWM | NWM-sysmodule, MCU-sysmodule | WiFi mode. 0 = CTR, 1 = "MP" (DS WiFi?) |
 | 6 | 0x40 | gpio:CDC, gpio:IR | ? | ? |
 | 7 | 0x80 | gpio:IR | Boot11 | ? |
 | 8 | 0x100 | gpio:HID | HID sysmodule | Used with gyroscope |
@@ -70,6 +70,6 @@ The bitmask used by the service commands determines which bits in the GPIO regis
 | 15 | 0x8000 | gpio:MCU | MCU-sysmodule | MCU Interrupt. |
 | 16 | 0x10000 | gpio:NFC | ? | ? |
 | 17 | 0x20000 | gpio:QTM | ? | ? |
-| 18 | 0x40000 | gpio:MCU, gpio:NWM | NWM-sysmodule | Wifi enable. 1=Enabled, 0=Disabled. |
+| 18 | 0x40000 | gpio:MCU, gpio:NWM | NWM-sysmodule, MCU-sysmodule | Wifi enable. 1=Enabled, 0=Disabled. |
 
 [Category:Services](Category:Services "wikilink")
