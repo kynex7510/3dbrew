@@ -8,7 +8,7 @@ categories = ["Services"]
 | Command Header | Description |
 |----|----|
 | 0x00010000 | [GetWakeStatus](PDNS:GetWakeStatus "wikilink") |
-| 0x00020080 | ConfigureWakeEvents. [PDN_WAKE_REASON](PDN_Registers#pdn_wake_reason "wikilink") = cmdword\[2\] & cmdword\[1\]. This then writes cmdword\[1\] to [PDN_WAKE_ENABLE](PDN_Registers#pdn_wake_enable "wikilink"). [PDN_WAKE_REASON](PDN_Registers#pdn_wake_reason "wikilink") = cmdword\[2\] & ~cmdword\[1\]. |
+| 0x00020080 | [ConfigureWakeEvents](PDNS:ConfigureWakeEvents "wikilink") |
 | 0x00030040 | Acknowledge. Writes cmdword\[1\] to [PDN_WAKE_REASON](PDN_Registers#pdn_wake_reason "wikilink"). |
 
 # PDN DSP Service "pdn:d"
