@@ -24,7 +24,7 @@ categories = ["Services"]
 | 0x000D0000 | [1.0.0-0](1.0.0-0 "wikilink") | [GetSendFinishedEvent](IRU:GetSendFinishedEvent "wikilink") |
 | 0x000E0000 | [1.0.0-0](1.0.0-0 "wikilink") | [GetRecvFinishedEvent](IRU:GetRecvFinishedEvent "wikilink") |
 | 0x000F0000 | [1.0.0-0](1.0.0-0 "wikilink") | [GetTransferState](IRU:GetTransferState "wikilink") |
-| 0x00100000 | [1.0.0-0](1.0.0-0 "wikilink") | GetErrorStatus |
+| 0x00100000 | [1.0.0-0](1.0.0-0 "wikilink") | [GetErrorStatus](IRU::GetErrorStatus "wikilink") |
 | 0x00110040 | [1.0.0-0](1.0.0-0 "wikilink") | [SetSleepModeActive](IRU:SetSleepModeActive "wikilink") |
 | 0x00120040 | [1.0.0-0](1.0.0-0 "wikilink") | [SetSleepModeState](IRU:SetSleepModeState "wikilink") |
 
