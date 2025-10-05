@@ -20,3 +20,11 @@ title = 'AM:GetProgramInfosIgnorePlatform'
 |------------|-------------|
 | 0          | Header code |
 | 1          | Result code |
+
+# Description
+
+A wrapper for [AM:GetProgramInfos](AM:GetProgramInfos "wikilink"), with special handling for New3DS title IDs:
+
+If the given title ID is a CTR title ID, this first sets the New3DS bit (e.g. 0004013800000002 -\> 0004013820000002). If the New3DS version was not found, it falls back to the given title ID.
+
+For TWL title IDs however there is no special handling and the command acts exactly like [AM:GetProgramInfos](AM:GetProgramInfos "wikilink").
