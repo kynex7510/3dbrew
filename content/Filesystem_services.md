@@ -316,9 +316,53 @@ The file/directory lowpath is a text lowpath in the [savegame](Savegames "wikili
 
 #### FSPXI
 
-| Index word | Description                                                   |
-|------------|---------------------------------------------------------------|
-| 0          | u8 [Mediatype](Mediatypes "wikilink") (must be zero for NAND) |
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x1</td>
+<td>u8 <a {{% href "../Mediatypes" %}} title="wikilink">Mediatype</a> (must be zero for NAND)</td>
+</tr>
+<tr>
+<td>0x1</td>
+<td>0x1</td>
+<td><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Accesses from/to <code>nand:/data/</code><ID0 of current system></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Accesses from/to <code>nand:/fixdata</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Accesses from/to <code>nand:/data/&lt;ID0 of a source console's </code><a {{% href "../Filesystem_services" %}} title="wikilink"><code>Device Move Context</code></a><code>&gt;</code></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td>0x2</td>
+<td>0x2</td>
+<td>padding</td>
+</tr>
+</tbody>
+</table>
 
 The file lowpath is a binary lowpath containing the u64 saveid, however the high word of the saveid is always zero. The mounted file is the cleartext savegame image. Up to 32 SystemSaveData image files can be opened under a single mounted FSPXI archive.
 
