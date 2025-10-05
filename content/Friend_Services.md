@@ -176,7 +176,7 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x68 | 0x16 | 10-Character UTF-16 Screen Name (10 characters + null termination) |
 | 0x7E | 0x1 | u8, [Mii character set](Mii#mii_format "wikilink") |
 | 0x7F | 0x1 | padding |
-| 0x80 | 0x60 | This friend's [Mii](Friend_Services#mii_data "wikilink") |
+| 0x80 | 0x60 | This friend's [Mii](Mii#cflstoredata "wikilink") |
 
 ## GameAuthenticationData
 
