@@ -13,11 +13,11 @@ title = 'AMPXI:GetCTCert'
 
 # Response
 
-| Index Word | Description                |
-|------------|----------------------------|
-| 0          | Header code \[0x003B0080\] |
-| 1          | Result code                |
-| 2          | Output u32. Normally zero? |
+| Index Word | Description                               |
+|------------|-------------------------------------------|
+| 0          | Header code \[0x003B0080\]                |
+| 1          | Result code                               |
+| 2          | Output s32. Internal pxi:am9 result code. |
 
 # Description
 
