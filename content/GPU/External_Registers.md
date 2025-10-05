@@ -42,7 +42,7 @@ Address mappings for the external registers. GSPGPU:WriteHWRegs takes these addr
 
 Memory fills are used to initialize buffers in memory with a given value, similar to memset. A memory fill is triggered by setting bit0 in the control register. Doing so aborts any running memory fills on that filling unit. Upon completion, the hardware unsets bit0 and sets bit1 and fires interrupt PSC0.
 
-The addresses must not be part of FCRAM.
+The addresses must be part of VRAM.
 
 These registers are used by [GX SetMemoryFill](GSP_Shared_Memory#gx_setmemoryfill "wikilink").
 
