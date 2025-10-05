@@ -2,7 +2,45 @@
 title = 'Kernel ABI'
 +++
 
-Inputs are read from registers starting from r0 and outputs are written back to the same registers (also starting with r0).
+# Calling Convention
+
+Seems to be [AAPCS](https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst#the-base-procedure-call-standard)-based (with modifications)
+
+## Overview
+
+### Inputs
+
+- `r0–r3` : Argument / Scratch registers (caller-saved), inherited from AAPCS. *If an input is to be placed on the stack, it will instead use the next free register starting from `r0`.*
+
+### Outputs
+
+- `r0-r1` : Result, inherited from AAPCS. *If multiple outputs are returned (e.g., `ControlMemory`), they are placed in consecutive registers starting from `r0`.*
+
+## Example
+
+```
+Result ControlMemory(uintptr_t* out, uintptr_t addr0, uintptr_t addr1, size_t size, MemoryOperation operation, MemoryPermission permissions)
+```
+
+### Inputs
+
+Following standard [AAPCS](https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst#the-base-procedure-call-standard) register selection:
+
+`r1` -\> addr0  
+`r2` -\> addr1  
+`r3` -\> size  
+
+As there are still have more arguments, the next free registers are selected starting from `r0`
+
+`r0` -\> operation  
+`r4` -\> permissions  
+
+### Outputs
+
+`r0` -\> Result  
+`r1` -\> uintptr_t out  
+
+## System calls
 
 <table>
 <thead>
