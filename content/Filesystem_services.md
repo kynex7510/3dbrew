@@ -469,8 +469,8 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 | Offset | Size | Description                         |
 |--------|------|-------------------------------------|
 | 0x0    | 0x8  | Program ID (Title ID)               |
-| 0x8    | 0x1  | [Media Type](Mediatypes "wikilink") |
-| 0x9    | 0x7  | padding                             |
+| 0xB    | 0x1  | [Media Type](Mediatypes "wikilink") |
+| 0xC    | 0x4  | padding                             |
 
 #### File Path
 
