@@ -234,7 +234,7 @@ Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wiki
 | 0x2345678B | Used internally by Process9 as the lowest level title access archive. Allows for opening various sections of a title (TMD, CMD, raw contents, DLC contents, raw save data (including public/private/banner saves for DSiWare), title and/or content import context files and /data directories for save data. | No | No | Yes | Yes |  |
 | 0x2345678C | Used internally to access [Title Database (/dbs)](Title_Database "wikilink") files. For SD, `title.db` and `import.db`. For NAND, `title.db`, `import.db`, `tmp_t.db`, `tmp_i.db`, and `jumpid.db`. | No | No | Yes | Yes |  |
 | 0x2345678D | Used internally to access non-title /dbs files on the NAND: `certs.db` and `ticket.db`. | No | No | Yes | No |  |
-| 0x2345678E | FSPXI: Program Access (limited subset of merged main title + update/patch title access). For fs:LDR(used by the "loader" FIRM ARM11-process), only ExeFS. Not accessible with fs:USER. | Yes | Yes | No | Yes | None, see description. |
+| 0x2345678E | FSPXI: Program Access (limited subset of merged main title + update/patch title access). For fs:LDR(used by the "loader" FIRM ARM11-process), only `exefs:/.code`. Not accessible with fs:USER. | Yes | Yes | No | Yes | None, see description. |
 | 0x567890AB | NAND CTR FS | No | Yes | No | No | ? |
 | 0x567890AC | TWL PHOTO | Yes | Yes | No | No | ? |
 | 0x567890AD | TWLS (DSi Sound stores recordings here). This is mapped to the FAT12 image stored in the file at [Twln/shared2/0000](Twln/shared2/0000 "wikilink"). | No | Yes | No | No | ? |
