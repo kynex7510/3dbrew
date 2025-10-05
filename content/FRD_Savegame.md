@@ -117,7 +117,7 @@ Contains the friend list associated with the account.
 | 0x58 | 8 | NEX timestamp for the last time this friend updated their personal comment (message) |
 | 0x60 | 8 | NEX timestamp for the last time this friend updated their Mii |
 | 0x68 | 8 | NEX timestamp for the last time this friend was seen online |
-| 0x70 | 0x60 | [Mii data](Friend_Services#mii_data "wikilink") |
+| 0x70 | 0x60 | [Mii data](Mii#cflstoredata "wikilink") |
 | 0xD0 | (10 + 1) \* 2 | 10-character UTF-16 Display name (10 characters + NULL termination) |
 | 0xE6 | 1 | bool, profanity flag |
 | 0xE7 | 1 | u8, [Mii character set](Mii#mii_format "wikilink") |
