@@ -392,6 +392,8 @@ Color formats 5, 6, and 7 are blocked by gsp, but they behave as pixel-doubled R
 
 These registers are used by [GX command](GSP_Shared_Memory "wikilink") 3 and 4. For cmd4, \*0x1EF00C18 \|= 1 is used instead of just writing value 1. The DisplayTransfer registers are only used if bit 3 of the flags is unset and ignored otherwise. The TextureCopy registers are likewise only used if bit 3 is set, and ignored otherwise.
 
+The minimum supported dimension for output is 64x64, anything lower will hang the engine.
+
 #### Flags Register - 0x1EF00C10
 
 | Bit | Description |
