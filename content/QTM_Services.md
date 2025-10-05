@@ -31,7 +31,7 @@ Refer to this libctru commit for more details: <https://github.com/devkitPro/lib
 | Command ID | Description               |
 |------------|---------------------------|
 | 0x04010040 | SetCentralBarrierPosition |
-| 0x04020000 | GetCameraLuminance        |
+| 0x04020000 | GetCameraLux              |
 | 0x04030000 | EnableAutoBarrierControl  |
 | 0x04040000 | DisableAutoBarrierControl |
 | 0x04050040 | SetBarrierPosition        |
