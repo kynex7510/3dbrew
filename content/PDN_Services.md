@@ -34,9 +34,9 @@ Used by [Codec Services](Codec_Services "wikilink").
 
 # PDN Camera Service "pdn:c"
 
-| Command Header | Description |
-|----|----|
-| 0x00010040 | This sets bit0 in [PDN_CAMERA_CNT](PDN_Registers#pdn_camera_cnt "wikilink") to u8 cmd+4. |
-| 0x000200000 | This writes [PDN_CAMERA_CNT](PDN_Registers#pdn_camera_cnt "wikilink") & 1 to u8 cmdreply+8. |
+| Command Header | Description                            |
+|----------------|----------------------------------------|
+| 0x00010040     | [Control](PDNC:Control "wikilink")     |
+| 0x000200000    | [IsEnabled](PDNC:IsEnabled "wikilink") |
 
 [Category:Services](Category:Services "wikilink")
