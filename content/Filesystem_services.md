@@ -756,21 +756,6 @@ Each time the application writes to the savegame, the value should be updated by
 
 The save data used for this feature is stored in [System Save Data](System_SaveData "wikilink") ID 0x00010011 and contains only one file, named `DB`:
 
-### SecureValueKey
-
-Depending on which command is used, secure value keys can be interpreted as:
-
-| Offset | Size | Description   |
-|--------|------|---------------|
-| 0x0    | 0x8  | u64, Title ID |
-
-or:
-
-| Offset | Size | Description |
-|----|----|----|
-| 0x0 | 0x4 | u32, [Secure Value Slot](Filesystem_services#securevalueslot "wikilink") |
-| 0x4 | 0x4 | u32, Unique ID |
-
 ### Main Structure
 
 <table>
@@ -830,6 +815,21 @@ or:
 </tr>
 </tbody>
 </table>
+
+### SecureValueKey
+
+Depending on which command is used, secure value keys can be interpreted as:
+
+| Offset | Size | Description   |
+|--------|------|---------------|
+| 0x0    | 0x8  | u64, Title ID |
+
+or:
+
+| Offset | Size | Description |
+|----|----|----|
+| 0x0 | 0x4 | u32, [Secure Value Slot](Filesystem_services#securevalueslot "wikilink") |
+| 0x4 | 0x4 | u32, Unique ID |
 
 ## Applications using this feature
 
