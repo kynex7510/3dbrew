@@ -215,11 +215,11 @@ The header located at offset 0x100 defines the rest components of the file (part
 | 0x58 | 8 | Partition B offset |
 | 0x60 | 8 | Partition B size |
 | 0x68 | 1 | Active partition table, 0 = primary, 1 = secondary |
-| 0x69 | 1 | Number of used [Save Data Secure Value](Anti_Savegame_Restore "wikilink") entries in the DISA header (only for gamecard saves) |
+| 0x69 | 1 | Number of used [Save Data Secure Value](Anti_Savegame_Restore "wikilink") entries in the DISA header |
 | 0x6A | 2 | Padding |
 | 0x6C | 0x20 | SHA-256 over the active partition table |
-| 0x8C | 0x30 (0xC \* 0x4) | [Save Data Secure Value](DISA_and_DIFF#savedatasecurevalue "wikilink") entries (4) (only for gamecard saves) |
-| 0xBC | 0x8 | Unused randomly generated u64 value. (only for gamecard saves) |
+| 0x8C | 0x30 (0xC \* 0x4) | [Save Data Secure Value](DISA_and_DIFF#savedatasecurevalue "wikilink") entries (4) |
+| 0xBC | 0x8 | Unused randomly generated u64 value. |
 | 0xC4 | 0x3C | Unused |
 
 Note:
