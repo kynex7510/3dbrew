@@ -22,11 +22,4 @@ title = 'APT:StartNewestHomeMenu'
 
 # Description
 
-None of the input parameters are used by NS.
-[<APT:PrepareToStartNewestHomeMenu>](APT:PrepareToStartNewestHomeMenu "wikilink")
-must be used prior to using this command. After initializing
-[FIRM](FIRM "wikilink") params and
-[setting](PMApp:SetFIRMLaunchParams "wikilink") the FIRM params, this
-uses command
-[PTMSYSM:LaunchFIRMRebootSystem](PTMSYSM:LaunchFIRMRebootSystem "wikilink")
-with timeout 1000000000\*4.
+None of the input parameters are used by NS. <APT:PrepareToStartNewestHomeMenu> must be used prior to using this command. After initializing [FIRM](FIRM "wikilink") params and [setting](PMApp:SetFIRMLaunchParams "wikilink") the FIRM params, this uses command [PTMSYSM:LaunchFIRMRebootSystem](PTMSYSM:LaunchFIRMRebootSystem "wikilink") with timeout 1000000000\*4.
