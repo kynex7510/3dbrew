@@ -331,6 +331,16 @@ bit 10-14: mole y position</td>
 </tbody>
 </table>
 
+## CFLStoreData
+
+This is a common Mii container object, used in games and system modules like [FRD](Friend_Services "wikilink") and [ACT](ACT_Services "wikilink").
+
+| Offset | Size | Description                          |
+|--------|------|--------------------------------------|
+| 0x0    | 0x5C | Base Mii data in the above format    |
+| 0x5C   | 0x2  | padding, left as zeros usually       |
+| 0x5E   | 0x2  | CRC16 over the previous 0x5E of data |
+
 ## Mii categories (pants colors)
 
 #### Special (gold) Miis
