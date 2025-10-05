@@ -19,4 +19,4 @@ title = 'FRDU:GetFriendMii'
 
 # Description
 
-Gets the [Mii data](Friend_Services#mii_data "wikilink") for the specified friend keys. If an input friend key was not found in the friends list, an internal default placeholder friend entry will be used to populate the data.
+Gets the [Mii data](Mii#cflstoredata "wikilink") for the specified friend keys. If an input friend key was not found in the friends list, an internal default placeholder friend entry will be used to populate the data.
