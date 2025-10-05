@@ -11,3 +11,9 @@ Where are those CIA icons displayed then?(fix that on the page as needed) --[Yel
 
   
 I'm not quite sure what they are for, As I have changed the icons and names in a CIA file, then installed it. And during the process of installing it I never saw the changed icons or names anywhere. My best guess is that they are dummies put there so devs can double check the CIA contains the app that the dev wants. Maybe Nintendo plans to utilise the dummy icons and names in future version of Dev Menu, but at the moment every Dev Menu revsion I have used/seen has not utilised the dummy icons or names at all.--[3dsguy](User:3dsguy "wikilink") 11:36, 12 April 2012 (CEST)
+
+## Are the second set of "flag" bytes (0x202A and 0x202B) reserved, or more undocumented flags?
+
+The flags are documented to be 0x4 size in the first table in the Application Settings section, yet the Flags table is only documenting 0x2 size bitmask values. Does anyone know if the other two bytes are reserved, or if there are undocumented flags that go in addresses 0x202A and 0x202B?
+
+If it's the former, then the size should be changed from 0x4 to 0x2 to prevent confusion. If it's the latter, a note should be put in saying we don't yet have the other two bytes documented.
