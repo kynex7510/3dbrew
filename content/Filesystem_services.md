@@ -843,11 +843,143 @@ or:
 - Rusty's Real Deal Baseball
 - Megami Meguri
 
-# SEEDDB
+# SEEDDB and TITLETAG
 
-With [9.6.0-X](9.6.0-24 "wikilink") new [System_SaveData](System_SaveData "wikilink") with saveID 0001000F was added, this seems to be handled by FS-module itself, probably via the new service-cmds added to fsuser. [Home Menu](Home_Menu "wikilink") and [NIM](NIM_Services "wikilink") module have access to those commands.
+With [9.6.0-X](9.6.0-24 "wikilink") new [System_SaveData](System_SaveData "wikilink") with save ID 0x0001000F was added. This save data contains both the NCCH seed database (SEEDDB) and the title tag database (TITLETAG).
 
-The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](NCCH "wikilink") keyY generation added with FIRM [9.6.0-X](9.6.0-24 "wikilink").
+These databases are managed by the commands [FS:AddSeed](FS:AddSeed "wikilink"), [FS:GetSeed](FS:GetSeed "wikilink"), [FS:DeleteSeed](FS:DeleteSeed "wikilink"), [FS:GetNumSeeds](FS:GetNumSeeds "wikilink") and [FS:ListSeeds](FS:ListSeeds "wikilink") for SEEDDB, and [FS:AddTitleTag](FS:AddTitleTag "wikilink"), [FS:GetTitleTag](FS:GetTitleTag "wikilink"), [FS:DeleteTitleTag](FS:DeleteTitleTag "wikilink"), [FS:GetNumTitleTags](FS:GetNumTitleTags "wikilink"), and [FS:ListTitleTags](FS:ListTitleTags "wikilink") for TITLETAG respectively.
+
+Both the [HOME Menu](Home_Menu "wikilink") and the [NIM](NIM_Services "wikilink") module have access to these commands.
+
+## SEEDDB
+
+Stored in the system savedata archive 0x0001000F as a file named `SEEDDB`, it contains the title-unique seed-data used for the new [NCCH](NCCH "wikilink") keyY generation added with FIRM [9.6.0-X](9.6.0-24 "wikilink").
+
+The file follows a simple key-value format allowing the storage of seed data for up to 2000 unique title IDs.
+
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x1000</td>
+<td>Header</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x1</td>
+<td>u8, version (usually 0)</td>
+</tr>
+<tr>
+<td>0x1</td>
+<td>0x3</td>
+<td>padding</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x4</td>
+<td>u32, number of seed entries</td>
+</tr>
+<tr>
+<td>0x8</td>
+<td>0xFF8</td>
+<td>completely unused, padding</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td>0x1000</td>
+<td>0x3E80 (8 * 2000)</td>
+<td>u64s, Title IDs</td>
+</tr>
+<tr>
+<td>0x4E80</td>
+<td>0x7D00 (16 * 2000)</td>
+<td>Seed data, 16 bytes per seed</td>
+</tr>
+</tbody>
+</table>
+
+## TITLETAG
+
+Stored in the system savedata archive 0x0001000F as a file named `TITLETAG`, it contains information used by the [HOME Menu](Home_Menu "wikilink") to handle cases when a to-be-released title has been purchased already, that is, to properly install the seed required for [NCCH](NCCH "wikilink") keyY generation added with FIRM [9.6.0-X](9.6.0-24 "wikilink").
+
+When a to-be-released title is purchased, the [NIM](NIM_Services "wikilink") module installs a [title tag](Filesystem_services#titletag "wikilink") with enough information about the title for the [HOME Menu](Home_Menu "wikilink") to be able to initiate a seed import once the title has been released (and thus, the title's NCCH content lock seed). Until the title's seed is released, and while the title tag remains in the database, the HOME Menu will prevent the user from launching the software as it would not run without the seed. Once released, information from the title tag is used to download the seed, and, if successful, the title tag is removed from the database, making the software playable.
+
+The file follows a simple key-value format allowing the storage of title tag data for up to 2000 unique title IDs.
+
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x1000</td>
+<td>Header</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x1</td>
+<td>u8, version (usually 0)</td>
+</tr>
+<tr>
+<td>0x1</td>
+<td>0x3</td>
+<td>padding</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x4</td>
+<td>u32, number of entries</td>
+</tr>
+<tr>
+<td>0x8</td>
+<td>0xFF8</td>
+<td>completely unused, padding</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td>0x1000</td>
+<td>0x3E80 (8 * 2000)</td>
+<td>u64s, Title IDs</td>
+</tr>
+<tr>
+<td>0x4E80</td>
+<td>0x3E800 (0x80 * 2000)</td>
+<td><a {{% href "../Filesystem_services" %}} title="wikilink">Title Tag</a> data, 0x80 bytes per entry</td>
+</tr>
+</tbody>
+</table>
 
 # Common Types
 
