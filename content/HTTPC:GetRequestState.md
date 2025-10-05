@@ -30,5 +30,4 @@ title = 'HTTPC:GetRequestState'
 
 # Description
 
-This returns the request state, this is used to determine when to
-download the content.
+This returns the request state, this is used to determine when to download the content.
