@@ -2,35 +2,22 @@
 title = 'Circle Pad Pro'
 +++
 
-Also known as CTR-009, it sends the commands to the console through the
-IR interface on the back of the console.
+Also known as CTR-009, it sends the commands to the console through the IR interface on the back of the console.
 
-[Pictures of its
-contents](http://what-games.golog.jp/archives/1350330.html).
+[Pictures of its contents](http://what-games.golog.jp/archives/1350330.html).
 
 ## Usage Instructions
 
 <figure>
-<img src="../Circle_pad_pro_instructions.jpg"
-title="File:Circle pad pro instructions.jpg" />
-<figcaption><a {{% href "../File:Circle" "broken" %}}>File:Circle</a> pad pro
-instructions.jpg</figcaption>
+<img src="../Circle_pad_pro_instructions.jpg" title="Circle_pad_pro_instructions.jpg" />
+<figcaption>Circle_pad_pro_instructions.jpg</figcaption>
 </figure>
 
 ## IR Protocol
 
-Communications with this device is done via the
-[ir:USER](IR_Services "wikilink") service, which uses obfuscation
-implemented in software. The [bitrate-value](IRU:SetBitRate "wikilink")
-passed to IRUSER is 0x04, hence the actual bps is 96000.
+Communications with this device is done via the [ir:USER](IR_Services "wikilink") service, which uses obfuscation implemented in software. The [bitrate-value](IRU:SetBitRate "wikilink") passed to IRUSER is 0x04, hence the actual bps is 96000.
 
-The application sends requests via
-[IRUSER:SendIrnop](IRUSER:SendIrnop "wikilink") and receives response
-from Circle Pad Pro via
-[IRUSER:ReceiveIrnop](IRUSER:ReceiveIrnop "wikilink") (or read data from
-the [shared memory](IRUSER_Shared_Memory "wikilink")). The request and
-response data structures below are payloads in packets. Each request
-begins with a one-byte ID that determines the request type.
+The application sends requests via [IRUSER:SendIrnop](IRUSER:SendIrnop "wikilink") and receives response from Circle Pad Pro via [IRUSER:ReceiveIrnop](IRUSER:ReceiveIrnop "wikilink") (or read data from the [shared memory](IRUSER_Shared_Memory "wikilink")). The request and response data structures below are payloads in packets. Each request begins with a one-byte ID that determines the request type.
 
 ### Request 1: Read Input
 
@@ -42,40 +29,39 @@ Request (3 bytes):
 | 0x1    | 0x1  | Response period in ms      |
 | 0x2    | 0x1  | Unknown                    |
 
-Response (6 bytes): This Response will be sent repeatedly by the
-specified period.
+Response (6 bytes):
+This Response will be sent repeatedly by the specified period.
 
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>offset</th>
 <th>Size</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0x0</td>
 <td>0x1</td>
 <td>Response ID? Fixed value 0x10</td>
 </tr>
-<tr class="even">
+<tr>
 <td>0x1</td>
 <td>0x3</td>
-<td>Right circle pad position. This three bytes are two little-endian
-12-bit fields. The first one is for x-axis and the second one is for
-y-axis.</td>
+<td>Right circle pad position.
+This three bytes are two little-endian 12-bit fields. The first one is for x-axis and the second one is for y-axis.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>0x4</td>
 <td>0x1</td>
-<td>bit[0:4] battery level? bit[5] ZL button</p>
+<td>bit[0:4] battery level?
+bit[5] ZL button</p>
 <p>bit[6] ZR button</p>
 <p>bit[7] R button</p>
-<p>Note that for the three button fields, the bit is set when the button
-is NOT pressed.</td>
+<p>Note that for the three button fields, the bit is set when the button is NOT pressed.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>0x5</td>
 <td>0x1</td>
 <td>Unknown</td>
