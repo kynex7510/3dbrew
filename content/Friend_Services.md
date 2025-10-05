@@ -142,16 +142,6 @@ No RootCertChain(s) are used. For the nasc site, friends-module uses [HTTPC:AddD
 | 0x1 | 0x1 | bool IsShowGameMode, whether or not the currently played game is shown |
 | 0x2 | 0x1 | bool IsShowPlayedMode, whether or not the play history is shown |
 
-## Mii Data
-
-| Offset | Size | Description                                    |
-|--------|------|------------------------------------------------|
-| 0x0    | 0x1  | bool, ProfanityFlag                            |
-| 0x1    | 0x1  | [Mii character set](Mii#mii_format "wikilink") |
-| 0x2    | 0x1  | bool, DirtyFlag                                |
-| 0x3    | 0x1  | padding                                        |
-| 0x4    | 0x5C | [Mii data](Mii#mii_format "wikilink")          |
-
 ## Profile
 
 | Offset | Size | Description                           |
