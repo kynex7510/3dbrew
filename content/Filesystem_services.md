@@ -436,13 +436,14 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 
 #### Title Access Type
 
-| Value | Description                                  |
-|-------|----------------------------------------------|
-| 0     | High-level NCCH content access               |
-| 1     | Save data access (high-level, decrypted)     |
-| 2     | Raw content (low-level NCCH/SRL) access      |
-| 3     | Banner save data access (for DSiWare titles) |
-| 5     | Save data access (low-level, encrypted)      |
+| Value | Description |
+|----|----|
+| 0 | High-level NCCH content access |
+| 1 | Save data access (high-level, decrypted) |
+| 2 | Raw content (low-level NCCH/SRL) access |
+| 3 | Banner save data access (for DSiWare titles) |
+| 4 | FS only: Save data transfer (internally uses generated data from [FS:BeginSaveDataMove](FS:BeginSaveDataMove "wikilink") as the IV for "Save data access (low-level, encrypted)") |
+| 5 | Save data access (low-level, encrypted) |
 
 #### NCCH Access Type
 
@@ -610,6 +611,14 @@ The "is seeded check" NCCH access type opens a virtual 1-byte file that reads ei
 For NCCH sections that require a seed (e.g. `.code`, RomFS, etc.), the additional seed portion of the low path must be populated with the correct seed.
 
 The "Seed Verify/Validate" NCCH access type also requires the seed portion of the lowpath. The target NCCH content is opened (with the opened file interface being stubbed, meaning no real reads/writes can be performed on it), and the given seed is used to calculate the seed check hash, and part of it is compared to the check value in the NCCH header. If it matches, opening the "file" succeeds, otherwise 0xD900458C is returned. If attempt is made to use the seed validation type on a content that does not use a seed, error 0xC92044E6 is returned.
+
+#### FS Limitations
+
+For FS, this archive functions the same, except for the following limitations:
+- Only the title access types "High Level NCCH Access" and "High Level Save Data Access", and "Save Data Transfer" are allowed.
+- For high level NCCH access, the types "RomFS", "System Menu Data", "Seeded check", and "Seed Check/Verify" are allowed. For "Seed Check/Verify", rather than providing the title seed in the file path (as is the case for FSPXI), the seed is retrieved from the seed database (meaning the file lowpath size is always 0x14 for FS).
+
+### FSPXI Program Access
 
 ### [RomFS](RomFS "wikilink")
 
