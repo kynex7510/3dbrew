@@ -256,7 +256,7 @@ The CARDSPI archive allows access to the gamecard CARD1 raw savedata flash(aka "
 
 # Filenames and Paths
 
-PathType:
+## PathType
 
 | Value | Description |
 |----|----|
