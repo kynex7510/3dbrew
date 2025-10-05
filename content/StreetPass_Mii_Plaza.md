@@ -94,3 +94,7 @@ If this file is missing, the puzzles contained in it will be unavailable until i
 A backup of this archive is imperative to preserve limited distribution puzzles.
 
 See [PNEL](PNEL "wikilink") for more information on the file structure
+
+## StreetPass Message Format
+
+See [StreetPass Mii Plaza/StreetPass Message Format](StreetPass_Mii_Plaza/StreetPass_Message_Format "wikilink")
