@@ -20,7 +20,9 @@ The Interrupt queue is located at sharedMemBase + (clientID \* 0x40).
 
 GSP fills the interrupt list, then triggers the event set with [RegisterInterruptRelayQueue](GSPGPU:RegisterInterruptRelayQueue "wikilink") for the specified process(es).
 
-PDC interrupts are sent to all processes; other interrupts are only sent to the process with GPU rights.
+PDC interrupts are sent to all processes; other interrupts are only sent to the process with rendering rights.
+
+GSP will only dispatch PSC0 if a [Memory Fill](GSP_Shared_Memory#trigger_memory_fill "wikilink") command has been issued with both buffers set.
 
 # Framebuffer Info
 
@@ -85,7 +87,7 @@ GSP checks for status.bit0 and optionally avoids handling further commands, howe
 
 ## Commands
 
-Addresses specified in parameters are virtual addresses. Address and size parameters except for command 0 and command 5 must be 8-byte aligned.
+Addresses specified in parameters are virtual addresses. Depending on the command, there might be constraints on the accepted parameters. In general, some commands require parameters to be aligned, and addresses are expected to be on [linear](Memory_Management#memory_mapping "wikilink"), [QTM](Memory_layout#0x1f000000_new_3ds_only "wikilink") or VRAM memory.
 
 ### Trigger DMA Request
 
@@ -98,9 +100,11 @@ Addresses specified in parameters are virtual addresses. Address and size parame
 | 6-4        | Unused                                    |
 | 7          | Flush source (0 = don't flush, 1 = flush) |
 
-This command issues a [DMA request](Corelink_DMA_Engines "wikilink") as the calling process. When the destination address is within VRAM, GSP places itself as the destination process, this makes it possible to transfer data in VRAM without needing it listed in the destination process [exheader mappings](NCCH/Extended_Header#arm11_kernel_capabilities "wikilink"). Otherwise, both source and destination of the DMA request are the calling process.
+This command issues a [DMA request](Corelink_DMA_Engines "wikilink") as the process with [rendering rights](GSPGPU:AcquireRight "wikilink"). When the destination address is within VRAM, GSP places itself as the destination process: this makes it possible to transfer data in VRAM without needing it listed in the destination process [exheader mappings](NCCH/Extended_Header#arm11_kernel_capabilities "wikilink"). Otherwise, both source and destination of the DMA request are the process with rendering rights.
 
-The source buffer must be mapped as readable in the source process, while the destination address must be mapped as writable in the destination process. When flushing is enabled and the source address is above VRAM, [svcFlushProcessDataCache](SVC "wikilink") is used to flush the source buffer.
+The source buffer must be mapped as readable in the source process, while the destination address must be mapped as writable in the destination process, otherwise GSP calls [svcBreak](SVC "wikilink"). When flushing is enabled and the source address is above VRAM, svcFlushProcessDataCache is used to flush the source buffer.
+
+Any process must have acquired rendering rights, otherwise the command does nothing.
 
 ### Trigger Command List Processing
 
@@ -115,7 +119,9 @@ The source buffer must be mapped as readable in the source process, while the de
 
 This command sets the [Command List registers](GPU/External_Registers#command_list "wikilink"), and optionally updates gas additive blend results after command processing has ended.
 
-No error checking is performed on the parameters. Address and size should be both aligned to 8 bytes, and the address should be in linear, QTM or VRAM memory, otherwise PA 0 is used. When flushing is enabled, svcFlushProcessDataCache is used to flush the buffer.
+No error checking is performed on the parameters. Address and size should be both aligned to 8 bytes, and the address should be in linear, QTM or VRAM memory, otherwise PA 0 is used. When flushing is enabled, [svcFlushProcessDataCache](SVC "wikilink") is used to flush the buffer on the process that has acquired rendering rights.
+
+Any process must have acquired rendering rights, otherwise the command does nothing.
 
 ### Trigger Memory Fill
 
@@ -132,7 +138,7 @@ No error checking is performed on the parameters. Address and size should be bot
 
 This command sets the [Memory Fill registers](GPU/External_Registers#memory_fill "wikilink").
 
-Addresses should be aligned to 8 bytes and must be in linear, QTM or VRAM memory, otherwise error 0xE0E02BF5 (GSP_INVALID_ADDRESS) is returned. The start address for a buffer must be less than its end address, else the same error is returned. If the start address for a buffer is 0, that buffer is skipped; otherwise, its relative PSC unit is used for the fill operation.
+Addresses should be aligned to 8 bytes and must be in linear, QTM or VRAM memory, otherwise error 0xE0E02BF5 (GSP_INVALID_ADDRESS) is returned. The start address for a buffer must be below its end address, else the same error is returned. If the start address for a buffer is 0, that buffer is skipped; otherwise, its relative PSC unit is used for the fill operation.
 
 ### Trigger Display Transfer
 
@@ -172,12 +178,16 @@ No error checking is performed on the parameters. Addresses and size should be a
 | Index Word | Description                |
 |------------|----------------------------|
 | 0          | Command header (ID = 0x05) |
-| 1          | Buf0 address               |
-| 2          | Buf0 size                  |
-| 3          | Buf1 address               |
-| 4          | Buf1 size                  |
-| 5          | Buf2 address               |
-| 6          | Buf2 size                  |
+| 1          | Buffer 0 address           |
+| 2          | Buffer 0 size              |
+| 3          | Buffer 1 address           |
+| 4          | Buffer 1 size              |
+| 5          | Buffer 2 address           |
+| 6          | Buffer 2 size              |
 | 7          | Unused                     |
 
-The application buffer addresses specified in the parameters are used with [svcFlushProcessDataCache](SVC "wikilink"). The input buf0 size must not be zero. When buf1 size is zero, svcFlushProcessDataCache() for buf1 and buf2 are skipped. When buf2 size is zero, svcFlushProcessDataCache() for buf2 is skipped.
+This command calls svcFlushProcessDataCache for each buffer on the process that has acquired rendering rights.
+
+If any call fails, its error is returned; If any buffer has size 0, the buffer is skipped. In both cases, subsequent buffers are not processed.
+
+Any process must have acquired rendering rights, otherwise the error 0xD8202A06 (GSP_NO_RIGHT) is returned.
