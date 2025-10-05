@@ -464,36 +464,10 @@ The following constraints apply:
 - Output dimensions should not be bigger than input ones, otherwise the output is glitched.
 - Width dimensions must be \>= 64.
 - Height dimensions must be \>= 32.
+- Width dimensions are required to be aligned to 64 bytes when doing RGB8/RGBA8 transfers.
+  - Otherwise they are required to be aligned to 128 bytes.
 
-Format conversion results:
-
-| Conversion        | Result                         |
-|-------------------|--------------------------------|
-| RGBA8 -\> RGBA8   | Has interrupt, correct output  |
-| RGBA8 -\> RGB8    | No interrupt                   |
-| RGBA8 -\> RGB565  | No interrupt                   |
-| RGBA8 -\> RGB5A1  | No interrupt                   |
-| RGBA8 -\> RGBA4   | No interrupt                   |
-| RGB8 -\> RGBA8    | No interrupt                   |
-| RGB8 -\> RGB8     | Has interrupt, untested output |
-| RGB8 -\> RGB565   | No interrupt                   |
-| RGB8 -\> RGB5A1   | No interrupt                   |
-| RGB8 -\> RGBA4    | No interrupt                   |
-| RGB565 -\> RGBA8  | Has interrupt, untested output |
-| RGB565 -\> RGB8   | No interrupt                   |
-| RGB565 -\> RGB565 | Has interrupt, untested output |
-| RGB565 -\> RGB5A1 | Has interrupt, untested output |
-| RGB565 -\> RGBA4  | Has interrupt, untested output |
-| RGB5A1 -\> RGBA8  | Has interrupt, untested output |
-| RGB5A1 -\> RGB8   | No interrupt                   |
-| RGB5A1 -\> RGB565 | Has interrupt, untested output |
-| RGB5A1 -\> RGB5A1 | Has interrupt, untested output |
-| RGB5A1 -\> RGBA4  | Has interrupt, untested output |
-| RGBA4 -\> RGBA8   | Has interrupt, untested output |
-| RGBA4 -\> RGB8    | No interrupt                   |
-| RGBA4 -\> RGB565  | Has interrupt, untested output |
-| RGBA4 -\> RGB5A1  | Has interrupt, untested output |
-| RGBA4 -\> RGBA4   | Has interrupt, untested output |
+Format conversion results: same as tiled-\>linear.
 
 ### TextureCopy
 
