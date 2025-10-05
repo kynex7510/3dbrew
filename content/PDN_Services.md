@@ -13,9 +13,9 @@ categories = ["Services"]
 
 # PDN DSP Service "pdn:d"
 
-| Command Header | Description |
-|----|----|
-| 0x000100C0 | (bool enable, bool reset, bool deassertResetAfterReset) Enables and/or resets the DSP and/or holds it in reset |
+| Command Header | Description                        |
+|----------------|------------------------------------|
+| 0x000100C0     | [Control](PDND:Control "wikilink") |
 
 # PDN I2S Service "pdn:i"
 
