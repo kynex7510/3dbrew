@@ -18,7 +18,7 @@ After 2 unknown lines, there is info about a specific theme its formated like CS
 | 4 | Title ID and DLC theme content file |
 | 5 | Themes List Index Count |
 | 6 | ? |
-| 7 | TimeStamp when the Theme was added |
+| 7 | Timestamp when the Theme was added |
 
 ## Theme List Format
 
