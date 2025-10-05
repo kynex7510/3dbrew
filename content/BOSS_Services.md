@@ -282,43 +282,76 @@ Total size is 0x20-bytes.
 
 ## PropertyIDs
 
-| ID | Size | Description |
-|----|----|----|
-| 0x0 | 0x1 | Unknown. Example values used by official titles: 0x7D, 0xAA, ... |
-| 0x1 | 0x1 | Unknown. Usually 0x1? |
-| 0x2 | 0x4 | Unknown. Usually 0x0? |
-| 0x3 | 0x4 | Interval in seconds. |
-| 0x4 | 0x4 | Duration(?), ~0 = infinite. 0x1 can be used for running the task just once. Usually set to 0x64(100). When not set to ~0 this is decreased by 1 each time the task runs(or at least when it fails). Task processing is skipped when the current state value is already 0x0. |
-| 0x5 | 0x1 | Unknown. Usually 0x2? |
-| 0x6 | 0x1 | ? |
-| 0x7 | 0x200 | URL |
-| 0x8 | 0x4 | ? |
-| 0x9 | 0x1 | ? |
-| 0xA | 0x100 | ? |
-| 0xB | 0x200 | ? |
-| 0xC |  | [BOSSU:SendPropertyHandle](BOSSU:SendPropertyHandle "wikilink") is used for this. This property is only setup for HTTP uploads? This can be used with [BOSSU:SendProperty](BOSSU:SendProperty "wikilink") too but that's not the intended use. |
-| 0xD | 0x360 | Contains additional HTTP headers to send in the request, otherwise this is all-zero. This is an array of 3 entries: +0x0 size 0x20 is the header name, and +0x20 size 0x100 is the header value. Example: header-name "Content-Type" at 0x0, with header-value "application/octet-stream" at offset 0x20. |
-| 0xE | 0x4 | This u32 is passed directly as an u32 certID for [HTTPC:SetClientCertDefault](HTTPC:SetClientCertDefault "wikilink")(without masking to u8), even when this field is set to 0. |
-| 0xF | 0xC | 3 words. Last word is unknown, normally 0(non-zero doesn't seem to affect any HTTPC commands). [HTTPC:AddDefaultCert](HTTPC:AddDefaultCert "wikilink") is called twice for each of the first two words which are used as certIDs(not masked to u8). |
-| 0x10 | 0x1 | When non-zero this enables loading the client cert+privk from FS, requires the filepaths to be actually set. |
-| 0x11 | 0x1 | When non-zero this enables loading a trusted rootCA cert DER from FS, requires the filepath to be actually set. |
-| 0x12 | 0x1 | ? |
-| 0x13 | 0x4 | ? |
-| 0x14 | 0x4 | ? |
-| 0x15 | 0x40 | ? |
-| 0x16 | 0x4 | ? |
-| 0x18 | 0x1 | ? |
-| 0x19 | 0x1 | ? |
-| 0x1A | 0x1 | ? |
-| 0x1B | 0x4 | ? |
-| 0x1C | 0x4 | ? |
-| 0x35 | 0x2 | u16 total_tasks. [BOSSU:GetTaskIdList](BOSSU:GetTaskIdList "wikilink") is used before [reading](BOSSU:ReceiveProperty "wikilink") this. |
-| 0x36 | 0x400 | List of TaskIDs. [BOSSU:GetTaskIdList](BOSSU:GetTaskIdList "wikilink") is used before [reading](BOSSU:ReceiveProperty "wikilink") this. |
-| 0x3B | 0x4 | ? |
-| 0x3E | 0x200 | ? |
-| 0x3F | 0x1 | ? |
+| ID | Size | Type | Read | Write | Rewritable | Description |
+|----|----|----|----|----|----|----|
+| 0x0 | 0x1 | u8 | Yes | Yes | Yes | Priority. Represents the priority of a task |
+| 0x1 | 0x1 | u8 | Yes | Yes | Yes | SchedulingPolicy. Unknown purpose, the API on games force this to 1 |
+| 0x2 | 0x4 | u32 | Yes | Yes | Yes | TaskTargetDuration. Unknown purpose, the API on games require a value below 0x10000 (not inclusive) |
+| 0x3 | 0x4 | u32 | Yes | Yes | Yes | Interval in seconds of the task |
+| 0x4 | 0x4 | u32 | Yes | Yes | Yes | Count. Number of times that the task will be run. If zero, the task is persistent |
+| 0x5 | 0x1 | u8 | Yes | Yes | Yes | TaskPermission. Unknown purpose, the API on games require a value between 0 and 3 |
+| 0x6 | 0x1 | u8 | Yes | Yes | No | ActionCode. Represents the action that a task will perform |
+| 0x7 | 0x200 | char\[512\] | Yes | Yes | No | URL. Unused for DataStore actions |
+| 0x8 | 0x4 |  | Yes | Yes | No | ? |
+| 0x9 | 0x1 |  | Yes | Yes | No | Controls the action data type? The API on games require a value between 0 and 6 |
+| 0xA | 0x100 |  | Yes | Yes | No | Unknown action data. Shares buffer with properties 0xB and 0x3E |
+| 0xB | 0x200 |  | Yes | Yes | No | Unknown action data. Shares buffer with properties 0xA and 0x3E |
+| 0xC | 0x4 | Handle | Yes | Yes | No | Optional file handle with the data to send |
+| 0xD | 0x360 |  | Yes | Yes | No | HeaderFields. Additional headers to include in the request sent to the server |
+| 0xE | 0x4 | u32\[1\] | Yes | Yes | No | ClientCerts. List of [cert IDs](HTTPC:SetClientCertDefault "wikilink") to use as client certs |
+| 0xF | 0xC | u32\[3\] | Yes | Yes | No | RootCAs. List of [cert IDs](HTTPC:AddDefaultCert "wikilink") to use as root CAs |
+| 0x10 | 0x1 | u8 | Yes | Yes | No | FSClientCert. If non-zero, enables the task client certificate to be read from the filesystem. May be a bool? |
+| 0x11 | 0x1 | u8 | Yes | Yes | No | FSRootCA. If non-zero, enables the task root CA to be read from the filesystem. May be a bool? |
+| 0x12 | 0x1 | u8 | Yes | Yes | No | ApInfoType |
+| 0x13 | 0x4 | u32 | Yes | Yes | No | RootCaCount. Amount of root CAs stored in property 0xF |
+| 0x14 | 0x4 | u32 | Yes | Yes | No | ClientCertCount. Amount of client certificates stored in property 0xE |
+| 0x15 | 0x40 |  | Yes | Yes | No | ? |
+| 0x16 | 0x4 |  | Yes | Yes | No | ? |
+| 0x17 |  |  | No | No | No | Reserved |
+| 0x18 | 0x1 |  | Yes | Yes | No | Unknown purpose, the API on games force this to 1 |
+| 0x19 | 0x1 |  | Yes | Yes | No | ? |
+| 0x1A | 0x1 |  | Yes | Yes | No | ? |
+| 0x1B | 0x4 |  | Yes | Yes | No | ? |
+| 0x1C | 0x4 |  | Yes | Yes | No | ? |
+| 0x1D | 0x1 | u8 | Yes | No | No | StateCode. Unknown purpose |
+| 0x1E | 0x1 |  | Yes | No | No | ? |
+| 0x1F | 0x1 |  | Yes | No | No | ? |
+| 0x20 | 0x1 | u8 | Yes | No | No | TaskResultCode. Unknown purpose |
+| 0x21 | 0x1 | u8 | Yes | No | No | ServiceStatus. Unknown purpose |
+| 0x22 | 0x1 |  | Yes | No | No | ? |
+| 0x23 | 0x4 | u32 | Yes | No | No | CommErrorCode. Unknown purpose |
+| 0x24 | 0x1 |  | Yes | No | No | ? |
+| 0x25 | 0x4 |  | Yes | No | No | ? |
+| 0x26 | 0x4 |  | Yes | No | No | ? |
+| 0x27 | 0x4 |  | Yes | No | No | ? |
+| 0x28 | 0x8 | u64 | Yes | No | No | LastSuccessfulTimestamp. Number of seconds since the year 2000 of the last successful run of the task |
+| 0x29 | 0x8 |  | Yes | No | No | ? |
+| 0x2A | 0x4 |  | Yes | No | No | ? |
+| 0x2B | 0x4 |  | Yes | No | No | ? |
+| 0x2C | 0x1 |  | Yes | No | No | ? |
+| 0x2D | 0x2 |  | Yes | No | No | ? |
+| 0x2E | 0x2 |  | Yes | No | No | ? |
+| 0x2F | 0x40 | char\[64\] | Yes | No | No | LastModifiedHeader. Date string from the Last-Modified HTTP header received when executing the task |
+| 0x30 | 0x1 |  | Yes | No | No | ? |
+| 0x31 | 0x4 |  | Yes | No | No | ? |
+| 0x32 | 0x100 |  | Yes | No | No | ? |
+| 0x33 | 0x2 | u16 | Yes | No | No | TotalApps. Number of application IDs on the below list |
+| 0x34 | 0x400 | u64\[128\] | Yes | No | No | AppIdList. List of application IDs registered in BOSS |
+| 0x35 | 0x2 | u16 | Yes | No | No | TotalTasks. Number of task IDs on the below list |
+| 0x36 | 0x400 | char\[8\]\[128\] | Yes | No | No | TaskIdList. List of task IDs registered by the application |
+| 0x37 | 0x2 | u16 | Yes | No | No | TotalSteps. Number of step IDs on the below list |
+| 0x38 | 0x80 | u8\[128\] | Yes | No | No | StepIdList. List of steps that the task has registered |
+| 0x39 |  |  | No | No | No | Reserved |
+| 0x3A |  |  | No | No | No | Reserved |
+| 0x3B | 0x4 |  | Yes | Yes | No | ? |
+| 0x3C |  |  | No | No | No | Reserved |
+| 0x3D |  |  | No | No | No | Reserved |
+| 0x3E | 0x200 |  | Yes | Yes | No | DataStoreDownloadActionData. Shares buffer with properties 0xA and 0xB |
+| 0x3F | 0x1 | u8 | Yes | Yes | No | CfgInfoType |
 
-The only valid PropertyIDs for [BOSSU:SendProperty](BOSSU:SendProperty "wikilink") are the ones listed above, except 0x35 and 0x36. If the specified size for the command is larger than the property size, it will use the actual property size instead. When the specified size is less than the actual property size, all of the property data that won't be written to is cleared.
+The read column represents properties which can be obtained with [ReceiveProperty](BOSSU:ReceiveProperty "wikilink"), the write column represents properties which can be set with [SendProperty](BOSSU:SendProperty "wikilink"), and the rewritable column indicates properties which can be reassigned into an existing task with [ReconfigureTask](BOSSU:ReconfigureTask "wikilink"). If the specified size for the command is larger than the property size, it will use the actual property size instead. When the specified size is less than the actual property size, all of the property data that won't be written to is cleared.
+
+Trying to send a property which doesn't support being sent will give an error 0xC960F84D. Using reserved properties as an argument will give the same error.
 
 ## TaskStatus
 
