@@ -33,7 +33,7 @@ title = 'ACTU:GetAsyncResult'
 | 9 | [AcquirePrincipalIdByAccountId](ACTU:AcquirePrincipalIdByAccountId "wikilink") (single) | 0x4 | u32, PrincipalId | [act:u](ACT_Services#act_user_service_actu "wikilink"), [act:a](ACT_Services#act_admin_service_acta "wikilink") |
 | 10 | [ApproveByCreditCard](ACTA:ApproveByCreditCard "wikilink") | 0x4 | u32, ApprovalId | [act:u](ACT_Services#act_user_service_actu "wikilink"), [act:a](ACT_Services#act_admin_service_acta "wikilink") |
 | 11 | [SendCoppaCodeMail](ACTA:SendCoppaCodeMail "wikilink") | 0x107 | [SendCoppaCodeMailData](ACT_Services#sendcoppacodemaildata "wikilink") | [act:u](ACT_Services#act_user_service_actu "wikilink"), [act:a](ACT_Services#act_admin_service_acta "wikilink") |
-| 12 | [AcquireMii](ACTU:AcquireMii "wikilink") | 0x60 \* count (max count 100) | [Mii CFLStoreData](ACT_Services#cflstoredata "wikilink") array corresponding to each PersistentId | [act:u](ACT_Services#act_user_service_actu "wikilink"), [act:a](ACT_Services#act_admin_service_acta "wikilink") |
+| 12 | [AcquireMii](ACTU:AcquireMii "wikilink") | 0x60 \* count (max count 100) | [Mii CFLStoreData](Mii#cflstoredata "wikilink") array corresponding to each PersistentId | [act:u](ACT_Services#act_user_service_actu "wikilink"), [act:a](ACT_Services#act_admin_service_acta "wikilink") |
 | 13 | [AcquireAccountInfoRaw](ACTU:AcquireAccountInfoRaw "wikilink") | 0xC00 + 1 | NULL-terminated raw ASCII account profile XML data | [act:u](ACT_Services#act_user_service_actu "wikilink"), [act:a](ACT_Services#act_admin_service_acta "wikilink") |
 
 # Description
