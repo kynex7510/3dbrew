@@ -188,27 +188,29 @@ The header located at offset 0x100 defines the rest components of the file (part
 
 ### DISA header
 
-| Offset | Length | Description                                          |
-|--------|--------|------------------------------------------------------|
-| 0x00   | 4      | Magic "DISA"                                         |
-| 0x04   | 4      | Magic 0x40000                                        |
-| 0x08   | 4      | Partition count, 1 or 2                              |
-| 0x0C   | 4      | Padding                                              |
-| 0x10   | 8      | Secondary partition table offset                     |
-| 0x18   | 8      | Primary partition table offset                       |
-| 0x20   | 8      | Partition table size                                 |
-| 0x28   | 8      | Partition A descriptor offset in the partition table |
-| 0x30   | 8      | Partition A descriptor size                          |
-| 0x38   | 8      | Partition B descriptor offset in the partition table |
-| 0x40   | 8      | Partition B descriptor size                          |
-| 0x48   | 8      | Partition A offset                                   |
-| 0x50   | 8      | Partition A size                                     |
-| 0x58   | 8      | Partition B offset                                   |
-| 0x60   | 8      | Partition B size                                     |
-| 0x68   | 1      | Active partition table, 0 = primary, 1 = secondary   |
-| 0x69   | 3      | Padding                                              |
-| 0x6C   | 0x20   | SHA-256 over the active partition table              |
-| 0x8C   | 0x74   | Unused                                               |
+| Offset | Length | Description |
+|----|----|----|
+| 0x00 | 4 | Magic "DISA" |
+| 0x04 | 4 | Magic 0x40000 |
+| 0x08 | 4 | Partition count, 1 or 2 |
+| 0x0C | 4 | Padding |
+| 0x10 | 8 | Secondary partition table offset |
+| 0x18 | 8 | Primary partition table offset |
+| 0x20 | 8 | Partition table size |
+| 0x28 | 8 | Partition A descriptor offset in the partition table |
+| 0x30 | 8 | Partition A descriptor size |
+| 0x38 | 8 | Partition B descriptor offset in the partition table |
+| 0x40 | 8 | Partition B descriptor size |
+| 0x48 | 8 | Partition A offset |
+| 0x50 | 8 | Partition A size |
+| 0x58 | 8 | Partition B offset |
+| 0x60 | 8 | Partition B size |
+| 0x68 | 1 | Active partition table, 0 = primary, 1 = secondary |
+| 0x69 | 1 | Number of used [Save Data Secure Value](Anti_Savegame_Restore "wikilink") entries in the DISA header |
+| 0x6A | 2 | Padding |
+| 0x6C | 0x20 | SHA-256 over the active partition table |
+| 0x8C | 0x30 (0xC \* 0x4) | [Save Data Secure Value](SaveDataSecureValue "wikilink") entries (4) |
+| 0xBC | 0x44 | Unused |
 
 Note:
 
