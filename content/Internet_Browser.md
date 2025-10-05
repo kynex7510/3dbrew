@@ -572,6 +572,12 @@ User-agent format: `Mozilla/5.0 (Nintendo 3DS; U; ; `<lang>`) Version/`<version>
 <td>See below.</td>
 </tr>
 <tr>
+<td>1.7639</td>
+<td>v12288</td>
+<td><a {{% href "../11.14.0-46" %}} title="wikilink">11.14.0-46</a></td>
+<td>See below.</td>
+</tr>
+<tr>
 <td>1.7642</td>
 <td>v13313</td>
 <td><a {{% href "../11.15.0-47" %}} title="wikilink">11.15.0-47</a></td>
