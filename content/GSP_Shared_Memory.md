@@ -130,44 +130,42 @@ No error checking is performed on the parameters. Address and size should be bot
 | 6          | Buffer 1 end address           |
 | 7          | Control0 \| (Control1 \<\< 16) |
 
-This command sets the GPU [Memory Fill registers](GPU/External_Registers#memory_fill "wikilink").
+This command sets the [Memory Fill registers](GPU/External_Registers#memory_fill "wikilink").
 
-Addresses should be aligned to 8 bytes and must be in linear, QTM or VRAM memory, otherwise error 0xE0E02BF5 (GSP_INVALID_ADDRESS) is returned. The start address for a buffer must be \< its end address, else the same error is returned. If the start address for a buffer is 0, that buffer is skipped; otherwise, its relative PSC unit is used for the fill operation.
+Addresses should be aligned to 8 bytes and must be in linear, QTM or VRAM memory, otherwise error 0xE0E02BF5 (GSP_INVALID_ADDRESS) is returned. The start address for a buffer must be less than its end address, else the same error is returned. If the start address for a buffer is 0, that buffer is skipped; otherwise, its relative PSC unit is used for the fill operation.
 
 ### Trigger Display Transfer
 
-| Index Word | Description |
-|----|----|
-| 0 | Command header (ID = 0x03) |
-| 1 | Input framebuffer address |
-| 2 | Output framebuffer address |
-| 3 | Input framebuffer [dimensions](GPU "wikilink") |
-| 4 | Output framebuffer dimensions |
-| 5 | [Flags](GPU "wikilink"), for applications this is 0x1001000 for the main screen, and 0x1000 for the sub screen. |
-| 7-6 | Unused |
+| Index Word | Description                |
+|------------|----------------------------|
+| 0          | Command header (ID = 0x03) |
+| 1          | Source address             |
+| 2          | Destination address        |
+| 3          | Source dimensions          |
+| 4          | Output dimensions          |
+| 5          | Flags                      |
+| 7-6        | Unused                     |
 
-This command converts the specified addresses to physical addresses, then writes these physical addresses and parameters to the [GPU](GPU "wikilink") registers at 0x1EF00C00. This GPU command copies the already rendered framebuffer data from the input GPU framebuffer address to the specified output LCD framebuffer. The input framebuffer is normally located in VRAM.
+This command sets the [Display Transfer registers](GPU/External_Registers#transfer_engine "wikilink").
 
-The GPU color buffer is stored in the same Z-curve (tiled) format as textures. By default, SetDisplayTransfer converts the given buffer from the tiled format to a linear format adapted to the LCD framebuffers.
-
-Display transfers are performed asynchronously, so after requesting a display transfer you should wait for the PPF interrupt to fire before reading the output data.
-
-The minimum supported dimension for output is 64x64, anything lower will hang the engine.
+No error checking is performed on the parameters. Addresses should be aligned to 8 bytes and should be in linear, QTM or VRAM memory, otherwise PA 0 is used.
 
 ### Trigger Texture Copy
 
-| Index Word | Description |
-|----|----|
-| 0 | Command header (ID = 0x04) |
-| 1 | Input buffer address. |
-| 2 | Output buffer address. |
-| 3 | Total bytes to copy, not including gaps. |
-| 4 | Bits 0-15: Size of input line, in bytes. Bits 16-31: Gap between input lines, in bytes. |
-| 5 | Same as 4, but for the output. |
-| 6 | Flags, corresponding to the [Transfer Engine flags](GPU/External_Registers#transfer_engine "wikilink"). However, for TextureCopy commands, bit 3 is always set, bit 2 is set if any output dimension is smaller than the input, and other bits are always 0. |
-| 7 | Unused |
+| Index Word | Description                        |
+|------------|------------------------------------|
+| 0          | Command header (ID = 0x04)         |
+| 1          | Source address                     |
+| 2          | Destination address                |
+| 3          | Size                               |
+| 4          | Line width \| (gap \<\< 16)        |
+| 5          | Same as above, for the destination |
+| 6          | Flags                              |
+| 7          | Unused                             |
 
-This command is similar to cmd3. It also triggers the [GPU Transfer Engine](GPU/External_Registers#transfer_engine "wikilink"), but setting the TextureCopy parameters.
+This command sets the [Texture Copy registers](GPU/External_Registers#texturecopy "wikilink"). Note that GSP doesn't enforce bit3 of the flags to be set.
+
+No error checking is performed on the parameters. Addresses and size should be aligned to 8 bytes, and the addresses should be in linear, QTM or VRAM memory, otherwise PA 0 is used.
 
 ### Flush Cache Regions
 
