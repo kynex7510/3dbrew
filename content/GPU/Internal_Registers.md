@@ -1256,7 +1256,7 @@ If the texture is a cube:
 | ADDR5    | Positive Z  |
 | ADDR6    | Negative Z  |
 
-Otherwise, ADDR(1) points to a 2D texture, and the rest are empty.
+Otherwise, ADDR(1) points to a 2D texture, and the rest are empty. Addresses shall be ordered from lowest to highest, otherwise some faces might not render correctly.
 
 ### GPUREG_TEXUNIT*i*\_SHADOW
 
