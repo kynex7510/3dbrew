@@ -22,4 +22,19 @@ After 2 unknown lines, there is info about a specific theme its formated like CS
 
 ## Theme List Format
 
-Under Construction
+<div style="border: 1px solid #f28500; background: #fff8dc; padding: 0.5em;">
+
+The Table list is incomplete. Research is in progress.
+
+</div>
+
+The Theme List format, used to display available themes in the category chosen by the top section or the new themes section, is stored at <https://npdl.cdn.nintendowifi.net/p01/nsa/dMtiFHzm5OOf0y2O/thmlist/><CountryCode>/<Language>/<thmListId>.
+
+Decrypting the Theme List BOSS file using [GodMode9](GodMode9 "wikilink") or [Decrypt9WIP](Decrypt9WIP "wikilink") contains the following data
+
+| Offset | Description                     |
+|--------|---------------------------------|
+| 0x0    | File magic (boss)               |
+| 0x9    | File size (in bytes)            |
+| 0x2D4  | Title of the theme category     |
+| 0x394  | Developer of the theme category |
