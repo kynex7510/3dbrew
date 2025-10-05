@@ -18,3 +18,7 @@ title = 'AMPXI:GetPersonalizedTicketInfoList'
 | 0          | Header code                 |
 | 1          | Result code                 |
 | 2          | Number of Read Ticket Infos |
+
+# Description
+
+Returns [Ticket Info](Application_Manager_Services#ticketinfo "wikilink") structures for user titles (excluding CTR or TWL system titles, and also DLP child titles).
