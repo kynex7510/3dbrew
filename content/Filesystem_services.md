@@ -498,6 +498,7 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 <th>High Level NCCH Access</th>
 <th>Save Data Access (high level)</th>
 <th>Raw Content</th>
+<th>FS only: Save Data Transfer</th>
 </tr>
 </thead>
 <tbody>
@@ -583,6 +584,27 @@ For ExeFS, (System Menu Data / <code>exefs:/.code</code>),</p>
 <td>0x4</td>
 <td>Content index from TMD for NAND/SD titles
 NCSD partition index for gamecards</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0xC</td>
+<td>padding</td>
+</tr>
+</tbody>
+</table></td>
+<td><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x4</td>
+<td>Save data transfer key from <a {{% href "../FS:BeginSaveDataMove" %}} title="wikilink">FS:BeginSaveDataMove</a></td>
 </tr>
 <tr>
 <td>0x4</td>
