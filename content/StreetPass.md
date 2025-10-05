@@ -73,8 +73,10 @@ The third field in the protocol header appears to be an arbitrary length list of
 ` Mii Plaza: 00 02 08 00 00`  
 ` Ridge Racer: 00 03 58 00 30`  
 ` Sims 3: 00 03 65 00 30`  
+` Street Fighter: 00 03 05 00 02 (FF FF FF FF FF FF)`  
+` Tomodachi life: 00 08 C5 00 30 (EUR region)`  
 ```
- Street Fighter: 00 03 05 00 02 (FF FF FF FF FF FF)
+ Animal crossing new leaf: 00 19 8D 00 (EUR region)
 ```
 
 The first 4 bytes are the titleID of the service, the last byte seems to contain flags.
