@@ -1,5 +1,6 @@
 +++
 title = 'DSP AAC Decoder'
+categories = ["DSP"]
 +++
 
 *Note that everything below may vary depending on the exact DSP firmware used and different variants have slightly different behaviours.*
@@ -77,4 +78,5 @@ Size : 24 bytes
 | 12000Hz (12KHz)     | 6     |
 | 11025Hz (11.025KHz) | 7     |
 | 8000Hz (8KHz)       | 8     |
-|                     |       |
+
+[Category:DSP](Category:DSP "wikilink")
