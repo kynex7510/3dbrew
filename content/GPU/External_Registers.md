@@ -423,37 +423,37 @@ Unswizzles the input buffer, this is usually used for transferring GPU framebuff
 - Height dimensions must be \>= 16.
 - Width dimensions are required to be aligned to 16 bytes when doing RGB8 transfers.
   - Otherwise they are required to be aligned to 8 bytes.
-- If downscale is used, input and output dimensions should be the same, and width/2 must also follow alignment constraints.
+- If downscale is used, input and output dimensions should be the same (otherwise the output is glitched), and width/2 must also follow alignment constraints.
 
 Format conversion results:
 
-| Conversion        | Result                           |
-|-------------------|----------------------------------|
-| RGBA8 -\> RGBA8   | Has interrupt, correct output    |
-| RGBA8 -\> RGB8    | Has interrupt, correct output    |
-| RGBA8 -\> RGB565  | Has interrupt, correct output    |
-| RGBA8 -\> RGB5A1  | Has interrupt, correct output    |
-| RGBA8 -\> RGBA4   | Has interrupt, correct output    |
-| RGB8 -\> RGBA8    | No interrupt                     |
-| RGB8 -\> RGB8     | Has interrupt, correct output    |
-| RGB8 -\> RGB565   | No interrupt                     |
-| RGB8 -\> RGB5A1   | No interrupt                     |
-| RGB8 -\> RGBA4    | No interrupt                     |
-| RGB565 -\> RGBA8  | No interrupt                     |
-| RGB565 -\> RGB8   | No interrupt                     |
-| RGB565 -\> RGB565 | Has interrupt, output not tested |
-| RGB565 -\> RGB5A1 | Has interrupt, output not tested |
-| RGB565 -\> RGBA4  | Has interrupt, output not tested |
-| RGB5A1 -\> RGBA8  | No interrupt                     |
-| RGB5A1 -\> RGB8   | No interrupt                     |
-| RGB5A1 -\> RGB565 | Has interrupt, output not tested |
-| RGB5A1 -\> RGB5A1 | Has interrupt, output not tested |
-| RGB5A1 -\> RGBA4  | Has interrupt, output not tested |
-| RGBA4 -\> RGBA8   | No interrupt                     |
-| RGBA4 -\> RGB8    | No interrupt                     |
-| RGBA4 -\> RGB565  | Has interrupt, output not tested |
-| RGBA4 -\> RGB5A1  | Has interrupt, output not tested |
-| RGBA4 -\> RGBA4   | Has interrupt, output not tested |
+| Conversion        | Result                        |
+|-------------------|-------------------------------|
+| RGBA8 -\> RGBA8   | Has interrupt, correct output |
+| RGBA8 -\> RGB8    | Has interrupt, correct output |
+| RGBA8 -\> RGB565  | Has interrupt, correct output |
+| RGBA8 -\> RGB5A1  | Has interrupt, correct output |
+| RGBA8 -\> RGBA4   | Has interrupt, correct output |
+| RGB8 -\> RGBA8    | No interrupt                  |
+| RGB8 -\> RGB8     | Has interrupt, correct output |
+| RGB8 -\> RGB565   | No interrupt                  |
+| RGB8 -\> RGB5A1   | No interrupt                  |
+| RGB8 -\> RGBA4    | No interrupt                  |
+| RGB565 -\> RGBA8  | No interrupt                  |
+| RGB565 -\> RGB8   | No interrupt                  |
+| RGB565 -\> RGB565 | Has interrupt, correct output |
+| RGB565 -\> RGB5A1 | Has interrupt, correct output |
+| RGB565 -\> RGBA4  | Has interrupt, correct output |
+| RGB5A1 -\> RGBA8  | No interrupt                  |
+| RGB5A1 -\> RGB8   | No interrupt                  |
+| RGB5A1 -\> RGB565 | Has interrupt, correct output |
+| RGB5A1 -\> RGB5A1 | Has interrupt, correct output |
+| RGB5A1 -\> RGBA4  | Has interrupt, correct output |
+| RGBA4 -\> RGBA8   | No interrupt                  |
+| RGBA4 -\> RGB8    | No interrupt                  |
+| RGBA4 -\> RGB565  | Has interrupt, correct output |
+| RGBA4 -\> RGB5A1  | Has interrupt, correct output |
+| RGBA4 -\> RGBA4   | Has interrupt, correct output |
 
 ### TextureCopy
 
