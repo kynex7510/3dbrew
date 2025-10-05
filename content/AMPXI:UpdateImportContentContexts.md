@@ -4,12 +4,12 @@ title = 'AMPXI:UpdateImportContentContexts'
 
 # Request
 
-| Index Word | Description                                                                                                  |
-|------------|--------------------------------------------------------------------------------------------------------------|
-| 0          | Header code \[0x00630042\]                                                                                   |
-| 1          | Import Content Context Count                                                                                 |
-| 2          | ((Import Content Context Count \* 2) \<\< 8) \| 0x6                                                          |
-| 3          | [Import Content Context](Application_Manager_Services#importcontentcontext "wikilink") Indices Input Pointer |
+| Index Word | Description |
+|----|----|
+| 0 | Header code \[0x00630042\] |
+| 1 | Import Content Context Count |
+| 2 | ((Import Content Context Count \* 2) \<\< 8) \| 0x6 |
+| 3 | [Import Content Context](Application_Manager_Services#importcontentcontext "wikilink") Indices Input Pointer |
 
 # Response
 
