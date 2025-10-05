@@ -188,6 +188,15 @@ The header located at offset 0x100 defines the rest components of the file (part
 
 ### DISA header
 
+#### SaveDataSecureValue
+
+| Offset | Length | Description                                                |
+|--------|--------|------------------------------------------------------------|
+| 0x0    | 0x4    | u32, [Secure Value](Anti_Savegame_Restore "wikilink") slot |
+| 0x4    | 0x8    | u64, [Secure Value](Anti_Savegame_Restore "wikilink")      |
+
+#### DISA Header structure
+
 | Offset | Length | Description |
 |----|----|----|
 | 0x00 | 4 | Magic "DISA" |
@@ -209,7 +218,7 @@ The header located at offset 0x100 defines the rest components of the file (part
 | 0x69 | 1 | Number of used [Save Data Secure Value](Anti_Savegame_Restore "wikilink") entries in the DISA header |
 | 0x6A | 2 | Padding |
 | 0x6C | 0x20 | SHA-256 over the active partition table |
-| 0x8C | 0x30 (0xC \* 0x4) | [Save Data Secure Value](SaveDataSecureValue "wikilink") entries (4) |
+| 0x8C | 0x30 (0xC \* 0x4) | [Save Data Secure Value](DISA_and_DIFF#savedatasecurevalue "wikilink") entries (4) |
 | 0xBC | 0x44 | Unused |
 
 Note:
