@@ -975,9 +975,9 @@ This is a set of flags which add additional paramaters to the URL query with inf
 
 | Flag | Description |
 |----|----|
-| 0x01 | Adds the "c" (two-letter country code) parameter to the query |
-| 0x02 | Adds the "l" (two-letter language code) parameter to the query |
-| 0x04 | Adds the "tm" ([target model](Cfg:GetSystemModel "wikilink")) parameter to the query |
+| 0x1 | Adds the "c" (two-letter country code) parameter to the query |
+| 0x2 | Adds the "l" (two-letter language code) parameter to the query |
+| 0x4 | Adds the "tm" ([target model](Cfg:GetSystemModel "wikilink")) parameter to the query |
 
 This is a set of flags which add additional paramaters to the URL query with information about the console configuration.
 
