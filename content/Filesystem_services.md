@@ -646,6 +646,27 @@ For FS, this archive functions the same, except for the following limitations:
 
 ### FSPXI Program Access
 
+Provides access to a "merged" archive of a base title and, optionally, a separate update (patch) title.
+
+If no patch title exists, the base title is considered to be the patch title, i.e. turning all "patch" accesses into accesses to the base title.
+
+#### Archive Path
+
+| Offset | Size | Description |
+|----|----|----|
+| 0x0 | 0x8 | u64, Program Handle from [PXIPM:RegisterProgram](PXIPM:RegisterProgram "wikilink") |
+
+#### Program Access Type
+
+| Value | Description |
+|----|----|
+| 0 | RomFS of base title ("unspecified" [content type](NCCH#content_type "wikilink"), the default) |
+| 1 | `exefs:/.code` of the patch title |
+| 2 | System Menu Data (`exefs:/icon`, `exefs:/banner`, `exefs:/logo`) |
+| 3 | Save Data (high level, decrypted) |
+| 4 | RomFS of base title (all [content types](NCCH#content_type "wikilink")) |
+| 5 | RomFS of patch (update) title |
+
 ### [RomFS](RomFS "wikilink")
 
 Archives 0x3 and 0x2345678E both allow for accessing the [level-3 IVFC images](RomFS#level_3_format "wikilink") for RomFS access. The main CXI RomFS is accessible via an all-zero 0xc-byte binary file-lowpath. The update RomFS can be accessed with the first u32 in the binary file-lowpath being set to 0x5. The user must handle parsing the filesystem used in the exposed image itself.
