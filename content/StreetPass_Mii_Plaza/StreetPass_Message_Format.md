@@ -68,7 +68,7 @@ The actual data. A number (CF8+XX from the header) has to be added to the offset
 | 696C | 200 | [StreetPass Fishing Statistics](StreetPass_Mii_Plaza#streetpass_fishing_statistics "wikilink") |
 | 6B6C | 200 | [StreetPass Zombies Statistics](StreetPass_Mii_Plaza#streetpass_zombies_statistics "wikilink") |
 | 6D6C | 2 | Unknown (Has StreetPass Premium?) |
-| 6D6E | 2 | Steps (Pedometer) |
+| 6D6E | 2 | Steps (Pedometer, It's limited to 50000 steps) |
 | 6D70 | 4 | Flags if StreetPass Game of Game Pack 3 has save data (0x1 = Slot Racer; 0x2 = Trader) |
 | 6D74 | 400 | [StreetPass Slot Racer Statistics](StreetPass_Mii_Plaza#streetpass_slot_racer_statistics "wikilink") |
 | 7174 | 100 | [StreetPass Trader Statistics](StreetPass_Mii_Plaza#streetpass_trader_statistics "wikilink") |
@@ -183,6 +183,8 @@ These datas are referenced by the slot index from an object entry if the type is
 | 7      | 1      | Flags: 0x01 show flower petals         |
 
 ### StreetPass Mansion Statistics
+
+The statistic is only updated when a floor is completed.
 
 | Offset | Length | Desciption |
 |----|----|----|
