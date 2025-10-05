@@ -89,7 +89,7 @@ The command header has the following structure:
 
 Addresses specified in command parameters are virtual addresses. Depending on the command, there might be constraints on the accepted parameters. In general, some commands require parameters to be aligned, and addresses are expected to be on [linear](Memory_Management#memory_mapping "wikilink"), [QTM](Memory_layout#0x1f000000_new_3ds_only "wikilink") or VRAM memory.
 
-### Trigger DMA Request
+### RequestDMA
 
 | Index Word | Description                               |
 |------------|-------------------------------------------|
@@ -106,7 +106,7 @@ The source buffer must be mapped as readable in the source process, while the de
 
 Any process must have acquired rendering rights, otherwise the command does nothing.
 
-### Trigger Command List Processing
+### ProcessCommandList
 
 | Index Word | Description |
 |----|----|
@@ -123,7 +123,7 @@ No error checking is performed on the parameters. Address and size should be bot
 
 Any process must have acquired rendering rights, otherwise the command does nothing.
 
-### Trigger Memory Fill
+### MemoryFill
 
 | Index Word | Description                    |
 |------------|--------------------------------|
@@ -140,7 +140,7 @@ This command sets the [Memory Fill registers](GPU/External_Registers#memory_fill
 
 Addresses should be aligned to 8 bytes and must be in linear, QTM or VRAM memory, otherwise error 0xE0E02BF5 (GSP_INVALID_ADDRESS) is returned. The start address for a buffer must be below its end address, else the same error is returned. If the start address for a buffer is 0, that buffer is skipped; otherwise, its relative PSC unit is used for the fill operation.
 
-### Trigger Display Transfer
+### DisplayTransfer
 
 | Index Word | Description                |
 |------------|----------------------------|
@@ -156,7 +156,7 @@ This command sets the [Display Transfer registers](GPU/External_Registers#transf
 
 No error checking is performed on the parameters. Addresses should be aligned to 8 bytes and should be in linear, QTM or VRAM memory, otherwise PA 0 is used.
 
-### Trigger Texture Copy
+### TextureCopy
 
 | Index Word | Description                        |
 |------------|------------------------------------|
@@ -173,7 +173,7 @@ This command sets the [Texture Copy registers](GPU/External_Registers#texturecop
 
 No error checking is performed on the parameters. Addresses and size should be aligned to 8 bytes, and the addresses should be in linear, QTM or VRAM memory, otherwise PA 0 is used.
 
-### Flush Cache Regions
+### FlushCacheRegions
 
 | Index Word | Description                |
 |------------|----------------------------|
