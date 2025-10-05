@@ -365,7 +365,7 @@ Note that ExeFS files only support reading from offset=0 and with size=file_size
 | Index word | Description |
 |----|----|
 | 0 | [DataAccessPath](Filesystem_services#dataaccesspath "wikilink") |
-| 1 | save ID |
+| 1 | save ID low (save ID high is 0) |
 
 ###### File Path
 
