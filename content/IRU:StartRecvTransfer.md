@@ -25,7 +25,6 @@ title = 'IRU:StartRecvTransfer'
 This starts an IR data-receive transfer, this command is non-blocking. The received data (when the receive transfer-count is non-zero) is written to sharedmemaddr + 0. The currently received transfer-count can be obtained via [IRU:GetRecvTransferCount](IRU:GetRecvTransferCount "wikilink"), unless cancelled using [IRU:WaitRecvTransfer](IRU:WaitRecvTransfer "wikilink").
 Before another receive transfer can be started, [IRU:WaitRecvTransfer](IRU:WaitRecvTransfer "wikilink") needs to be called, otherwise error 0xE0210CCA is returned.
 The shared memory size must be larger or equal to the input size and both have to be non-zero, otherwise error 0xE0E10FEC is returned.
-
 The event handle returned by [IRU:GetRecvFinishedEvent](IRU:GetRecvFinishedEvent "wikilink") is signalled when the given amount of bytes has been received.
 
 If the variable length flag is set, the command instead continuously reads a variable amount of bytes.
