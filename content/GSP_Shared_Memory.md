@@ -85,9 +85,7 @@ GSP checks for status.bit0 and optionally avoids handling further commands, howe
 
 ## Commands
 
-Addresses specified in parameters are virtual addresses. For applications these are normally located in GSP memory, while for other processes they are located in VRAM.
-
-Address and size parameters except for command 0 and command 5 must be 8-byte aligned.
+Addresses specified in parameters are virtual addresses. Address and size parameters except for command 0 and command 5 must be 8-byte aligned.
 
 ### Trigger DMA Request
 
@@ -100,7 +98,9 @@ Address and size parameters except for command 0 and command 5 must be 8-byte al
 | 6-4        | Unused                                    |
 | 7          | Flush source (0 = don't flush, 1 = flush) |
 
-This command is normally used to DMA data from the application GSP [heap](Memory_layout "wikilink") to VRAM. When flushing is enabled and the source buffer is not located within VRAM, svcFlushProcessDataCache is used to flush the source buffer.
+This command issues a [DMA request](Corelink_DMA_Engines "wikilink") as the calling process. When the destination address is within VRAM, GSP places itself as the destination process, this makes it possible to transfer data in VRAM without needing it listed in the destination process [exheader mappings](NCCH/Extended_Header#arm11_kernel_capabilities "wikilink"). Otherwise, both source and destination of the DMA request are the calling process.
+
+The source buffer must be mapped as readable in the source process, while the destination address must be mapped as writable in the destination process. When flushing is enabled and the source address is above VRAM, [svcFlushProcessDataCache](SVC "wikilink") is used to flush the source buffer.
 
 ### Trigger Command List Processing
 
