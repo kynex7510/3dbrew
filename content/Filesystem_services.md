@@ -436,12 +436,13 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 
 #### Title Access Type
 
-| Value | Description                              |
-|-------|------------------------------------------|
-| 0     | High-level NCCH content access           |
-| 1     | Save data access (high-level, decrypted) |
-| 2     | Raw content (low-level NCCH/SRL) access  |
-| 5     | Save data access (low-level, encrypted)  |
+| Value | Description                                  |
+|-------|----------------------------------------------|
+| 0     | High-level NCCH content access               |
+| 1     | Save data access (high-level, decrypted)     |
+| 2     | Raw content (low-level NCCH/SRL) access      |
+| 3     | Banner save data access (for DSiWare titles) |
+| 5     | Save data access (low-level, encrypted)      |
 
 #### NCCH Access Type
 
@@ -458,29 +459,157 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 
 | Value | Description |
 |----|----|
-| 0 | [Extheader](NCCH/Extended_Header "wikilink") without AccessDesc (0x0-0x400) |
-| 1 | [Extheader](NCCH/Extended_Header "wikilink") with AccessDesc (0x0-0x800) |
+| 0 | [Extheader](NCCH/Extended_Header "wikilink") (0x0-0x400) |
+| 1 | [Extheader](NCCH/Extended_Header "wikilink") AccessDesc (0x400-0x800) |
 | 2 | Raw [NCCH Header](NCCH#ncch_header "wikilink") |
 
 #### Archive Path
 
-| Index word | Description                         |
-|------------|-------------------------------------|
-| 0          | Lower word programID                |
-| 1          | Upper word programID                |
-| 2          | [Media Type](Mediatypes "wikilink") |
-| 3          | unused                              |
+| Offset | Size | Description                         |
+|--------|------|-------------------------------------|
+| 0x0    | 0x8  | Program ID (Title ID)               |
+| 0x8    | 0x1  | [Media Type](Mediatypes "wikilink") |
+| 0x9    | 0x7  | padding                             |
 
 #### File Path
 
-| Index word | Description |
-|----|----|
-| 0 | [Title Access Type](Filesystem_services#title_access_type "wikilink") |
-| 1 | TMD content index / NCSD partition index. |
-| 2 | Type: 0=romfs(0 for non-NCCH as well), 1=exefs ".code"(?), 2=exefs "icon"/"banner"/"logo", 3=unknown, 4=unknown, 5=unknown. |
-| 3-4 | Filename for ExeFS. |
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x4</td>
+<td><a {{% href "../Filesystem_services" %}} title="wikilink">Title Access Type</a></td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x10</td>
+<td>Dynamic data depending on <a {{% href "../Filesystem_services" %}} title="wikilink">Title Access Type</a>:</p>
+<table>
+<thead>
+<tr>
+<th>High Level NCCH Access</th>
+<th>Save Data Access (high level)</th>
+<th>Raw Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x4</td>
+<td>Content index from TMD for NAND/SD titles
+NCSD partition index for gamecards</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x4</td>
+<td><a {{% href "../Filesystem_services" %}} title="wikilink">NCCH Access Type</a></td>
+</tr>
+<tr>
+<td>0x8</td>
+<td>0x8</td>
+<td>Dynamic data depending on <a {{% href "../Filesystem_services" %}} title="wikilink">NCCH Access Type</a>:
+For ExeFS, (System Menu Data / <code>exefs:/.code</code>),</p>
+<table>
+<tbody>
+<tr>
+<td>8-byte ExeFS file name</td>
+</tr>
+</tbody>
+</table>
+<p>For Header Access,</p>
+<table>
+<tbody>
+<tr>
+<td><a {{% href "../Filesystem_services" %}} title="wikilink">u64, NCCH Header Access Type</a></td>
+</tr>
+</tbody>
+</table>
+<p>For RomFS,</p>
+<table>
+<tbody>
+<tr>
+<td><a {{% href "../NCCH" %}} title="wikilink">u64, Allowed content types flag</a></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table></td>
+<td><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x10</td>
+<td>16-byte IV for save data decryption</td>
+</tr>
+</tbody>
+</table></td>
+<td><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x4</td>
+<td>Content index from TMD for NAND/SD titles
+NCSD partition index for gamecards</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0xC</td>
+<td>padding</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>0x10</td>
+<td>16-byte seed for titles that require one, or for validating a seed against the check value in the <a {{% href "../NCCH" %}} title="wikilink">NCCH Header</a>'s check value.
+If the title does not use a seed, this should not be included and size 0x14 should be used instead of 0x24.</td>
+</tr>
+</tbody>
+</table>
 
-The 0x14-byte lowpath is all-zero for accessing the title's main RomFS.
+For encrypted save data access and banner save data access, the entire 0x10 portion of the dynamic data is left blank.
+
+The "is seeded check" NCCH access type opens a virtual 1-byte file that reads either 0 or 1; this value is generated on-the-fly and will be 1 if ncchflags\[7\] has bit5 set (content uses seed), and 0 otherwise.
+
+For NCCH sections that require a seed (e.g. `.code`, RomFS, etc.), the additional seed portion of the low path must be populated with the correct seed.
+
+The "Seed Verify/Validate" NCCH access type also requires the seed portion of the lowpath. The target NCCH content is opened (with the opened file interface being stubbed, meaning no real reads/writes can be performed on it), and the given seed is used to calculate the seed check hash, and part of it is compared to the check value in the NCCH header. If it matches, opening the "file" succeeds, otherwise 0xD900458C is returned. If attempt is made to use the seed validation type on a content that does not use a seed, error 0xC92044E6 is returned.
 
 ### [RomFS](RomFS "wikilink")
 
