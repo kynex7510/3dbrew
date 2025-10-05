@@ -432,20 +432,50 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 | 1 | `Lower_word_saveid >> 8` ? |
 | 2 | Unknown. Game calculate this using formula `0xFFFFFF00 | unknown_b` |
 
-### 0x2345678A Archive Path Data Format
+### Title Access Archive Path Data Format
+
+#### Title Access Type
+
+| Value | Description                              |
+|-------|------------------------------------------|
+| 0     | High-level NCCH content access           |
+| 1     | Save data access (high-level, decrypted) |
+| 2     | Raw content (low-level NCCH/SRL) access  |
+| 5     | Save data access (low-level, encrypted)  |
+
+#### NCCH Access Type
+
+| Value | Description                                                      |
+|-------|------------------------------------------------------------------|
+| 0     | RomFS                                                            |
+| 1     | `exefs:/.code`                                                   |
+| 2     | System Menu Data (`exefs:/icon`, `exefs:/banner`, `exefs:/logo`) |
+| 3     | NCCH Header(s)                                                   |
+| 4     | "is seeded" check                                                |
+| 5     | Seed verify/validate                                             |
+
+#### NCCH Header Access Type
+
+| Value | Description |
+|----|----|
+| 0 | [Extheader](NCCH/Extended_Header "wikilink") without AccessDesc (0x0-0x400) |
+| 1 | [Extheader](NCCH/Extended_Header "wikilink") with AccessDesc (0x0-0x800) |
+| 2 | Raw [NCCH Header](NCCH#ncch_header "wikilink") |
+
+#### Archive Path
+
+| Index word | Description                         |
+|------------|-------------------------------------|
+| 0          | Lower word programID                |
+| 1          | Upper word programID                |
+| 2          | [Media Type](Mediatypes "wikilink") |
+| 3          | unused                              |
+
+#### File Path
 
 | Index word | Description |
 |----|----|
-| 0 | Lower word programID |
-| 1 | Upper word programID |
-| 2 | ([Mediatype](Mediatypes "wikilink") & 0xFF) \| (uninitialized_data? & 0xFFFFFF00) |
-| 3 | Number of something? Hardcoded per-archive, 0 for ExeFS, 200 for area:, 100 for rate:, 40 for eula:, etc. |
-
-File lowpath:
-
-| Index word | Description |
-|----|----|
-| 0 | 0 for NCCH data, 1 for savedata. The latter is only valid for FSPXI. Value 2 is allowed via archive 0x3, it's unknown what this is. |
+| 0 | [Title Access Type](Filesystem_services#title_access_type "wikilink") |
 | 1 | TMD content index / NCSD partition index. |
 | 2 | Type: 0=romfs(0 for non-NCCH as well), 1=exefs ".code"(?), 2=exefs "icon"/"banner"/"logo", 3=unknown, 4=unknown, 5=unknown. |
 | 3-4 | Filename for ExeFS. |
