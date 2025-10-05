@@ -35,7 +35,7 @@ title = 'IO Registers'
 | No | A11/A9 | [MVD Registers](MVD_Registers "wikilink") | 0x10130000 | [MVD Services](MVD_Services "wikilink") |  |
 | No | A11/A9 | [MVD Registers](MVD_Registers "wikilink") | 0x10131000 | [MVD Services](MVD_Services "wikilink") |  |
 | No | A11/A9 | [MVD Registers](MVD_Registers "wikilink") | 0x10132000 | [MVD Services](MVD_Services "wikilink") |  |
-| Yes | A11/A9 | [CONFIG11 Registers](CONFIG11_Registers "wikilink") | 0x10140000 | Process9, Boot11, Kernel11, TwlBg, [DSP Services](DSP_Services "wikilink"), [NWM Services](NWM_Services "wikilink"), [SPI Services](SPI_Services "wikilink") | System configuration. |
+| Yes | A11/A9 | [CONFIG11 Registers](CONFIG11_Registers "wikilink") | 0x10140000 | Process9, Boot11, Kernel11, TwlBg, [DSP Services](DSP_Services "wikilink"), [SPI Services](SPI_Services "wikilink"), [NWM Services](NWM_Services "wikilink") (until [11.4.X](11.4.0-37#nwm-sysmodule "wikilink")) | System configuration. |
 | Yes | A11/A9 | [PDN Registers](PDN_Registers "wikilink") | 0x10141000 | Process9, Boot11, Kernel11, TwlBg, [Codec Services](Codec_Services "wikilink"), [NWM Services](NWM_Services "wikilink"), [SPI Services](SPI_Services "wikilink"), [PDN Services](PDN_Services "wikilink") | Power management |
 | Yes | A11/A9 | [SPI Registers](SPI_Registers "wikilink") | 0x10142000 | TwlBg, [SPI Services](SPI_Services "wikilink") |  |
 | Yes | A11/A9 | [SPI Registers](SPI_Registers "wikilink") | 0x10143000 | TwlBg, dmnt Module | Debugger related? |
