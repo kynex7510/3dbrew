@@ -382,39 +382,78 @@ Color formats 5, 6, and 7 are blocked by gsp, but they behave as pixel-doubled R
 |----|----|
 | 0x1EF00C00 | Input physical address \>\> 3 |
 | 0x1EF00C04 | Output physical address \>\> 3 |
-| 0x1EF00C08 | DisplayTransfer output width (bits 0-15) and height (bits 16-31). |
-| 0x1EF00C0C | DisplayTransfer input width and height. |
-| 0x1EF00C10 | Transfer flags. (See below) |
-| 0x1EF00C14 | GSP module writes value 0 here prior to writing to 0x1EF00C18, for cmd3. |
-| 0x1EF00C18 | Setting bit0 starts the transfer. Upon completion, bit0 is unset and bit8 is set. |
+| 0x1EF00C08 | DisplayTransfer output width (bits 0-15) and height (bits 16-31) |
+| 0x1EF00C0C | DisplayTransfer input width and height |
+| 0x1EF00C10 | Transfer flags |
+| 0x1EF00C14 | ?, GSP writes value 0 here prior to writing to 0x1EF00C18 for DisplayTransfer |
+| 0x1EF00C18 | Setting bit0 starts the transfer; upon completion, bit0 is unset and bit8 is set |
 | 0x1EF00C1C | ? |
-| 0x1EF00C20 | TextureCopy total amount of data to copy, in bytes. |
-| 0x1EF00C24 | TextureCopy input line width (bits 0-15) and gap (bits 16-31), in 16 byte units. |
-| 0x1EF00C28 | TextureCopy output line width and gap. |
+| 0x1EF00C20 | TextureCopy total amount of data to copy, in bytes |
+| 0x1EF00C24 | TextureCopy input line width (bits 0-15) and gap (bits 16-31), in 16 byte units |
+| 0x1EF00C28 | TextureCopy output line width and gap |
 
-These registers are used by [GX command](GSP_Shared_Memory "wikilink") 3 and 4. For cmd4, \*0x1EF00C18 \|= 1 is used instead of just writing value 1. The DisplayTransfer registers are only used if bit 3 of the flags is unset and ignored otherwise. The TextureCopy registers are likewise only used if bit 3 is set, and ignored otherwise.
-
-The minimum supported dimension for output is 64x64, anything lower will hang the engine.
-
-#### Flags Register - 0x1EF00C10
+Transfer flags:
 
 | Bit | Description |
 |----|----|
-| 0 | When set, the framebuffer data is flipped vertically. |
-| 1 | When set, the input framebuffer is treated as linear and converted to tiled in the output, converts tiled-\>linear when unset. |
-| 2 | This bit is required when the output width is less than the input width for the hardware to properly crop the lines, otherwise the output will be mis-aligned. |
-| 3 | Uses a TextureCopy mode transfer. See below for details. |
+| 0 | When set, the framebuffer data is flipped vertically |
+| 1 | Linear-\>tiled mode (overrides tiled-\>linear mode) |
+| 2 | This bit is required when the output width is less than the input width for the hardware to properly crop the lines, otherwise the output will be mis-aligned |
+| 3 | TextureCopy mode (overrides all other modes) |
 | 4 | Not writable |
-| 5 | Don't perform tiled-linear conversion. Incompatible with bit 1, so only tiled-tiled transfers can be done, not linear-linear. |
+| 5 | Tiled-\>tiled mode (overrides tiled-\>linear, linear-\>tiled modes) |
 | 7-6 | Not writable |
-| 10-8 | Input framebuffer color format, value0 and value1 are the same as the [LCD Source Framebuffer Formats](GPU_Registers#framebuffer_color_formats "wikilink") (usually zero) |
+| 10-8 | Input [color format](GPU/External_Registers#framebuffer_color_formats "wikilink") |
 | 11 | Not writable |
-| 14-12 | Output framebuffer color format |
+| 14-12 | Output color format |
 | 15 | Not writable |
-| 16 | Use 32x32 block tiling mode, instead of the usual 8x8 one. Output dimensions must be multiples of 32, even if cropping with bit 2 set above. |
+| 16 | Use 32x32 block tiling mode, instead of the usual 8x8 one (output dimensions must be multiples of 32, even if cropping with bit 2 set above) |
 | 17-23 | Not writable |
-| 24-25 | Scale down the input image using a box filter. 0 = No downscale, 1 = 2x1 downscale. 2 = 2x2 downscale, 3 = invalid |
+| 24-25 | Scale down the input image using a box filter (0 = No downscale, 1 = 2x1 downscale, 2 = 2x2 downscale, 3 = invalid) |
 | 31-26 | Not writable |
+
+These registers are used by [GSP](GSP_Shared_Memory#commands "wikilink") for DisplayTransfer and TextureCopy. TextureCopy registers are only used in TextureCopy mode; likewise, DisplayTransfer registers are only used when TextureCopy mode is not set. By default, DisplayTransfer will work in tiled-\>linear mode.
+
+### Tiled to linear
+
+Unswizzles the input buffer, this is usually used for transferring GPU framebuffer data onto LCD framebuffers. The following constraints apply:
+
+- Output dimensions must not be bigger than input ones.
+- Width dimensions must be \>= 64.
+- Height dimensions must be \>= 16.
+- Width dimensions are required to be aligned to 16 bytes when doing RGB8 transfers.
+  - Otherwise they are required to be aligned to 8 bytes.
+- If downscale is used, input and output dimensions should be the same, and width/2 must also follow alignment constraints.
+
+Format conversion results:
+
+| Conversion        | Result                           |
+|-------------------|----------------------------------|
+| RGBA8 -\> RGBA8   | Has interrupt, correct output    |
+| RGBA8 -\> RGB8    | Has interrupt, correct output    |
+| RGBA8 -\> RGB565  | Has interrupt, correct output    |
+| RGBA8 -\> RGB5A1  | Has interrupt, correct output    |
+| RGBA8 -\> RGBA4   | Has interrupt, correct output    |
+| RGB8 -\> RGBA8    | No interrupt                     |
+| RGB8 -\> RGB8     | Has interrupt, correct output    |
+| RGB8 -\> RGB565   | No interrupt                     |
+| RGB8 -\> RGB5A1   | No interrupt                     |
+| RGB8 -\> RGBA4    | No interrupt                     |
+| RGB565 -\> RGBA8  | No interrupt                     |
+| RGB565 -\> RGB8   | No interrupt                     |
+| RGB565 -\> RGB565 | Has interrupt, output not tested |
+| RGB565 -\> RGB5A1 | Has interrupt, output not tested |
+| RGB565 -\> RGBA4  | Has interrupt, output not tested |
+| RGB5A1 -\> RGBA8  | No interrupt                     |
+| RGB5A1 -\> RGB8   | No interrupt                     |
+| RGB5A1 -\> RGB565 | Has interrupt, output not tested |
+| RGB5A1 -\> RGB5A1 | Has interrupt, output not tested |
+| RGB5A1 -\> RGBA4  | Has interrupt, output not tested |
+| RGBA4 -\> RGBA8   | No interrupt                     |
+| RGBA4 -\> RGB8    | No interrupt                     |
+| RGBA4 -\> RGB565  | Has interrupt, output not tested |
+| RGBA4 -\> RGB5A1  | Has interrupt, output not tested |
+| RGBA4 -\> RGBA4   | Has interrupt, output not tested |
 
 ### TextureCopy
 
