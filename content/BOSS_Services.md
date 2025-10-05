@@ -617,7 +617,7 @@ This type contains information about an NsData, the fields match exactly with th
 <td>Yes</td>
 <td>No</td>
 <td>No</td>
-<td><a href="#taskstatecode" title="wikilink">TaskStateCode</a>. Unknown purpose</td>
+<td><a href="#taskstatecode" title="wikilink">TaskStateCode</a></td>
 </tr>
 <tr>
 <td>0x1E</td>
@@ -671,7 +671,7 @@ This type contains information about an NsData, the fields match exactly with th
 <td>Yes</td>
 <td>No</td>
 <td>No</td>
-<td>CommErrorCode. Unknown purpose</td>
+<td>CommErrorCode. Received HTTP status code when performing the task. Set to 0 for successful codes</td>
 </tr>
 <tr>
 <td>0x24</td>
