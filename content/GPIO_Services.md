@@ -67,7 +67,7 @@ The bitmask used by the service commands determines which bits in the GPIO regis
 | 12 | 0x1000 | gpio:NFC | ? | ? |
 | 13 | 0x2000 | gpio:NFC | ? | ? |
 | 14 | 0x4000 | gpio:HID | HID-sysmodule | Used with [HID](HID_Shared_Memory "wikilink") PAD state. |
-| 15 | 0x8000 | gpio:MCU | ? | ? |
+| 15 | 0x8000 | gpio:MCU | MCU-sysmodule | MCU Interrupt. |
 | 16 | 0x10000 | gpio:NFC | ? | ? |
 | 17 | 0x20000 | gpio:QTM | ? | ? |
 | 18 | 0x40000 | gpio:MCU, gpio:NWM | NWM-sysmodule | Wifi enable. 1=Enabled, 0=Disabled. |
