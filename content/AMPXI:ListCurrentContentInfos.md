@@ -9,8 +9,8 @@ title = 'AMPXI:ListCurrentContentInfos'
 | 0 | Header code \[0x005D0082\] |
 | 1 | Content Info Count |
 | 2 | Offset |
-| 4 | ((Content Info Count \* 0x18) \<\< 8) \| 0x4 |
-| 5 | [Content Infos](Application_Manager_Services#contentinfo "wikilink") Output Pointer |
+| 3 | ((Content Info Count \* 0x18) \<\< 8) \| 0x4 |
+| 4 | [Content Infos](Application_Manager_Services#contentinfo "wikilink") Output Pointer |
 
 # Response
 
