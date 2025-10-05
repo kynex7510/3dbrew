@@ -21,4 +21,4 @@ title = 'AMPXI:GetPersonalizedTicketInfoList'
 
 # Description
 
-Returns [Ticket Info](Application_Manager_Services#ticketinfo "wikilink") structures for user titles (excluding CTR or TWL system titles, and also DLP child titles).
+Returns [Ticket Info](Application_Manager_Services#ticketinfo "wikilink") structures for user titles (excluding CTR or TWL system titles, and also DLP child titles). In addition, the ticket console ID is checked and tickets with a console ID = 0 (meaning Common ETickets, for system titles, or preinstalls) are skipped.
