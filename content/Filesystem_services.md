@@ -735,6 +735,10 @@ If no patch title exists, the base title is considered to be the patch title, i.
 
 #### FS Limitations
 
+\\
+
+\- FSPXI allows all access types.
+
 \- When used through fs:LDR by loader, FS only provides access to `exefs:/.code`.
 
 \- For SelfNCCH access, the only allowed access types are "RomFS ("unspecified" [content type](NCCH#content_type "wikilink"), the default)" of the Base or Patch title, and "System Menu Data". Attempting to access "Save Data" results in error 0xE0E046BE, "RomFS (all [content types](NCCH#content_type "wikilink"))" in 0xF9604784, and "`exefs:/.code`" in 0xD9004676.
