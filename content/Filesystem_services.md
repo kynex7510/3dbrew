@@ -273,37 +273,6 @@ In IPC requests, sizes of ASCII and UTF16 paths must include space for the null-
 
 The format of the data that a binary LowPath points to is custom per archive.
 
-### SelfNCCH File Path Data Format
-
-<table>
-<thead>
-<tr>
-<th>Index word</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Type:</p>
-<ul>
-<li>0x0: RomFS</li>
-<li>0x1: error 0xD9004676</li>
-<li>0x2: ExeFS</li>
-<li>0x3: Error 0xE0E046BE.</li>
-<li>0x4: FS-module crashes on this</li>
-<li>0x5: Update RomFS?</li>
-</ul></td>
-</tr>
-<tr>
-<td>1-2</td>
-<td>File name for ExeFS ("icon"/"banner"/"logo"). ".code" is not allowed</td>
-</tr>
-</tbody>
-</table>
-
-Note that ExeFS files only support reading from offset=0 and with size=file_size.
-
 ### SystemSaveData / Extdata / Shared Extdata Archive Path Data Format
 
 #### DataAccessPath
