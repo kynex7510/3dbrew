@@ -1,0 +1,25 @@
++++
+title = 'Theme Shop'
++++
+
+The Theme Shop was added in [9.0.0-20](9.0.0-20 "wikilink"), which allows users to purchase [Home Menu Theme](Home_Menu/Themes "wikilink"). The shop file structure is based on the [BOSS](BOSS "wikilink") file. When the shop starts booting, it requests a top file from <https://npdl.cdn.nintendowifi.net/p01/nsa/dMtiFHzm5OOf0y2O/thmtop/><countrycode>/<language>/top. Because Nintendo has closed the Shop alongside [eShop](eShop "wikilink") on March 27, 2023, the Top file was edited to only have "New Themes" as an option.
+
+## Available Themes Info
+
+After the top file, when you click any Theme Category or All themes, the 3DS Downloads the available themes for the country on <https://npfl.c.app.nintendowifi.net/p01/filelist/dMtiFHzm5OOf0y2O/thmdtls?c=><countrycode>&l<language>=&a3=<indexCount>
+
+After 2 unknown lines, there is info about a specific theme its formated like CSV File
+
+| Column No | Notes |
+|----|----|
+| 1 | Theme list ID used in this request <https://npdl.cdn.nintendowifi.net/p01/nsa/dMtiFHzm5OOf0y2O/thmdtls/><countryCode>/<language>/<ThemeID> |
+| 2 | Price in the local currency (in free themes, this column is empty) |
+| 3 | Same as column 1 |
+| 4 | Title ID and DLC theme content file |
+| 5 | Themes List Index Count |
+| 6 | ? |
+| 7 | TimeStamp when the Theme was added |
+
+## Theme List Format
+
+Under Construction
