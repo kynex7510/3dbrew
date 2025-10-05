@@ -19,10 +19,10 @@ categories = ["Services"]
 
 # PDN I2S Service "pdn:i"
 
-| Command Header | Description |
-|----|----|
-| 0x00010040 | This sets bit0 in [PDN_I2S1_CNT](PDN_Registers#pdn_i2s1_cnt "wikilink") to u8 cmd+4. |
-| 0x00020040 | This sets bit1 in [PDN_I2S2_CNT](PDN_Registers#pdn_i2s2_cnt "wikilink") to u8 cmd+4. |
+| Command Header | Description                          |
+|----------------|--------------------------------------|
+| 0x00010040     | [Control1](PDNI:Control1 "wikilink") |
+| 0x00020040     | [Control2](PDNI:Control2 "wikilink") |
 
 Used by [Codec Services](Codec_Services "wikilink").
 
