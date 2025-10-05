@@ -303,18 +303,9 @@ The format of the data that a binary LowPath points to is custom per archive.
 
 Note that ExeFS files only support reading from offset=0 and with size=file_size.
 
-### SystemSaveData Archive Path Data Format
+### SystemSaveData / Extdata / Shared Extdata Archive Path Data Format
 
-#### FS
-
-| Index word | Description                                                |
-|------------|------------------------------------------------------------|
-| 0          | [Mediatype](Mediatypes "wikilink") (must be zero for NAND) |
-| 1          | saveid                                                     |
-
-The file/directory lowpath is a text lowpath in the [savegame](Savegames "wikilink") filesystem.
-
-#### FSPXI
+#### DataAccessPath
 
 <table>
 <thead>
@@ -328,12 +319,13 @@ The file/directory lowpath is a text lowpath in the [savegame](Savegames "wikili
 <tr>
 <td>0x0</td>
 <td>0x1</td>
-<td>u8 <a {{% href "../Mediatypes" %}} title="wikilink">Mediatype</a> (must be zero for NAND)</td>
+<td>u8 <a {{% href "../Mediatypes" %}} title="wikilink">Mediatype</a></td>
 </tr>
 <tr>
 <td>0x1</td>
 <td>0x1</td>
-<td><table>
+<td>only for NAND data (System Savedata / Shared Extdata), otherwise left 0:</p>
+<table>
 <thead>
 <tr>
 <th>Value</th>
@@ -351,7 +343,7 @@ The file/directory lowpath is a text lowpath in the [savegame](Savegames "wikili
 </tr>
 <tr>
 <td>2</td>
-<td>Accesses from/to <code>nand:/data/&lt;ID0 of a source console's </code><a {{% href "../Filesystem_services" %}} title="wikilink"><code>Device Move Context</code></a><code>&gt;</code></td>
+<td>Accesses from/to <code>nand:/data/&lt;ID0 from source console's </code><a {{% href "../Filesystem_services" %}} title="wikilink"><code>Device Move Context</code></a><code>&gt;</code></td>
 </tr>
 </tbody>
 </table></td>
@@ -364,7 +356,62 @@ The file/directory lowpath is a text lowpath in the [savegame](Savegames "wikili
 </tbody>
 </table>
 
-The file lowpath is a binary lowpath containing the u64 saveid, however the high word of the saveid is always zero. The mounted file is the cleartext savegame image. Up to 32 SystemSaveData image files can be opened under a single mounted FSPXI archive.
+#### SystemSaveData
+
+##### FS
+
+###### Archive Path
+
+| Index word | Description |
+|----|----|
+| 0 | [DataAccessPath](Filesystem_services#dataaccesspath "wikilink") |
+| 1 | save ID low (save ID high is usually 0) |
+
+###### File Path
+
+The file path is a cleartext ASCII or UTF16 file path (<file path>).
+
+The file path would access the file at <base path>`/sysdata/`<save ID low>`/`<save ID high>`/`<file path>.
+Note that `/`<file path> refers to the virtual file system inside the </code><save ID high></code> file.
+
+##### FSPXI / FS System Savedata Transfer / FSPXI System Savedata Transfer
+
+###### Archive Path
+
+| Index word | Description |
+|----|----|
+| 0 | [DataAccessPath](Filesystem_services#dataaccesspath "wikilink") |
+
+###### File Path
+
+| Index word | Description  |
+|------------|--------------|
+| 0          | save ID low  |
+| 1          | save ID high |
+
+The file path would access the file at <base path>`/sysdata/`<save ID low>`/`<save ID high>.
+
+#### Extdata / Shared Extdata
+
+##### FS / FS Extdata Transfer / FSPXI Extdata Transfer
+
+###### Archive Path
+
+| Index word | Description |
+|----|----|
+| 0 | [DataAccessPath](Filesystem_services#dataaccesspath "wikilink") |
+| 1 | ext save ID low |
+| 2 | ext save ID high |
+
+This refers to the extdata filesystem structure's base directory at <base path>`/extdata/`<ext save ID low>`/`<ext save ID high>.
+
+###### File Path
+
+The file path is a cleartext ASCII or UTF16 file path (<file path>).
+
+For FS Extdata, this would acccess <base path>`/extdata/`<save ID low>`/`<save ID high>`/`<directory ID>`/`<file ID>`/`<file path>, and `/`<file path> refers to the virtual file system inside the </code><file ID></code> file.
+
+For FS / FSPXI Extdata Transfer, this accesses <base path>`/extdata/`<save ID low>`/`<save ID high>`/`<file path>.
 
 ### UserSaveDataForCheck Archive Path Data Format
 
@@ -383,67 +430,6 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 | 0 | [Mediatype](Mediatypes "wikilink") |
 | 1 | `Lower_word_saveid >> 8` ? |
 | 2 | Unknown. Game calculate this using formula `0xFFFFFF00 | unknown_b` |
-
-### 0x12345681 Archive Path Data Format
-
-Archive path:
-
-<table>
-<thead>
-<tr>
-<th>Index word</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td><table>
-<thead>
-<tr>
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0x0</td>
-<td>0x1</td>
-<td>Media Type</td>
-</tr>
-<tr>
-<td>0x1</td>
-<td>0x1</td>
-<td>bool, for writing</td>
-</tr>
-<tr>
-<td>0x2</td>
-<td>0x2</td>
-<td>padding</td>
-</tr>
-</tbody>
-</table></td>
-</tr>
-</tbody>
-</table>
-
-File path:
-
-| Index word | Description                                           |
-|------------|-------------------------------------------------------|
-| 0          | [System Savedata Save ID](System_SaveData "wikilink") |
-| 1          | 0                                                     |
-
-### ExtSaveData Archive Path Data Format
-
-| Index word | Description                        |
-|------------|------------------------------------|
-| 0          | [Mediatype](Mediatypes "wikilink") |
-| 1          | Lower word saveid                  |
-| 2          | Upper word saveid                  |
-
-For FS, the file/directory lowpath is a text path in the [extdata](extdata "wikilink") filesystem. For FSPXI, the file lowpath is a text path relative to the "/extdata/<ExtdataIDHigh>/<ExtdataIDLow>" directory on SD/NAND, for the cleartext extdata image to mount.
 
 ### 0x2345678A Archive Path Data Format
 
