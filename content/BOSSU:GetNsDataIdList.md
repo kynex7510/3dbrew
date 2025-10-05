@@ -31,11 +31,11 @@ This eventually calls a function with the following type parameters: 0, 1, 1. Th
 
 The first type parameter is a filter based on the new flag of the NsData:
 
-| Value | Description                                          |
-|-------|------------------------------------------------------|
-| 0     | Allow everything                                     |
-| 1     | Only allow entries which don't have the new flag set |
-| 2     | Only allow entries which have the new flag set       |
+| Value | Description |
+|----|----|
+| 0 | Allow everything. This will also unset the [arrival flag](BOSS_Savegame#boss_a_titleinfo "wikilink") |
+| 1 | Only allow entries which don't have the new flag set. This will also set the [arrival flag](BOSS_Savegame#boss_a_titleinfo "wikilink") |
+| 2 | Only allow entries which have the new flag set. This will also set the [arrival flag](BOSS_Savegame#boss_a_titleinfo "wikilink") |
 
 The second type parameter represents the session being used for the command:
 
