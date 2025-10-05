@@ -113,27 +113,26 @@ The source buffer must be mapped as readable in the source process, while the de
 | 6-4 | Unused |
 | 7 | Flush buffer (0 = don't flush, 1 = flush) |
 
-This command sets the GPU [command list registers](GPU/External_Registers#command_list "wikilink"), and optionally updates gas additive blend results after command processing has ended.
+This command sets the [Command List registers](GPU/External_Registers#command_list "wikilink"), and optionally updates gas additive blend results after command processing has ended.
 
-No error checking is performed on the parameters. address and size should be both 8-byte aligned, and the address should be in linear, QTM or VRAM memory, otherwise PA 0 is returned by the vaddr-\>paddr conversion code. When flushing is enabled, svcFlushProcessDataCache is used to flush the buffer.
+No error checking is performed on the parameters. Address and size should be both aligned to 8 bytes, and the address should be in linear, QTM or VRAM memory, otherwise PA 0 is used. When flushing is enabled, svcFlushProcessDataCache is used to flush the buffer.
 
 ### Trigger Memory Fill
 
-| Index Word | Description                                  |
-|------------|----------------------------------------------|
-| 0          | Command header (ID = 0x02)                   |
-| 1          | Buf0 start address (0 = don't fill anything) |
-| 2          | Buf0 value                                   |
-| 3          | Buf0 end address                             |
-| 4          | Buf1 start address (0 = don't fill anything) |
-| 5          | Buf1 value                                   |
-| 6          | Buf1 end address                             |
-| 7          | Control0 \| (Control1 \<\< 16)               |
+| Index Word | Description                    |
+|------------|--------------------------------|
+| 0          | Command header (ID = 0x02)     |
+| 1          | Buffer 0 start address         |
+| 2          | Buffer 0 value                 |
+| 3          | Buffer 0 end address           |
+| 4          | Buffer 1 start address         |
+| 5          | Buffer 1 value                 |
+| 6          | Buffer 1 end address           |
+| 7          | Control0 \| (Control1 \<\< 16) |
 
-This command converts the specified addresses to physical addresses, then writes these addresses and the specified parameters to the [GPU](GPU "wikilink") registers at 0x1EF00010 and 0x1EF00020. Doing so fills the specified buffers with the associated 4-byte value. This is used to clear GPU framebuffers.
-The associated buffer address must not be \<= to the main buffer address, thus the associated buffer address must not be zero as well. When the bufX address is zero, processing for the bufX parameters is skipped.
+This command sets the GPU [Memory Fill registers](GPU/External_Registers#memory_fill "wikilink").
 
-The values of Control0 and Control1 give information about the type of memory fill. See [here](GPU/External_Registers#memory_fill "wikilink") for more information about memory fill parameters.
+Addresses should be aligned to 8 bytes and must be in linear, QTM or VRAM memory, otherwise error 0xE0E02BF5 (GSP_INVALID_ADDRESS) is returned. The start address for a buffer must be \< its end address, else the same error is returned. If the start address for a buffer is 0, that buffer is skipped; otherwise, its relative PSC unit is used for the fill operation.
 
 ### Trigger Display Transfer
 
