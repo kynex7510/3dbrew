@@ -9,144 +9,144 @@ categories = ["Services"]
 
 You can at most have 32 FS archive handles.
 
-| Command Header | Available since system version   | Description                                                                                                                                                                | Required [exheader](NCCH/Extended_Header "wikilink") access info bitmask  |
-|----------------|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| 0x000100C6     | ?                                | [Dummy1](FS:Dummy1 "wikilink")                                                                                                                                             | None                                                                      |
-| 0x040100C4     | ?                                | [Control](FS:Control "wikilink")                                                                                                                                           | None                                                                      |
-| 0x08010002     | ?                                | [Initialize](FS:Initialize "wikilink")                                                                                                                                     | None                                                                      |
-| 0x080201C2     | ?                                | [OpenFile](FS:OpenFile "wikilink")                                                                                                                                         | None                                                                      |
-| 0x08030204     | ?                                | [OpenFileDirectly](FS:OpenFileDirectly "wikilink")                                                                                                                         | None                                                                      |
-| 0x08040142     | ?                                | [DeleteFile](FS:DeleteFile "wikilink")                                                                                                                                     | None                                                                      |
-| 0x08050244     | ?                                | [RenameFile](FS:RenameFile "wikilink")                                                                                                                                     | None                                                                      |
-| 0x08060142     | ?                                | [DeleteDirectory](FS:DeleteDirectory "wikilink")                                                                                                                           | None                                                                      |
-| 0x08070142     | ?                                | [DeleteDirectoryRecursively](FS:DeleteDirectoryRecursively "wikilink")                                                                                                     | None                                                                      |
-| 0x08080202     | ?                                | [CreateFile](FS:CreateFile "wikilink")                                                                                                                                     | None                                                                      |
-| 0x08090182     | ?                                | [CreateDirectory](FS:CreateDirectory "wikilink")                                                                                                                           | None                                                                      |
-| 0x080A0244     | ?                                | [RenameDirectory](FS:RenameDirectory "wikilink")                                                                                                                           | None                                                                      |
-| 0x080B0102     | ?                                | [OpenDirectory](FS:OpenDirectory "wikilink")                                                                                                                               | None                                                                      |
-| 0x080C00C2     | ?                                | [OpenArchive](FS:OpenArchive "wikilink")                                                                                                                                   | Each archive ID code has separate access info bitmasks, if it has any     |
-| 0x080D0144     | ?                                | [ControlArchive](FS:ControlArchive "wikilink")                                                                                                                             | None                                                                      |
-| 0x080E0080     | ?                                | [CloseArchive](FS:CloseArchive "wikilink")                                                                                                                                 | None                                                                      |
-| 0x080F0180     | ?                                | [Obsoleted_2_0_FormatThisUserSaveData](FS:Obsoleted_2_0_FormatThisUserSaveData "wikilink")                                                                                 | None                                                                      |
-| 0x08100200     | ?                                | [Obsoleted_3_0_CreateSystemSaveData](FS:Obsoleted_3_0_CreateSystemSaveData "wikilink")                                                                                     | 0x4, for when the input saveID doesn't match the exheader saveID          |
-| 0x08110040     | ?                                | [Obsoleted_3_0_DeleteSystemSaveData](FS:Obsoleted_3_0_DeleteSystemSaveData "wikilink")                                                                                     | 0x1004, for when the input saveID doesn't match the exheader saveID       |
-| 0x08120080     | ?                                | [GetFreeBytes](FS:GetFreeBytes "wikilink")                                                                                                                                 | None                                                                      |
-| 0x08130000     | ?                                | [GetCardType](FS:GetCardType "wikilink")                                                                                                                                   | 0x1017                                                                    |
-| 0x08140000     | ?                                | [GetSdmcArchiveResource](FS:GetSdmcArchiveResource "wikilink")                                                                                                             | None                                                                      |
-| 0x08150000     | ?                                | [GetNandArchiveResource](FS:GetNandArchiveResource "wikilink")                                                                                                             | 0x1007                                                                    |
-| 0x08160000     | ?                                | [GetSdmcFatfsError](FS:GetSdmcFatfsError "wikilink")                                                                                                                       | 0x2                                                                       |
-| 0x08170000     | ?                                | [IsSdmcDetected](FS:IsSdmcDetected "wikilink")                                                                                                                             | None                                                                      |
-| 0x08180000     | ?                                | [IsSdmcWritable](FS:IsSdmcWritable "wikilink")                                                                                                                             | None                                                                      |
-| 0x08190042     | ?                                | [GetSdmcCid](FS:GetSdmcCid "wikilink")                                                                                                                                     | 0x2                                                                       |
-| 0x081A0042     | ?                                | [GetNandCid](FS:GetNandCid "wikilink")                                                                                                                                     | 0x2                                                                       |
-| 0x081B0000     | ?                                | [GetSdmcSpeedInfo](FS:GetSdmcSpeedInfo "wikilink")                                                                                                                         | 0x2                                                                       |
-| 0x081C0000     | ?                                | [GetNandSpeedInfo](FS:GetNandSpeedInfo "wikilink")                                                                                                                         | 0x2                                                                       |
-| 0x081D0042     | ?                                | [GetSdmcLog](FS:GetSdmcLog "wikilink")                                                                                                                                     | 0x2                                                                       |
-| 0x081E0042     | ?                                | [GetNandLog](FS:GetNandLog "wikilink")                                                                                                                                     | 0x2                                                                       |
-| 0x081F0000     | ?                                | [ClearSdmcLog](FS:ClearSdmcLog "wikilink")                                                                                                                                 | 0x2                                                                       |
-| 0x08200000     | ?                                | [ClearNandLog](FS:ClearNandLog "wikilink")                                                                                                                                 | 0x2                                                                       |
-| 0x08210000     | ?                                | [CardSlotIsInserted](FS:CardSlotIsInserted "wikilink")                                                                                                                     | 0x1017                                                                    |
-| 0x08220000     | ?                                | [CardSlotPowerOn](FS:CardSlotPowerOn "wikilink")                                                                                                                           | 0x2                                                                       |
-| 0x08230000     | ?                                | [CardSlotPowerOff](FS:CardSlotPowerOff "wikilink")                                                                                                                         | 0x2                                                                       |
-| 0x08240000     | ?                                | [CardSlotGetCardIFPowerStatus](FS:CardSlotGetCardIFPowerStatus "wikilink")                                                                                                 | 0x2                                                                       |
-| 0x08250040     | ?                                | [CardNorDirectCommand](FS:CardNorDirectCommand "wikilink")                                                                                                                 | 0x2                                                                       |
-| 0x08260080     | ?                                | [CardNorDirectCommandWithAddress](FS:CardNorDirectCommandWithAddress "wikilink")                                                                                           | 0x2                                                                       |
-| 0x08270082     | ?                                | [CardNorDirectRead](FS:CardNorDirectRead "wikilink")                                                                                                                       | 0x2                                                                       |
-| 0x082800C2     | ?                                | [CardNorDirectReadWithAddress](FS:CardNorDirectReadWithAddress "wikilink")                                                                                                 | 0x2                                                                       |
-| 0x08290082     | ?                                | [CardNorDirectWrite](FS:CardNorDirectWrite "wikilink")                                                                                                                     | 0x2                                                                       |
-| 0x082A00C2     | ?                                | [CardNorDirectWriteWithAddress](FS:CardNorDirectWriteWithAddress "wikilink")                                                                                               | 0x2                                                                       |
-| 0x082B00C2     | ?                                | [CardNorDirectRead_4xIO](FS:CardNorDirectRead_4xIO "wikilink")                                                                                                             | 0x2                                                                       |
-| 0x082C0082     | ?                                | [CardNorDirectCpuWriteWithoutVerify](FS:CardNorDirectCpuWriteWithoutVerify "wikilink")                                                                                     | 0x2                                                                       |
-| 0x082D0040     | ?                                | [CardNorDirectSectorEraseWithoutVerify](FS:CardNorDirectSectorEraseWithoutVerify "wikilink")                                                                               | 0x2                                                                       |
-| 0x082E0040     | ?                                | [GetProductInfo](FS:GetProductInfo "wikilink")                                                                                                                             | 0x1005                                                                    |
-| 0x082F0040     | ?                                | [GetProgramLaunchInfo](FS:GetProgramLaunchInfo "wikilink")                                                                                                                 | 0x1005                                                                    |
-| 0x08300182     | ?                                | [Obsoleted_3_0_CreateExtSaveData](FS:Obsoleted_3_0_CreateExtSaveData "wikilink")                                                                                           | 0xC, for when the input extdataID doesn't match the exheader extdataID    |
-| 0x08310180     | ?                                | [Obsoleted_3_0_CreateSharedExtSaveData](FS:Obsoleted_3_0_CreateSharedExtSaveData "wikilink")                                                                               | 0x1005                                                                    |
-| 0x08320102     | ?                                | [Obsoleted_3_0_ReadExtSaveDataIcon](FS:Obsoleted_3_0_ReadExtSaveDataIcon "wikilink")                                                                                       | 0x100D, for when the input extdataID doesn't match the exheader extdataID |
-| 0x08330082     | ?                                | [Obsoleted_3_0_EnumerateExtSaveData](FS:Obsoleted_3_0_EnumerateExtSaveData "wikilink")                                                                                     | 0x1005                                                                    |
-| 0x08340082     | ?                                | [Obsoleted_3_0_EnumerateSharedExtSaveData](FS:Obsoleted_3_0_EnumerateSharedExtSaveData "wikilink")                                                                         | 0x1005                                                                    |
-| 0x08350080     | ?                                | [Obsoleted_3_0_DeleteExtSaveData](FS:Obsoleted_3_0_DeleteExtSaveData "wikilink")                                                                                           | 0x100D, for when the input extdataID doesn't match the exheader extdataID |
-| 0x08360080     | ?                                | [Obsoleted_3_0_DeleteSharedExtSaveData](FS:Obsoleted_3_0_DeleteSharedExtSaveData "wikilink")                                                                               | 0x1005                                                                    |
-| 0x08370040     | ?                                | [SetCardSpiBaudRate](FS:SetCardSpiBaudRate "wikilink")                                                                                                                     | 0x2                                                                       |
-| 0x08380040     | ?                                | [SetCardSpiBusMode](FS:SetCardSpiBusMode "wikilink")                                                                                                                       | 0x2                                                                       |
-| 0x08390000     | ?                                | [SendInitializeInfoTo9](FS:SendInitializeInfoTo9 "wikilink")                                                                                                               | None                                                                      |
-| 0x083A0100     | ?                                | [GetSpecialContentIndex](FS:GetSpecialContentIndex "wikilink")                                                                                                             | 0x1005                                                                    |
-| 0x083B00C2     | ?                                | [GetLegacyRomHeader](FS:GetLegacyRomHeader "wikilink")                                                                                                                     | 0x1015                                                                    |
-| 0x083C00C2     | ?                                | [GetLegacyBannerData](FS:GetLegacyBannerData "wikilink")                                                                                                                   | 0x1015                                                                    |
-| 0x083D0100     | ?                                | [CheckAuthorityToAccessExtSaveData](FS:CheckAuthorityToAccessExtSaveData "wikilink")                                                                                       | 0x44                                                                      |
-| 0x083E00C2     | ?                                | [QueryTotalQuotaSize](FS:QueryTotalQuotaSize "wikilink")                                                                                                                   | None                                                                      |
-| 0x083F00C0     | ?                                | [Obsoleted_3_0_GetExtDataBlockSize](FS:Obsoleted_3_0_GetExtDataBlockSize "wikilink")                                                                                       | None                                                                      |
-| 0x08400040     | ?                                | [AbnegateAccessRight](FS:AbnegateAccessRight "wikilink")                                                                                                                   | ?                                                                         |
-| 0x08410000     | ?                                | [DeleteSdmcRoot](FS:DeleteSdmcRoot "wikilink")                                                                                                                             | 0x1005                                                                    |
-| 0x08420040     | ?                                | [DeleteAllExtSaveDataOnNand](FS:DeleteAllExtSaveDataOnNand "wikilink")                                                                                                     | 0x1005                                                                    |
-| 0x08430000     | ?                                | [InitializeCtrFileSystem](FS:InitializeCtrFileSystem "wikilink")                                                                                                           | None                                                                      |
-| 0x08440000     | ?                                | [CreateSeed](FS:CreateSeed "wikilink")                                                                                                                                     | 0x2                                                                       |
-| 0x084500C2     | ?                                | [GetFormatInfo](FS:GetFormatInfo "wikilink")                                                                                                                               | ?                                                                         |
-| 0x08460102     | ?                                | [GetLegacyRomHeader2](FS:GetLegacyRomHeader2 "wikilink")                                                                                                                   | 0x1015                                                                    |
-| 0x08470180     | ?                                | [Obsoleted_2_0_FormatCtrCardUserSaveData](FS:Obsoleted_2_0_FormatCtrCardUserSaveData "wikilink")                                                                           | 0x6                                                                       |
-| 0x08480042     | ?                                | [GetSdmcCtrRootPath](FS:GetSdmcCtrRootPath "wikilink")                                                                                                                     | 0x100D                                                                    |
-| 0x08490040     | ?                                | [GetArchiveResource](FS:GetArchiveResource "wikilink")                                                                                                                     | ?                                                                         |
-| 0x084A0002     | ?                                | [ExportIntegrityVerificationSeed](FS:ExportIntegrityVerificationSeed "wikilink")                                                                                           | 0x4000                                                                    |
-| 0x084B0002     | ?                                | [ImportIntegrityVerificationSeed](FS:ImportIntegrityVerificationSeed "wikilink")                                                                                           | 0x4000                                                                    |
-| 0x084C0242     | ?                                | [FormatSaveData](FS:FormatSaveData "wikilink")                                                                                                                             | 0x6, in some cases this write isn't needed however                        |
-| 0x084D0102     | ?                                | [GetLegacySubBannerData](FS:GetLegacySubBannerData "wikilink")                                                                                                             | 0x1015                                                                    |
-| 0x084E0342     | ?                                | [UpdateSha256Context](FS:UpdateSha256Context "wikilink")                                                                                                                   | 0x5                                                                       |
-| 0x084F0102     | ?                                | [ReadSpecialFile](FS:ReadSpecialFile "wikilink")                                                                                                                           | None                                                                      |
-| 0x08500040     | ?                                | [GetSpecialFileSize](FS:GetSpecialFileSize "wikilink")                                                                                                                     | None                                                                      |
-| 0x08510242     | [3.0.0-5](3.0.0-5 "wikilink")    | [CreateExtSaveData](FS:CreateExtSaveData "wikilink")                                                                                                                       | Shared extdata: 0x101005. Regular extdata in certain cases: 0xC           |
-| 0x08520100     | [3.0.0-5](3.0.0-5 "wikilink")    | [DeleteExtSaveData](FS:DeleteExtSaveData "wikilink")                                                                                                                       | Shared extdata: 0x101005. Regular extdata in certain cases: 0x10100D      |
-| 0x08530142     | [3.0.0-5](3.0.0-5 "wikilink")    | [ReadExtSaveDataIcon](FS:ReadExtSaveDataIcon "wikilink")                                                                                                                   | 0x10100D (this doesn't apply in certain cases, however)                   |
-| 0x085400C0     | [3.0.0-5](3.0.0-5 "wikilink")    | [GetExtDataBlockSize](FS:GetExtDataBlockSize "wikilink")                                                                                                                   | 0x10100D (this doesn't apply in certain cases, however)                   |
-| 0x08550102     | [3.0.0-5](3.0.0-5 "wikilink")    | [EnumerateExtSaveData](FS:EnumerateExtSaveData "wikilink")                                                                                                                 | 0x101005                                                                  |
-| 0x08560240     | [3.0.0-5](3.0.0-5 "wikilink")    | [CreateSystemSaveData](FS:CreateSystemSaveData "wikilink")                                                                                                                 | 0x4 (this doesn't apply in certain cases, however)                        |
-| 0x08570080     | [3.0.0-5](3.0.0-5 "wikilink")    | [DeleteSystemSaveData](FS:DeleteSystemSaveData "wikilink")                                                                                                                 | 0x1004 (this doesn't apply in certain cases, however)                     |
-| 0x08580000     | [3.0.0-5](3.0.0-5 "wikilink")    | [StartDeviceMoveAsSource](FS:StartDeviceMoveAsSource "wikilink")                                                                                                           | 0x2004                                                                    |
-| 0x08590200     | [3.0.0-5](3.0.0-5 "wikilink")    | [StartDeviceMoveAsDestination](FS:StartDeviceMoveAsDestination "wikilink")                                                                                                 | 0x2004                                                                    |
-| 0x085A00C0     | [3.0.0-5](3.0.0-5 "wikilink")    | [SetArchivePriority](FS:SetArchivePriority "wikilink")                                                                                                                     | None                                                                      |
-| 0x085B0080     | [3.0.0-5](3.0.0-5 "wikilink")    | [GetArchivePriority](FS:GetArchivePriority "wikilink")                                                                                                                     | None                                                                      |
-| 0x085C00C0     | [3.0.0-5](3.0.0-5 "wikilink")    | [SetCtrCardLatencyParameter](FS:SetCtrCardLatencyParameter "wikilink")                                                                                                     | 0xE                                                                       |
-| 0x085D01C0     | [3.0.0-5](3.0.0-5 "wikilink")    | [SetFsCompatibilityInfo](FS:SetFsCompatibilityInfo "wikilink")                                                                                                             | 0x100001                                                                  |
-| 0x085E0040     | [3.0.0-5](3.0.0-5 "wikilink")    | [ResetCardCompatibilityParameter](FS:ResetCardCompatibilityParameter "wikilink")                                                                                           | 0xE                                                                       |
-| 0x085F0040     | [3.0.0-5](3.0.0-5 "wikilink")    | [SwitchCleanupInvalidSaveData](FS:SwitchCleanupInvalidSaveData "wikilink")                                                                                                 | 0x12004                                                                   |
-| 0x08600042     | [3.0.0-5](3.0.0-5 "wikilink")    | [EnumerateSystemSaveData](FS:EnumerateSystemSaveData "wikilink")                                                                                                           | 0x2004                                                                    |
-| 0x08610042     | [3.0.0-5](3.0.0-5 "wikilink")    | [InitializeWithSdkVersion](FS:InitializeWithSdkVersion "wikilink")                                                                                                         | None                                                                      |
-| 0x08620040     | [3.0.0-5](3.0.0-5 "wikilink")    | [SetPriority](FS:SetPriority "wikilink")                                                                                                                                   | None                                                                      |
-| 0x08630000     | [3.0.0-5](3.0.0-5 "wikilink")    | [GetPriority](FS:GetPriority "wikilink")                                                                                                                                   | None                                                                      |
-| 0x08640000     | [3.0.0-5](3.0.0-5 "wikilink")    | [Obsoleted_4_0_GetNandInfo](FS:Obsoleted_4_0_GetNandInfo "wikilink")                                                                                                       | Stubbed, this returns an error                                            |
-| 0x08650140     | [4.0.0-7](4.0.0-7 "wikilink")    | [SetSaveDataSecureValue](FS:SetSaveDataSecureValue "wikilink")                                                                                                             | 0x121004 (in certain cases this doesn't apply, however)                   |
-| 0x086600C0     | [4.0.0-7](4.0.0-7 "wikilink")    | [GetSaveDataSecureValue](FS:GetSaveDataSecureValue "wikilink")                                                                                                             | 0x121004 (in certain cases this doesn't apply, however)                   |
-| 0x086700C4     | [4.0.0-7](4.0.0-7 "wikilink")    | [ControlSecureSave](FS:ControlSecureSave "wikilink")                                                                                                                       | 0x121004                                                                  |
-| 0x08680000     | [4.0.0-7](4.0.0-7 "wikilink")    | [GetMediaType](FS:GetMediaType "wikilink")                                                                                                                                 | None                                                                      |
-| 0x08690000     | [4.0.0-7](4.0.0-7 "wikilink")    | [Obsoleted_4_0_GetNandEraseCount](FS:Obsoleted_4_0_GetNandEraseCount "wikilink")                                                                                           | Stubbed, this returns an error.                                           |
-| 0x086A0082     | [4.0.0-7](4.0.0-7 "wikilink")    | [ReadNandReport](FS:ReadNandReport "wikilink")                                                                                                                             | None                                                                      |
-| 0x086B00C2     | ?                                | [SetOtherSaveDataSecureValue](FS:SetOtherSaveDataSecureValue "wikilink")                                                                                                   | 0x121004                                                                  |
-| 0x086C00C2     | ?                                | [GetOtherSaveDataSecureValue](FS:GetOtherSaveDataSecureValue "wikilink")                                                                                                   | 0x121004                                                                  |
-| 0x086D0080     | ?                                | [BeginSaveDataMove](FS:BeginSaveDataMove "wikilink")                                                                                                                       | 0x20004                                                                   |
-| 0x086E00C0     | ?                                | [SetThisSaveDataSecureValue](FS:SetThisSaveDataSecureValue "wikilink")                                                                                                     | None                                                                      |
-| 0x086F0040     | ?                                | [GetThisSaveDataSecureValue](FS:GetThisSaveDataSecureValue "wikilink")                                                                                                     | None                                                                      |
-| 0x087000C2     | ?                                | [CheckArchive](FS:CheckArchive "wikilink")                                                                                                                                 | None                                                                      |
-| 0x08710140     | ?                                | [TransferSaveDataCMAC](FS:TransferSaveDataCMAC "wikilink")                                                                                                                 | 0x20004                                                                   |
-| 0x08720200     | ?                                | [RegisterTitleContentOverlay](FS:RegisterTitleContentOverlay "wikilink")                                                                                                   | 0x80004                                                                   |
-| 0x08730100     | ?                                | [UnregisterTitleContentOverlay](FS:UnregisterTitleContentOverlay "wikilink")                                                                                               | 0x80004                                                                   |
-| 0x08740000     | ?                                | [UnregisterAllTitleContentOverlays](FS:UnregisterAllTitleContentOverlays "wikilink")                                                                                       | 0x80004                                                                   |
-| 0x08750140     | ?                                | [SetSaveArchiveSecureValue](FS:SetSaveArchiveSecureValue "wikilink")                                                                                                       | None                                                                      |
-| 0x087600C0     | ?                                | [GetSaveArchiveSecureValue](FS:GetSaveArchiveSecureValue "wikilink")                                                                                                       | None                                                                      |
-| 0x08770140     | ?                                | [RegisterSpecialTitleContent](FS:RegisterSpecialTitleContent "wikilink")                                                                                                   | 0x80004                                                                   |
-| 0x08780100     | ?                                | [UnregisterSpecialTitleContent](FS:UnregisterSpecialTitleContent "wikilink")                                                                                               | 0x80004                                                                   |
-| 0x087900C2     | ?                                | Same as [GetLegacyBannerData](FS:GetLegacyBannerData "wikilink"), except for the last parameter this internally passes u8 value 0x1 instead of 0x0, for the FSPXI command. | 0x101015                                                                  |
-| 0x087A0180     | [9.6.0-X](9.6.0-24 "wikilink")   | [AddSeed](FS:AddSeed "wikilink")                                                                                                                                           | 0x200000                                                                  |
-| 0x087B0080     | [9.6.0-X](9.6.0-24 "wikilink")   | [GetSeed](FS:GetSeed "wikilink")                                                                                                                                           | 0x200000                                                                  |
-| 0x087C0080     | [9.6.0-X](9.6.0-24 "wikilink")   | [DeleteSeed](FS:DeleteSeed "wikilink")                                                                                                                                     | 0x200000                                                                  |
-| 0x087D0000     | [9.6.0-X](9.6.0-24 "wikilink")   | [GetNumSeeds](FS:GetNumSeeds "wikilink")                                                                                                                                   | 0x200000                                                                  |
-| 0x087E0042     | [9.6.0-X](9.6.0-24 "wikilink")   | [ListSeeds](FS:ListSeeds "wikilink")                                                                                                                                       | 0x200000                                                                  |
-| 0x087F0100     | [9.6.0-X](9.6.0-24 "wikilink")   | [TitleContentHasSeed](FS:TitleContentHasSeed "wikilink")                                                                                                                   | 0x200000                                                                  |
-| 0x08800880     | [9.6.0-X](9.6.0-24 "wikilink")   | [AddTitleTag](FS:AddTitleTag "wikilink")                                                                                                                                   | 0x200000                                                                  |
-| 0x08810080     | [9.6.0-X](9.6.0-24 "wikilink")   | [GetTitleTag](FS:GetTitleTag "wikilink")                                                                                                                                   | 0x200000                                                                  |
-| 0x08820080     | [9.6.0-X](9.6.0-24 "wikilink")   | [DeleteTitleTag](FS:DeleteTitleTag "wikilink")                                                                                                                             | 0x200000                                                                  |
-| 0x08830000     | [9.6.0-X](9.6.0-24 "wikilink")   | [GetNumTitleTags](FS:GetNumTitleTags "wikilink")                                                                                                                           | 0x200000                                                                  |
-| 0x08840042     | [9.6.0-X](9.6.0-24 "wikilink")   | [ListTitleTags](FS:ListTitleTags "wikilink")                                                                                                                               | 0x200000                                                                  |
-| 0x088500C0     | [9.6.0-X](9.6.0-24 "wikilink")   | [CheckTitleSeed](FS:CheckTitleSeed "wikilink")                                                                                                                             | 0x200000                                                                  |
-| 0x088600C0     | [11.1.0-X](11.1.0-34 "wikilink") | [CheckUpdatedDat](FS:CheckUpdatedDat "wikilink")                                                                                                                           | 0x80000                                                                   |
+| Command Header | Available since system version | Description | Required [exheader](NCCH/Extended_Header "wikilink") access info bitmask |
+|----|----|----|----|
+| 0x000100C6 | ? | [Dummy1](FS:Dummy1 "wikilink") | None |
+| 0x040100C4 | ? | [Control](FS:Control "wikilink") | None |
+| 0x08010002 | ? | [Initialize](FS:Initialize "wikilink") | None |
+| 0x080201C2 | ? | [OpenFile](FS:OpenFile "wikilink") | None |
+| 0x08030204 | ? | [OpenFileDirectly](FS:OpenFileDirectly "wikilink") | None |
+| 0x08040142 | ? | [DeleteFile](FS:DeleteFile "wikilink") | None |
+| 0x08050244 | ? | [RenameFile](FS:RenameFile "wikilink") | None |
+| 0x08060142 | ? | [DeleteDirectory](FS:DeleteDirectory "wikilink") | None |
+| 0x08070142 | ? | [DeleteDirectoryRecursively](FS:DeleteDirectoryRecursively "wikilink") | None |
+| 0x08080202 | ? | [CreateFile](FS:CreateFile "wikilink") | None |
+| 0x08090182 | ? | [CreateDirectory](FS:CreateDirectory "wikilink") | None |
+| 0x080A0244 | ? | [RenameDirectory](FS:RenameDirectory "wikilink") | None |
+| 0x080B0102 | ? | [OpenDirectory](FS:OpenDirectory "wikilink") | None |
+| 0x080C00C2 | ? | [OpenArchive](FS:OpenArchive "wikilink") | Each archive ID code has separate access info bitmasks, if it has any |
+| 0x080D0144 | ? | [ControlArchive](FS:ControlArchive "wikilink") | None |
+| 0x080E0080 | ? | [CloseArchive](FS:CloseArchive "wikilink") | None |
+| 0x080F0180 | ? | [Obsoleted_2_0_FormatThisUserSaveData](FS:Obsoleted_2_0_FormatThisUserSaveData "wikilink") | None |
+| 0x08100200 | ? | [Obsoleted_3_0_CreateSystemSaveData](FS:Obsoleted_3_0_CreateSystemSaveData "wikilink") | 0x4, for when the input saveID doesn't match the exheader saveID |
+| 0x08110040 | ? | [Obsoleted_3_0_DeleteSystemSaveData](FS:Obsoleted_3_0_DeleteSystemSaveData "wikilink") | 0x1004, for when the input saveID doesn't match the exheader saveID |
+| 0x08120080 | ? | [GetFreeBytes](FS:GetFreeBytes "wikilink") | None |
+| 0x08130000 | ? | [GetCardType](FS:GetCardType "wikilink") | 0x1017 |
+| 0x08140000 | ? | [GetSdmcArchiveResource](FS:GetSdmcArchiveResource "wikilink") | None |
+| 0x08150000 | ? | [GetNandArchiveResource](FS:GetNandArchiveResource "wikilink") | 0x1007 |
+| 0x08160000 | ? | [GetSdmcFatfsError](FS:GetSdmcFatfsError "wikilink") | 0x2 |
+| 0x08170000 | ? | [IsSdmcDetected](FS:IsSdmcDetected "wikilink") | None |
+| 0x08180000 | ? | [IsSdmcWritable](FS:IsSdmcWritable "wikilink") | None |
+| 0x08190042 | ? | [GetSdmcCid](FS:GetSdmcCid "wikilink") | 0x2 |
+| 0x081A0042 | ? | [GetNandCid](FS:GetNandCid "wikilink") | 0x2 |
+| 0x081B0000 | ? | [GetSdmcSpeedInfo](FS:GetSdmcSpeedInfo "wikilink") | 0x2 |
+| 0x081C0000 | ? | [GetNandSpeedInfo](FS:GetNandSpeedInfo "wikilink") | 0x2 |
+| 0x081D0042 | ? | [GetSdmcLog](FS:GetSdmcLog "wikilink") | 0x2 |
+| 0x081E0042 | ? | [GetNandLog](FS:GetNandLog "wikilink") | 0x2 |
+| 0x081F0000 | ? | [ClearSdmcLog](FS:ClearSdmcLog "wikilink") | 0x2 |
+| 0x08200000 | ? | [ClearNandLog](FS:ClearNandLog "wikilink") | 0x2 |
+| 0x08210000 | ? | [CardSlotIsInserted](FS:CardSlotIsInserted "wikilink") | 0x1017 |
+| 0x08220000 | ? | [CardSlotPowerOn](FS:CardSlotPowerOn "wikilink") | 0x2 |
+| 0x08230000 | ? | [CardSlotPowerOff](FS:CardSlotPowerOff "wikilink") | 0x2 |
+| 0x08240000 | ? | [CardSlotGetCardIFPowerStatus](FS:CardSlotGetCardIFPowerStatus "wikilink") | 0x2 |
+| 0x08250040 | ? | [CardNorDirectCommand](FS:CardNorDirectCommand "wikilink") | 0x2 |
+| 0x08260080 | ? | [CardNorDirectCommandWithAddress](FS:CardNorDirectCommandWithAddress "wikilink") | 0x2 |
+| 0x08270082 | ? | [CardNorDirectRead](FS:CardNorDirectRead "wikilink") | 0x2 |
+| 0x082800C2 | ? | [CardNorDirectReadWithAddress](FS:CardNorDirectReadWithAddress "wikilink") | 0x2 |
+| 0x08290082 | ? | [CardNorDirectWrite](FS:CardNorDirectWrite "wikilink") | 0x2 |
+| 0x082A00C2 | ? | [CardNorDirectWriteWithAddress](FS:CardNorDirectWriteWithAddress "wikilink") | 0x2 |
+| 0x082B00C2 | ? | [CardNorDirectRead_4xIO](FS:CardNorDirectRead_4xIO "wikilink") | 0x2 |
+| 0x082C0082 | ? | [CardNorDirectCpuWriteWithoutVerify](FS:CardNorDirectCpuWriteWithoutVerify "wikilink") | 0x2 |
+| 0x082D0040 | ? | [CardNorDirectSectorEraseWithoutVerify](FS:CardNorDirectSectorEraseWithoutVerify "wikilink") | 0x2 |
+| 0x082E0040 | ? | [GetProductInfo](FS:GetProductInfo "wikilink") | 0x1005 |
+| 0x082F0040 | ? | [GetProgramLaunchInfo](FS:GetProgramLaunchInfo "wikilink") | 0x1005 |
+| 0x08300182 | ? | [Obsoleted_3_0_CreateExtSaveData](FS:Obsoleted_3_0_CreateExtSaveData "wikilink") | 0xC, for when the input extdataID doesn't match the exheader extdataID |
+| 0x08310180 | ? | [Obsoleted_3_0_CreateSharedExtSaveData](FS:Obsoleted_3_0_CreateSharedExtSaveData "wikilink") | 0x1005 |
+| 0x08320102 | ? | [Obsoleted_3_0_ReadExtSaveDataIcon](FS:Obsoleted_3_0_ReadExtSaveDataIcon "wikilink") | 0x100D, for when the input extdataID doesn't match the exheader extdataID |
+| 0x08330082 | ? | [Obsoleted_3_0_EnumerateExtSaveData](FS:Obsoleted_3_0_EnumerateExtSaveData "wikilink") | 0x1005 |
+| 0x08340082 | ? | [Obsoleted_3_0_EnumerateSharedExtSaveData](FS:Obsoleted_3_0_EnumerateSharedExtSaveData "wikilink") | 0x1005 |
+| 0x08350080 | ? | [Obsoleted_3_0_DeleteExtSaveData](FS:Obsoleted_3_0_DeleteExtSaveData "wikilink") | 0x100D, for when the input extdataID doesn't match the exheader extdataID |
+| 0x08360080 | ? | [Obsoleted_3_0_DeleteSharedExtSaveData](FS:Obsoleted_3_0_DeleteSharedExtSaveData "wikilink") | 0x1005 |
+| 0x08370040 | ? | [SetCardSpiBaudRate](FS:SetCardSpiBaudRate "wikilink") | 0x2 |
+| 0x08380040 | ? | [SetCardSpiBusMode](FS:SetCardSpiBusMode "wikilink") | 0x2 |
+| 0x08390000 | ? | [SendInitializeInfoTo9](FS:SendInitializeInfoTo9 "wikilink") | None |
+| 0x083A0100 | ? | [GetSpecialContentIndex](FS:GetSpecialContentIndex "wikilink") | 0x1005 |
+| 0x083B00C2 | ? | [GetLegacyRomHeader](FS:GetLegacyRomHeader "wikilink") | 0x1015 |
+| 0x083C00C2 | ? | [GetLegacyBannerData](FS:GetLegacyBannerData "wikilink") | 0x1015 |
+| 0x083D0100 | ? | [CheckAuthorityToAccessExtSaveData](FS:CheckAuthorityToAccessExtSaveData "wikilink") | 0x44 |
+| 0x083E00C2 | ? | [QueryTotalQuotaSize](FS:QueryTotalQuotaSize "wikilink") | None |
+| 0x083F00C0 | ? | [Obsoleted_3_0_GetExtDataBlockSize](FS:Obsoleted_3_0_GetExtDataBlockSize "wikilink") | None |
+| 0x08400040 | ? | [AbnegateAccessRight](FS:AbnegateAccessRight "wikilink") | ? |
+| 0x08410000 | ? | [DeleteSdmcRoot](FS:DeleteSdmcRoot "wikilink") | 0x1005 |
+| 0x08420040 | ? | [DeleteAllExtSaveDataOnNand](FS:DeleteAllExtSaveDataOnNand "wikilink") | 0x1005 |
+| 0x08430000 | ? | [InitializeCtrFileSystem](FS:InitializeCtrFileSystem "wikilink") | None |
+| 0x08440000 | ? | [CreateSeed](FS:CreateSeed "wikilink") | 0x2 |
+| 0x084500C2 | ? | [GetFormatInfo](FS:GetFormatInfo "wikilink") | ? |
+| 0x08460102 | ? | [GetLegacyRomHeader2](FS:GetLegacyRomHeader2 "wikilink") | 0x1015 |
+| 0x08470180 | ? | [Obsoleted_2_0_FormatCtrCardUserSaveData](FS:Obsoleted_2_0_FormatCtrCardUserSaveData "wikilink") | 0x6 |
+| 0x08480042 | ? | [GetSdmcCtrRootPath](FS:GetSdmcCtrRootPath "wikilink") | 0x100D |
+| 0x08490040 | ? | [GetArchiveResource](FS:GetArchiveResource "wikilink") | ? |
+| 0x084A0002 | ? | [ExportIntegrityVerificationSeed](FS:ExportIntegrityVerificationSeed "wikilink") | 0x4000 |
+| 0x084B0002 | ? | [ImportIntegrityVerificationSeed](FS:ImportIntegrityVerificationSeed "wikilink") | 0x4000 |
+| 0x084C0242 | ? | [FormatSaveData](FS:FormatSaveData "wikilink") | 0x6, in some cases this write isn't needed however |
+| 0x084D0102 | ? | [GetLegacySubBannerData](FS:GetLegacySubBannerData "wikilink") | 0x1015 |
+| 0x084E0342 | ? | [UpdateSha256Context](FS:UpdateSha256Context "wikilink") | 0x5 |
+| 0x084F0102 | ? | [ReadSpecialFile](FS:ReadSpecialFile "wikilink") | None |
+| 0x08500040 | ? | [GetSpecialFileSize](FS:GetSpecialFileSize "wikilink") | None |
+| 0x08510242 | [3.0.0-5](3.0.0-5 "wikilink") | [CreateExtSaveData](FS:CreateExtSaveData "wikilink") | Shared extdata: 0x101005. Regular extdata in certain cases: 0xC |
+| 0x08520100 | [3.0.0-5](3.0.0-5 "wikilink") | [DeleteExtSaveData](FS:DeleteExtSaveData "wikilink") | Shared extdata: 0x101005. Regular extdata in certain cases: 0x10100D |
+| 0x08530142 | [3.0.0-5](3.0.0-5 "wikilink") | [ReadExtSaveDataIcon](FS:ReadExtSaveDataIcon "wikilink") | 0x10100D (this doesn't apply in certain cases, however) |
+| 0x085400C0 | [3.0.0-5](3.0.0-5 "wikilink") | [GetExtDataBlockSize](FS:GetExtDataBlockSize "wikilink") | 0x10100D (this doesn't apply in certain cases, however) |
+| 0x08550102 | [3.0.0-5](3.0.0-5 "wikilink") | [EnumerateExtSaveData](FS:EnumerateExtSaveData "wikilink") | 0x101005 |
+| 0x08560240 | [3.0.0-5](3.0.0-5 "wikilink") | [CreateSystemSaveData](FS:CreateSystemSaveData "wikilink") | 0x4 (this doesn't apply in certain cases, however) |
+| 0x08570080 | [3.0.0-5](3.0.0-5 "wikilink") | [DeleteSystemSaveData](FS:DeleteSystemSaveData "wikilink") | 0x1004 (this doesn't apply in certain cases, however) |
+| 0x08580000 | [3.0.0-5](3.0.0-5 "wikilink") | [StartDeviceMoveAsSource](FS:StartDeviceMoveAsSource "wikilink") | 0x2004 |
+| 0x08590200 | [3.0.0-5](3.0.0-5 "wikilink") | [StartDeviceMoveAsDestination](FS:StartDeviceMoveAsDestination "wikilink") | 0x2004 |
+| 0x085A00C0 | [3.0.0-5](3.0.0-5 "wikilink") | [SetArchivePriority](FS:SetArchivePriority "wikilink") | None |
+| 0x085B0080 | [3.0.0-5](3.0.0-5 "wikilink") | [GetArchivePriority](FS:GetArchivePriority "wikilink") | None |
+| 0x085C00C0 | [3.0.0-5](3.0.0-5 "wikilink") | [SetCtrCardLatencyParameter](FS:SetCtrCardLatencyParameter "wikilink") | 0xE |
+| 0x085D01C0 | [3.0.0-5](3.0.0-5 "wikilink") | [SetFsCompatibilityInfo](FS:SetFsCompatibilityInfo "wikilink") | 0x100001 |
+| 0x085E0040 | [3.0.0-5](3.0.0-5 "wikilink") | [ResetCardCompatibilityParameter](FS:ResetCardCompatibilityParameter "wikilink") | 0xE |
+| 0x085F0040 | [3.0.0-5](3.0.0-5 "wikilink") | [SwitchCleanupInvalidSaveData](FS:SwitchCleanupInvalidSaveData "wikilink") | 0x12004 |
+| 0x08600042 | [3.0.0-5](3.0.0-5 "wikilink") | [EnumerateSystemSaveData](FS:EnumerateSystemSaveData "wikilink") | 0x2004 |
+| 0x08610042 | [3.0.0-5](3.0.0-5 "wikilink") | [InitializeWithSdkVersion](FS:InitializeWithSdkVersion "wikilink") | None |
+| 0x08620040 | [3.0.0-5](3.0.0-5 "wikilink") | [SetPriority](FS:SetPriority "wikilink") | None |
+| 0x08630000 | [3.0.0-5](3.0.0-5 "wikilink") | [GetPriority](FS:GetPriority "wikilink") | None |
+| 0x08640000 | [3.0.0-5](3.0.0-5 "wikilink") | [Obsoleted_4_0_GetNandInfo](FS:Obsoleted_4_0_GetNandInfo "wikilink") | Stubbed, this returns an error |
+| 0x08650140 | [4.0.0-7](4.0.0-7 "wikilink") | [SetSaveDataSecureValue](FS:SetSaveDataSecureValue "wikilink") | 0x121004 (in certain cases this doesn't apply, however) |
+| 0x086600C0 | [4.0.0-7](4.0.0-7 "wikilink") | [GetSaveDataSecureValue](FS:GetSaveDataSecureValue "wikilink") | 0x121004 (in certain cases this doesn't apply, however) |
+| 0x086700C4 | [4.0.0-7](4.0.0-7 "wikilink") | [ControlSecureSave](FS:ControlSecureSave "wikilink") | 0x121004 |
+| 0x08680000 | [4.0.0-7](4.0.0-7 "wikilink") | [GetMediaType](FS:GetMediaType "wikilink") | None |
+| 0x08690000 | [4.0.0-7](4.0.0-7 "wikilink") | [Obsoleted_4_0_GetNandEraseCount](FS:Obsoleted_4_0_GetNandEraseCount "wikilink") | Stubbed, this returns an error. |
+| 0x086A0082 | [4.0.0-7](4.0.0-7 "wikilink") | [ReadNandReport](FS:ReadNandReport "wikilink") | None |
+| 0x086B00C2 | ? | [SetOtherSaveDataSecureValue](FS:SetOtherSaveDataSecureValue "wikilink") | 0x121004 |
+| 0x086C00C2 | ? | [GetOtherSaveDataSecureValue](FS:GetOtherSaveDataSecureValue "wikilink") | 0x121004 |
+| 0x086D0080 | ? | [BeginSaveDataMove](FS:BeginSaveDataMove "wikilink") | 0x20004 |
+| 0x086E00C0 | ? | [SetThisSaveDataSecureValue](FS:SetThisSaveDataSecureValue "wikilink") | None |
+| 0x086F0040 | ? | [GetThisSaveDataSecureValue](FS:GetThisSaveDataSecureValue "wikilink") | None |
+| 0x087000C2 | ? | [CheckArchive](FS:CheckArchive "wikilink") | None |
+| 0x08710140 | ? | [TransferSaveDataCMAC](FS:TransferSaveDataCMAC "wikilink") | 0x20004 |
+| 0x08720200 | ? | [RegisterTitleContentOverlay](FS:RegisterTitleContentOverlay "wikilink") | 0x80004 |
+| 0x08730100 | ? | [UnregisterTitleContentOverlay](FS:UnregisterTitleContentOverlay "wikilink") | 0x80004 |
+| 0x08740000 | ? | [UnregisterAllTitleContentOverlays](FS:UnregisterAllTitleContentOverlays "wikilink") | 0x80004 |
+| 0x08750140 | ? | [SetSaveArchiveSecureValue](FS:SetSaveArchiveSecureValue "wikilink") | None |
+| 0x087600C0 | ? | [GetSaveArchiveSecureValue](FS:GetSaveArchiveSecureValue "wikilink") | None |
+| 0x08770140 | ? | [RegisterSpecialTitleContent](FS:RegisterSpecialTitleContent "wikilink") | 0x80004 |
+| 0x08780100 | ? | [UnregisterSpecialTitleContent](FS:UnregisterSpecialTitleContent "wikilink") | 0x80004 |
+| 0x087900C2 | ? | Same as [GetLegacyBannerData](FS:GetLegacyBannerData "wikilink"), except for the last parameter this internally passes u8 value 0x1 instead of 0x0, for the FSPXI command. | 0x101015 |
+| 0x087A0180 | [9.6.0-X](9.6.0-24 "wikilink") | [AddSeed](FS:AddSeed "wikilink") | 0x200000 |
+| 0x087B0080 | [9.6.0-X](9.6.0-24 "wikilink") | [GetSeed](FS:GetSeed "wikilink") | 0x200000 |
+| 0x087C0080 | [9.6.0-X](9.6.0-24 "wikilink") | [DeleteSeed](FS:DeleteSeed "wikilink") | 0x200000 |
+| 0x087D0000 | [9.6.0-X](9.6.0-24 "wikilink") | [GetNumSeeds](FS:GetNumSeeds "wikilink") | 0x200000 |
+| 0x087E0042 | [9.6.0-X](9.6.0-24 "wikilink") | [ListSeeds](FS:ListSeeds "wikilink") | 0x200000 |
+| 0x087F0100 | [9.6.0-X](9.6.0-24 "wikilink") | [TitleContentHasSeed](FS:TitleContentHasSeed "wikilink") | 0x200000 |
+| 0x08800880 | [9.6.0-X](9.6.0-24 "wikilink") | [AddTitleTag](FS:AddTitleTag "wikilink") | 0x200000 |
+| 0x08810080 | [9.6.0-X](9.6.0-24 "wikilink") | [GetTitleTag](FS:GetTitleTag "wikilink") | 0x200000 |
+| 0x08820080 | [9.6.0-X](9.6.0-24 "wikilink") | [DeleteTitleTag](FS:DeleteTitleTag "wikilink") | 0x200000 |
+| 0x08830000 | [9.6.0-X](9.6.0-24 "wikilink") | [GetNumTitleTags](FS:GetNumTitleTags "wikilink") | 0x200000 |
+| 0x08840042 | [9.6.0-X](9.6.0-24 "wikilink") | [ListTitleTags](FS:ListTitleTags "wikilink") | 0x200000 |
+| 0x088500C0 | [9.6.0-X](9.6.0-24 "wikilink") | [CheckTitleSeed](FS:CheckTitleSeed "wikilink") | 0x200000 |
+| 0x088600C0 | [11.1.0-X](11.1.0-34 "wikilink") | [CheckUpdatedDat](FS:CheckUpdatedDat "wikilink") | 0x80000 |
 
 Note: The question marks from Dummy1 to GetSpecialFileSize on the "available since system version" field are mainly there because I think that most of these are necessary for the main system to function, so theoretically that would mean that since the creation of the 3DS these were available, or since launch if that makes more sense. But because of the peculiar nature of some of the functions, they will remain question marks until they can be confirmed 100%.
 
@@ -200,50 +200,50 @@ File session handles obtained via [FS:OpenFile](FS:OpenFile "wikilink") and [FS:
 
 Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wikilink") are usable via a service-like interface, following the exact same procedure described above for file sessions.
 
-| Command Header | Available since system version | Description                                 |
-|----------------|--------------------------------|---------------------------------------------|
-| 0x000100C6     | [1.0.0-0](1.0.0-0 "wikilink")  | [Dummy1](FSDir:Dummy1 "wikilink")           |
-| 0x040100C4     | [1.0.0-0](1.0.0-0 "wikilink")  | [Control](FSDir:Control "wikilink")         |
-| 0x08010042     | [1.0.0-0](1.0.0-0 "wikilink")  | [Read](FSDir:Read "wikilink")               |
-| 0x08020000     | [1.0.0-0](1.0.0-0 "wikilink")  | [Close](FSDir:Close "wikilink")             |
-| 0x08030040     | ?                              | [SetPriority](FSDir:SetPriority "wikilink") |
-| 0x08040000     | ?                              | [GetPriority](FSDir:GetPriority "wikilink") |
+| Command Header | Available since system version | Description |
+|----|----|----|
+| 0x000100C6 | [1.0.0-0](1.0.0-0 "wikilink") | [Dummy1](FSDir:Dummy1 "wikilink") |
+| 0x040100C4 | [1.0.0-0](1.0.0-0 "wikilink") | [Control](FSDir:Control "wikilink") |
+| 0x08010042 | [1.0.0-0](1.0.0-0 "wikilink") | [Read](FSDir:Read "wikilink") |
+| 0x08020000 | [1.0.0-0](1.0.0-0 "wikilink") | [Close](FSDir:Close "wikilink") |
+| 0x08030040 | ? | [SetPriority](FSDir:SetPriority "wikilink") |
+| 0x08040000 | ? | [GetPriority](FSDir:GetPriority "wikilink") |
 
 # Archives
 
-| ArchiveId  | Description                                                                                                                                                          | Accessible via [FS](Filesystem_services "wikilink") | Accessible via [FSPXI](Filesystem_services_PXI "wikilink") | Only accessible by Process9 internally | Requires binary [Lowpath](FS:OpenFile "wikilink") | Required exheader FS access info bitmask                             |
-|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|------------------------------------------------------------|----------------------------------------|---------------------------------------------------|----------------------------------------------------------------------|
-| 0x00000003 | SelfNCCH (including [RomFS](#romfs "wikilink"))                                                                                                                      | Yes                                                 | No                                                         | No                                     | No                                                | None                                                                 |
-| 0x00000004 | SaveData (the saveID/mediatype for this is loaded from data originally from the user process' exheader)                                                              | Yes                                                 | No                                                         | No                                     | No                                                | None                                                                 |
-| 0x00000006 | ExtSaveData                                                                                                                                                          | Yes                                                 | No                                                         | No                                     | Yes                                               | 0x100D, when the input extdataID isn't listed in the exheader.       |
-| 0x00000007 | Shared ExtSaveData                                                                                                                                                   | Yes                                                 | No                                                         | No                                     | Yes                                               | None                                                                 |
-| 0x00000008 | SystemSaveData                                                                                                                                                       | Yes                                                 | No                                                         | No                                     | Yes                                               | 0x4, when the input saveID doesn't match the exheader system-saveID. |
-| 0x00000009 | SDMC                                                                                                                                                                 | Yes                                                 | Yes                                                        | No                                     | No                                                | 0x8E                                                                 |
-| 0x0000000A | SDMC Write-Only                                                                                                                                                      | Yes                                                 | No                                                         | No                                     | No                                                | 0x808E                                                               |
-| 0x12345678 | ExtSaveData for BOSS                                                                                                                                                 | Yes                                                 | No                                                         | No                                     | Yes                                               | 0x44                                                                 |
-| 0x12345679 | CARD SPI FS                                                                                                                                                          | Yes                                                 | Yes                                                        | No                                     | No                                                | 0x16                                                                 |
-| 0x1234567B | ExtSaveData, and ExtSaveData for BOSS                                                                                                                                | No                                                  | Yes                                                        | No                                     | Yes                                               |                                                                      |
-| 0x1234567C | SystemSaveData                                                                                                                                                       | No                                                  | Yes                                                        | No                                     | Yes                                               |                                                                      |
-| 0x1234567D | NAND RW                                                                                                                                                              | Yes                                                 | Yes                                                        | No                                     | No                                                | 0x800                                                                |
-| 0x1234567E | NAND RO                                                                                                                                                              | Yes                                                 | Yes                                                        | No                                     | No                                                | 0x200                                                                |
-| 0x1234567F | NAND RO Write FS                                                                                                                                                     | No                                                  | Yes                                                        | No                                     | No                                                | ?                                                                    |
-| 0x12345680 | Unknown. There's code for this in spider v9.9, but that code isn't actually used.                                                                                    | Yes                                                 | ?                                                          | No                                     | Yes                                               | ?                                                                    |
-| 0x12345681 | Used for dumping raw [System Save Data](System_SaveData "wikilink") during system tranfers.                                                                          | Yes                                                 | Yes                                                        | No                                     | Yes                                               | ?                                                                    |
-| 0x12345682 | Unknown. There's code for this in spider v9.9, but that code isn't actually used.                                                                                    | Yes                                                 | ?                                                          | No                                     | Yes                                               | ?                                                                    |
-| 0x2345678A | Used for accessing general NCCH data. With FSPXI this also allows savedata access.                                                                                   | Yes                                                 | Yes                                                        | No                                     | Yes                                               | 0x1005                                                               |
-| 0x2345678B | ?                                                                                                                                                                    | No                                                  | No                                                         | Yes                                    | Yes                                               |                                                                      |
-| 0x2345678C | Used internally to access [/dbs](Title_Database "wikilink") files?                                                                                                   | No                                                  | No                                                         | Yes                                    | Yes                                               |                                                                      |
-| 0x2345678D | ?                                                                                                                                                                    | No                                                  | No                                                         | Yes                                    | No                                                |                                                                      |
-| 0x2345678E | FSPXI: Similar to archive 0x2345678A. For fs:LDR(used by the "loader" FIRM ARM11-process), only ExeFS. Not accessible with fs:USER.                                  | Yes                                                 | Yes                                                        | No                                     | Yes                                               | None, see description.                                               |
-| 0x567890AB | NAND CTR FS                                                                                                                                                          | No                                                  | Yes                                                        | No                                     | No                                                | ?                                                                    |
-| 0x567890AC | TWL PHOTO                                                                                                                                                            | Yes                                                 | Yes                                                        | No                                     | No                                                | ?                                                                    |
-| 0x567890AD | TWLS (DSi Sound stores recordings here). This is mapped to the FAT12 image stored in the file at [Twln/shared2/0000](Twln/shared2/0000 "wikilink").                  | No                                                  | Yes                                                        | No                                     | No                                                | ?                                                                    |
-| 0x567890AE | NAND TWL FS                                                                                                                                                          | Yes                                                 | Yes                                                        | No                                     | No                                                | 0x100                                                                |
-| 0x567890AF | NAND W FS                                                                                                                                                            | Yes                                                 | Yes                                                        | No                                     | No                                                | 0x100                                                                |
-| 0x567890B0 | ?                                                                                                                                                                    | No                                                  | Yes                                                        | No                                     | No                                                |                                                                      |
-| 0x567890B1 | Gamecard SaveData (for check). This is a wrapper for UserSaveDataForCheck: the OpenArchive code for that is called with archive-lowpath TID=0/mediatype=2(gamecard). | Yes                                                 | No                                                         | No                                     | No                                                | 0x6                                                                  |
-| 0x567890B2 | UserSaveData (for check). This is the same as the regular SaveData archive, except with this the savedata ID and mediatype is loaded from the input archive lowpath. | Yes                                                 | No                                                         | No                                     | Yes                                               | 0x6                                                                  |
-| 0x567890B4 | Similar to 0x567890B2 but can only access Accessible Save specified in [exheader](NCCH/Extended_Header#storage_info "wikilink")?                                     | Yes                                                 | No                                                         | No                                     | Yes                                               | ?                                                                    |
+| ArchiveId | Description | Accessible via [FS](Filesystem_services "wikilink") | Accessible via [FSPXI](Filesystem_services_PXI "wikilink") | Only accessible by Process9 internally | Requires binary [Lowpath](FS:OpenFile "wikilink") | Required exheader FS access info bitmask |
+|----|----|----|----|----|----|----|
+| 0x00000003 | SelfNCCH (including [RomFS](#romfs "wikilink")) | Yes | No | No | No | None |
+| 0x00000004 | SaveData (the saveID/mediatype for this is loaded from data originally from the user process' exheader) | Yes | No | No | No | None |
+| 0x00000006 | ExtSaveData | Yes | No | No | Yes | 0x100D, when the input extdataID isn't listed in the exheader. |
+| 0x00000007 | Shared ExtSaveData | Yes | No | No | Yes | None |
+| 0x00000008 | SystemSaveData | Yes | No | No | Yes | 0x4, when the input saveID doesn't match the exheader system-saveID. |
+| 0x00000009 | SDMC | Yes | Yes | No | No | 0x8E |
+| 0x0000000A | SDMC Write-Only | Yes | No | No | No | 0x808E |
+| 0x12345678 | ExtSaveData for BOSS | Yes | No | No | Yes | 0x44 |
+| 0x12345679 | CARD SPI FS | Yes | Yes | No | No | 0x16 |
+| 0x1234567B | ExtSaveData, and ExtSaveData for BOSS | No | Yes | No | Yes |  |
+| 0x1234567C | SystemSaveData | No | Yes | No | Yes |  |
+| 0x1234567D | NAND RW | Yes | Yes | No | No | 0x800 |
+| 0x1234567E | NAND RO | Yes | Yes | No | No | 0x200 |
+| 0x1234567F | NAND RO Write FS | No | Yes | No | No | ? |
+| 0x12345680 | Unknown. There's code for this in spider v9.9, but that code isn't actually used. | Yes | ? | No | Yes | ? |
+| 0x12345681 | Used for dumping raw [System Save Data](System_SaveData "wikilink") during system tranfers. | Yes | Yes | No | Yes | ? |
+| 0x12345682 | Unknown. There's code for this in spider v9.9, but that code isn't actually used. | Yes | ? | No | Yes | ? |
+| 0x2345678A | Used for accessing general NCCH data. With FSPXI this also allows savedata access. | Yes | Yes | No | Yes | 0x1005 |
+| 0x2345678B | ? | No | No | Yes | Yes |  |
+| 0x2345678C | Used internally to access [/dbs](Title_Database "wikilink") files? | No | No | Yes | Yes |  |
+| 0x2345678D | ? | No | No | Yes | No |  |
+| 0x2345678E | FSPXI: Similar to archive 0x2345678A. For fs:LDR(used by the "loader" FIRM ARM11-process), only ExeFS. Not accessible with fs:USER. | Yes | Yes | No | Yes | None, see description. |
+| 0x567890AB | NAND CTR FS | No | Yes | No | No | ? |
+| 0x567890AC | TWL PHOTO | Yes | Yes | No | No | ? |
+| 0x567890AD | TWLS (DSi Sound stores recordings here). This is mapped to the FAT12 image stored in the file at [Twln/shared2/0000](Twln/shared2/0000 "wikilink"). | No | Yes | No | No | ? |
+| 0x567890AE | NAND TWL FS | Yes | Yes | No | No | 0x100 |
+| 0x567890AF | NAND W FS | Yes | Yes | No | No | 0x100 |
+| 0x567890B0 | ? | No | Yes | No | No |  |
+| 0x567890B1 | Gamecard SaveData (for check). This is a wrapper for UserSaveDataForCheck: the OpenArchive code for that is called with archive-lowpath TID=0/mediatype=2(gamecard). | Yes | No | No | No | 0x6 |
+| 0x567890B2 | UserSaveData (for check). This is the same as the regular SaveData archive, except with this the savedata ID and mediatype is loaded from the input archive lowpath. | Yes | No | No | Yes | 0x6 |
+| 0x567890B4 | Similar to 0x567890B2 but can only access Accessible Save specified in [exheader](NCCH/Extended_Header#storage_info "wikilink")? | Yes | No | No | Yes | ? |
 
 Archives listed as not requiring a binary lowpath, use lowpath type [empty](FS:OpenFile "wikilink").
 
@@ -257,14 +257,14 @@ The CARDSPI archive allows access to the gamecard CARD1 raw savedata flash(aka "
 
 PathType:
 
-| Value | Description                                                                                                                                                 |
-|-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| -1    | Returned internally by Process9, when errors occur it seems(in particular when no nul-terminator was found in the input path). The data ptr is set to NULL. |
-| 0x0   | INVALID - Specifies an invalid path                                                                                                                         |
-| 0x1   | EMPTY - Specifies an empty path                                                                                                                             |
-| 0x2   | BINARY - Non-text based path. Meaning is per-archive                                                                                                        |
-| 0x3   | ASCII - Text-based path with 7-bit ASCII characters padded to 8-bits each (signed char)                                                                     |
-| 0x4   | UTF16 - Text-based path with UTF-16 characters                                                                                                              |
+| Value | Description |
+|----|----|
+| -1 | Returned internally by Process9, when errors occur it seems(in particular when no nul-terminator was found in the input path). The data ptr is set to NULL. |
+| 0x0 | INVALID - Specifies an invalid path |
+| 0x1 | EMPTY - Specifies an empty path |
+| 0x2 | BINARY - Non-text based path. Meaning is per-archive |
+| 0x3 | ASCII - Text-based path with 7-bit ASCII characters padded to 8-bits each (signed char) |
+| 0x4 | UTF16 - Text-based path with UTF-16 characters |
 
 In IPC requests, sizes of ASCII and UTF16 paths must include space for the null-terminator.
 
@@ -276,13 +276,13 @@ The format of the data that a binary LowPath points to is custom per archive.
 
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Index word</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0</td>
 <td>Type:</p>
 <ul>
@@ -294,7 +294,7 @@ The format of the data that a binary LowPath points to is custom per archive.
 <li>0x5: Update RomFS?</li>
 </ul></td>
 </tr>
-<tr class="even">
+<tr>
 <td>1-2</td>
 <td>File name for ExeFS ("icon"/"banner"/"logo"). ".code" is not allowed</td>
 </tr>
@@ -334,11 +334,11 @@ The file/directory lowpath for this FS archive is a text path in the [savegame](
 
 ### 0x567890B4 Archive Path Data Format
 
-| Index word | Description                                                         |
-|------------|---------------------------------------------------------------------|
-| 0          | [Mediatype](Mediatypes "wikilink")                                  |
-| 1          | `Lower_word_saveid >> 8` ?                                          |
-| 2          | Unknown. Game calculate this using formula `0xFFFFFF00 | unknown_b` |
+| Index word | Description |
+|----|----|
+| 0 | [Mediatype](Mediatypes "wikilink") |
+| 1 | `Lower_word_saveid >> 8` ? |
+| 2 | Unknown. Game calculate this using formula `0xFFFFFF00 | unknown_b` |
 
 ### 0x12345681 Archive Path Data Format
 
@@ -346,34 +346,34 @@ Archive path:
 
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Index word</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0</td>
 <td><table>
 <thead>
-<tr class="header">
+<tr>
 <th>Offset</th>
 <th>Size</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0x0</td>
 <td>0x1</td>
 <td>Media Type</td>
 </tr>
-<tr class="even">
+<tr>
 <td>0x1</td>
 <td>0x1</td>
 <td>bool, for writing</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>0x2</td>
 <td>0x2</td>
 <td>padding</td>
@@ -403,21 +403,21 @@ For FS, the file/directory lowpath is a text path in the [extdata](extdata "wiki
 
 ### 0x2345678A Archive Path Data Format
 
-| Index word | Description                                                                                               |
-|------------|-----------------------------------------------------------------------------------------------------------|
-| 0          | Lower word programID                                                                                      |
-| 1          | Upper word programID                                                                                      |
-| 2          | ([Mediatype](Mediatypes "wikilink") & 0xFF) \| (uninitialized_data? & 0xFFFFFF00)                         |
-| 3          | Number of something? Hardcoded per-archive, 0 for ExeFS, 200 for area:, 100 for rate:, 40 for eula:, etc. |
+| Index word | Description |
+|----|----|
+| 0 | Lower word programID |
+| 1 | Upper word programID |
+| 2 | ([Mediatype](Mediatypes "wikilink") & 0xFF) \| (uninitialized_data? & 0xFFFFFF00) |
+| 3 | Number of something? Hardcoded per-archive, 0 for ExeFS, 200 for area:, 100 for rate:, 40 for eula:, etc. |
 
 File lowpath:
 
-| Index word | Description                                                                                                                         |
-|------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 0          | 0 for NCCH data, 1 for savedata. The latter is only valid for FSPXI. Value 2 is allowed via archive 0x3, it's unknown what this is. |
-| 1          | TMD content index / NCSD partition index.                                                                                           |
-| 2          | Type: 0=romfs(0 for non-NCCH as well), 1=exefs ".code"(?), 2=exefs "icon"/"banner"/"logo", 3=unknown, 4=unknown, 5=unknown.         |
-| 3-4        | Filename for ExeFS.                                                                                                                 |
+| Index word | Description |
+|----|----|
+| 0 | 0 for NCCH data, 1 for savedata. The latter is only valid for FSPXI. Value 2 is allowed via archive 0x3, it's unknown what this is. |
+| 1 | TMD content index / NCSD partition index. |
+| 2 | Type: 0=romfs(0 for non-NCCH as well), 1=exefs ".code"(?), 2=exefs "icon"/"banner"/"logo", 3=unknown, 4=unknown, 5=unknown. |
+| 3-4 | Filename for ExeFS. |
 
 The 0x14-byte lowpath is all-zero for accessing the title's main RomFS.
 
@@ -431,13 +431,13 @@ The 0x3 archive is an interface for the 0x2345678E archive with the current proc
 
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Index word</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0</td>
 <td>See above. The only values which FS-module doesn't allow to be used here are:</p>
 <ul>
@@ -446,7 +446,7 @@ The 0x3 archive is an interface for the 0x2345678E archive with the current proc
 <li>0x4: FS-module executes svcBreak when using this.</li>
 </ul></td>
 </tr>
-<tr class="even">
+<tr>
 <td>1-2</td>
 <td>See above. Not validated by FS-module.</td>
 </tr>
@@ -543,10 +543,10 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 
 ## IntegrityVerificationSeed
 
-| Offset | Size  | Description                                                                                                                      |
-|--------|-------|----------------------------------------------------------------------------------------------------------------------------------|
-| 0x0    | 0x10  | AES-CBC MAC over a SHA256 hash, which hashes the first 0x110-bytes of the cleartext SEED.                                        |
-| 0x10   | 0x120 | The [nand/private/movable.sed](nand/private/movable.sed "wikilink"), encrypted with AES-CBC using the above MAC for the counter. |
+| Offset | Size | Description |
+|----|----|----|
+| 0x0 | 0x10 | AES-CBC MAC over a SHA256 hash, which hashes the first 0x110-bytes of the cleartext SEED. |
+| 0x10 | 0x120 | The [nand/private/movable.sed](nand/private/movable.sed "wikilink"), encrypted with AES-CBC using the above MAC for the counter. |
 
 ## ExtSaveDataInfo
 
@@ -577,35 +577,35 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Offset</th>
 <th>Size</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0x0</td>
 <td>0x4</td>
 <td>u32, <a {{% href "../Filesystem_services" %}} title="wikilink">Secure Value Slot</a></td>
 </tr>
-<tr class="even">
+<tr>
 <td>0x4</td>
 <td>0x1</td>
 <td>When used as an input entry:</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Value</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0</td>
 <td>This entry should be removed.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1</td>
 <td>This entry should be updated with the given value.</td>
 </tr>
@@ -614,29 +614,29 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 <p>When returned from a command:</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Value</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>0</td>
 <td>No entry with the given slot and title ID was found, or: this entry is unused.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1</td>
 <td>The entry with the given slot and title ID was found, or: this entry is used.</td>
 </tr>
 </tbody>
 </table></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>0x5</td>
 <td>0x3</td>
 <td>padding</td>
 </tr>
-<tr class="even">
+<tr>
 <td>0x8</td>
 <td>0x8</td>
 <td>u64, Secure Value</td>
@@ -646,17 +646,17 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 
 ## TitleTag
 
-| Offset | Size | Description                                                                                               |
-|--------|------|-----------------------------------------------------------------------------------------------------------|
-| 0x0    | 0x4  | Magic, `PREP` (PREPurchase install)                                                                       |
-| 0x4    | 0x4  | s32, Release date year                                                                                    |
-| 0x8    | 0x1  | u8, Release date month                                                                                    |
-| 0x9    | 0x1  | u8, Release date day                                                                                      |
-| 0xA    | 0x2  | u16, Country code                                                                                         |
-| 0xC    | 0x4  | u32, Seed status (0: not downloaded yet, 1: last download attempt failed, 2: seed installed successfully) |
-| 0x10   | 0x4  | Result code from last seed installation attempt                                                           |
-| 0x14   | 0x4  | Support error code from last seed installation attempt                                                    |
-| 0x18   | 0x68 | reserved padding (unused)                                                                                 |
+| Offset | Size | Description |
+|----|----|----|
+| 0x0 | 0x4 | Magic, `PREP` (PREPurchase install) |
+| 0x4 | 0x4 | s32, Release date year |
+| 0x8 | 0x1 | u8, Release date month |
+| 0x9 | 0x1 | u8, Release date day |
+| 0xA | 0x2 | u16, Country code |
+| 0xC | 0x4 | u32, Seed status (0: not downloaded yet, 1: last download attempt failed, 2: seed installed successfully) |
+| 0x10 | 0x4 | Result code from last seed installation attempt |
+| 0x14 | 0x4 | Support error code from last seed installation attempt |
+| 0x18 | 0x68 | reserved padding (unused) |
 
 ## CardSpiBaudRate
 
