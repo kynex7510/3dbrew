@@ -7,14 +7,14 @@ title = 'FRDU:GetFriendMii'
 {{% ipc/request header="0x00140044" %}}
 {{% ipc/param %}}Count{{% / %}}
 {{% ipc/staticbuffer id=0 %}}Input [FriendKey](Friend_Services#friendkey "wikilink") buffer{{% / %}}
-{{% ipc/mapbuffer w %}}Output [Mii Data](Friend_Services#mii_data "wikilink") buffer{{% / %}}
+{{% ipc/mapbuffer w %}}Output [Mii data](Mii#cflstoredata "wikilink") buffer{{% / %}}
 {{% / %}}
 
 # Response
 
 {{% ipc/request header="0x00140042" %}}
 {{% ipc/result %}}
-{{% ipc/mapbuffer w %}}Output [Mii Data](Friend_Services#mii_data "wikilink") buffer{{% / %}}
+{{% ipc/mapbuffer w %}}Output [Mii data](Mii#cflstoredata "wikilink") buffer{{% / %}}
 {{% / %}}
 
 # Description
