@@ -214,11 +214,11 @@ Result nnroControlObject(void* arg, u32 type);
 
 | Type | Description |
 |----|----|
-| 0 | Write address of "nnroEitNode\_" to memory pointed by arg (\*(u32\*)p = &nnroEitNode\_) |
-| 1 | Set global in CRO to arg, where arg is the CRO end (g_CRO_end = p) |
-| 2 | Write CRO end to memory pointed by arg (\*(u32\*)p = g_CRO_end) |
-| 3 | Write begin, end of function list (C initializers?) to memory pointed by arg (\*(u32\*)p = listBegin, ((u32\*)p)\[1\] = listEnd) |
-| 4 | Write begin, end of function list (C++ initializers?) to memory pointed by arg (\*(u32\*)p = listBegin, ((u32\*)p)\[1\] = listEnd) |
+| 0 | Write address of "nnroEitNode\_" to memory pointed by arg (\*(u32\*)arg = &nnroEitNode\_) |
+| 1 | Set global in CRO to arg, where arg is the CRO end (g_CRO_end = (u32)arg) |
+| 2 | Write CRO end to memory pointed by arg (\*(u32\*)arg = g_CRO_end) |
+| 3 | Write begin, end of function list (C initializers?) to memory pointed by arg (\*(u32\*)arg = (u32)listBegin, ((u32\*)arg)\[1\] = (u32)listEnd) |
+| 4 | Write begin, end of function list (C++ initializers?) to memory pointed by arg (\*(u32\*)arg = (u32)listBegin, ((u32\*)arg)\[1\] = (u32)listEnd) |
 
 "EitNode" are nodes of a linked list containing informations about the main executable + loaded modules:
 
