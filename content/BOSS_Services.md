@@ -218,67 +218,100 @@ This is an u32 ID for SpotPass content, used with the NsData service commands et
 
 ## NsDataHeaderInfo
 
-When the input type is not one of the below or when the specified output size doesn't match the expected size for this type, an error is returned.
+This type contains information about an NsData, the fields match exactly with the [Payload Content Header](SpotPass#payload_content_header "wikilink") without the hash and signature. When the input type is not one of the below or when the specified output size doesn't match the expected size for this type, an error is returned.
 
-### Type0
-
-Total size is 0x8-bytes.
-
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0x0    | 0x8  | programID   |
-
-### Type1
-
-Total size is 0x4-bytes.
-
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0x0    | 0x4  | ?           |
-
-### Type2
-
-Total size is 0x4-bytes.
-
-| Offset | Size | Description |
-|----|----|----|
-| 0x0 | 0x4 | Content data-type, originally from the [BOSS-container](SpotPass "wikilink"). |
-
-### Type3
-
-Total size is 0x4-bytes.
-
-| Offset | Size | Description  |
-|--------|------|--------------|
-| 0x0    | 0x4  | Content size |
-
-### Type4
-
-Total size is 0x4-bytes.
-
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0x0    | 0x4  | ?           |
-
-### Type5
-
-Total size is 0x4-bytes.
-
-| Offset | Size | Description |
-|--------|------|-------------|
-| 0x0    | 0x4  | ?           |
-
-### Type6
-
-Total size is 0x20-bytes.
-
-| Offset | Size | Description                    |
-|--------|------|--------------------------------|
-| 0x0    | 0x8  | programID. Same data as Type0. |
-| 0x8    | 0x4  | Same data as Type1.            |
-| 0xC    | 0x4  | ?                              |
-| 0x10   | 0x4  | Same data as Type3.            |
-| 0x14   | 0xC  | ?                              |
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x8</td>
+<td>Program ID</td>
+</tr>
+<tr>
+<td>0x1</td>
+<td>0x4</td>
+<td>Unknown field</td>
+</tr>
+<tr>
+<td>0x2</td>
+<td>0x4</td>
+<td>Content datatype</td>
+</tr>
+<tr>
+<td>0x3</td>
+<td>0x4</td>
+<td>Payload size</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x4</td>
+<td>NS Data ID</td>
+</tr>
+<tr>
+<td>0x5</td>
+<td>0x4</td>
+<td>Version</td>
+</tr>
+<tr>
+<td>0x6</td>
+<td>0x20</td>
+<td>Everything:</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x8</td>
+<td>Program ID</td>
+</tr>
+<tr>
+<td>0x8</td>
+<td>0x4</td>
+<td>Unknown field</td>
+</tr>
+<tr>
+<td>0xC</td>
+<td>0x4</td>
+<td>Content datatype</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>0x4</td>
+<td>Payload size</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>0x4</td>
+<td>NS Data ID</td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>0x4</td>
+<td>Version</td>
+</tr>
+<tr>
+<td>0x1C</td>
+<td>0x4</td>
+<td>Padding?</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
 
 ## PropertyIDs
 
