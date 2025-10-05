@@ -232,8 +232,8 @@ Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wiki
 | 0x12345682 | Unknown. There's code for this in spider v9.9, but that code isn't actually used. | Yes | ? | No | Yes | ? |
 | 0x2345678A | Title access. With FS, this allows accessing NCCH/NCSD contents (ExeFS, RomFS, checking if a content uses a seed, checking the validity of the installed seed). FSPXI, additionally, allows opening raw NCCH/NCSD NCCH contents and DSiWare contents for reading, along with encrypted save data. | Yes | Yes | No | Yes | 0x1005 |
 | 0x2345678B | Used internally by Process9 as the lowest level title access archive. Allows for opening various sections of a title (TMD, CMD, raw contents, DLC contents, raw save data (including public/private/banner saves for DSiWare), title and/or content import context files and /data directories for save data. | No | No | Yes | Yes |  |
-| 0x2345678C | Used internally to access [/dbs](Title_Database "wikilink") files? | No | No | Yes | Yes |  |
-| 0x2345678D | ? | No | No | Yes | No |  |
+| 0x2345678C | Used internally to access [Title Database (/dbs)](Title_Database "wikilink") files. For SD, `title.db` and `import.db`. For NAND, `title.db`, `import.db`, `tmp_t.db`, `tmp_i.db`, and `jumpid.db`. | No | No | Yes | Yes |  |
+| 0x2345678D | Used internally to access non-title /dbs files on the NAND: `certs.db` and `ticket.db`. | No | No | Yes | No |  |
 | 0x2345678E | FSPXI: Similar to archive 0x2345678A. For fs:LDR(used by the "loader" FIRM ARM11-process), only ExeFS. Not accessible with fs:USER. | Yes | Yes | No | Yes | None, see description. |
 | 0x567890AB | NAND CTR FS | No | Yes | No | No | ? |
 | 0x567890AC | TWL PHOTO | Yes | Yes | No | No | ? |
