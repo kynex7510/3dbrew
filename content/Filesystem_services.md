@@ -227,8 +227,8 @@ Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wiki
 | 0x1234567D | NAND RW | Yes | Yes | No | No | 0x800 |
 | 0x1234567E | NAND RO | Yes | Yes | No | No | 0x200 |
 | 0x1234567F | NAND RO Write FS | No | Yes | No | No | ? |
-| 0x12345680 | Used for transferring [NAND Shared Extdata](Extdata#nand_shared_extdata "wikilink") during [system tranfers](System_Transfer#system_save_data_transfer "wikilink"). | Yes | Yes | No | Yes | ? |
-| 0x12345681 | Used for transferring [System Save Data](System_SaveData "wikilink") during [system tranfers](System_Transfer#system_save_data_transfer "wikilink"). | Yes | Yes | No | Yes | ? |
+| 0x12345680 | Extdata transfer. Used for transferring [NAND Shared Extdata](Extdata#nand_shared_extdata "wikilink") during [system tranfers](System_Transfer#system_save_data_transfer "wikilink"). | Yes | Yes | No | Yes | ? |
+| 0x12345681 | System Savedata transfer. Used for transferring [System Save Data](System_SaveData "wikilink") during [system tranfers](System_Transfer#system_save_data_transfer "wikilink"). | Yes | Yes | No | Yes | ? |
 | 0x12345682 | Unknown. There's code for this in spider v9.9, but that code isn't actually used. | Yes | ? | No | Yes | ? |
 | 0x2345678A | Title access. With FS, this allows accessing NCCH/NCSD contents (ExeFS, RomFS, checking if a content uses a seed, checking the validity of the installed seed). FSPXI, additionally, allows opening raw NCCH/NCSD NCCH contents and DSiWare contents for reading, along with encrypted save data. | Yes | Yes | No | Yes | 0x1005 |
 | 0x2345678B | Used internally by Process9 as the lowest level title access archive. Allows for opening various sections of a title (TMD, CMD, raw contents, DLC contents, raw save data (including public/private/banner saves for DSiWare), title and/or content import context files and /data directories for save data. | No | No | Yes | Yes |  |
