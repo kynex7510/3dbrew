@@ -8,7 +8,7 @@ title = 'AMPXI:GetItemRights'
 |----|----|
 | 0 | Header code \[0x006801C2\] |
 | 1 | Rights Size |
-| 2 | Enum value (unknown, valid values range from 1 to 6, including 1 and 6) |
+| 2 | Rights type, valid values range from 1 to 6, including 1 and 6) |
 | 3-4 | u64, Ticket Title ID |
 | 5-6 | u64, Ticket ID |
 | 7 | Offset |
@@ -17,9 +17,9 @@ title = 'AMPXI:GetItemRights'
 
 # Response
 
-| Index Word | Description |
-|------------|-------------|
-| 0          | Header code |
-| 1          | Result code |
-| 2          | ?           |
-| 3          | ?           |
+| Index Word | Description                    |
+|------------|--------------------------------|
+| 0          | Header code                    |
+| 1          | Result code                    |
+| 2          | Total number of rights records |
+| 3          | Next records offset            |
