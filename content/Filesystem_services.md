@@ -713,10 +713,10 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 
 ## DeviceMoveContext
 
-| Offset | Size | Description       |
-|--------|------|-------------------|
-| 0x0    | 0x10 | IVs               |
-| 0x10   | 0x10 | Encrypt Parameter |
+| Offset | Size | Description                                                 |
+|--------|------|-------------------------------------------------------------|
+| 0x0    | 0x10 | IVs (ID0 of source console)                                 |
+| 0x10   | 0x10 | Encrypt Parameter (used to calculate the IV for encryption) |
 
 # Errors
 
