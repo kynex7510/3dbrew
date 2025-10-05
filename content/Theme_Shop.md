@@ -8,7 +8,7 @@ The Theme Shop was added in [9.0.0-20](9.0.0-20 "wikilink"), which allows users 
 
 After the top file, when you click any Theme Category or All themes, the 3DS Downloads the available themes for the country on <https://npfl.c.app.nintendowifi.net/p01/filelist/dMtiFHzm5OOf0y2O/thmdtls?c=><countrycode>&l<language>=&a3=<indexCount>
 
-After 2 unknown lines, there is info about a specific theme its formated like CSV File
+After 2 unknown lines, there is info about a specific theme its in TSV Format
 
 | Column No | Notes |
 |----|----|
