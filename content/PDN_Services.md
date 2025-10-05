@@ -28,9 +28,9 @@ Used by [Codec Services](Codec_Services "wikilink").
 
 # PDN GSP service "pdn:g"
 
-| Command Header | Description |
-|----|----|
-| 0x000100C0 | (bool enableClock, bool resetEngines, bool resetRegisters) Enables and/or resets the GPU, see [PDN_GPU_CNT](PDN_Registers#pdn_gpu_cnt "wikilink") |
+| Command Header | Description                        |
+|----------------|------------------------------------|
+| 0x000100C0     | [Control](PDNG:Control "wikilink") |
 
 # PDN Camera Service "pdn:c"
 
