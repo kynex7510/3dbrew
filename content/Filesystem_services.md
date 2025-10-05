@@ -547,7 +547,9 @@ For ExeFS, (System Menu Data / <code>exefs:/.code</code>),</p>
 <table>
 <tbody>
 <tr>
-<td><a {{% href "../NCCH" %}} title="wikilink">u64, Allowed content types flag</a></td>
+<td><a {{% href "../NCCH" %}} title="wikilink">u64, Allowed content types flag</a>
+(<code>(1 &lt;&lt; allowed_type_a) |</p>
+<p>(1 &lt;&lt; allowed_type_b)...</code>)</td>
 </tr>
 </tbody>
 </table></td>
