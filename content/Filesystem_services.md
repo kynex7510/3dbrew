@@ -580,13 +580,11 @@ The SEEDDB savedata contains the title-unique seed-data used for the new [NCCH](
 
 ## ExtSaveDataInfo
 
-| Offset | Size | Description                                            |
-|--------|------|--------------------------------------------------------|
-| 0x0    | 0x1  | [Media Type](Filesystem_services#mediatype "wikilink") |
-| 0x1    | 0x1  | Unknown                                                |
-| 0x2    | 0x2  | Reserved                                               |
-| 0x4    | 0x8  | Save ID                                                |
-| 0xC    | 0x4  | Reserved                                               |
+| Offset | Size | Description |
+|----|----|----|
+| 0x0 | 0x4 | [DataAccessPath](Filesystem_services#dataaccesspath "wikilink") |
+| 0x4 | 0x8 | Save ID |
+| 0xC | 0x4 | Reserved |
 
 ## SystemSaveDataInfo
 
