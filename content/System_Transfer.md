@@ -28,18 +28,18 @@ When DSi sends the title list, after the first 6 bytes of the 802.11 data payloa
 
 3DS title list header:
 
-| Offset | Length | Notes                                                                                          |
-|--------|--------|------------------------------------------------------------------------------------------------|
-| 0x0    | 0x4    | ?                                                                                              |
-| 0x4    | 0x4    | Usually zero?                                                                                  |
-| 0x8    | 0x4    | ?                                                                                              |
-| 0xc    | 0x4    | Total titles?                                                                                  |
-| 0x10   | 0x4    | ?                                                                                              |
-| 0x14   | 0x4    | ?                                                                                              |
-| 0x18   | 0xf    | 3DS serial number                                                                              |
-| 0x27   | 0x11   | Bytes alternates between 0xbd and 0xf7: first byte is 0xbd, second is 0xf7, third is 0xbd etc. |
-| 0x28   | 0x8    | Unknown, ASCII 3DS ticket consoleID used with DSi Shop SOAPs for the DeviceId?(Unconfirmed)    |
-| 0x30   | 0x18   | Always zero?                                                                                   |
+| Offset | Length | Notes |
+|----|----|----|
+| 0x0 | 0x4 | ? |
+| 0x4 | 0x4 | Usually zero? |
+| 0x8 | 0x4 | ? |
+| 0xc | 0x4 | Total titles? |
+| 0x10 | 0x4 | ? |
+| 0x14 | 0x4 | ? |
+| 0x18 | 0xf | 3DS serial number |
+| 0x27 | 0x11 | Bytes alternates between 0xbd and 0xf7: first byte is 0xbd, second is 0xf7, third is 0xbd etc. |
+| 0x28 | 0x8 | Unknown, ASCII 3DS ticket consoleID used with DSi Shop SOAPs for the DeviceId?(Unconfirmed) |
+| 0x30 | 0x18 | Always zero? |
 
 ### Title record from DSi and 3DS
 
