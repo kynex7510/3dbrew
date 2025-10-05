@@ -30,7 +30,7 @@ Following standard [AAPCS](https://github.com/ARM-software/abi-aa/blob/main/aapc
 `r2` -\> addr1  
 `r3` -\> size  
 
-As there are still have more arguments, the next free registers are selected starting from `r0`
+As there are still more arguments, the next free registers are selected starting from `r0`
 
 `r0` -\> operation  
 `r4` -\> permissions  
