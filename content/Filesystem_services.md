@@ -243,6 +243,7 @@ Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wiki
 | 0x567890B0 | ? | No | Yes | No | No |  |
 | 0x567890B1 | Gamecard SaveData (for check). This is a wrapper for UserSaveDataForCheck: the OpenArchive code for that is called with archive-lowpath TID=0/mediatype=2(gamecard). | Yes | No | No | No | 0x6 |
 | 0x567890B2 | UserSaveData (for check). This is the same as the regular SaveData archive, except with this the savedata ID and mediatype is loaded from the input archive lowpath. | Yes | No | No | Yes | 0x6 |
+| 0x567890B3 | [AGB Save Data](3DS_Virtual_Console#nand_savegame "wikilink") | No | No | Yes | No | \- |
 | 0x567890B4 | Similar to 0x567890B2 but can only access Accessible Save specified in [exheader](NCCH/Extended_Header#storage_info "wikilink")? | Yes | No | No | Yes | ? |
 
 Archives listed as not requiring a binary lowpath, use lowpath type [empty](FS:OpenFile "wikilink").
