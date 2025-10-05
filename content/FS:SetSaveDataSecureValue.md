@@ -18,3 +18,7 @@ title = 'FS:SetSaveDataSecureValue'
 |------------|-------------|
 | 0          | Header code |
 | 1          | Result code |
+
+# Description
+
+Sets the secure value for a specified title (or the current title) in the specified slot. This command will write to the [Anti Savegame Restore](Filesystem_services#anti_savegame_restore "wikilink") save data.
