@@ -1414,7 +1414,7 @@ Since both of these commands are stubbed in the Old3DS NFC module from the very 
 <td>Arbitrary RW from and into a client process.</td>
 <td>None</td>
 <td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
-<td></td>
+<td>May 2025</td>
 <td>May 2025</td>
 <td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a>, probably others</td>
 </tr>
@@ -1424,7 +1424,7 @@ Since both of these commands are stubbed in the Old3DS NFC module from the very 
 <td>Arbitrary RW within any process.</td>
 <td>None</td>
 <td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
-<td></td>
+<td>June 2025</td>
 <td>June 2025</td>
 <td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a></td>
 </tr>
@@ -1451,8 +1451,19 @@ Since both of these commands are stubbed in the Old3DS NFC module from the very 
 <td>Code execution in the target process.</td>
 <td>None</td>
 <td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
-<td></td>
 <td>June 2025</td>
+<td>June 2025</td>
+<td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a></td>
+</tr>
+<tr>
+<td><a {{% href "../RO_Services" %}} title="wikilink">RO</a>: target process patching</td>
+<td>A custom CRS file can be used to apply relocation patches anywhere in the target process, and since all pages are mapped as RW, this includes executable pages aswell.</p>
+<p>A possible exploitation strategy takes advantage of relocation type 2 (R_ARM_ABS32), where the payload data is encoded as a series of import patches, each encoding 4 bytes of data in the "addend" field.</td>
+<td>Arbitrary write in the target process bypassing page protections, hence code execution.</td>
+<td>None</td>
+<td><a {{% href "../11.17.0-50" %}} title="wikilink">11.17.0-50</a></td>
+<td>June 2025</td>
+<td>July 2025</td>
 <td><a {{% href "../User:kynex7510" "broken" %}} title="wikilink">kynex7510</a></td>
 </tr>
 <tr>
