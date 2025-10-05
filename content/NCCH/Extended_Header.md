@@ -20,10 +20,10 @@ See also: [1](https://github.com/3DSGuy/Project_CTR/blob/20f708450b9c6e7f64eafa6
 | `0x0`   | `0x200` | SCI                                      |
 | `0x200` | `0x200` | ACI                                      |
 | `0x400` | `0x100` | `AccessDesc` signature (RSA-2048-SHA256) |
-| `0x500` | `0x100` | NCCH HDR RSA-2048 public key             |
+| `0x500` | `0x100` | NCCH header RSA-2048 modulus             |
 | `0x600` | `0x200` | ACI (for limitation of first ACI)        |
 
-The `AccessDesc` signature covers the NCCH HDR public key and second ACI. The `AccessDesc` public key is initialised by the boot ROM.
+The `AccessDesc` signature covers the NCCH header modulus and second ACI. The `AccessDesc` public key is initialised by the boot ROM.
 
 When loading the exheader, [Process9](FIRM "wikilink") compares the exheader data with the data in the `AccessDesc` (note that not everything is compared here). When these don't match, an error is returned. The Process9 code handling this validation was updated with [v6.0](6.0.0-11 "wikilink"); the only change in this function seems to be the check for the "Ideal processor" field.
 
