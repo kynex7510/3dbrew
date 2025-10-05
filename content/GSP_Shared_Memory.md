@@ -58,13 +58,11 @@ The two 0x1C-byte framebuffer info entries are located at framebufferinfo+4.
 
 See [Configuration Memory](Configuration_Memory "wikilink").
 
-# Command Queue
+# GX Command Queue
 
-The command queue is located at sharedMemBase + 0x800 + (clientID \* 0x200). It consists of an header followed by at most 15 command entries. Each command entry is of size 0x20 and has an header followed by command specific parameters.
+This command queue is located at sharedMemBase + 0x800 + (clientID \* 0x200). It consists of an header followed by at most 15 command entries.
 
-After adding a command, [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") must be used to start command processing (official code does so when the total commands field is 1).
-
-## Command Queue Header
+The queue header has the following structure:
 
 | Index Byte | Description |
 |----|----|
@@ -74,9 +72,15 @@ After adding a command, [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink
 | 3 | When bit0 is set, further processing of commands is halted until the client resets the flag and calls [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") |
 | 7-4 | Result code for the last command which failed |
 
+After adding a command, [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") must be used to start command processing (official code does so when the total commands field is 1).
+
 GSP checks for status.bit0 and optionally avoids handling further commands, however the check is done by equality, which means it will always fail if status.bit7 is also set (and thus other commands will be processed). This bug prevents the halting logic from working propertly, but can be worked around by keeping bit0 of word3 set, as that will force halting on each iteration.
 
-## Command Header
+## Commands
+
+A command entry is made of 8 words. The first word is the command header, subsequent words represent command specific parameters.
+
+The command header has the following structure:
 
 | Index Byte | Description |
 |----|----|
@@ -85,9 +89,7 @@ GSP checks for status.bit0 and optionally avoids handling further commands, howe
 | 2 | When bit0 is set, GSP stops processing further commands (can be used for packing together sets of commands) |
 | 3 | When set, the command fails if GSP is busy handling any other command; otherwise, it only fails if GSP is busy handling a command of the same kind |
 
-## Commands
-
-Addresses specified in parameters are virtual addresses. Depending on the command, there might be constraints on the accepted parameters. In general, some commands require parameters to be aligned, and addresses are expected to be on [linear](Memory_Management#memory_mapping "wikilink"), [QTM](Memory_layout#0x1f000000_new_3ds_only "wikilink") or VRAM memory.
+Addresses specified in command parameters are virtual addresses. Depending on the command, there might be constraints on the accepted parameters. In general, some commands require parameters to be aligned, and addresses are expected to be on [linear](Memory_Management#memory_mapping "wikilink"), [QTM](Memory_layout#0x1f000000_new_3ds_only "wikilink") or VRAM memory.
 
 ### Trigger DMA Request
 
