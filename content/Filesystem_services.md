@@ -615,8 +615,12 @@ The "Seed Verify/Validate" NCCH access type also requires the seed portion of th
 #### FS Limitations
 
 For FS, this archive functions the same, except for the following limitations:
-- Only the title access types "High Level NCCH Access" and "High Level Save Data Access", and "Save Data Transfer" are allowed.
-- For high level NCCH access, the types "RomFS", "System Menu Data", "Seeded check", and "Seed Check/Verify" are allowed. For "Seed Check/Verify", rather than providing the title seed in the file path (as is the case for FSPXI), the seed is retrieved from the seed database (meaning the file lowpath size is always 0x14 for FS).
+
+\- Only the title access types "High Level NCCH Access" and "High Level Save Data Access", and "Save Data Transfer" are allowed.
+
+\- For high level NCCH access, the types "RomFS", "System Menu Data", "Seeded check", and "Seed Check/Verify" are allowed.
+
+\- For "Seed Check/Verify", rather than providing the title seed in the file path (as is the case for FSPXI), the seed is retrieved from the seed database (meaning the file lowpath size is always 0x14 for FS).
 
 ### FSPXI Program Access
 
