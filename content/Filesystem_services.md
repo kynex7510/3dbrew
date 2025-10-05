@@ -915,7 +915,7 @@ The file follows a simple key-value format allowing the storage of seed data for
 </tbody>
 </table>
 
-## TITLETAG
+## TITLETAG Database
 
 Stored in the system savedata archive 0x0001000F as a file named `TITLETAG`, it contains information used by the [HOME Menu](Home_Menu "wikilink") to handle cases when a to-be-released title has been purchased already, that is, to properly install the seed required for [NCCH](NCCH "wikilink") keyY generation added with FIRM [9.6.0-X](9.6.0-24 "wikilink").
 
