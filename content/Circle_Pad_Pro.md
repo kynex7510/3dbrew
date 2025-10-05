@@ -73,21 +73,37 @@ bit[5] ZL button</p>
 
 Request (6 bytes):
 
-| offset | Size | Description                     |
-|--------|------|---------------------------------|
-| 0x0    | 0x1  | Request ID (fixed value 2)      |
-| 0x1    | 0x1  | Expected response time in ms?   |
-| 0x2    | 0x2  | Data offset? (aligned to 0x10?) |
-| 0x4    | 0x2  | Data size (aligned to 0x10?)    |
+| offset | Size | Description                   |
+|--------|------|-------------------------------|
+| 0x0    | 0x1  | Request ID (fixed value 2)    |
+| 0x1    | 0x1  | Expected response time in ms? |
+| 0x2    | 0x2  | Data offset (aligned to 0x10) |
+| 0x4    | 0x2  | Data size (aligned to 0x10)   |
 
 Response (5 bytes + requested size)
 
 | offset | Size      | Description                      |
 |--------|-----------|----------------------------------|
 | 0x0    | 0x1       | Response ID? Fixed value 0x11    |
-| 0x1    | 0x2       | Data offset? Same as Request+0x2 |
+| 0x1    | 0x2       | Data offset. Same as Request+0x2 |
 | 0x3    | 0x2       | Data size. Same as Request+0x4   |
-| 0x5    | data size | calibration data?                |
+| 0x5    | data size | calibration data                 |
+
+Calibration data:
+
+| offset | Size | Description |
+|----|----|----|
+| 0x0 | 0x1 | Unknown |
+| 0x1 | 0x3 | Right circle pad offset.
+These three bytes are two little-endian 12-bit fields. The lower one is for x-axis and the upper one is for y-axis. |
+| 0x4 | 0x4 | Right circle pad x-axis scale factor (floating-point). |
+| 0x8 | 0x4 | Right circle pad y-axis scale factor (floating-point). |
+| 0xC | 0x3 | Unknown |
+| 0xF | 0x1 | [CRC-8-CCITT](CRC-8-CCITT "wikilink") over data above |
+
+The Circle Pad Pro contains many sets of calibration data. Sets with an invalid CRC checksum should be ignored.
+
+To calculate the right circle pad's position, first subtract the calibration offset from the value reported in the "Read Input" request, then multiply by the scaling factor. Dividing the result by 8 gives a value with a similar range to that of the left circle pad: -0x9C(bottom/left) - 0x9C(top/right).
 
 ### Request 3
 
