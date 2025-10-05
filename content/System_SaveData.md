@@ -14,7 +14,7 @@ The SaveID for system modules is usually 0x00010000 \| [uniqueID](Titles "wikili
 
 | SaveID | Description |
 |----|----|
-| 0x0001000F | [FS](Filesystem_services "wikilink") module savedata, used for [SEEDDB](Filesystem_services#seeddb "wikilink") and [TITLETAG](Filesystem_services#titletag "wikilink") storage. |
+| 0x0001000F | [FS](Filesystem_services "wikilink") module savedata, used for [SEEDDB](Filesystem_services#seeddb "wikilink") and [TITLETAG](Filesystem_services#titletag_database "wikilink") storage. |
 | 0x00010011 | [FS](Filesystem_services "wikilink") module savedata, used for [Anti Savegame Restore](Filesystem_services#anti_savegame_restore "wikilink"). |
 | 0x00010015 | [AM](Application_Manager_Services "wikilink") module savedata |
 | 0x00010017 | [Config Savegame](Config_Savegame "wikilink") |
