@@ -22,8 +22,4 @@ title = 'IRU:StartRecvTransfer'
 
 # Description
 
-This starts an IR data-receive transfer, this command is non-blocking.
-The received data(when the receive transfer-count is non-zero) is
-written to sharedmemaddr + 0. The newly received transfer-count can be
-obtained via [IRU:WaitRecvTransfer](IRU:WaitRecvTransfer "wikilink").
-The input size must be \<=0x800, otherwise error 0xE0E10FEC is returned.
+This starts an IR data-receive transfer, this command is non-blocking. The received data(when the receive transfer-count is non-zero) is written to sharedmemaddr + 0. The newly received transfer-count can be obtained via [IRU:WaitRecvTransfer](IRU:WaitRecvTransfer "wikilink"). The input size must be \<=0x800, otherwise error 0xE0E10FEC is returned.
