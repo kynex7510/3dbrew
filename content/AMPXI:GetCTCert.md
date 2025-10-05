@@ -21,6 +21,4 @@ title = 'AMPXI:GetCTCert'
 
 # Description
 
-This returns the [CTCert](CTCert "wikilink") 0x180-byte certificate for
-the current system. The size must match 0x180, otherwise Process9
-executes [svcBreak](SVC "wikilink").
+This returns the [CTCert](CTCert "wikilink") 0x180-byte certificate for the current system. The size must match 0x180, otherwise Process9 executes [svcBreak](SVC "wikilink").
