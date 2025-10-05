@@ -249,7 +249,7 @@ It is possible to add a friend using an [encrypted payload](Friend_Services#encr
 | 0x7 | 0x1 | padding |
 | 0x8 | 0x10 | [FriendKey](Friend_Services#friendkey "wikilink") of the console that created this approach context |
 | 0x18 | 0x48 | [FriendProfile](Friend_Services#friendprofile "wikilink") of the console that created this approach context |
-| 0x60 | 0x60 | [Friend Mii Data](Friend_Services#mii_data "wikilink") of the console that created this approach context |
+| 0x60 | 0x60 | Friend [Mii Data](Mii#cflstoredata "wikilink") of the console that created this approach context |
 | 0xC0 | 0x16 | 10-Character UTF-16 Screen Name (10 characters + null termination) |
 | 0xD6 | 0x12A | unused |
 
