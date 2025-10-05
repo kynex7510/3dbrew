@@ -19,3 +19,7 @@ title = 'FS:GetSaveDataSecureValue'
 | 1          | Result code                       |
 | 2          | u8, 0 = doesn't exist, 1 = exists |
 | 3-4        | u64, Value                        |
+
+# Description
+
+Gets the secure value for a specific title (or current title) in the specified slot. This command will read from the [Anti Savegame Restore](Filesystem_services#anti_savegame_restore "wikilink") save data.
