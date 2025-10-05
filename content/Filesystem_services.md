@@ -568,7 +568,7 @@ For ExeFS, (System Menu Data / <code>exefs:/.code</code>),</p>
 <tr>
 <td>0x0</td>
 <td>0x10</td>
-<td>16-byte IV for save data decryption</td>
+<td>16-byte IV for save data crypto</td>
 </tr>
 </tbody>
 </table></td>
