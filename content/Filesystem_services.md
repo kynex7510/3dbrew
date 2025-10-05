@@ -240,7 +240,7 @@ Directory session handles obtained via [FS:OpenDirectory](FS:OpenDirectory "wiki
 | 0x567890AD | TWLS (DSi Sound stores recordings here). This is mapped to the FAT12 image stored in the file at [Twln/shared2/0000](Twln/shared2/0000 "wikilink"). | No | Yes | No | No | ? |
 | 0x567890AE | NAND TWL FS | Yes | Yes | No | No | 0x100 |
 | 0x567890AF | NAND W FS | Yes | Yes | No | No | 0x100 |
-| 0x567890B0 | ? | No | Yes | No | No |  |
+| 0x567890B0 | Internally creates the same "ID Storage" wrapper over the NAND that is used for SystemSaveData and Shared ExtData, but all operations are stubbed and return 0xE0C046F8. | No | Yes | No | No |  |
 | 0x567890B1 | Gamecard SaveData (for check). This is a wrapper for UserSaveDataForCheck: the OpenArchive code for that is called with archive-lowpath TID=0/mediatype=2(gamecard). | Yes | No | No | No | 0x6 |
 | 0x567890B2 | UserSaveData (for check). This is the same as the regular SaveData archive, except with this the savedata ID and mediatype is loaded from the input archive lowpath. | Yes | No | No | Yes | 0x6 |
 | 0x567890B3 | [AGB Save Data](3DS_Virtual_Console#nand_savegame "wikilink") | No | No | Yes | No | \- |
