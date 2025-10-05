@@ -97,6 +97,7 @@ A Nintendo-assigned product code follows this format, however, there is no requi
 | Category letter | Description |
 |----|----|
 | P | Cartridge software, or downloadable versions of them. |
+| B | Cartridge demos |
 | N | Digital-only releases, including [system applications and applets](Title_list "wikilink"). |
 | M | [DLC](DLC "wikilink") |
 | T | [eShop Demos](eShop_Demos "wikilink"), excluding so-called "special demos" which are category N. |
