@@ -646,7 +646,7 @@ For FS, this archive functions the same, except for the following limitations:
 
 \- For "Seed Check/Verify", rather than providing the title seed in the file path (as is the case for FSPXI), the seed is retrieved from the seed database (meaning the file lowpath size is always 0x14 for FS).
 
-### FSPXI Program Access
+### Program Access / SelfNCCH access
 
 Provides access to a "merged" archive of a base title and, optionally, a separate update (patch) title.
 
@@ -732,6 +732,12 @@ If no patch title exists, the base title is considered to be the patch title, i.
 </tr>
 </tbody>
 </table>
+
+#### FS Limitations
+
+\- When used through fs:LDR by loader, FS only provides access to `exefs:/.code`.
+
+\- For SelfNCCH access, the only allowed access types are "RomFS ("unspecified" [content type](NCCH#content_type "wikilink"), the default)" of the Base or Patch title, and "System Menu Data". Attempting to access "Save Data" results in error 0xE0E046BE, "RomFS (all [content types](NCCH#content_type "wikilink"))" in 0xF9604784, and "`exefs:/.code`" in 0xD9004676.
 
 ### [RomFS](RomFS "wikilink")
 
