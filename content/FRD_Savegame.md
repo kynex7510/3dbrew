@@ -72,7 +72,7 @@ Stores console-specific information related to the account.
 | 0x68 | (12 + 1) \* 2 | 12-character UTF-16 MAC address (only the digits) (12 characters + NULL termination) |
 | 0x82 | (15 + 1) \* 2 | 15-character UTF-16 console serial number without the checksum digit (15 characters + NULL termination) |
 | 0xA2 | (10 + 1) \* 2 | 10-character UTF-16 Display name (10 characters + NULL termination) |
-| 0xBB | 0x60 | [Mii data](Friend_Services#mii_data "wikilink") |
+| 0xBB | 0x60 | [Mii data](Mii#cflstoredata "wikilink") |
 | 0x11B | 5 | Padding |
 
 ### Change Bit Flags
