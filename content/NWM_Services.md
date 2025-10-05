@@ -104,7 +104,7 @@ The only sysmodule which uses this is [socket](Socket_Services "wikilink")-sysmo
 | 0x00010000 | \<=[2.0.0-2](2.0.0-2 "wikilink") | ? |
 | 0x00020000 | \<=[2.0.0-2](2.0.0-2 "wikilink") | ? |
 | 0x00030000 | \<=[2.0.0-2](2.0.0-2 "wikilink") | ? |
-| 0x00040040 | \<=[2.0.0-2](2.0.0-2 "wikilink") | ? |
+| 0x00040040 | \<=[2.0.0-2](2.0.0-2 "wikilink") | SetWifiLinkLevel |
 | 0x00050002 | \<=[2.0.0-2](2.0.0-2 "wikilink") | ? |
 | 0x00060000 | \<=[2.0.0-2](2.0.0-2 "wikilink") | ? |
 | 0x00070000 | \<=[2.0.0-2](2.0.0-2 "wikilink") | This copies 0x1C-bytes from NWM-module state to the data starting at cmdreply\[2\]. |
