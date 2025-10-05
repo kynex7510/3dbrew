@@ -21,7 +21,4 @@ title = 'AM:GetProgramInfoFromCia'
 
 # Description
 
-This reads title information from a CIA file opened with
-[fs:USER](Filesystem_services "wikilink"). Depending on the media type,
-this will return different title sizes. Official applications use double
-the title size.
+This reads title information from a CIA file opened with [fs:USER](Filesystem_services "wikilink"). Depending on the media type, this will return different title sizes. Official applications use double the title size.
