@@ -68,13 +68,11 @@ The queue header has the following structure:
 |----|----|
 | 0 | Index of the command to process, this is incremented by GSP before handling the command |
 | 1 | Total commands to process, this is incremented by the application when adding the command to the queue, and decremented by GSP before handling the command |
-| 2 | Status (bit0 = halted, bit7 = fatal error) |
+| 2 | Status (0x1 = halted, 0x80 = error) |
 | 3 | When bit0 is set, further processing of commands is halted until the client resets the flag and calls [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") |
 | 7-4 | Result code for the last command which failed |
 
 After adding a command, [TriggerCmdReqQueue](GSPGPU:TriggerCmdReqQueue "wikilink") must be used to start command processing (official code does so when the total commands field is 1).
-
-GSP checks for status.bit0 and optionally avoids handling further commands, however the check is done by equality, which means it will always fail if status.bit7 is also set (and thus other commands will be processed). This bug prevents the halting logic from working propertly, but can be worked around by keeping bit0 of word3 set, as that will force halting on each iteration.
 
 ## Commands
 
@@ -193,3 +191,8 @@ This command calls svcFlushProcessDataCache for each buffer on the process that 
 If any call fails, its error is returned; If any buffer has size 0, the buffer is skipped. In both cases, subsequent buffers are not processed.
 
 Any process must have acquired rendering rights, otherwise the error 0xD8202A06 (GSP_NO_RIGHT) is returned.
+
+## Bugs
+
+- When issuing a DMA request, GSP attempts to acquire an internal semaphore that rules CDMA access; this semaphore is never released on failure paths. While this is generally not an issue, as GSP breaks on DMA failures, it becomes a problem if the DMA request is done with cache flushing: in that case, GSP will error silently, causing a deadlock in DMA code.
+- When handling GX commands apart from RequestDMA and ProcessCommandList, GSP sets the relative busy flags in internal state before executing the commands. This means that, if the relevant interrupts are never triggered (eg. on invalid parameters), the busy flags never get reset, preventing execution of future commands of the same kind.
