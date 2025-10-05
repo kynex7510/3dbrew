@@ -96,7 +96,7 @@ You can at most have 32 FS archive handles.
 | 0x08510242 | [3.0.0-5](3.0.0-5 "wikilink") | [CreateExtSaveData](FS:CreateExtSaveData "wikilink") | Shared extdata: 0x101005. Regular extdata in certain cases: 0xC |
 | 0x08520100 | [3.0.0-5](3.0.0-5 "wikilink") | [DeleteExtSaveData](FS:DeleteExtSaveData "wikilink") | Shared extdata: 0x101005. Regular extdata in certain cases: 0x10100D |
 | 0x08530142 | [3.0.0-5](3.0.0-5 "wikilink") | [ReadExtSaveDataIcon](FS:ReadExtSaveDataIcon "wikilink") | 0x10100D (this doesn't apply in certain cases, however) |
-| 0x085400C0 | [3.0.0-5](3.0.0-5 "wikilink") | [GetExtDataBlockSize](FS:GetExtDataBlockSize "wikilink") | 0x10100D (this doesn't apply in certain cases, however) |
+| 0x08540010 | [3.0.0-5](3.0.0-5 "wikilink") | [GetExtDataBlockSize](FS:GetExtDataBlockSize "wikilink") | 0x10100D (this doesn't apply in certain cases, however) |
 | 0x08550102 | [3.0.0-5](3.0.0-5 "wikilink") | [EnumerateExtSaveData](FS:EnumerateExtSaveData "wikilink") | 0x101005 |
 | 0x08560240 | [3.0.0-5](3.0.0-5 "wikilink") | [CreateSystemSaveData](FS:CreateSystemSaveData "wikilink") | 0x4 (this doesn't apply in certain cases, however) |
 | 0x08570080 | [3.0.0-5](3.0.0-5 "wikilink") | [DeleteSystemSaveData](FS:DeleteSystemSaveData "wikilink") | 0x1004 (this doesn't apply in certain cases, however) |
