@@ -742,6 +742,107 @@ The 0x3 archive is an interface for the 0x2345678E archive with the current proc
 </tbody>
 </table>
 
+# Anti Savegame Restore
+
+Anti Savegame Restore, internally referred to as *Save Data Rollback Prevention*, is a feature originally implemented in the FS module with [4.0.0-7](4.0.0-7 "wikilink"), which prevents the user from restoring previous versions of a savegame image. This feature is not used (in practice) for gamecard games. When an old version of the save is detected, the application will display an error regarding old savegame version, then delete and recreate the save data (similar to when it is corrupted).
+
+## Implementation
+
+When creating the savedata, the application generates a secure value (a 64 bit unsigned integer), then stores it in either the [DISA save image header](DISA_and_DIFF#disa_header "wikilink") or the [Anti Savegame Restore Save Data](Filesystem_services#anti_savegame_restore_save_data "wikilink"). The application then uses the anti-savegame-restore commands ([FS:SetSaveDataSecureValue](FS:SetSaveDataSecureValue "wikilink"), [FS:GetSaveDataSecureValue](FS:GetSaveDataSecureValue "wikilink"), [FS:SetOtherSaveDataSecureValue](FS:SetOtherSaveDataSecureValue "wikilink"), [FS:GetOtherSaveDataSecureValue](FS:GetOtherSaveDataSecureValue "wikilink"), [FS:SetThisSaveDataSecureValue](FS:SetThisSaveDataSecureValue "wikilink"), [FS:GetThisSaveDataSecureValue](FS:GetThisSaveDataSecureValue "wikilink"), [FS:SetSaveArchiveSecureValue](FS:SetSaveArchiveSecureValue "wikilink") and [FS:GetSaveArchiveSecureValue](FS:GetSaveArchiveSecureValue "wikilink")) to verify the value known to the game for comparison with the value returned by FS, and to update the value in the corresponding storage location.
+
+Each time the application writes to the savegame, the value should be updated by both the application and through FS. Usually, applications update this value by incrementing it. However, generating a new random-number or other methods of updating it can be used as well.
+
+## Anti Savegame Restore Save Data
+
+The save data used for this feature is stored in [System Save Data](System_SaveData "wikilink") ID 0x00010011 and contains only one file, named `DB`:
+
+### SecureValueKey
+
+Depending on which command is used, secure value keys can be interpreted as:
+
+| Offset | Size | Description   |
+|--------|------|---------------|
+| 0x0    | 0x8  | u64, Title ID |
+
+or:
+
+| Offset | Size | Description |
+|----|----|----|
+| 0x0 | 0x4 | u32, [Secure Value Slot](Filesystem_services#securevalueslot "wikilink") |
+| 0x4 | 0x4 | u32, Unique ID |
+
+### Main Structure
+
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x1000</td>
+<td>Header</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x1</td>
+<td>u8, version (usually 0)</td>
+</tr>
+<tr>
+<td>0x1</td>
+<td>0x3</td>
+<td>padding</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x4</td>
+<td>u32, number of secure value entries</td>
+</tr>
+<tr>
+<td>0x8</td>
+<td>0xFF8</td>
+<td>completely unused, padding</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td>0x1000</td>
+<td>0x1C000 (8 * 14336)</td>
+<td><a {{% href "../Filesystem_services" %}} title="wikilink">Secure value keys</a></td>
+</tr>
+<tr>
+<td>0x1D000</td>
+<td>0x1C000 (8 * 14336)</td>
+<td>u64s, Secure values</td>
+</tr>
+</tbody>
+</table>
+
+## Applications using this feature
+
+- Animal Crossing: New Leaf
+- Pokemon X & Y
+- Pokemon Omega Ruby & Alpha Sapphire
+- Pokemon Omega Ruby & Alpha Sapphire Demo
+- Pokemon Shuffle
+- Super Smash Bros
+- Pokemon Red,Blue and Yellow (GB(C) VC)
+- Rusty's Real Deal Baseball
+- Megami Meguri
+
 # SEEDDB
 
 With [9.6.0-X](9.6.0-24 "wikilink") new [System_SaveData](System_SaveData "wikilink") with saveID 0001000F was added, this seems to be handled by FS-module itself, probably via the new service-cmds added to fsuser. [Home Menu](Home_Menu "wikilink") and [NIM](NIM_Services "wikilink") module have access to those commands.
