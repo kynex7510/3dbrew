@@ -7,11 +7,11 @@ title = 'APT:StartNewestHomeMenu'
 | Index Word | Description                    |
 |------------|--------------------------------|
 | 0          | Header code \[0x00200044\]     |
-| 2          | Parameters Size                |
-| 3          | 0x0                            |
-| 4          | Handle Parameter               |
-| 5          | (Parameters Size \<\< 14) \| 2 |
-| 6          | void\*, Parameters             |
+| 1          | Parameters Size                |
+| 2          | 0x0                            |
+| 3          | Handle Parameter               |
+| 4          | (Parameters Size \<\< 14) \| 2 |
+| 5          | void\*, Parameters             |
 
 # Response
 
