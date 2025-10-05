@@ -17,3 +17,5 @@ I'm not quite sure what they are for, As I have changed the icons and names in a
 The flags are documented to be 0x4 size in the first table in the Application Settings section, yet the Flags table is only documenting 0x2 size bitmask values. Does anyone know if the other two bytes are reserved, or if there are undocumented flags that go in addresses 0x202A and 0x202B?
 
 If it's the former, then the size in the "Flags" entry should be changed from 0x4 to 0x2, and a "reserved" entry with starting address 0x202A and with size 0x2 should be added, to dispel confusion. If it's the latter, a note should be put in saying we don't yet have the other two bytes documented.
+
+Edit: It could also be not reserved but unused... either way, I feel like it should be more clearly documented.
