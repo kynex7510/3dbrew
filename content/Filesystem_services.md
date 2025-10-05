@@ -652,22 +652,86 @@ Provides access to a "merged" archive of a base title and, optionally, a separat
 
 If no patch title exists, the base title is considered to be the patch title, i.e. turning all "patch" accesses into accesses to the base title.
 
+#### Program Access Type
+
+| Value | Description | Accesses |
+|----|----|----|
+| 0 | RomFS ("unspecified" [content type](NCCH#content_type "wikilink"), the default) | Base title |
+| 1 | `exefs:/.code` | Patch title |
+| 2 | System Menu Data (`exefs:/icon`, `exefs:/banner`, `exefs:/logo`) | Base title |
+| 3 | Save Data (high level, decrypted) | \- |
+| 4 | RomFS (all [content types](NCCH#content_type "wikilink")) | Base title |
+| 5 | RomFS ("unspecified" [content type](NCCH#content_type "wikilink"), the default) | Patch title |
+
 #### Archive Path
 
 | Offset | Size | Description |
 |----|----|----|
 | 0x0 | 0x8 | u64, Program Handle from [PXIPM:RegisterProgram](PXIPM:RegisterProgram "wikilink") |
 
-#### Program Access Type
+#### File Path
 
-| Value | Description |
-|----|----|
-| 0 | RomFS of base title ("unspecified" [content type](NCCH#content_type "wikilink"), the default) |
-| 1 | `exefs:/.code` of the patch title |
-| 2 | System Menu Data (`exefs:/icon`, `exefs:/banner`, `exefs:/logo`) |
-| 3 | Save Data (high level, decrypted) |
-| 4 | RomFS of base title (all [content types](NCCH#content_type "wikilink")) |
-| 5 | RomFS of patch (update) title |
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x4</td>
+<td><a {{% href "../Filesystem_services" %}} title="wikilink">Program Access Type</a></td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x8</td>
+<td>Dynamic data depending on <a {{% href "../Filesystem_services" %}} title="wikilink">Program Access Type</a>:</p>
+<table>
+<thead>
+<tr>
+<th>ExeFS files (System Menu Data, etc.)</th>
+<th>RomFS of base title (all <a {{% href "../NCCH" %}} title="wikilink">content types</a>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><table>
+<tbody>
+<tr>
+<td>8-character ExeFS filename</td>
+</tr>
+</tbody>
+</table></td>
+<td><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0</td>
+<td>0x4</td>
+<td>u32, content index of target content</td>
+</tr>
+<tr>
+<td>0x4</td>
+<td>0x4</td>
+<td>padding</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
 
 ### [RomFS](RomFS "wikilink")
 
