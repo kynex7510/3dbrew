@@ -22,7 +22,7 @@ GSP fills the interrupt list, then triggers the event set with [RegisterInterrup
 
 PDC interrupts are sent to all processes; other interrupts are only sent to the process with rendering rights.
 
-GSP will only dispatch PSC0 if a [Memory Fill](GSP_Shared_Memory#trigger_memory_fill "wikilink") command has been issued with both buffers set.
+When issuing a [Memory Fill](GSP_Shared_Memory#trigger_memory_fill "wikilink") command with both buffers set GSP will only dispatch PSC0.
 
 # Framebuffer Info
 
