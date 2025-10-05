@@ -134,17 +134,40 @@ Given offsets are based on the start of the file.
 
 ### NCCH Flags
 
+#### Content Type
+
+| Value | Description            |
+|-------|------------------------|
+| 0     | Unspecified            |
+| 1     | System Update          |
+| 2     | Instruction Manual     |
+| 3     | Download Play Child    |
+| 4     | Trial (Demo)           |
+| 5     | Extended System Update |
+
+#### Form Type
+
+| Value | Description              |
+|-------|--------------------------|
+| 0     | Not Assigned             |
+| 1     | Simple Content           |
+| 2     | Executable without RomFS |
+| 3     | Executable               |
+
 | INDEX | DESCRIPTION |
 |----|----|
 | 3 | Crypto Method: When this is non-zero, a NCCH crypto method using two keyslots is used(see above). |
 | 4 | Content Platform: 1 = CTR, 2 = snake (New 3DS). |
-| 5 | Content Type Bit-masks: Data = 0x1, Executable = 0x2, SystemUpdate = 0x4, Manual = 0x8, Child = (0x4\|0x8), Trial = 0x10. When 'Data' is set, but not 'Executable', NCCH is a CFA. Otherwise when 'Executable' is set, NCCH is a CXI. |
+| 5 | bits 0-1: [Content Form Type](NCCH#form_type "wikilink")
+bits 2-7: [Content Type](NCCH#content_type "wikilink") |
 | 6 | Content Unit Size i.e. u32 ContentUnitSize = 0x200\*2^flags\[6\]; |
 | 7 | Bit-masks: FixedCryptoKey = 0x1, NoMountRomFs = 0x2, NoCrypto = 0x4, using a new keyY generator = 0x20(starting with FIRM [9.6.0-X](9.6.0-24 "wikilink")). |
 
 CXIs NCCH header signature is verified using the RSA modulus stored in the exheader, while CFAs NCCH header is verified with a fixed RSA modulus. The public exponent is 65537 for both.
 
-#### NCCH header example for Lego Starwars III
+## Examples
+
+### NCCH header example for Lego Starwars III
 
 `Signature:              720FF8F83F2A1E998322A026D1434165`  
 `                        ED19642ABC1CB2722135AA202BEAD60A`  
@@ -190,7 +213,7 @@ CXIs NCCH header signature is verified using the RSA modulus stored in the exhea
 Note: Offsets and sizes in media units have been converted to byte sizes.
 ```
 
-#### Plain region example for Lego Starwars III
+### Plain region example for Lego Starwars III
 
 `0004a00: 5b 53 44 4b 2b 4e 49 4e 54 45 4e 44 4f 3a 43 54  [SDK+NINTENDO:CT    [SDK+NINTENDO:CTR_SDK-0_14_23_200_none]`  
 `0004a10: 52 5f 53 44 4b 2d 30 5f 31 34 5f 32 33 5f 32 30  R_SDK-0_14_23_20`  
@@ -210,7 +233,7 @@ Note: Offsets and sizes in media units have been converted to byte s
 0004ae0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
 ```
 
-#### Example dependency list from the extended header
+### Example dependency list from the extended header
 
 `00850 41 50 54 3A 55 00 00 00 24 68 69 6F 46 49 4F 00 `[`APT:U`](APT:U)`...$hioFIO.`  
 `00860 24 68 6F 73 74 69 6F 30 24 68 6F 73 74 69 6F 31 $hostio0$hostio1`  
