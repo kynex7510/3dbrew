@@ -113,7 +113,9 @@ The source buffer must be mapped as readable in the source process, while the de
 | 6-4 | Unused |
 | 7 | Flush buffer (0 = don't flush, 1 = flush) |
 
-This command converts the specified address to a physical address, then writes the physical address and size to the [GPU](GPU "wikilink") registers at 0x1EF018E0. This buffer contains [GPU commands](GPU/Internal_Registers "wikilink"). When flushing is enabled, svcFlushProcessDataCache is used to flush the buffer.
+This command sets the GPU [command list registers](GPU/External_Registers#command_list "wikilink"), and optionally updates gas additive blend results after command processing has ended.
+
+No error checking is performed on the parameters. address and size should be both 8-byte aligned, and the address should be in linear, QTM or VRAM memory, otherwise PA 0 is returned by the vaddr-\>paddr conversion code. When flushing is enabled, svcFlushProcessDataCache is used to flush the buffer.
 
 ### Trigger Memory Fill
 
