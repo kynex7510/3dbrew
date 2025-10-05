@@ -81,7 +81,7 @@ The boss system module v13314 begins at address 0x0010eb98 with the function for
 | 0x12 | 0x20 | SHA-256 hash |
 | 0x32 | 0x100 | RSA-2048 signature over the above hash |
 
-The first 0x10-bytes are all-zero except the first byte which is usually 0x80. It's unknown what the first 0x10-bytes are used for.
+The first 0x10-bytes are all-zero except the first byte. If the 7th bit (0x80) is not set, the arrived flag will only be marked if the session for the target program ID was made with a privileged session. Otherwise, the arrived flag will always be marked.
 
 The 16-bit value at 0x10 tells how many payload contents follow after this the content header. For example there can be a downloaded file for a game followed by a message for the news system module.
 
