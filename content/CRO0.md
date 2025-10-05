@@ -13,6 +13,8 @@ Upon loading, the RO module will look for export symbol "nnroAeabiAtexit\_" to p
 
 For dumping symbols and loading a CRO into IDA, see [1](https://github.com/plutooo/ctr/) and [2](https://github.com/wwylele/IDA_plugin_CRO).
 
+# Structure
+
 | Offset | Size | Description |
 |----|----|----|
 | 0x0 | 0x80 | SHA-256 hash-table, verified by [CRR](CRR0 "wikilink") |
@@ -201,5 +203,33 @@ Relocation code from RO:
 ```
 }
 ```
+
+## nnroControlObject
+
+Signature:
+
+```
+Result nnroControlObject(void* arg, u32 type);
+```
+
+| Type | Description |
+|----|----|
+| 0 | Write address of "nnroEitNode\_" to memory pointed by arg (\*(u32\*)p = &nnroEitNode\_) |
+| 1 | Set global in CRO to arg, where arg is the CRO end (g_CRO_end = p) |
+| 2 | Write CRO end to memory pointed by arg (\*(u32\*)p = g_CRO_end) |
+| 3 | Write begin, end of function list (C initializers?) to memory pointed by arg (\*(u32\*)p = listBegin, ((u32\*)p)\[1\] = listEnd) |
+| 4 | Write begin, end of function list (C++ initializers?) to memory pointed by arg (\*(u32\*)p = listBegin, ((u32\*)p)\[1\] = listEnd) |
+
+"EitNode" are nodes of a linked list containing informations about the main executable + loaded modules:
+
+| Index Word | Type | Description |
+|----|----|----|
+| 0 | EitNode\* | Pointer to the previous element of the list |
+| 1 | EitNode\* | Pointer to the next element of the list |
+| 2 | u32 | Module code start, for the main executable this is .text base, for CROs this is the value at CRO+0xB0 |
+| 3 | u32 | Module code end (start + size), for the main executable the size is the size of all mapped sections, for CROs it's the value at CRO+0xB4 |
+| 4 | u32\* | Unknown, seems to be an array of u32, probably holds debugging informations |
+| 5 | u32\* | This points at the end of the previous array |
+| 6 | ElfNode\* (?) | Unknown, this is only set for the main executable node, and it points to itself |
 
 [Category:File formats](Category:File_formats "wikilink")
