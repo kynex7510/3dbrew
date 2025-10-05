@@ -126,6 +126,7 @@ The u32 is used for storing flags as bit-masks.
 | Application usage is to be recorded. If this is not set, it causes the application's usage to be omitted from the Home Menu's [icon cache](Home_Menu#cachedat__cacheddat "wikilink"), as well as in [other places](???????? "wikilink"). | 0x0100 |
 | Disables [SD Savedata Backups](SD_Savedata_Backups "wikilink") for this title. This is in addition to [the blacklist](NS_CFA "wikilink"). | 0x0400 |
 | New 3DS exclusive title. Shows an error if used on Old 3DS. | 0x1000 |
+| Application is restricted by Parental Controls. | 0x4000 |
 
 #### Effect of SaveData and AutoSave
 
