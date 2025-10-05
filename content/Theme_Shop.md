@@ -32,9 +32,9 @@ The Theme List format, used to display available themes in the category chosen b
 
 Decrypting the Theme List BOSS file using [GodMode9](GodMode9 "wikilink") or [Decrypt9WIP](Decrypt9WIP "wikilink") contains the following data
 
-| Offset | Description                     |
-|--------|---------------------------------|
-| 0x0    | File magic (boss)               |
-| 0x9    | File size (in bytes)            |
-| 0x2D4  | Title of the theme category     |
-| 0x394  | Developer of the theme category |
+| Offset | Description                              |
+|--------|------------------------------------------|
+| 0x0    | File magic (boss)                        |
+| 0x9    | File size (in bytes)                     |
+| 0x2D4  | Title of the theme category (UTF-16)     |
+| 0x394  | Developer of the theme category (UTF-16) |
